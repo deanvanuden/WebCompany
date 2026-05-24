@@ -560,6 +560,9 @@ h1 {
 
 .no-webgl .stage-fallback {
   display: grid;
+  background:
+    linear-gradient(90deg, rgba(7, 7, 7, 0.82), rgba(7, 7, 7, 0.12)),
+    url("assets/studio-poster.png") center / cover;
 }
 
 .no-webgl #hero-canvas {
@@ -829,6 +832,7 @@ h1 {
 .work-card {
   position: relative;
   display: grid;
+  grid-template-rows: auto auto 1fr;
   gap: 0.9rem;
   min-height: 28rem;
   padding: 1rem;
@@ -853,10 +857,61 @@ h1 {
 
 .project-preview {
   position: relative;
-  min-height: 17rem;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
   overflow: hidden;
   border: 1px solid rgba(239, 235, 225, 0.18);
   background: var(--panel);
+}
+
+.project-preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(7, 7, 7, 0.34), transparent 28%, rgba(7, 7, 7, 0.3)),
+    linear-gradient(135deg, transparent 48%, rgba(238, 53, 40, 0.45) 49%, transparent 50%);
+  opacity: 0.64;
+  pointer-events: none;
+  transition: opacity 650ms var(--ease);
+}
+
+.work-card:hover .project-preview::after {
+  opacity: 0.28;
+}
+
+.real-shot img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  filter: saturate(0.74) contrast(1.08) brightness(0.9);
+  transform: scale(1.02);
+  transition:
+    filter 800ms var(--ease),
+    transform 800ms var(--ease);
+}
+
+.work-card:hover .real-shot img {
+  filter: saturate(1) contrast(1.04) brightness(1);
+  transform: scale(1.065);
+}
+
+.heralyth-shot img {
+  object-position: 50% 44%;
+}
+
+.crime-shot img {
+  object-position: 50% 48%;
+}
+
+.pullup-shot img {
+  object-position: 50% 42%;
+}
+
+.westroomz-shot img {
+  object-position: 50% 48%;
 }
 
 .browser-dot {
@@ -869,102 +924,6 @@ h1 {
   background: rgba(239, 235, 225, 0.55);
   box-shadow: 0.55rem 0 0 rgba(239, 235, 225, 0.3), 1.1rem 0 0 rgba(239, 235, 225, 0.2);
   z-index: 2;
-}
-
-.project-preview h3 {
-  position: absolute;
-  z-index: 2;
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 0.84;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.project-preview i {
-  position: absolute;
-  inset: 0;
-}
-
-.heralyth {
-  color: #181713;
-  background: #eceae4;
-}
-
-.heralyth h3 {
-  left: 1.1rem;
-  top: 2.25rem;
-  font-size: 3.2rem;
-  color: #171612;
-}
-
-.heralyth i {
-  background:
-    radial-gradient(ellipse at 50% 57%, #171612 0 18%, transparent 18.7%),
-    radial-gradient(ellipse at 49% 58%, rgba(0,0,0,0.58) 0 27%, transparent 27.7%),
-    linear-gradient(135deg, transparent 52%, rgba(0,0,0,0.12) 52.5%, transparent 53%),
-    radial-gradient(circle at 58% 62%, rgba(0,0,0,0.28), transparent 26%);
-  filter: contrast(1.05);
-}
-
-.crime {
-  background: #070707;
-}
-
-.crime h3 {
-  left: 1.2rem;
-  top: 3.2rem;
-  font-size: 4rem;
-}
-
-.crime i {
-  background:
-    linear-gradient(155deg, transparent 44%, rgba(239,235,225,0.8) 45%, transparent 46%),
-    linear-gradient(161deg, transparent 48%, rgba(239,235,225,0.36) 49%, transparent 50%),
-    linear-gradient(167deg, transparent 55%, rgba(239,235,225,0.48) 56%, transparent 57%),
-    radial-gradient(ellipse at 70% 88%, rgba(255,255,255,0.18), transparent 42%);
-}
-
-.pullup {
-  color: #141414;
-  background: #eeeeea;
-}
-
-.pullup h3 {
-  left: 50%;
-  top: 50%;
-  color: #111;
-  font-family: var(--font-body);
-  font-size: 2.55rem;
-  font-weight: 700;
-  text-transform: none;
-  transform: translate(-50%, -50%);
-}
-
-.pullup i {
-  background:
-    linear-gradient(#141414, #141414) 8% 9% / 12% 1px no-repeat,
-    linear-gradient(#141414, #141414) 92% 9% / 12% 1px no-repeat,
-    linear-gradient(#141414, #141414) 8% 91% / 12% 1px no-repeat,
-    linear-gradient(#141414, #141414) 92% 91% / 12% 1px no-repeat;
-}
-
-.westroomz {
-  background: #070707;
-}
-
-.westroomz h3 {
-  left: 1.4rem;
-  top: 2.6rem;
-  font-size: 3rem;
-}
-
-.westroomz i {
-  background:
-    linear-gradient(160deg, transparent 48%, rgba(238, 53, 40, 0.72) 49%, transparent 50%),
-    linear-gradient(180deg, transparent 42%, #28241f 42% 70%, transparent 70%),
-    linear-gradient(90deg, transparent 25%, #c5a36d 25% 28%, transparent 28% 72%, #c5a36d 72% 75%, transparent 75%),
-    radial-gradient(ellipse at 55% 58%, rgba(239,235,225,0.24), transparent 38%);
 }
 
 .project-meta {
@@ -1488,19 +1447,19 @@ h1 {
   .studio-intro h2,
   .process-copy h2,
   .contact-copy h2 {
-    font-size: clamp(4rem, 19vw, 6.2rem);
+    font-size: clamp(3.9rem, 17vw, 5.8rem);
   }
 
   .work-track {
-    grid-auto-columns: minmax(16rem, 84vw);
+    grid-auto-columns: minmax(16rem, calc(100vw - 3.4rem));
   }
 
   .work-card {
-    min-height: 25rem;
+    min-height: 24rem;
   }
 
   .project-preview {
-    min-height: 15rem;
+    min-height: 14rem;
   }
 
   .process-rows article {
@@ -1537,9 +1496,16 @@ h1 {
     display: grid;
   }
 
-  .project-preview h3 {
-    transform-origin: left top;
-    scale: 0.82;
+  h1 {
+    font-size: clamp(4.9rem, 24vw, 6.4rem);
+  }
+
+  .eyebrow {
+    font-size: 0.68rem;
+  }
+
+  .approach-card {
+    min-height: 24rem;
   }
 
   .contact-form {
