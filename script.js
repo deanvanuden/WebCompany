@@ -65,6 +65,7 @@
     let isDown = false;
     let hasDragged = false;
     let startX = 0;
+    let startY = 0;
     let startScroll = 0;
 
     const updateProgress = () => {
@@ -79,17 +80,19 @@
       isDown = true;
       hasDragged = false;
       startX = event.clientX;
+      startY = event.clientY;
       startScroll = workTrack.scrollLeft;
       workTrack.classList.add("is-dragging");
     });
 
     workTrack.addEventListener("pointermove", (event) => {
       if (!isDown) return;
-      const delta = event.clientX - startX;
-      if (Math.abs(delta) < 6) return;
+      const deltaX = event.clientX - startX;
+      const deltaY = event.clientY - startY;
+      if (Math.abs(deltaX) < 6 || Math.abs(deltaX) < Math.abs(deltaY)) return;
       hasDragged = true;
       event.preventDefault();
-      workTrack.scrollLeft = startScroll - delta;
+      workTrack.scrollLeft = startScroll - deltaX;
     });
 
     const stopDrag = () => {
