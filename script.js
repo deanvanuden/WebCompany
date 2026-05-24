@@ -63,6 +63,7 @@
 
   if (workTrack && galleryProgress) {
     let isDown = false;
+    let hasDragged = false;
     let startX = 0;
     let startScroll = 0;
 
@@ -76,16 +77,19 @@
 
     workTrack.addEventListener("pointerdown", (event) => {
       isDown = true;
+      hasDragged = false;
       startX = event.clientX;
       startScroll = workTrack.scrollLeft;
       workTrack.classList.add("is-dragging");
-      workTrack.setPointerCapture(event.pointerId);
     });
 
     workTrack.addEventListener("pointermove", (event) => {
       if (!isDown) return;
+      const delta = event.clientX - startX;
+      if (Math.abs(delta) < 6) return;
+      hasDragged = true;
       event.preventDefault();
-      workTrack.scrollLeft = startScroll - (event.clientX - startX);
+      workTrack.scrollLeft = startScroll - delta;
     });
 
     const stopDrag = () => {
@@ -95,6 +99,12 @@
 
     workTrack.addEventListener("pointerup", stopDrag);
     workTrack.addEventListener("pointercancel", stopDrag);
+    workTrack.addEventListener("click", (event) => {
+      if (!hasDragged) return;
+      event.preventDefault();
+      event.stopPropagation();
+      hasDragged = false;
+    }, true);
     workTrack.addEventListener("scroll", updateProgress, { passive: true });
     window.addEventListener("resize", updateProgress);
 
