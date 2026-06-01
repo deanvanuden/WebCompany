@@ -9,7 +9,7 @@
   const workTrack = document.querySelector(".work-track");
   const galleryProgress = document.querySelector(".gallery-progress span");
   const contactForm = document.querySelector(".contact-form");
-  const contactEmail = "lumoraofficial@gmail.com";
+  const contactEmail = "lumoraofficialde@gmail.com";
 
   if (cursorLight) {
     window.addEventListener("pointermove", (event) => {
@@ -146,35 +146,35 @@
       setError(message, "");
 
       if (!name.value.trim()) {
-        setError(name, "Name is required.");
+        setError(name, "Name ist erforderlich.");
         valid = false;
       }
 
       if (!email.value.trim() || !email.validity.valid) {
-        setError(email, "Use a valid email.");
+        setError(email, "Bitte eine gültige E-Mail eingeben.");
         valid = false;
       }
 
       if (!message.value.trim()) {
-        setError(message, "Tell us what needs to be built.");
+        setError(message, "Beschreib kurz, was gebaut werden soll.");
         valid = false;
       }
 
       if (!valid) {
-        status.textContent = "Fix the highlighted fields.";
+        status.textContent = "Bitte die markierten Felder korrigieren.";
         return;
       }
 
-      const subject = encodeURIComponent(`Website project from ${form.get("name")}`);
+      const subject = encodeURIComponent(`Website-Projekt von ${form.get("name")}`);
       const bodyText = [
         `Name: ${form.get("name")}`,
-        `Email: ${form.get("email")}`,
-        `Company / website: ${form.get("company") || "Not provided"}`,
+        `E-Mail: ${form.get("email")}`,
+        `Unternehmen / Website: ${form.get("company") || "Nicht angegeben"}`,
         "",
         form.get("message")
       ].join("\n");
 
-      status.textContent = "Mail draft prepared. If it does not open, email us directly.";
+      status.textContent = "E-Mail-Entwurf vorbereitet. Falls er sich nicht öffnet, schreib uns direkt.";
       window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
     });
   }

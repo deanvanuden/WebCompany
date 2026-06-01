@@ -1,17 +1,17 @@
 # Lumora Website
 
-Static portfolio site for the new web design studio. Open `index.html` directly in a browser.
+Statische Portfolio-Website für das Webdesign-Studio. `index.html` kann direkt im Browser geöffnet werden.
 
-## Files
+## Dateien
 
-- `index.html` - page structure, copy, project links, contact markup.
-- `styles.css` - visual system, responsive layout, reveal states, gallery previews.
-- `script.js` - Three.js hero, mobile menu, magnetic buttons, gallery controls, contact validation.
-- `assets/projects/` - live screenshots of the example project websites used in the work gallery.
-- `assets/approach/` - generated visual elements for Strategy, Interface, Motion, and Launch.
-- `assets/studio-poster.png` - generated fallback / social preview image.
-- `assets/LogoLumora.png` - favicon image.
+- `index.html` - Seitenstruktur, deutsche Texte, Projektlinks und Kontakt-Markup.
+- `styles.css` - visuelles System, responsive Layouts, Reveal-Zustände und Galerie-Previews.
+- `script.js` - Three.js-Hero, mobiles Menü, magnetische Buttons, Galerie-Steuerung und Kontaktvalidierung.
+- `assets/projects/` - Live-Screenshots der Beispiel-Websites in der Projektgalerie.
+- `assets/approach/` - generierte visuelle Elemente für Strategie, Interface, Motion und Launch.
+- `assets/studio-poster.png` - generiertes Fallback- und Social-Preview-Bild.
+- `assets/LogoLumora.png` - Favicon-Bild.
 
-## Before sending to clients
+## Hinweis
 
-The site is branded as Lumora and uses `lumoraofficial@gmail.com` for contact mailto links.
+Die Seite ist auf Deutsch, als Lumora gebrandet und nutzt `lumoraofficialde@gmail.com` für Kontakt-Mailto-Links.
