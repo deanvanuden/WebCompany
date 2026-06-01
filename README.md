@@ -1,4 +1,4 @@
-# Studio Pending Website
+# Lumora Website
 
 Static portfolio site for the new web design studio. Open `index.html` directly in a browser.
 
@@ -10,12 +10,8 @@ Static portfolio site for the new web design studio. Open `index.html` directly 
 - `assets/projects/` - live screenshots of the example project websites used in the work gallery.
 - `assets/approach/` - generated visual elements for Strategy, Interface, Motion, and Launch.
 - `assets/studio-poster.png` - generated fallback / social preview image.
+- `assets/LogoLumora.png` - favicon image.
 
 ## Before sending to clients
 
-Replace the temporary contact email in two places:
-
-- `index.html` - visible `mailto:hello@studio.example` link.
-- `script.js` - `contactEmail = "hello@studio.example"`.
-
-The studio name is intentionally written as "Studio Pending" / `//` because the final name is not known yet.
+The site is branded as Lumora and uses `lumoraofficial@gmail.com` for contact mailto links.

@@ -9,7 +9,7 @@
   const workTrack = document.querySelector(".work-track");
   const galleryProgress = document.querySelector(".gallery-progress span");
   const contactForm = document.querySelector(".contact-form");
-  const contactEmail = "hello@studio.example";
+  const contactEmail = "lumoraofficial@gmail.com";
 
   if (cursorLight) {
     window.addEventListener("pointermove", (event) => {
