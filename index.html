@@ -5,26 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Lumora entwickelt einen Website-Sprint für lokale Dienstleister – mit klarer Seitenstruktur, verständlichen Texten, mobiler Anfrageführung und einer Grundlage für lokale Suchmaschinenoptimierung."
+      content="Lumora ist ein Zwei-Personen-Webdesign-Studio für performante Websites mit Strategie, Präzision und Motion."
     />
-    <meta name="robots" content="index,follow" />
-    <link rel="canonical" href="https://lumoraofficial.de/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://lumoraofficial.de/" />
-    <meta property="og:title" content="Lumora | Websites für lokale Dienstleister" />
+    <meta property="og:title" content="Lumora | Websites mit System und Motion" />
     <meta
       property="og:description"
-      content="Lumora entwickelt einen Website-Sprint für lokale Dienstleister – zunächst für Fahrzeugaufbereitung und Smart Repair."
+      content="Ein Portfolio für Lumora, ein Zwei-Personen-Webdesign-Studio für klare, performante Websites."
     />
     <meta property="og:site_name" content="Lumora" />
-    <meta property="og:image" content="https://lumoraofficial.de/assets/studio-poster.png" />
-    <title>Lumora | Websites für lokale Dienstleister</title>
+    <meta property="og:image" content="assets/studio-poster.png" />
+    <title>Lumora | Websites mit System, Motion und Wirkung</title>
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="icon" type="image/png" href="assets/LogoLumora.png" />
     <link rel="apple-touch-icon" href="assets/LogoLumora.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#top">Zum Inhalt springen</a>
     <div class="grain" aria-hidden="true"></div>
     <div class="cursor-light" aria-hidden="true"></div>
 
@@ -33,16 +37,15 @@
         <span>Lumora</span>
       </a>
       <nav class="desktop-nav" aria-label="Hauptnavigation">
-        <a href="#approach">Leistung</a>
         <a href="#work">Projekte</a>
-        <a href="#process">Ablauf</a>
-        <a href="#studio">Über uns</a>
+        <a href="#process">Prozess</a>
+        <a href="#studio">Studio</a>
         <a href="#contact">Kontakt</a>
       </nav>
       <div class="header-actions">
-        <span class="availability"><i></i> Validierungsphase</span>
+        <span class="availability"><i></i> Verfügbar</span>
         <a class="button magnetic" href="#contact">
-          <span>Interesse zeigen</span>
+          <span>Anfragen</span>
           <i aria-hidden="true"></i>
         </a>
         <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false">
@@ -52,13 +55,12 @@
       </div>
     </header>
 
-    <nav class="mobile-menu" aria-label="Mobile Navigation" aria-hidden="true" inert>
-      <a href="#approach">Leistung</a>
+    <div class="mobile-menu" aria-hidden="true">
       <a href="#work">Projekte</a>
-      <a href="#process">Ablauf</a>
-      <a href="#studio">Über uns</a>
+      <a href="#process">Prozess</a>
+      <a href="#studio">Studio</a>
       <a href="#contact">Kontakt</a>
-    </nav>
+    </div>
 
     <aside class="section-rail" aria-hidden="true">
       <span>01</span>
@@ -71,74 +73,64 @@
     <main id="top">
       <section class="hero section-frame" aria-labelledby="hero-title">
         <div class="hero-copy" data-reveal>
-          <p class="eyebrow"><span></span> Websites für lokale Dienstleister.</p>
-          <h1 id="hero-title">Klar zur Anfrage</h1>
+          <p class="eyebrow"><span></span> Digitale Produkte, bewusst gestaltet.</p>
+          <h1 id="hero-title">Wir gestalten Websites</h1>
           <p class="hero-intro">
-            Lumora entwickelt einen Website-Sprint für lokale Dienstleister – zunächst
-            für Fahrzeugaufbereiter und Smart-Repair-Betriebe. Ziel sind mobil verständliche
-            Websites, die Leistungen erklären und den Weg zur Anfrage vereinfachen.
+            Lumora ist ein unabhängiges Studio für performante Websites mit Strategie,
+            Präzision und Motion. Die Standards sind gesetzt.
           </p>
           <div class="hero-actions">
-            <a class="text-link" href="#approach">Geplante Leistung</a>
-            <a class="text-link muted" href="#work">Echte Projekte</a>
+            <a class="text-link" href="#work">Projekte ansehen</a>
+            <a class="text-link muted" href="#process">System ansehen</a>
           </div>
         </div>
 
         <div class="hero-stage" data-reveal>
           <img class="hero-poster" src="assets/studio-poster.png" alt="" aria-hidden="true" />
           <div class="stage-note">
-            <strong>Aktueller Fokus</strong>
-            <span>Fahrzeugaufbereitung &amp; Smart Repair</span>
+            <strong>System</strong>
+            <span>Generiertes visuelles System</span>
           </div>
         </div>
 
-        <a class="scroll-cue" href="#approach" aria-label="Zum Leistungsumfang scrollen">
+        <a class="scroll-cue" href="#approach" aria-label="Zum Ansatz scrollen">
           <span></span>
-          Leistung entdecken
+          Weiter entdecken
         </a>
       </section>
 
       <section id="approach" class="approach section-frame" aria-labelledby="approach-title">
-        <div class="section-head offer-head" data-reveal>
-          <div>
-            <div class="section-kicker compact">
-              <span>//</span>
-              <p>Geplanter Leistungsumfang</p>
-            </div>
-            <h2 id="approach-title">Der Website-Sprint.</h2>
-          </div>
-          <p class="section-lead">
-            Der Lumora Website-Sprint befindet sich in Entwicklung. Der folgende Umfang
-            beschreibt die geplante Richtung und ist noch kein verbindliches Angebot.
-          </p>
+        <div class="section-kicker" data-reveal>
+          <span>//</span>
+          <p>Unser Ansatz</p>
         </div>
         <div class="approach-grid">
           <article class="approach-card" data-reveal>
             <span class="count">01</span>
-            <h3>Bis zu fünf Seiten</h3>
-            <p>Eine Startseite und bis zu vier passende Unterseiten – geordnet nach Leistungen und den Fragen der Interessenten.</p>
-            <a class="text-link" href="#process">Zum Ablauf</a>
+            <h2 id="approach-title">Strategie</h2>
+            <p>Wir starten beim Signal: Zielgruppe, Angebot, Belege und die Aufgabe, die die Website erfüllen muss.</p>
+            <a class="text-link" href="#process">Entdecken</a>
             <div class="card-visual terrain" aria-hidden="true"></div>
           </article>
           <article class="approach-card" data-reveal>
             <span class="count">02</span>
-            <h3>Texte &amp; Anfrageweg</h3>
-            <p>Verständliche Inhalte, klare Leistungen und Kontaktwege, die ohne unnötige Rückfragen zur Anfrage führen.</p>
-            <a class="text-link" href="#process">Zum Ablauf</a>
+            <h2>Interface</h2>
+            <p>Wir gestalten Systeme, die klar, bewusst, schnell erfassbar und skalierbar sind.</p>
+            <a class="text-link" href="#work">Entdecken</a>
             <div class="card-visual interface" aria-hidden="true"></div>
           </article>
           <article class="approach-card" data-reveal>
             <span class="count">03</span>
-            <h3>Mobil &amp; lokal</h3>
-            <p>Mobile Optimierung und eine grundlegende technische wie inhaltliche Basis für lokale Suchanfragen – ohne Ranking-Versprechen.</p>
-            <a class="text-link" href="#process">Zum Ablauf</a>
+            <h2>Motion</h2>
+            <p>Wir setzen Animation gezielt ein: Sie lenkt Aufmerksamkeit, gibt Feedback und macht die Marke spürbar.</p>
+            <a class="text-link" href="#studio">Entdecken</a>
             <div class="card-visual streaks" aria-hidden="true"></div>
           </article>
           <article class="approach-card" data-reveal>
             <span class="count">04</span>
-            <h3>Korrektur &amp; Launch</h3>
-            <p>Zwei eingeplante Korrekturrunden und ungefähr 14 Tage als Zielrahmen – sobald Inhalte und Rückmeldungen vollständig vorliegen.</p>
-            <a class="text-link" href="#process">Zum Ablauf</a>
+            <h2>Launch</h2>
+            <p>Wir bauen, optimieren und veröffentlichen schnelle, barrierefreie, zukunftsfähige Websites.</p>
+            <a class="text-link" href="#contact">Entdecken</a>
             <div class="card-visual launch" aria-hidden="true"></div>
           </article>
         </div>
@@ -151,11 +143,7 @@
               <span>//</span>
               <p>Ausgewählte Arbeiten</p>
             </div>
-            <h2 id="work-title">Vier Projekte. Komplett von uns.</h2>
-            <p class="section-lead work-proof">
-              Alle gezeigten Websites wurden von uns vollständig konzipiert, gestaltet
-              und technisch umgesetzt.
-            </p>
+            <h2 id="work-title">Ausgewählte Projekte.</h2>
           </div>
           <div class="gallery-controls" aria-label="Projektsteuerung">
             <button class="gallery-button" type="button" data-gallery="prev" aria-label="Vorheriges Projekt"></button>
@@ -165,7 +153,7 @@
 
         <div class="work-viewport" data-reveal>
           <div class="work-track">
-            <article class="work-card is-offline">
+            <a class="work-card" href="https://heralyth.de/" target="_blank" rel="noreferrer">
               <span class="project-number">001</span>
               <div class="project-preview real-shot heralyth-shot" aria-hidden="true">
                 <span class="browser-dot"></span>
@@ -173,11 +161,10 @@
               </div>
               <div class="project-meta">
                 <h3>Heralyth</h3>
-                <p>Konzeption · Design · Entwicklung</p>
-                <span class="project-status">Live-Seite derzeit offline</span>
+                <p>Shop, Ritual, Sanftheit.</p>
               </div>
-            </article>
-            <a class="work-card" href="https://crimeindustries.com/" target="_blank" rel="noopener noreferrer">
+            </a>
+            <a class="work-card" href="https://crimeindustries.com/" target="_blank" rel="noreferrer">
               <span class="project-number">002</span>
               <div class="project-preview real-shot crime-shot" aria-hidden="true">
                 <span class="browser-dot"></span>
@@ -185,11 +172,10 @@
               </div>
               <div class="project-meta">
                 <h3>Crime Industries</h3>
-                <p>Konzeption · Design · Entwicklung</p>
+                <p>Streetwear, Textur, Drops.</p>
               </div>
-              <span class="sr-only">Öffnet das Projekt in einem neuen Tab.</span>
             </a>
-            <a class="work-card" href="https://pullup.world/" target="_blank" rel="noopener noreferrer">
+            <a class="work-card" href="https://pullup.world/" target="_blank" rel="noreferrer">
               <span class="project-number">003</span>
               <div class="project-preview real-shot pullup-shot" aria-hidden="true">
                 <span class="browser-dot"></span>
@@ -197,11 +183,10 @@
               </div>
               <div class="project-meta">
                 <h3>Pullup</h3>
-                <p>Konzeption · Design · Entwicklung</p>
+                <p>Nachtleben, Energie, Tickets.</p>
               </div>
-              <span class="sr-only">Öffnet das Projekt in einem neuen Tab.</span>
             </a>
-            <a class="work-card" href="https://westroomz.de/" target="_blank" rel="noopener noreferrer">
+            <a class="work-card" href="https://westroomz.de/" target="_blank" rel="noreferrer">
               <span class="project-number">004</span>
               <div class="project-preview real-shot westroomz-shot" aria-hidden="true">
                 <span class="browser-dot"></span>
@@ -209,9 +194,8 @@
               </div>
               <div class="project-meta">
                 <h3>Westroomz</h3>
-                <p>Konzeption · Design · Entwicklung</p>
+                <p>Audio, Räume, Wirkung.</p>
               </div>
-              <span class="sr-only">Öffnet das Projekt in einem neuen Tab.</span>
             </a>
           </div>
         </div>
@@ -222,43 +206,42 @@
         <div class="process-copy" data-reveal>
           <div class="section-kicker compact">
             <span>//</span>
-            <p>Geplanter Ablauf</p>
+            <p>Unser Prozess</p>
           </div>
-          <h2 id="process-title">Ein klarer Weg zur neuen Website.</h2>
+          <h2 id="process-title">Auf Systemen gebaut.</h2>
           <p>
-            Der angestrebte Zeitrahmen liegt bei ungefähr 14 Tagen, sobald alle benötigten
-            Inhalte, Zugänge und Rückmeldungen vollständig vorliegen. Er ist kein verbindliches
-            Fertigstellungsversprechen.
+            Wir verbinden Design Thinking mit technischer Disziplin und liefern Websites,
+            die heute und morgen stark performen.
           </p>
-          <a class="text-link" href="#contact">Unverbindlich Interesse zeigen</a>
+          <a class="text-link" href="#contact">Projekt starten</a>
         </div>
 
         <div class="process-board" data-reveal>
           <div class="process-rows">
             <article>
               <span>01</span>
-              <h3>Kennenlernen</h3>
-              <p>// betrieb, angebot, ziele<br />passung &gt; klarheit</p>
+              <h3>Entdecken</h3>
+              <p>// analyse, recherche, ziele<br />basis &gt; erkenntnis</p>
             </article>
             <article>
               <span>02</span>
-              <h3>Strukturieren</h3>
-              <p>// startseite + bis zu 4 unterseiten<br />inhalte &gt; seitenplan</p>
+              <h3>Definieren</h3>
+              <p>// sitemap, IA, abläufe<br />struktur &gt; klarheit</p>
             </article>
             <article>
               <span>03</span>
               <h3>Gestalten</h3>
-              <p>// texte, mobilansicht, visuelle richtung<br />entwurf &gt; abstimmung</p>
+              <p>// UI, systeme, komponenten<br />layout &gt; sprache</p>
             </article>
             <article>
               <span>04</span>
-              <h3>Umsetzen</h3>
-              <p>// kontaktwege, lokale SEO-Grundlagen, tests<br />freigabe &gt; technik</p>
+              <h3>Entwickeln</h3>
+              <p>// sauberer code, CMS, performance<br />umsetzung &gt; optimierung</p>
             </article>
             <article>
               <span>05</span>
-              <h3>Abschließen</h3>
-              <p>// 2 korrekturrunden, finale freigabe<br />prüfung &gt; veröffentlichung</p>
+              <h3>Veröffentlichen</h3>
+              <p>// tests, SEO, analytics<br />start &gt; wachstum</p>
             </article>
           </div>
           <div class="layer-stack" aria-hidden="true">
@@ -271,93 +254,85 @@
         <div class="studio-intro" data-reveal>
           <div class="section-kicker compact">
             <span>//</span>
-            <p>Wer hinter Lumora steht</p>
+            <p>Lumora Studio</p>
           </div>
-          <h2 id="studio-title">Zwei Ansprechpartner. Ein gemeinsamer Prozess.</h2>
-          <p class="studio-people">
-            Hinter Lumora stehen Adnan Krasniqi und Dean van Uden. Wir arbeiten gemeinsam
-            an Konzeption, Gestaltung und technischer Umsetzung. Aktuell bereiten wir Gespräche
-            mit lokalen Dienstleistern vor, um den Website-Sprint anhand des tatsächlichen Bedarfs
-            weiterzuentwickeln.
-          </p>
+          <h2 id="studio-title">Kleines Team. Breites Spektrum.</h2>
         </div>
         <div class="metrics-grid" data-reveal>
           <article>
             <strong>04</strong>
-            <span>vollständig umgesetzte Projekte</span>
+            <span>gezeigte Projekte</span>
           </article>
           <article>
             <strong>02</strong>
-            <span>direkte Ansprechpartner</span>
+            <span>Macher am Tisch</span>
           </article>
           <article>
-            <strong>1+4</strong>
-            <span>geplanter Seitenumfang</span>
+            <strong class="metric-word">Individuell</strong>
+            <span>Frontend-Fokus</span>
           </article>
           <article>
-            <strong>02</strong>
-            <span>eingeplante Korrekturrunden</span>
+            <strong class="metric-word">Statisch</strong>
+            <span>überall veröffentlichen</span>
           </article>
           <article>
-            <strong>≈14</strong>
-            <span>Tage als unverbindlicher Zielrahmen</span>
+            <strong class="metric-word">Motion</strong>
+            <span>gezielt eingesetzt</span>
           </article>
         </div>
-        <p class="studio-note">
-          Der Zielrahmen beginnt erst nach Vorliegen aller benötigten Inhalte, Zugänge und
-          Freigaben und stellt kein verbindliches Fertigstellungsversprechen dar.
-        </p>
       </section>
 
       <section id="contact" class="contact section-frame" aria-labelledby="contact-title">
         <div class="contact-copy" data-reveal>
           <div class="section-kicker compact">
             <span>//</span>
-            <p>Validierungsphase</p>
+            <p>Kontakt</p>
           </div>
-          <h2 id="contact-title">Passt dein Betrieb zu unserem Fokus?</h2>
+          <h2 id="contact-title">Lass uns etwas bauen</h2>
           <p>
-            Wir bereiten die Nachfragevalidierung mit lokalen Dienstleistern vor und nehmen
-            noch keine bezahlten Aufträge an. Wenn du einen Fahrzeugaufbereitungs-,
-            Smart-Repair- oder ähnlichen lokalen Betrieb führst, erzähl uns unverbindlich,
-            was deine Website heute leisten soll.
+            Schick uns das Briefing, das Problem oder die unfertige Idee.
+            Wir machen daraus eine klare erste Richtung.
           </p>
           <a class="text-link" href="mailto:lumoraofficialde@gmail.com">lumoraofficialde@gmail.com</a>
-          <a class="text-link" href="tel:+4925309750338">+49 2530 9750338</a>
         </div>
 
-        <div class="contact-panel" data-reveal>
-          <p class="eyebrow"><span></span> Unverbindliches Interesse</p>
-          <h3>Erzähl uns kurz von deinem Betrieb.</h3>
-          <p>
-            Welche Leistungen bietest du an, wo hakt es bei deiner aktuellen Website und wie
-            sollen Interessenten dich am liebsten kontaktieren? Beim Klick öffnet sich dein
-            E-Mail-Programm; auf dieser Website werden keine Formulardaten gespeichert.
-          </p>
-          <a
-            class="button submit magnetic"
-            href="mailto:lumoraofficialde@gmail.com?subject=Unverbindliches%20Interesse%20an%20Lumora"
-          >
-            <span>Unverbindliche E-Mail öffnen</span>
+        <form class="contact-form" data-reveal novalidate>
+          <div class="form-grid">
+            <label>
+              <span>Name</span>
+              <input name="name" autocomplete="name" required />
+              <small></small>
+            </label>
+            <label>
+              <span>E-Mail</span>
+              <input name="email" type="email" autocomplete="email" required />
+              <small></small>
+            </label>
+          </div>
+          <label>
+            <span>Unternehmen / Website</span>
+            <input name="company" autocomplete="organization" />
+            <small></small>
+          </label>
+          <label>
+            <span>Erzähl uns von deinem Projekt</span>
+            <textarea name="message" rows="7" required></textarea>
+            <small></small>
+          </label>
+          <button class="button submit magnetic" type="submit">
+            <span>Nachricht senden</span>
             <i aria-hidden="true"></i>
-          </a>
-          <p class="privacy-note">
-            Bitte sende keine vertraulichen oder besonders sensiblen Informationen.
-            Hinweise zur Verarbeitung findest du im
-            <a href="datenschutz.html">Datenschutz</a>.
-          </p>
-        </div>
+          </button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
       </section>
     </main>
 
     <footer class="site-footer section-frame">
       <a class="mark" href="#top" aria-label="Nach oben"><span>Lumora</span></a>
-      <p class="footer-identity">Adnan Krasniqi &amp; Dean van Uden</p>
-      <nav class="footer-legal" aria-label="Rechtliche Informationen">
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-      </nav>
-      <p class="footer-year">2026</p>
+      <p>Lumora</p>
+      <p>Antwort innerhalb von 24h</p>
+      <p>2026</p>
       <a class="back-top" href="#top" aria-label="Nach oben"></a>
     </footer>
 
