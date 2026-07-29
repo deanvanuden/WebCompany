@@ -220,14 +220,20 @@
     "duplicateCount": 6,
     "availableCount": 151,
     "unavailableCount": 1,
-    "storage": "external-only",
-    "licenceClass": "verify",
-    "rightsNote": "The supplied URLs did not include creator or licence metadata. Each selected asset must be verified before client, public, or commercial use.",
+    "storage": "external media with local derived thumbnails",
+    "licenceClass": "commercial-use",
+    "entitlementBasis": "Commercial-use purchase confirmed by Lumora asset owner on 2026-07-29.",
+    "rightsNote": "Lumora confirmed commercial-use entitlement for the supplied collection.",
+    "thumbnailCount": 151,
+    "thumbnailFormat": "WebP",
+    "thumbnailDimensions": "640x360",
+    "thumbnailSourceTimeSeconds": 0.1,
+    "thumbnailGenerator": "FFmpeg-compatible build-time runtime (not distributed)",
     "transformations": [
       "Removed exact duplicate URLs while preserving first-seen order",
       "Recorded URL format, host, last observed availability, and direct retrieval URL",
-      "Did not download, mirror, or redistribute the background media",
-      "Uses remote Mux thumbnails where available and otherwise previews the original media only on interaction"
+      "Kept all full background media on its original external host",
+      "Extracted and optimized one opening-frame thumbnail per reachable source for accurate local previews"
     ]
   }
 }

@@ -598,12 +598,6 @@ canvas {
   margin-bottom: 2px;
 }
 
-.rights-card.is-warning {
-  border-color: rgba(166, 91, 27, 0.3);
-  background: #f1e3cf;
-  color: #795022;
-}
-
 .rail-endpoint {
   display: flex;
   align-items: center;
@@ -851,7 +845,7 @@ canvas {
 .background-card-visual {
   --background-hue: 220;
   position: relative;
-  aspect-ratio: 1.55;
+  aspect-ratio: 16 / 9;
   min-height: 154px;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
@@ -1929,9 +1923,9 @@ canvas {
 }
 
 .background-source-record {
-  border-color: #c6a77d;
-  background: #f0e3d0;
-  color: #684922;
+  border-color: rgba(44, 111, 79, 0.25);
+  background: #e4eee7;
+  color: #3f6552;
 }
 
 .component-badges {

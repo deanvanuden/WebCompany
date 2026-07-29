@@ -447,6 +447,9 @@ async function extractKenneyModels() {
   const generatedTargets = [modelRoot, thumbnailRoot, licenceRoot, tempRoot];
   generatedTargets.forEach((target) => assertInside(repositoryRoot, target));
 
+  await Promise.all(
+    packs.map((pack) => stat(path.join(downloadsDirectory, pack.zip))),
+  );
   await Promise.all(generatedTargets.map((target) => rm(target, { recursive: true, force: true })));
   await Promise.all([
     mkdir(modelRoot, { recursive: true }),
@@ -754,13 +757,6 @@ function backgroundHostLabel(hostname) {
   return hostname;
 }
 
-function muxThumbnailUrl(sourceUrl) {
-  const url = new URL(sourceUrl);
-  if (url.hostname !== "stream.mux.com") return null;
-  const playbackId = path.basename(url.pathname, ".m3u8");
-  return `https://image.mux.com/${playbackId}/thumbnail.jpg?time=1&width=640&fit_mode=smartcrop`;
-}
-
 async function buildAnimatedBackgroundCatalog() {
   const source = JSON.parse(
     await readFile(animatedBackgroundSourcePath, "utf8"),
@@ -769,9 +765,14 @@ async function buildAnimatedBackgroundCatalog() {
     const sourceUrl = new URL(entry.url);
     const sequence = String(entry.sourceIndex).padStart(3, "0");
     const format = entry.format;
+    const id = `animated-background-${sequence}`;
+    const thumbnailPath = `assets/background-thumbs/${id}.webp`;
+    const thumbnailUrl = entry.available
+      ? `./${thumbnailPath}`
+      : null;
 
     return {
-      id: `animated-background-${sequence}`,
+      id,
       name: `Motion Background ${sequence}`,
       sourceOrder: entry.sourceIndex,
       category: "Animated background",
@@ -784,15 +785,21 @@ async function buildAnimatedBackgroundCatalog() {
       sourceHost: sourceUrl.hostname,
       hostLabel: backgroundHostLabel(sourceUrl.hostname),
       creator: "Unknown",
-      licence: "Unverified",
-      licenceClass: "verify",
+      licence: "Commercial use (owner-confirmed)",
+      licenceClass: "commercial-use",
       rightsNote:
-        "Creator and licence metadata were not supplied. Verify rights before client, public, or commercial use.",
+        "Commercial-use entitlement confirmed by Lumora on 2026-07-29.",
       storage: "remote",
       sourceUrl: entry.url,
       downloadUrl: entry.url,
       previewUrl: entry.url,
-      thumbnailUrl: muxThumbnailUrl(entry.url),
+      thumbnailUrl,
+      publicThumbnailUrl: entry.available
+        ? `${publicRoot}/${thumbnailPath}`
+        : null,
+      thumbnailStorage: entry.available ? "local" : null,
+      thumbnailSourceTimeSeconds: entry.available ? 0.1 : null,
+      thumbnailDimensions: entry.available ? "640x360" : null,
       availability: entry.available ? "Available" : "Unavailable",
       httpStatus: entry.httpStatus,
       checkedAt: source.importedAt,
@@ -829,18 +836,37 @@ async function buildAnimatedBackgroundCatalog() {
   };
 }
 
+async function loadExistingModelCatalog() {
+  const [models, provenance] = await Promise.all([
+    readFile(path.join(outputRoot, "models.json"), "utf8").then(JSON.parse),
+    readFile(path.join(outputRoot, "provenance.json"), "utf8").then(JSON.parse),
+  ]);
+
+  return {
+    kenneyModels: models.filter((model) => model.source === "Kenney"),
+    polyHavenModels: models.filter((model) => model.source === "Poly Haven"),
+    packProvenance: provenance.kenney,
+  };
+}
+
+async function buildFreshModelCatalog() {
+  const [{ models: kenneyModels, packProvenance }, polyHavenModels] =
+    await Promise.all([extractKenneyModels(), buildPolyHavenModels()]);
+  return { kenneyModels, polyHavenModels, packProvenance };
+}
+
 async function main() {
   await mkdir(path.join(outputRoot, "assets", "models"), { recursive: true });
   await mkdir(path.join(outputRoot, "assets", "thumbs"), { recursive: true });
 
   const [
-    { models: kenneyModels, packProvenance },
-    polyHavenModels,
+    { kenneyModels, polyHavenModels, packProvenance },
     componentData,
     backgroundData,
   ] = await Promise.all([
-    extractKenneyModels(),
-    buildPolyHavenModels(),
+    process.env.MCP_REUSE_EXISTING_MODELS === "1"
+      ? loadExistingModelCatalog()
+      : buildFreshModelCatalog(),
     buildComponentCatalog(),
     buildAnimatedBackgroundCatalog(),
   ]);
@@ -891,8 +917,10 @@ async function main() {
       id: "Stable catalog identifier",
       previewUrl: "Original externally hosted MP4 or HLS media URL",
       downloadUrl: "Direct MP4 download or adaptive HLS manifest URL",
+      thumbnailUrl: "Local 640x360 WebP extracted from the opening frame",
+      publicThumbnailUrl: "Absolute opening-frame thumbnail URL for external consumers",
       availability: "Last observed URL availability",
-      licenceClass: "verify until creator and licence metadata are supplied",
+      licenceClass: "commercial-use based on Lumora owner confirmation",
     },
   };
 
@@ -968,15 +996,24 @@ async function main() {
       unavailableCount: backgroundData.backgrounds.filter(
         (background) => background.availability !== "Available",
       ).length,
-      storage: "external-only",
-      licenceClass: "verify",
+      storage: "external media with local derived thumbnails",
+      licenceClass: "commercial-use",
+      entitlementBasis:
+        "Commercial-use purchase confirmed by Lumora asset owner on 2026-07-29.",
       rightsNote:
-        "The supplied URLs did not include creator or licence metadata. Each selected asset must be verified before client, public, or commercial use.",
+        "Lumora confirmed commercial-use entitlement for the supplied collection.",
+      thumbnailCount: backgroundData.backgrounds.filter(
+        (background) => Boolean(background.thumbnailUrl),
+      ).length,
+      thumbnailFormat: "WebP",
+      thumbnailDimensions: "640x360",
+      thumbnailSourceTimeSeconds: 0.1,
+      thumbnailGenerator: "FFmpeg-compatible build-time runtime (not distributed)",
       transformations: [
         "Removed exact duplicate URLs while preserving first-seen order",
         "Recorded URL format, host, last observed availability, and direct retrieval URL",
-        "Did not download, mirror, or redistribute the background media",
-        "Uses remote Mux thumbnails where available and otherwise previews the original media only on interaction",
+        "Kept all full background media on its original external host",
+        "Extracted and optimized one opening-frame thumbnail per reachable source for accurate local previews",
       ],
     },
   };
@@ -999,17 +1036,17 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 ## Selection protocol for Codex
 
 1. Read the manifest and choose the model, component, or animated-background catalog.
-2. Filter candidates by the real page goal, brand, framework, performance budget, and rights class.
+2. Filter candidates by the real page goal, brand, framework, performance budget, and asset class.
 3. For 3D, prefer \`ship-safe\` records and load only the selected model. Use \`publicModelUrl\` in external projects. When a streamed glTF record has a \`files\` map, preserve that dependency mapping or download the official distribution into the target project.
 4. For components, choose zero to three recipes. Treat each record as an implementation brief and build it from first principles in the target project's conventions.
 5. For animated backgrounds, preview candidates from their external URLs, select one winner, and then fetch only that record's \`downloadUrl\`. MP4 records are direct downloads; HLS records are adaptive streams. Optimize the selected media locally and provide a static reduced-motion fallback.
-6. Every animated background is marked \`verify\` because the supplied link list did not contain creator or licence metadata. Do not use one in client, public, or commercial work until its rights are confirmed.
-7. Preserve source URLs, creator names, licences, trademark warnings, fallbacks, accessibility contracts, and reduced-motion behavior.
+6. Animated backgrounds are marked \`commercial-use\` based on Lumora's confirmation that the collection was purchased with commercial-use rights.
+7. Preserve source URLs, licence records, trademark warnings, fallbacks, accessibility contracts, and reduced-motion behavior.
 8. Do not mirror the entire catalog into a client project. Copy only the chosen assets or implement only the chosen recipes.
 
 ## Rights
 
-Kenney packs in this catalog are the user-provided GLB distributions licensed CC0 1.0. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. Animated backgrounds remain externally hosted and rights-unverified until per-item creator and licence metadata is supplied.
+Kenney packs in this catalog are the user-provided GLB distributions licensed CC0 1.0. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. Animated backgrounds remain externally hosted and are recorded as commercial-use based on Lumora's purchase and entitlement confirmation.
 `;
 
   await Promise.all([

@@ -263,8 +263,12 @@ for (const background of backgrounds) {
     `${background.id} must remain externally hosted`,
   );
   check(
-    background.licenceClass === "verify",
-    `${background.id} must remain rights-unverified`,
+    background.licenceClass === "commercial-use",
+    `${background.id} must retain its commercial-use entitlement`,
+  );
+  check(
+    background.licence === "Commercial use (owner-confirmed)",
+    `${background.id} has an unexpected commercial licence label`,
   );
   check(
     /^https:\/\/.+/i.test(background.sourceUrl),
@@ -274,10 +278,43 @@ for (const background of backgrounds) {
     background.downloadUrl === background.sourceUrl,
     `${background.id} download URL does not preserve its source URL`,
   );
-  if (background.thumbnailUrl) {
+  if (background.availability === "Available") {
     check(
-      /^https:\/\/image\.mux\.com\//i.test(background.thumbnailUrl),
-      `${background.id} uses an unexpected external thumbnail host`,
+      /^\.\/assets\/background-thumbs\/animated-background-\d{3}\.webp$/i.test(
+        background.thumbnailUrl,
+      ),
+      `${background.id} does not use its local opening-frame thumbnail`,
+    );
+    check(
+      /^https:\/\/lumoraofficial\.de\/mcp\/assets\/background-thumbs\/animated-background-\d{3}\.webp$/i.test(
+        background.publicThumbnailUrl,
+      ),
+      `${background.id} does not expose an absolute opening-frame thumbnail URL`,
+    );
+    check(
+      background.thumbnailStorage === "local",
+      `${background.id} thumbnail must be locally hosted`,
+    );
+    check(
+      background.thumbnailSourceTimeSeconds === 0.1,
+      `${background.id} thumbnail timestamp is unexpected`,
+    );
+    check(
+      background.thumbnailDimensions === "640x360",
+      `${background.id} thumbnail dimensions are unexpected`,
+    );
+    await checkLocalFile(
+      background.thumbnailUrl,
+      `${background.id} opening-frame thumbnail`,
+    );
+  } else {
+    check(
+      background.thumbnailUrl === null,
+      `${background.id} must not claim a thumbnail for an unavailable source`,
+    );
+    check(
+      background.publicThumbnailUrl === null,
+      `${background.id} must not claim a public thumbnail for an unavailable source`,
     );
   }
 }
@@ -297,6 +334,14 @@ check(
 check(
   provenance.animatedBackgrounds.uniqueUrlCount === backgrounds.length,
   "Animated background provenance total does not match the catalog",
+);
+check(
+  provenance.animatedBackgrounds.thumbnailCount === 151,
+  "Animated background provenance thumbnail total is incorrect",
+);
+check(
+  provenance.animatedBackgrounds.licenceClass === "commercial-use",
+  "Animated background provenance must retain commercial-use entitlement",
 );
 check(
   provenance.polyHaven.localModelCount +

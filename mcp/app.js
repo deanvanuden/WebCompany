@@ -226,17 +226,13 @@ function renderFilters() {
     "secondary",
   );
   elements.rightsCard.hidden = state.view === "components";
-  elements.rightsCard.classList.toggle(
-    "is-warning",
-    state.view === "backgrounds",
-  );
   elements.rightsCard.innerHTML =
     state.view === "backgrounds"
       ? `
-        <span aria-hidden="true">!</span>
+        <span aria-hidden="true">✓</span>
         <p>
-          <strong>External link · rights unverified.</strong>
-          Preview here, then verify creator and licence before client use.
+          <strong>Commercial use confirmed.</strong>
+          Lumora has licensed this collection for commercial work.
         </p>
       `
       : `
@@ -470,7 +466,7 @@ function backgroundCard(record) {
         <span class="card-meta">
           <span>${escapeHtml(sizeLabel)}</span>
           <span>${escapeHtml(record.availability)}</span>
-          <span>rights: verify</span>
+          <span>commercial use</span>
         </span>
       </span>
     </button>
@@ -692,7 +688,7 @@ function renderBackgroundInspector(record) {
   document.querySelector("#background-availability").textContent =
     `${record.availability} · HTTP ${record.httpStatus}`;
   document.querySelector("#background-rights").textContent =
-    "Verify per item before use";
+    "Commercial use confirmed";
   document.querySelector("#background-source-host").textContent =
     record.sourceHost;
   document.querySelector("#background-source-link").href = record.sourceUrl;
@@ -708,16 +704,16 @@ function renderBackgroundInspector(record) {
     record.hostLabel,
     record.availability,
     record.storage,
-    "rights: verify",
+    "commercial use",
   ]
     .map((badge) => `<span>${escapeHtml(badge)}</span>`)
     .join("");
 
   const prompt =
     `Read the Lumora MCP animated background record "${record.id}" at ` +
-    `${publicRoot}/animated-backgrounds.json. Preview its external source, ` +
-    `verify creator and licence rights, and only then fetch the selected ` +
-    `${record.format} from its downloadUrl. Adapt it to this project's brand, ` +
+    `${publicRoot}/animated-backgrounds.json. Preview its commercially licensed ` +
+    `external source, then fetch the selected ${record.format} from its ` +
+    `downloadUrl. Adapt it to this project's brand, ` +
     `remove audio, optimize resolution and bitrate, lazy-load it, and provide ` +
     `a static prefers-reduced-motion fallback.`;
   const promptElement = document.querySelector("#background-prompt");

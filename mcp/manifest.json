@@ -32,7 +32,9 @@
     "id": "Stable catalog identifier",
     "previewUrl": "Original externally hosted MP4 or HLS media URL",
     "downloadUrl": "Direct MP4 download or adaptive HLS manifest URL",
+    "thumbnailUrl": "Local 640x360 WebP extracted from the opening frame",
+    "publicThumbnailUrl": "Absolute opening-frame thumbnail URL for external consumers",
     "availability": "Last observed URL availability",
-    "licenceClass": "verify until creator and licence metadata are supplied"
+    "licenceClass": "commercial-use based on Lumora owner confirmation"
   }
 }
