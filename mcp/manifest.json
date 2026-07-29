@@ -1,0 +1,28 @@
+{
+  "name": "Lumora MCP",
+  "version": "1.0.0",
+  "generatedAt": "2026-07-29",
+  "canonicalUrl": "https://lumoraofficial.de/mcp/",
+  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models and original Web Component implementation recipes.",
+  "totals": {
+    "models": 589,
+    "localModels": 475,
+    "streamedModels": 114,
+    "componentRecipes": 1020,
+    "shipSafeModels": 588
+  },
+  "endpoints": {
+    "models": "https://lumoraofficial.de/mcp/models.json",
+    "componentIndex": "https://lumoraofficial.de/mcp/components-index.json",
+    "componentRecords": "https://lumoraofficial.de/mcp/components.json",
+    "instructions": "https://lumoraofficial.de/mcp/instructions.md",
+    "provenance": "https://lumoraofficial.de/mcp/provenance.json"
+  },
+  "modelSchema": {
+    "id": "Stable catalog identifier",
+    "modelUrl": "Relative local path or official remote glTF URL",
+    "publicModelUrl": "Absolute model URL for Codex and external consumers",
+    "files": "Optional exact dependency URL map used to resolve streamed Poly Haven glTF packages",
+    "licenceClass": "ship-safe, attribution, or concept-only"
+  }
+}

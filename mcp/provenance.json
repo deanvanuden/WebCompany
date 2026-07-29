@@ -1,0 +1,157 @@
+{
+  "project": "Lumora MCP",
+  "generatedAt": "2026-07-29",
+  "runtimeDependencies": [
+    {
+      "name": "three",
+      "version": "0.185.1",
+      "sourceUrl": "https://github.com/mrdoob/three.js",
+      "licence": "MIT",
+      "localLicencePath": "mcp/licences/three.txt",
+      "vendoredFiles": [
+        "three.module.min.js",
+        "three.core.min.js",
+        "GLTFLoader.js",
+        "OrbitControls.js",
+        "BufferGeometryUtils.js",
+        "SkeletonUtils.js"
+      ]
+    }
+  ],
+  "kenney": [
+    {
+      "pack": "Modular Cave Kit",
+      "version": "1.0",
+      "sourceUrl": "https://kenney.nl/assets/modular-cave-kit",
+      "inputArchive": "kenney_modular-cave-kit_1.0.zip",
+      "inputArchiveBytes": 7025078,
+      "creator": "Kenney",
+      "licence": "CC0 1.0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modelCount": 40,
+      "transformations": [
+        "Extracted only the self-contained GLB distribution and matching preview images",
+        "Renamed output folders by stable collection slug",
+        "Read geometry and package metrics without modifying model contents"
+      ]
+    },
+    {
+      "pack": "Platformer Kit",
+      "version": "4.1",
+      "sourceUrl": "https://kenney.nl/assets/platformer-kit",
+      "inputArchive": "kenney_platformer-kit.zip",
+      "inputArchiveBytes": 4640135,
+      "creator": "Kenney",
+      "licence": "CC0 1.0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modelCount": 153,
+      "transformations": [
+        "Extracted only the self-contained GLB distribution and matching preview images",
+        "Renamed output folders by stable collection slug",
+        "Read geometry and package metrics without modifying model contents"
+      ]
+    },
+    {
+      "pack": "Factory Kit",
+      "version": "3.0",
+      "sourceUrl": "https://kenney.nl/assets/factory-kit",
+      "inputArchive": "kenney_factory-kit_3.0.zip",
+      "inputArchiveBytes": 4511890,
+      "creator": "Kenney",
+      "licence": "CC0 1.0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modelCount": 143,
+      "transformations": [
+        "Extracted only the self-contained GLB distribution and matching preview images",
+        "Renamed output folders by stable collection slug",
+        "Read geometry and package metrics without modifying model contents"
+      ]
+    },
+    {
+      "pack": "City Kit Commercial",
+      "version": "2.1",
+      "sourceUrl": "https://kenney.nl/assets/city-kit-commercial",
+      "inputArchive": "kenney_city-kit-commercial_2.1.zip",
+      "inputArchiveBytes": 4096974,
+      "creator": "Kenney",
+      "licence": "CC0 1.0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modelCount": 41,
+      "transformations": [
+        "Extracted only the self-contained GLB distribution and matching preview images",
+        "Renamed output folders by stable collection slug",
+        "Read geometry and package metrics without modifying model contents"
+      ]
+    },
+    {
+      "pack": "City Kit Suburban",
+      "version": "2.0",
+      "sourceUrl": "https://kenney.nl/assets/city-kit-suburban",
+      "inputArchive": "kenney_city-kit-suburban_20.zip",
+      "inputArchiveBytes": 3038740,
+      "creator": "Kenney",
+      "licence": "CC0 1.0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modelCount": 40,
+      "transformations": [
+        "Extracted only the self-contained GLB distribution and matching preview images",
+        "Renamed output folders by stable collection slug",
+        "Read geometry and package metrics without modifying model contents"
+      ]
+    },
+    {
+      "pack": "Mini Dungeon",
+      "version": "2.0",
+      "sourceUrl": "https://kenney.nl/assets/mini-dungeon",
+      "inputArchive": "kenney_mini-dungeon.zip",
+      "inputArchiveBytes": 1796820,
+      "creator": "Kenney",
+      "licence": "CC0 1.0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modelCount": 30,
+      "transformations": [
+        "Extracted only the self-contained GLB distribution and matching preview images",
+        "Renamed output folders by stable collection slug",
+        "Read geometry and package metrics without modifying model contents"
+      ]
+    },
+    {
+      "pack": "Mini Forest",
+      "version": "1.0",
+      "sourceUrl": "https://kenney.nl/assets/mini-forest",
+      "inputArchive": "kenney_mini-forest_1.0.zip",
+      "inputArchiveBytes": 1118081,
+      "creator": "Kenney",
+      "licence": "CC0 1.0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modelCount": 22,
+      "transformations": [
+        "Extracted only the self-contained GLB distribution and matching preview images",
+        "Renamed output folders by stable collection slug",
+        "Read geometry and package metrics without modifying model contents"
+      ]
+    }
+  ],
+  "polyHaven": {
+    "sourceUrl": "https://api.polyhaven.com/assets?t=models",
+    "licence": "CC0",
+    "licenceUrl": "https://polyhaven.com/license",
+    "localModelCount": 6,
+    "streamedModelCount": 114,
+    "transformations": [
+      "Preserved source creator, asset page, licence, package metrics, and trademark warnings",
+      "Hosted six selected 1K glTF packages locally",
+      "Kept 114 packages on the official CDN with exact dependency maps"
+    ]
+  },
+  "components": {
+    "source": "Lumora Web Design Components skill",
+    "sourceKind": "owned-original-recipe",
+    "licence": "owned-original",
+    "recipeCount": 1020,
+    "transformations": [
+      "Converted the internal CSV catalog to complete JSON records",
+      "Generated a smaller browser index without removing full machine-readable records"
+    ]
+  }
+}

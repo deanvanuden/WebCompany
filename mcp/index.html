@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lumora MCP is a human and machine-readable library of web-ready 3D models and original Web Component recipes."
+    />
+    <meta name="theme-color" content="#1c1d1a" />
+    <link rel="canonical" href="https://lumoraofficial.de/mcp/" />
+    <link
+      rel="alternate"
+      type="application/json"
+      title="Lumora MCP manifest"
+      href="./manifest.json"
+    />
+    <link rel="icon" href="../images/LogoLumora.png" type="image/png" />
+    <link rel="stylesheet" href="./app.css" />
+    <title>Lumora MCP — Models & Web Components</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./vendor/three.module.min.js",
+          "three/addons/": "./vendor/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#catalog">Skip to catalog</a>
+
+    <header class="site-header">
+      <a class="brand" href="https://lumoraofficial.de/" aria-label="Lumora home">
+        <span class="brand-mark" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </span>
+        <span>LUMORA</span>
+        <em>MCP</em>
+      </a>
+
+      <nav class="view-tabs" aria-label="Toolkit sections">
+        <button
+          type="button"
+          class="is-active"
+          data-view="models"
+          aria-pressed="true"
+        >
+          3D Objects
+          <span data-stat="models">589</span>
+        </button>
+        <button
+          type="button"
+          data-view="components"
+          aria-pressed="false"
+        >
+          Components
+          <span data-stat="components">1,020</span>
+        </button>
+        <button
+          type="button"
+          data-view="integration"
+          aria-pressed="false"
+          aria-label="Codex Protocol"
+        >
+          Codex Protocol
+        </button>
+      </nav>
+
+      <a class="header-link" href="./manifest.json">
+        JSON manifest
+        <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span>CREATIVE INTELLIGENCE INTERFACE</span>
+            <i></i>
+            <span>BUILD 001</span>
+          </p>
+          <h1 id="page-title">
+            Choose the thing.
+            <br />
+            Ship the <em>feeling.</em>
+          </h1>
+          <p class="hero-lede">
+            Lumora’s shared memory for objects and interactions. Browse it
+            visually, or point Codex at the machine-readable records and let it
+            select the right ingredients for the job.
+          </p>
+        </div>
+
+        <dl class="hero-stats" aria-label="Toolkit statistics">
+          <div>
+            <dt>3D objects</dt>
+            <dd data-stat="models">589</dd>
+          </div>
+          <div>
+            <dt>Component recipes</dt>
+            <dd data-stat="components">1,020</dd>
+          </div>
+          <div>
+            <dt>Hosted models</dt>
+            <dd data-stat="local-models">475</dd>
+          </div>
+          <div>
+            <dt>Rights indexed</dt>
+            <dd>100%</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="protocol-strip" aria-label="Machine endpoints">
+        <span class="protocol-status"><i></i> MACHINE INDEX ONLINE</span>
+        <code>lumoraofficial.de/mcp/manifest.json</code>
+        <button type="button" data-copy="https://lumoraofficial.de/mcp/manifest.json">
+          Copy endpoint
+        </button>
+      </section>
+
+      <section class="workspace" data-panel="catalog">
+        <aside class="filter-rail" aria-label="Catalog filters">
+          <div class="filter-search">
+            <label for="catalog-search">Search the index</label>
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.5"></circle>
+                <path d="m16 16 4 4"></path>
+              </svg>
+              <input
+                id="catalog-search"
+                type="search"
+                autocomplete="off"
+                placeholder="Object, recipe, style…"
+              />
+              <kbd>/</kbd>
+            </span>
+          </div>
+
+          <div class="filter-group">
+            <p id="primary-filter-label">Source</p>
+            <div id="primary-filter" class="filter-options"></div>
+          </div>
+
+          <div class="filter-group">
+            <p>Category</p>
+            <div id="category-filter" class="filter-options"></div>
+          </div>
+
+          <div class="filter-group">
+            <p id="secondary-filter-label">Collection</p>
+            <div id="secondary-filter" class="filter-options"></div>
+          </div>
+
+          <div class="rights-card" id="rights-card">
+            <span aria-hidden="true">✓</span>
+            <p>
+              <strong>Rights travel with the record.</strong>
+              Every source, creator, licence, and warning remains attached.
+            </p>
+          </div>
+
+          <a class="rail-endpoint" href="./instructions.md">
+            Read Codex instructions
+            <span aria-hidden="true">↗</span>
+          </a>
+        </aside>
+
+        <section class="catalog-panel" id="catalog" aria-live="polite">
+          <header class="catalog-toolbar">
+            <div>
+              <p id="catalog-kicker">3D INDEX / WEB READY</p>
+              <h2 id="catalog-title">All objects</h2>
+            </div>
+
+            <label class="sort-control">
+              <span class="sr-only">Sort catalog</span>
+              <select id="catalog-sort" aria-label="Sort catalog">
+                <option value="featured">Featured</option>
+                <option value="name">Name A–Z</option>
+                <option value="lightest">Lightest first</option>
+                <option value="geometry">Lowest geometry</option>
+              </select>
+              <span aria-hidden="true">⌄</span>
+            </label>
+          </header>
+
+          <div class="catalog-summary">
+            <span id="catalog-count">Loading index…</span>
+            <span id="catalog-scope">Kenney + Poly Haven</span>
+          </div>
+
+          <div id="catalog-grid" class="catalog-grid" role="list"></div>
+
+          <div class="catalog-progress">
+            <p id="catalog-progress-copy">Preparing catalog</p>
+            <button type="button" id="load-more" hidden>Load more</button>
+          </div>
+        </section>
+
+        <aside class="inspector" id="inspector">
+          <section id="model-inspector" aria-labelledby="model-name">
+            <header class="inspector-heading">
+              <div>
+                <p><i></i> LIVE OBJECT</p>
+                <h2 id="model-name">Preparing object</h2>
+              </div>
+              <span id="model-index">000 / 589</span>
+            </header>
+
+            <div class="model-stage" id="model-stage">
+              <img id="model-poster" alt="" />
+              <div class="stage-status" id="stage-status" role="status">
+                <i></i>
+                <span>Loading model</span>
+              </div>
+              <div class="stage-hud" aria-hidden="true">
+                <span>Drag to orbit</span>
+                <i></i>
+                <span>Scroll to zoom</span>
+              </div>
+            </div>
+
+            <div class="viewer-controls" aria-label="3D viewer controls">
+              <button type="button" id="toggle-rotate" aria-pressed="false">
+                <span aria-hidden="true">↻</span>
+                Orbit
+              </button>
+              <button type="button" id="toggle-wire" aria-pressed="false">
+                <span aria-hidden="true">◇</span>
+                Wire
+              </button>
+              <button type="button" id="reset-view">
+                <span aria-hidden="true">◎</span>
+                Reset
+              </button>
+            </div>
+
+            <p class="object-description" id="model-description"></p>
+
+            <dl class="object-specs">
+              <div>
+                <dt>Payload</dt>
+                <dd id="model-size">—</dd>
+              </div>
+              <div>
+                <dt>Geometry</dt>
+                <dd id="model-polygons">—</dd>
+              </div>
+              <div>
+                <dt>Draw calls</dt>
+                <dd id="model-draw-calls">—</dd>
+              </div>
+              <div>
+                <dt>Materials</dt>
+                <dd id="model-materials">—</dd>
+              </div>
+              <div class="spec-wide">
+                <dt>Dimensions</dt>
+                <dd id="model-dimensions">—</dd>
+              </div>
+            </dl>
+
+            <div class="source-record">
+              <div>
+                <span id="model-source">Source</span>
+                <strong id="model-licence">CC0</strong>
+              </div>
+              <a id="model-source-link" href="#" target="_blank" rel="noreferrer">
+                Original source ↗
+              </a>
+            </div>
+
+            <div class="copy-record">
+              <div>
+                <span>PUBLIC MODEL URL</span>
+                <code id="model-url"></code>
+              </div>
+              <button type="button" id="copy-model-url">Copy URL</button>
+            </div>
+          </section>
+
+          <section
+            id="component-inspector"
+            aria-labelledby="component-name"
+            hidden
+          >
+            <header class="inspector-heading">
+              <div>
+                <p><i></i> IMPLEMENTATION BRIEF</p>
+                <h2 id="component-name">Component recipe</h2>
+              </div>
+              <span id="component-score">Q— / N—</span>
+            </header>
+
+            <div class="component-stage" id="component-stage" aria-hidden="true">
+              <i></i><i></i><i></i><i></i>
+              <span id="component-stage-label">LUMORA RECIPE</span>
+            </div>
+
+            <div class="component-badges" id="component-badges"></div>
+            <p class="object-description" id="component-summary"></p>
+
+            <dl class="recipe-specs">
+              <div>
+                <dt>Technique</dt>
+                <dd id="component-technique">—</dd>
+              </div>
+              <div>
+                <dt>Best for</dt>
+                <dd id="component-best-for">—</dd>
+              </div>
+              <div>
+                <dt>Responsive</dt>
+                <dd id="component-responsive">—</dd>
+              </div>
+              <div>
+                <dt>Accessibility</dt>
+                <dd id="component-accessibility">—</dd>
+              </div>
+            </dl>
+
+            <div class="copy-record component-prompt">
+              <div>
+                <span>CODEX SELECTION PROMPT</span>
+                <code id="component-prompt"></code>
+              </div>
+              <button type="button" id="copy-component-prompt">
+                Copy prompt
+              </button>
+            </div>
+
+            <a
+              class="full-record-link"
+              id="component-record-link"
+              href="./components.json"
+            >
+              Open complete component records
+              <span aria-hidden="true">↗</span>
+            </a>
+          </section>
+        </aside>
+      </section>
+
+      <section class="integration-panel" data-panel="integration" hidden>
+        <header>
+          <p>CODEX PROTOCOL / 01</p>
+          <h2>
+            One stable address.
+            <br />
+            <em>A shared visual vocabulary.</em>
+          </h2>
+          <p>
+            Give Codex the manifest, describe the page goal, and ask it to select
+            only the models and recipes that earn their place.
+          </p>
+        </header>
+
+        <div class="integration-grid">
+          <article>
+            <span>01 / DISCOVER</span>
+            <h3>Start with the manifest</h3>
+            <code>https://lumoraofficial.de/mcp/manifest.json</code>
+            <button
+              type="button"
+              data-copy="https://lumoraofficial.de/mcp/manifest.json"
+            >
+              Copy endpoint
+            </button>
+          </article>
+          <article>
+            <span>02 / SELECT</span>
+            <h3>Use a precise Codex brief</h3>
+            <p>
+              “Read the Lumora MCP manifest. Choose up to two components and one
+              ship-safe 3D model that fit this project’s brand, goal, framework,
+              and performance budget. Explain the selection before implementing.”
+            </p>
+            <button
+              type="button"
+              data-copy="Read https://lumoraofficial.de/mcp/manifest.json. Choose up to two components and one ship-safe 3D model that fit this project's brand, goal, framework, and performance budget. Explain the selection before implementing."
+            >
+              Copy Codex brief
+            </button>
+          </article>
+          <article>
+            <span>03 / IMPLEMENT</span>
+            <h3>Fetch only what wins</h3>
+            <pre><code>const manifest = await fetch(
+  "https://lumoraofficial.de/mcp/manifest.json"
+).then(response => response.json());
+
+const models = await fetch(
+  manifest.endpoints.models
+).then(response => response.json());</code></pre>
+          </article>
+          <article>
+            <span>04 / PROVE</span>
+            <h3>Keep provenance intact</h3>
+            <p>
+              Models retain creator, source, licence, package metrics, and
+              warnings. Component recipes retain their accessibility, fallback,
+              responsive, performance, and testing contracts.
+            </p>
+            <a href="./provenance.json">Open provenance record ↗</a>
+          </article>
+        </div>
+
+        <div class="endpoint-table" role="table" aria-label="MCP endpoints">
+          <div role="row">
+            <span role="columnheader">Resource</span>
+            <span role="columnheader">Endpoint</span>
+            <span role="columnheader">Use</span>
+          </div>
+          <a role="row" href="./models.json">
+            <span role="cell">3D models</span>
+            <code role="cell">/mcp/models.json</code>
+            <span role="cell">589 complete model records</span>
+          </a>
+          <a role="row" href="./components-index.json">
+            <span role="cell">Component index</span>
+            <code role="cell">/mcp/components-index.json</code>
+            <span role="cell">Compact discovery catalog</span>
+          </a>
+          <a role="row" href="./components.json">
+            <span role="cell">Component records</span>
+            <code role="cell">/mcp/components.json</code>
+            <span role="cell">1,020 complete briefs</span>
+          </a>
+          <a role="row" href="./instructions.md">
+            <span role="cell">Instructions</span>
+            <code role="cell">/mcp/instructions.md</code>
+            <span role="cell">Selection and rights protocol</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand footer-brand" href="https://lumoraofficial.de/">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>LUMORA</span>
+        <em>MCP</em>
+      </a>
+      <p>Models are loaded only when selected. Recipes are briefs, not copied demos.</p>
+      <div>
+        <a href="./instructions.md">Instructions</a>
+        <a href="./provenance.json">Provenance</a>
+        <a href="https://lumoraofficial.de/">Main site</a>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
