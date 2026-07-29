@@ -286,7 +286,13 @@ function filteredRecords() {
         record.collection,
         record.category,
         record.creator,
+        record.agencyUse,
+        record.artStyle,
+        record.performanceGuidance,
         ...(record.tags ?? []),
+        ...(record.brandMoods ?? []),
+        ...(record.websiteIndustries ?? []),
+        ...(record.sectionFits ?? []),
       ];
     } else if (state.view === "backgrounds") {
       searchable = [
@@ -339,7 +345,12 @@ function filteredRecords() {
       if (state.sort === "geometry") {
         return left.polygons - right.polygons || left.name.localeCompare(right.name);
       }
-      if (left.source !== right.source) return left.source === "Kenney" ? -1 : 1;
+      if (left.source !== right.source) {
+        const sourceRank = { Quaternius: 0, Kenney: 1, "Poly Haven": 2 };
+        return (
+          (sourceRank[left.source] ?? 3) - (sourceRank[right.source] ?? 3)
+        );
+      }
       if (left.storage !== right.storage) return left.storage === "local" ? -1 : 1;
       return left.name.localeCompare(right.name);
     }
@@ -576,7 +587,7 @@ function renderCatalog() {
   elements.catalogCount.textContent = `${formatCount(records.length)} matching ${noun}`;
   elements.catalogScope.textContent =
     state.view === "models"
-      ? "Kenney + Poly Haven"
+      ? "Kenney + Quaternius + Poly Haven"
       : state.view === "components"
         ? "12 original art directions"
         : state.view === "images"
@@ -665,6 +676,27 @@ function renderModelInspector(record) {
   document.querySelector("#model-index").textContent =
     `${String(state.models.findIndex((model) => model.id === record.id) + 1).padStart(3, "0")} / ${String(state.models.length).padStart(3, "0")}`;
   document.querySelector("#model-description").textContent = record.description;
+  document.querySelector("#model-badges").innerHTML = [
+    record.source,
+    record.artStyle,
+    record.category,
+    record.animations ? `${record.animations} animation clips` : "static",
+    `${record.performance} performance`,
+  ]
+    .filter(Boolean)
+    .map((badge) => `<span>${escapeHtml(badge)}</span>`)
+    .join("");
+  document.querySelector("#model-best-for").textContent =
+    record.agencyUse ?? "A focused scene object selected to support the page narrative";
+  document.querySelector("#model-brand-fit").textContent =
+    record.brandMoods?.join(", ") ??
+    "Adapt materials, lighting, framing, and motion to the project brand";
+  document.querySelector("#model-industries").textContent =
+    record.websiteIndustries?.join(", ") ??
+    `${record.category} scenes and visual storytelling`;
+  document.querySelector("#model-performance-note").textContent =
+    record.performanceGuidance ??
+    "Lazy-load near the viewport and keep a lightweight static fallback.";
   document.querySelector("#model-size").textContent =
     `${Number(record.fileSizeMB).toFixed(record.fileSizeMB < 0.1 ? 3 : 2)} MB`;
   document.querySelector("#model-polygons").textContent =
@@ -683,6 +715,16 @@ function renderModelInspector(record) {
   document.querySelector("#model-source-link").href = record.sourceUrl;
   document.querySelector("#model-url").textContent = record.publicModelUrl;
   document.querySelector("#model-poster").src = record.thumbnailUrl;
+  const prompt =
+    `Read the Lumora MCP 3D model record "${record.id}" at ` +
+    `${publicRoot}/models.json. Use its publicModelUrl and integrate it as ` +
+    `${record.agencyUse ?? "a focused scene object"}. Adapt lighting, framing, ` +
+    `materials, and motion to this project's brand. Follow this performance ` +
+    `guidance: ${(record.performanceGuidance ?? "lazy-load near the viewport and keep a static fallback").replace(/[.!?]+$/g, "")}. ` +
+    `Pause animation offscreen, respect prefers-reduced-motion, preserve the ` +
+    `source and licence record, and do not download unrelated catalog assets.`;
+  document.querySelector("#model-prompt").textContent = prompt;
+  document.querySelector("#model-prompt").dataset.prompt = prompt;
 }
 
 async function selectModel(id, { updateLocation = true } = {}) {
@@ -1241,7 +1283,11 @@ class ModelViewer {
 
         if (gltf.animations?.length) {
           this.mixer = new THREE.AnimationMixer(root);
-          this.mixer.clipAction(gltf.animations[0]).play();
+          const preferredClip =
+            gltf.animations.find((clip) => /^idle$/i.test(clip.name)) ??
+            gltf.animations.find((clip) => /idle/i.test(clip.name)) ??
+            gltf.animations[0];
+          this.mixer.clipAction(preferredClip).play();
         }
 
         this.reset();
@@ -1560,6 +1606,11 @@ function bindEvents() {
       (model) => model.id === state.selectedModelId,
     );
     if (record) copyText(record.publicModelUrl, "Model URL copied");
+  });
+
+  document.querySelector("#copy-model-prompt").addEventListener("click", () => {
+    const prompt = document.querySelector("#model-prompt").dataset.prompt;
+    if (prompt) copyText(prompt, "Codex prompt copied");
   });
 
   document

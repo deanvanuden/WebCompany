@@ -5,14 +5,14 @@
   "canonicalUrl": "https://lumoraofficial.de/mcp/",
   "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, original Web Component implementation recipes, CC0 image and UI assets, and externally hosted animated background references.",
   "totals": {
-    "models": 949,
-    "localModels": 835,
+    "models": 1021,
+    "localModels": 907,
     "streamedModels": 114,
     "componentRecipes": 1020,
     "imageAssets": 543,
     "animatedBackgrounds": 152,
     "availableAnimatedBackgrounds": 151,
-    "shipSafeModels": 948
+    "shipSafeModels": 1020
   },
   "endpoints": {
     "models": "https://lumoraofficial.de/mcp/models.json",
@@ -28,7 +28,12 @@
     "modelUrl": "Relative local path or official remote glTF URL",
     "publicModelUrl": "Absolute model URL for Codex and external consumers",
     "files": "Optional exact dependency URL map used to resolve streamed Poly Haven glTF packages",
-    "licenceClass": "ship-safe, attribution, or concept-only"
+    "licenceClass": "ship-safe, attribution, or concept-only",
+    "agencyUse": "Recommended website role for the selected object",
+    "brandMoods": "Brand moods this object can support",
+    "websiteIndustries": "Agency verticals where the object is especially useful",
+    "sectionFits": "Page sections where the object can earn its rendering cost",
+    "performanceGuidance": "Record-specific loading and motion guidance"
   },
   "imageAssetSchema": {
     "id": "Stable catalog identifier",

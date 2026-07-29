@@ -189,6 +189,172 @@
       ]
     }
   ],
+  "quaternius": {
+    "sourceUrl": "https://quaternius.com/",
+    "licence": "CC0 1.0",
+    "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "rightsUrl": "https://quaternius.com/faq.html",
+    "localLicencePath": "mcp/licences/quaternius.txt",
+    "localModelCount": 72,
+    "packs": [
+      {
+        "slug": "ultimate-space-kit",
+        "title": "Ultimate Space Kit",
+        "version": "March 2023",
+        "sourceUrl": "https://quaternius.com/packs/ultimatespacekit.html",
+        "downloadUrl": "https://drive.google.com/drive/folders/17F8HlI2zPTlo32aieW5YPPwOk78xo-2m",
+        "licence": "CC0 1.0",
+        "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "rightsUrl": "https://quaternius.com/faq.html",
+        "modelCount": 24,
+        "artStyle": "Stylized low-poly",
+        "brandMoods": [
+          "futuristic",
+          "optimistic",
+          "playful",
+          "technical"
+        ],
+        "websiteIndustries": [
+          "AI",
+          "SaaS",
+          "aerospace",
+          "science",
+          "education",
+          "events"
+        ],
+        "sectionFits": [
+          "hero",
+          "feature storytelling",
+          "interactive demo",
+          "campaign microsite"
+        ],
+        "selectionPolicy": "Curated for distinct agency use cases and visual variety; close variants and categories already covered by Kenney were excluded.",
+        "transformations": [
+          "Converted official glTF source files to self-contained website-ready GLB files",
+          "Preserved source rigs and animation clips",
+          "Rendered one accurate static card preview from each converted model",
+          "Added machine-readable agency use, brand mood, industry, section-fit, and performance guidance"
+        ]
+      },
+      {
+        "slug": "ultimate-monsters",
+        "title": "Ultimate Monsters",
+        "version": "November 2022",
+        "sourceUrl": "https://quaternius.com/packs/ultimatemonsters.html",
+        "downloadUrl": "https://drive.google.com/drive/folders/18m4KpzpEzhC9wl7jzr6dUc0N8Jozr79C",
+        "licence": "CC0 1.0",
+        "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "rightsUrl": "https://quaternius.com/faq.html",
+        "modelCount": 18,
+        "artStyle": "Stylized low-poly",
+        "brandMoods": [
+          "playful",
+          "charming",
+          "fantasy",
+          "expressive"
+        ],
+        "websiteIndustries": [
+          "games",
+          "kids",
+          "entertainment",
+          "consumer apps",
+          "community"
+        ],
+        "sectionFits": [
+          "mascot hero",
+          "onboarding",
+          "404 page",
+          "reward moment"
+        ],
+        "selectionPolicy": "Curated for distinct agency use cases and visual variety; close variants and categories already covered by Kenney were excluded.",
+        "transformations": [
+          "Converted official glTF source files to self-contained website-ready GLB files",
+          "Preserved source rigs and animation clips",
+          "Rendered one accurate static card preview from each converted model",
+          "Added machine-readable agency use, brand mood, industry, section-fit, and performance guidance"
+        ]
+      },
+      {
+        "slug": "ultimate-animated-animals",
+        "title": "Ultimate Animated Animals",
+        "version": "March 2022",
+        "sourceUrl": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+        "downloadUrl": "https://drive.google.com/drive/folders/1uJ3N5HfB7jKTseJUNQr3N4YaN0UuEtHk",
+        "licence": "CC0 1.0",
+        "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "rightsUrl": "https://quaternius.com/faq.html",
+        "modelCount": 12,
+        "artStyle": "Stylized low-poly",
+        "brandMoods": [
+          "organic",
+          "friendly",
+          "wholesome",
+          "playful"
+        ],
+        "websiteIndustries": [
+          "pets",
+          "wildlife",
+          "outdoors",
+          "agriculture",
+          "wellness",
+          "education"
+        ],
+        "sectionFits": [
+          "mascot hero",
+          "brand story",
+          "interactive scene",
+          "404 page"
+        ],
+        "selectionPolicy": "Curated for distinct agency use cases and visual variety; close variants and categories already covered by Kenney were excluded.",
+        "transformations": [
+          "Converted official glTF source files to self-contained website-ready GLB files",
+          "Preserved source rigs and animation clips",
+          "Rendered one accurate static card preview from each converted model",
+          "Added machine-readable agency use, brand mood, industry, section-fit, and performance guidance"
+        ]
+      },
+      {
+        "slug": "cyberpunk-game-kit",
+        "title": "Cyberpunk Game Kit",
+        "version": "May 2022",
+        "sourceUrl": "https://quaternius.com/packs/cyberpunkgamekit.html",
+        "downloadUrl": "https://drive.google.com/drive/folders/1GyKLypoBxrpLN6GERF9U610Wiub48v9y",
+        "licence": "CC0 1.0",
+        "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "rightsUrl": "https://quaternius.com/faq.html",
+        "modelCount": 18,
+        "artStyle": "Stylized low-poly",
+        "brandMoods": [
+          "industrial",
+          "futuristic",
+          "nocturnal",
+          "energetic"
+        ],
+        "websiteIndustries": [
+          "AI",
+          "developer tools",
+          "music",
+          "events",
+          "gaming",
+          "SaaS"
+        ],
+        "sectionFits": [
+          "hero",
+          "product reveal",
+          "interactive stage",
+          "section background"
+        ],
+        "selectionPolicy": "Curated for distinct agency use cases and visual variety; close variants and categories already covered by Kenney were excluded.",
+        "transformations": [
+          "Converted official glTF source files to self-contained website-ready GLB files",
+          "Preserved source rigs and animation clips",
+          "Rendered one accurate static card preview from each converted model",
+          "Added machine-readable agency use, brand mood, industry, section-fit, and performance guidance"
+        ]
+      }
+    ],
+    "selectionPolicy": "A focused agency-ready expansion across space technology, cyberpunk, animated creatures, and animated animals; redundant categories and close variants were intentionally excluded."
+  },
   "polyHaven": {
     "sourceUrl": "https://api.polyhaven.com/assets?t=models",
     "licence": "CC0",

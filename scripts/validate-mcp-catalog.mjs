@@ -84,12 +84,15 @@ const backgroundUrls = new Set(
 const localModels = models.filter((model) => model.storage === "local");
 const streamedModels = models.filter((model) => model.storage === "remote");
 const kenneyModels = models.filter((model) => model.source === "Kenney");
+const quaterniusModels = models.filter(
+  (model) => model.source === "Quaternius",
+);
 const polyHavenModels = models.filter((model) => model.source === "Poly Haven");
 const shipSafeModels = models.filter(
   (model) => model.licenceClass === "ship-safe",
 );
 
-check(models.length === 949, `Expected 949 models, found ${models.length}`);
+check(models.length === 1021, `Expected 1,021 models, found ${models.length}`);
 check(
   modelIds.size === models.length,
   `Model IDs are not unique (${modelIds.size}/${models.length})`,
@@ -99,20 +102,24 @@ check(
   `Expected 829 Kenney models, found ${kenneyModels.length}`,
 );
 check(
+  quaterniusModels.length === 72,
+  `Expected 72 Quaternius models, found ${quaterniusModels.length}`,
+);
+check(
   polyHavenModels.length === 120,
   `Expected 120 Poly Haven models, found ${polyHavenModels.length}`,
 );
 check(
-  localModels.length === 835,
-  `Expected 835 local models, found ${localModels.length}`,
+  localModels.length === 907,
+  `Expected 907 local models, found ${localModels.length}`,
 );
 check(
   streamedModels.length === 114,
   `Expected 114 streamed models, found ${streamedModels.length}`,
 );
 check(
-  shipSafeModels.length === 948,
-  `Expected 948 ship-safe models, found ${shipSafeModels.length}`,
+  shipSafeModels.length === 1020,
+  `Expected 1,020 ship-safe models, found ${shipSafeModels.length}`,
 );
 
 check(
@@ -187,6 +194,39 @@ for (const model of models) {
       );
     }
   }
+}
+
+for (const model of quaterniusModels) {
+  check(
+    model.licence === "CC0 1.0" && model.licenceClass === "ship-safe",
+    `${model.id} does not retain the expected Quaternius CC0 rights`,
+  );
+  check(
+    model.storage === "local" && model.format === "GLB",
+    `${model.id} is not a local website-ready GLB`,
+  );
+  check(
+    model.sourceUrl.startsWith("https://quaternius.com/packs/"),
+    `${model.id} does not point to an official Quaternius pack`,
+  );
+  check(Boolean(model.agencyUse), `${model.id} has no agency use guidance`);
+  check(Boolean(model.artStyle), `${model.id} has no art style`);
+  check(
+    model.brandMoods?.length > 0,
+    `${model.id} has no brand mood metadata`,
+  );
+  check(
+    model.websiteIndustries?.length > 0,
+    `${model.id} has no website industry metadata`,
+  );
+  check(
+    model.sectionFits?.length > 0,
+    `${model.id} has no section-fit metadata`,
+  );
+  check(
+    Boolean(model.performanceGuidance),
+    `${model.id} has no performance guidance`,
+  );
 }
 
 check(
@@ -390,6 +430,19 @@ const kenneyProvenanceTotal = provenance.kenney.reduce(
   (total, pack) => total + pack.modelCount,
   0,
 );
+const quaterniusProvenanceTotal = provenance.quaternius.packs.reduce(
+  (total, pack) => total + pack.modelCount,
+  0,
+);
+check(
+  quaterniusProvenanceTotal === quaterniusModels.length &&
+    provenance.quaternius.localModelCount === quaterniusModels.length,
+  "Quaternius provenance total does not match models.json",
+);
+check(
+  provenance.quaternius.rightsUrl === "https://quaternius.com/faq.html",
+  "Quaternius provenance does not retain the official rights source",
+);
 check(
   kenneyProvenanceTotal === kenneyModels.length,
   "Kenney provenance total does not match models.json",
@@ -438,6 +491,7 @@ for (const requiredFile of [
   "instructions.md",
   "provenance.json",
   "licences/three.txt",
+  "licences/quaternius.txt",
   "licences/kenney/modular-cave.txt",
   "licences/kenney/platformer.txt",
   "licences/kenney/factory.txt",
@@ -472,6 +526,7 @@ if (errors.length) {
   const result = {
     models: models.length,
     kenneyModels: kenneyModels.length,
+    quaterniusModels: quaterniusModels.length,
     polyHavenModels: polyHavenModels.length,
     localModels: localModels.length,
     streamedModels: streamedModels.length,

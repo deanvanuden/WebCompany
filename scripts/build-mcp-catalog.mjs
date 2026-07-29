@@ -34,6 +34,11 @@ const animatedBackgroundSourcePath = path.join(
   "data",
   "animated-backgrounds-source.json",
 );
+const quaterniusSelectionPath = path.join(
+  scriptDirectory,
+  "data",
+  "quaternius-selection.json",
+);
 const publicRoot = "https://lumoraofficial.de/mcp";
 const tempRoot = path.join(repositoryRoot, ".mcp-import-temp");
 const imageTempRoot = path.join(repositoryRoot, ".mcp-image-import-temp");
@@ -1196,6 +1201,166 @@ async function loadExistingModelCatalog() {
   };
 }
 
+function quaterniusCategory(pack, relativeSourcePath) {
+  if (pack.slug === "ultimate-monsters") return "Creatures";
+  if (pack.slug === "ultimate-animated-animals") return "Animals";
+  if (/^Vehicles\//i.test(relativeSourcePath)) return "Vehicles";
+  if (/^(Characters|Character|Enemies)\//i.test(relativeSourcePath)) {
+    return "Characters";
+  }
+  if (/^(Items|Pickups and Objects)\//i.test(relativeSourcePath)) {
+    return "Props";
+  }
+  if (/^Environment\//i.test(relativeSourcePath)) {
+    return /planet/i.test(relativeSourcePath) ? "Nature" : "Architecture";
+  }
+  if (/^Platforms\//i.test(relativeSourcePath)) return "Architecture";
+  return "Props";
+}
+
+function quaterniusAgencyUse(category) {
+  return {
+    Animals: "Mascot hero, brand story, friendly onboarding, or a memorable 404 state",
+    Characters: "Narrative hero, product guide, campaign character, or interactive brand mascot",
+    Creatures: "Expressive mascot, reward moment, playful onboarding, or branded error state",
+    Vehicles: "Interactive hero object, scroll-driven story, or product-style reveal",
+    Architecture: "Hero environment, feature stage, immersive section break, or spatial backdrop",
+    Nature: "Ambient hero object, scene anchor, or spatial storytelling detail",
+    Props: "Feature marker, interface accent, supporting scene detail, or hover interaction",
+  }[category];
+}
+
+function quaterniusPerformanceGuidance(analysis, bytes) {
+  const animated = analysis.animations > 0;
+  const payload = bytes / 1024 / 1024;
+  if (animated) {
+    return payload > 2
+      ? "Use as one primary scene asset, lazy-load near the viewport, pause animation offscreen, and provide a reduced-motion still."
+      : "Lazy-load near the viewport, pause animation offscreen, and provide a reduced-motion still.";
+  }
+  return payload > 1
+    ? "Use as a focal object and lazy-load near the viewport; avoid stacking several large 3D assets above the fold."
+    : "Suitable for a focused hero or supporting scene; lazy-load and instance repeated props where practical.";
+}
+
+async function buildQuaterniusModels() {
+  const selection = JSON.parse(
+    await readFile(quaterniusSelectionPath, "utf8"),
+  );
+  const models = [];
+  const packProvenance = [];
+
+  for (const pack of selection.packs) {
+    for (const relativeSourcePath of pack.models) {
+      const sourceId = path.parse(relativeSourcePath).name;
+      const modelSlug = slugify(sourceId);
+      const name = humanize(sourceId);
+      const category = quaterniusCategory(pack, relativeSourcePath);
+      const agencyUse = quaterniusAgencyUse(category);
+      const relativeModelPath = `assets/models/quaternius/${pack.slug}/${modelSlug}.glb`;
+      const relativeThumbnailPath = `assets/thumbs/quaternius/${pack.slug}/${modelSlug}.webp`;
+      const [buffer, modelStats, thumbnailStats] = await Promise.all([
+        readFile(path.join(outputRoot, relativeModelPath)),
+        stat(path.join(outputRoot, relativeModelPath)),
+        stat(path.join(outputRoot, relativeThumbnailPath)),
+      ]);
+      const analysis = analyzeGlb(buffer);
+      if (analysis.externalFiles.length) {
+        throw new Error(
+          `Quaternius GLB retained external dependencies: ${relativeModelPath}`,
+        );
+      }
+      if (!thumbnailStats.size) {
+        throw new Error(`Empty Quaternius thumbnail: ${relativeThumbnailPath}`);
+      }
+
+      const descriptiveTags = slugify(sourceId)
+        .split("-")
+        .filter((tag) => tag.length > 1);
+      const tags = [
+        ...new Set([
+          ...pack.tags,
+          ...pack.brandMoods,
+          ...pack.websiteIndustries.map((industry) => industry.toLowerCase()),
+          ...pack.sectionFits,
+          ...descriptiveTags,
+          category.toLowerCase(),
+          analysis.animations ? "animated" : "static",
+        ]),
+      ];
+
+      models.push({
+        id: `quaternius-${pack.slug}-${modelSlug}`,
+        sourceId,
+        name,
+        description: `${name} from Quaternius' ${pack.title}. Best for: ${agencyUse.toLowerCase()}.`,
+        category,
+        tags,
+        creator: selection.creator,
+        source: selection.source,
+        collection: pack.title,
+        collectionVersion: pack.version,
+        sourceUrl: pack.sourceUrl,
+        downloadSourceUrl: pack.downloadUrl,
+        licence: selection.licence,
+        licenceUrl: selection.licenceUrl,
+        licenceClass: "ship-safe",
+        rightsNote:
+          "CC0 commercial use, modification, and redistribution allowed; attribution is not required.",
+        modelUrl: relativeModelPath,
+        publicModelUrl: `${publicRoot}/${relativeModelPath}`,
+        thumbnailUrl: relativeThumbnailPath,
+        publicThumbnailUrl: `${publicRoot}/${relativeThumbnailPath}`,
+        fileSizeMB: Number((modelStats.size / 1024 / 1024).toFixed(3)),
+        polygons: analysis.polygons,
+        drawCalls: analysis.drawCalls,
+        materials: analysis.materials,
+        animations: analysis.animations,
+        dimensions: analysis.dimensions,
+        performance: gradeFor(modelStats.size, analysis.polygons),
+        format: "GLB",
+        storage: "local",
+        trademarkWarning: false,
+        artStyle: selection.artStyle,
+        agencyUse,
+        brandMoods: pack.brandMoods,
+        websiteIndustries: pack.websiteIndustries,
+        sectionFits: pack.sectionFits,
+        performanceGuidance: quaterniusPerformanceGuidance(
+          analysis,
+          modelStats.size,
+        ),
+      });
+    }
+
+    packProvenance.push({
+      slug: pack.slug,
+      title: pack.title,
+      version: pack.version,
+      sourceUrl: pack.sourceUrl,
+      downloadUrl: pack.downloadUrl,
+      licence: selection.licence,
+      licenceUrl: selection.licenceUrl,
+      rightsUrl: selection.rightsUrl,
+      modelCount: pack.models.length,
+      artStyle: selection.artStyle,
+      brandMoods: pack.brandMoods,
+      websiteIndustries: pack.websiteIndustries,
+      sectionFits: pack.sectionFits,
+      selectionPolicy:
+        "Curated for distinct agency use cases and visual variety; close variants and categories already covered by Kenney were excluded.",
+      transformations: [
+        "Converted official glTF source files to self-contained website-ready GLB files",
+        "Preserved source rigs and animation clips",
+        "Rendered one accurate static card preview from each converted model",
+        "Added machine-readable agency use, brand mood, industry, section-fit, and performance guidance",
+      ],
+    });
+  }
+
+  return { models, packProvenance };
+}
+
 async function buildFreshModelCatalog() {
   const [{ models: kenneyModels, packProvenance }, polyHavenModels] =
     await Promise.all([extractKenneyModels(), buildPolyHavenModels()]);
@@ -1208,6 +1373,7 @@ async function main() {
 
   const [
     { kenneyModels, polyHavenModels, packProvenance },
+    quaterniusData,
     componentData,
     backgroundData,
     imageData,
@@ -1215,12 +1381,17 @@ async function main() {
     process.env.MCP_REUSE_EXISTING_MODELS === "1"
       ? loadExistingModelCatalog()
       : buildFreshModelCatalog(),
+    buildQuaterniusModels(),
     buildComponentCatalog(),
     buildAnimatedBackgroundCatalog(),
     extractImageAssets(),
   ]);
 
-  const models = [...kenneyModels, ...polyHavenModels];
+  const models = [
+    ...kenneyModels,
+    ...quaterniusData.models,
+    ...polyHavenModels,
+  ];
   const modelIds = new Set(models.map((model) => model.id));
   if (modelIds.size !== models.length) {
     throw new Error("Duplicate model IDs detected");
@@ -1263,6 +1434,11 @@ async function main() {
       files:
         "Optional exact dependency URL map used to resolve streamed Poly Haven glTF packages",
       licenceClass: "ship-safe, attribution, or concept-only",
+      agencyUse: "Recommended website role for the selected object",
+      brandMoods: "Brand moods this object can support",
+      websiteIndustries: "Agency verticals where the object is especially useful",
+      sectionFits: "Page sections where the object can earn its rendering cost",
+      performanceGuidance: "Record-specific loading and motion guidance",
     },
     imageAssetSchema: {
       id: "Stable catalog identifier",
@@ -1318,6 +1494,17 @@ async function main() {
       },
     ],
     kenney: packProvenance,
+    quaternius: {
+      sourceUrl: "https://quaternius.com/",
+      licence: "CC0 1.0",
+      licenceUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+      rightsUrl: "https://quaternius.com/faq.html",
+      localLicencePath: "mcp/licences/quaternius.txt",
+      localModelCount: quaterniusData.models.length,
+      packs: quaterniusData.packProvenance,
+      selectionPolicy:
+        "A focused agency-ready expansion across space technology, cyberpunk, animated creatures, and animated animals; redundant categories and close variants were intentionally excluded.",
+    },
     polyHaven: {
       sourceUrl: "https://api.polyhaven.com/assets?t=models",
       licence: "CC0",
@@ -1409,7 +1596,7 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 
 1. Read the manifest and choose the model, component, image-asset, or animated-background catalog.
 2. Filter candidates by the real page goal, brand, framework, performance budget, and asset class.
-3. For 3D, prefer \`ship-safe\` records and load only the selected model. Use \`publicModelUrl\` in external projects. When a streamed glTF record has a \`files\` map, preserve that dependency mapping or download the official distribution into the target project.
+3. For 3D, prefer \`ship-safe\` records and load only the selected model. Filter by \`agencyUse\`, \`brandMoods\`, \`websiteIndustries\`, \`sectionFits\`, and \`performanceGuidance\` before choosing on appearance alone. Use \`publicModelUrl\` in external projects. When a streamed glTF record has a \`files\` map, preserve that dependency mapping or download the official distribution into the target project.
 4. For components, choose zero to three recipes. Treat each record as an implementation brief and build it from first principles in the target project's conventions.
 5. For images and UI assets, choose only the records that serve the composition, then fetch each winner from \`publicImageUrl\` or \`downloadUrl\`. Preserve transparency, use nearest-neighbor rendering for \`pixelArt\`, and use repeating CSS backgrounds only when \`tileable\` is true.
 6. For animated backgrounds, preview candidates from their external URLs, select one winner, and then fetch only that record's \`downloadUrl\`. MP4 records are direct downloads; HLS records are adaptive streams. Optimize the selected media locally and provide a static reduced-motion fallback.
@@ -1419,7 +1606,7 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 
 ## Rights
 
-Kenney 3D and image packs in this catalog are user-provided distributions licensed CC0 1.0. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. Animated backgrounds remain externally hosted and are recorded as commercial-use based on Lumora's purchase and entitlement confirmation.
+Kenney 3D and image packs in this catalog are user-provided distributions licensed CC0 1.0. Quaternius models are curated from official CC0 packs, converted to self-contained GLB files, and retain their official source records. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. Animated backgrounds remain externally hosted and are recorded as commercial-use based on Lumora's purchase and entitlement confirmation.
 `;
 
   await Promise.all([
@@ -1459,6 +1646,7 @@ Kenney 3D and image packs in this catalog are user-provided distributions licens
       {
         models: models.length,
         kenneyModels: kenneyModels.length,
+        quaterniusModels: quaterniusData.models.length,
         polyHavenModels: polyHavenModels.length,
         localModels: manifest.totals.localModels,
         streamedModels: manifest.totals.streamedModels,

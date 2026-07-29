@@ -47,7 +47,7 @@
           aria-pressed="true"
         >
           3D Objects
-          <span data-stat="models">949</span>
+          <span data-stat="models">1,021</span>
         </button>
         <button
           type="button"
@@ -113,7 +113,7 @@
         <dl class="hero-stats" aria-label="Toolkit statistics">
           <div>
             <dt>3D objects</dt>
-            <dd data-stat="models">949</dd>
+            <dd data-stat="models">1,021</dd>
           </div>
           <div>
             <dt>Component recipes</dt>
@@ -207,7 +207,7 @@
 
           <div class="catalog-summary">
             <span id="catalog-count">Loading index…</span>
-            <span id="catalog-scope">Kenney + Poly Haven</span>
+            <span id="catalog-scope">Kenney + Quaternius + Poly Haven</span>
           </div>
 
           <div id="catalog-grid" class="catalog-grid" role="list"></div>
@@ -225,7 +225,7 @@
                 <p><i></i> LIVE OBJECT</p>
                 <h2 id="model-name">Preparing object</h2>
               </div>
-              <span id="model-index">000 / 949</span>
+              <span id="model-index">000 / 1,021</span>
             </header>
 
             <div class="model-stage" id="model-stage">
@@ -257,6 +257,27 @@
             </div>
 
             <p class="object-description" id="model-description"></p>
+
+            <div class="component-badges" id="model-badges"></div>
+
+            <dl class="recipe-specs model-agency-specs">
+              <div>
+                <dt>Best for</dt>
+                <dd id="model-best-for">—</dd>
+              </div>
+              <div>
+                <dt>Brand fit</dt>
+                <dd id="model-brand-fit">—</dd>
+              </div>
+              <div>
+                <dt>Useful for</dt>
+                <dd id="model-industries">—</dd>
+              </div>
+              <div>
+                <dt>Performance</dt>
+                <dd id="model-performance-note">—</dd>
+              </div>
+            </dl>
 
             <dl class="object-specs">
               <div>
@@ -297,6 +318,16 @@
                 <code id="model-url"></code>
               </div>
               <button type="button" id="copy-model-url">Copy URL</button>
+            </div>
+
+            <div class="copy-record component-prompt">
+              <div>
+                <span>CODEX IMPLEMENTATION PROMPT</span>
+                <code id="model-prompt"></code>
+              </div>
+              <button type="button" id="copy-model-prompt">
+                Copy prompt
+              </button>
             </div>
           </section>
 
@@ -644,7 +675,7 @@ const backgrounds = await fetch(
           <a role="row" href="./models.json">
             <span role="cell">3D models</span>
             <code role="cell">/mcp/models.json</code>
-            <span role="cell">949 complete model records</span>
+            <span role="cell">1,021 complete model records</span>
           </a>
           <a role="row" href="./components-index.json">
             <span role="cell">Component index</span>
@@ -691,6 +722,6 @@ const backgrounds = await fetch(
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <script type="module" src="./app.js?v=20260729.4"></script>
+    <script type="module" src="./app.js?v=20260729.5"></script>
   </body>
 </html>

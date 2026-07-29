@@ -1,0 +1,16 @@
+Quaternius model packs
+
+Creator: Quaternius
+Official catalogue: https://quaternius.com/
+Official rights FAQ: https://quaternius.com/faq.html
+
+Licence: Creative Commons CC0 1.0 Universal
+Licence text: https://creativecommons.org/publicdomain/zero/1.0/
+
+Quaternius states that all models are released under CC0 and may be used in
+personal and commercial projects, modified, and used without attribution.
+Lumora retains the creator, source pack, source page, and licence URL in every
+catalog record so provenance remains machine-readable.
+
+Imported for Lumora MCP on 2026-07-29. The website-ready GLB conversions and
+static previews are derived from the official Quaternius source files.
