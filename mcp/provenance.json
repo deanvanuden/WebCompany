@@ -130,6 +130,54 @@
         "Renamed output folders by stable collection slug",
         "Read geometry and package metrics without modifying model contents"
       ]
+    },
+    {
+      "pack": "Furniture Kit",
+      "version": "2.0",
+      "sourceUrl": "https://kenney.nl/assets/furniture-kit",
+      "inputArchive": "kenney_furniture-kit.zip",
+      "inputArchiveBytes": 5130729,
+      "creator": "Kenney",
+      "licence": "CC0 1.0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modelCount": 140,
+      "transformations": [
+        "Extracted only the self-contained GLB distribution and matching preview images",
+        "Renamed output folders by stable collection slug",
+        "Read geometry and package metrics without modifying model contents"
+      ]
+    },
+    {
+      "pack": "Mini Arcade",
+      "version": "1.2",
+      "sourceUrl": "https://kenney.nl/assets/mini-arcade",
+      "inputArchive": "kenney_mini-arcade.zip",
+      "inputArchiveBytes": 1317439,
+      "creator": "Kenney",
+      "licence": "CC0 1.0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modelCount": 20,
+      "transformations": [
+        "Extracted only the self-contained GLB distribution and matching preview images",
+        "Renamed output folders by stable collection slug",
+        "Read geometry and package metrics without modifying model contents"
+      ]
+    },
+    {
+      "pack": "Food Kit",
+      "version": "2.0",
+      "sourceUrl": "https://kenney.nl/assets/food-kit",
+      "inputArchive": "kenney_food-kit.zip",
+      "inputArchiveBytes": 4606270,
+      "creator": "Kenney",
+      "licence": "CC0 1.0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modelCount": 200,
+      "transformations": [
+        "Extracted only the self-contained GLB distribution and matching preview images",
+        "Renamed output folders by stable collection slug",
+        "Read geometry and package metrics without modifying model contents"
+      ]
     }
   ],
   "polyHaven": {

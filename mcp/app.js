@@ -1,6 +1,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import {
+  componentPreviewCount,
+  componentPreviewMarkup,
+} from "./component-previews.js";
 
 const PAGE_SIZE = 30;
 const publicRoot = "https://lumoraofficial.de/mcp";
@@ -282,6 +286,7 @@ function modelCard(record) {
 }
 
 function componentCard(record) {
+  const archetype = record.id.split("--")[0];
   return `
     <button
       type="button"
@@ -289,11 +294,13 @@ function componentCard(record) {
       class="component-card${state.selectedComponentId === record.id ? " is-selected" : ""}"
       data-record-id="${escapeHtml(record.id)}"
       data-direction="${escapeHtml(record.art_direction)}"
+      data-archetype="${escapeHtml(archetype)}"
       aria-label="Inspect ${escapeHtml(record.name)}"
       aria-pressed="${state.selectedComponentId === record.id}"
     >
       <span class="component-card-visual">
-        <span>${escapeHtml(record.art_direction)}</span>
+        ${componentPreviewMarkup(record)}
+        <span class="component-visual-label">${escapeHtml(record.art_direction)}</span>
       </span>
       <span class="card-copy">
         <h3>${escapeHtml(record.name)}</h3>
@@ -433,8 +440,11 @@ function renderComponentInspector(record) {
     `Q${record.quality_score} / N${record.novelty_score}`;
   const stage = document.querySelector("#component-stage");
   stage.dataset.direction = record.art_direction;
-  document.querySelector("#component-stage-label").textContent =
-    record.art_direction.toUpperCase();
+  stage.dataset.archetype = record.id.split("--")[0];
+  stage.innerHTML = `
+    ${componentPreviewMarkup(record)}
+    <span class="component-visual-label">${escapeHtml(record.art_direction.toUpperCase())}</span>
+  `;
   document.querySelector("#component-summary").textContent = record.summary;
   document.querySelector("#component-technique").textContent =
     record.technique ?? "Open the complete record for implementation detail.";
@@ -982,6 +992,12 @@ async function initialize() {
     ]);
     state.models = models;
     state.components = components;
+
+    if (componentPreviewCount !== 85) {
+      console.warn(
+        `Expected 85 component preview archetypes, found ${componentPreviewCount}.`,
+      );
+    }
 
     document.querySelectorAll('[data-stat="models"]').forEach((element) => {
       element.textContent = formatCount(manifest.totals.models);

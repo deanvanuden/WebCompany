@@ -5,11 +5,11 @@
   "canonicalUrl": "https://lumoraofficial.de/mcp/",
   "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models and original Web Component implementation recipes.",
   "totals": {
-    "models": 589,
-    "localModels": 475,
+    "models": 949,
+    "localModels": 835,
     "streamedModels": 114,
     "componentRecipes": 1020,
-    "shipSafeModels": 588
+    "shipSafeModels": 948
   },
   "endpoints": {
     "models": "https://lumoraofficial.de/mcp/models.json",

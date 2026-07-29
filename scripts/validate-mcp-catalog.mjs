@@ -62,6 +62,13 @@ const [manifest, models, componentIndex, components, provenance] =
     readJson("components.json"),
     readJson("provenance.json"),
   ]);
+const componentPreviewSource = await readFile(
+  path.join(mcpRoot, "component-previews.js"),
+  "utf8",
+);
+const componentPreviewIds = [
+  ...componentPreviewSource.matchAll(/^\s*"([a-z0-9-]+)":\s*\(\)\s*=>/gm),
+].map((match) => match[1]);
 
 const modelIds = new Set(models.map((model) => model.id));
 const componentIds = new Set(components.map((component) => component.id));
@@ -74,30 +81,30 @@ const shipSafeModels = models.filter(
   (model) => model.licenceClass === "ship-safe",
 );
 
-check(models.length === 589, `Expected 589 models, found ${models.length}`);
+check(models.length === 949, `Expected 949 models, found ${models.length}`);
 check(
   modelIds.size === models.length,
   `Model IDs are not unique (${modelIds.size}/${models.length})`,
 );
 check(
-  kenneyModels.length === 469,
-  `Expected 469 Kenney models, found ${kenneyModels.length}`,
+  kenneyModels.length === 829,
+  `Expected 829 Kenney models, found ${kenneyModels.length}`,
 );
 check(
   polyHavenModels.length === 120,
   `Expected 120 Poly Haven models, found ${polyHavenModels.length}`,
 );
 check(
-  localModels.length === 475,
-  `Expected 475 local models, found ${localModels.length}`,
+  localModels.length === 835,
+  `Expected 835 local models, found ${localModels.length}`,
 );
 check(
   streamedModels.length === 114,
   `Expected 114 streamed models, found ${streamedModels.length}`,
 );
 check(
-  shipSafeModels.length === 588,
-  `Expected 588 ship-safe models, found ${shipSafeModels.length}`,
+  shipSafeModels.length === 948,
+  `Expected 948 ship-safe models, found ${shipSafeModels.length}`,
 );
 
 check(
@@ -187,6 +194,25 @@ for (const component of components) {
   );
 }
 
+const componentArchetypes = new Set(
+  components.map((component) => component.id.split("--")[0]),
+);
+const previewArchetypes = new Set(componentPreviewIds);
+check(
+  componentArchetypes.size === 85,
+  `Expected 85 component archetypes, found ${componentArchetypes.size}`,
+);
+check(
+  previewArchetypes.size === componentArchetypes.size,
+  `Preview renderer count does not match component archetypes (${previewArchetypes.size}/${componentArchetypes.size})`,
+);
+for (const archetype of componentArchetypes) {
+  check(
+    previewArchetypes.has(archetype),
+    `Component archetype has no visual preview renderer: ${archetype}`,
+  );
+}
+
 const kenneyProvenanceTotal = provenance.kenney.reduce(
   (total, pack) => total + pack.modelCount,
   0,
@@ -210,6 +236,7 @@ for (const requiredFile of [
   "index.html",
   "app.css",
   "app.js",
+  "component-previews.js",
   "instructions.md",
   "provenance.json",
   "licences/three.txt",
@@ -220,6 +247,9 @@ for (const requiredFile of [
   "licences/kenney/city-suburban.txt",
   "licences/kenney/mini-dungeon.txt",
   "licences/kenney/mini-forest.txt",
+  "licences/kenney/furniture.txt",
+  "licences/kenney/mini-arcade.txt",
+  "licences/kenney/food.txt",
   "vendor/three.module.min.js",
   "vendor/three.core.min.js",
   "vendor/loaders/GLTFLoader.js",

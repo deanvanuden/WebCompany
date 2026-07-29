@@ -89,6 +89,33 @@ const packs = [
     sourceUrl: "https://kenney.nl/assets/mini-forest",
     tags: ["forest", "nature", "fantasy"],
   },
+  {
+    slug: "furniture",
+    zip: "kenney_furniture-kit.zip",
+    title: "Furniture Kit",
+    version: "2.0",
+    sourceUrl: "https://kenney.nl/assets/furniture-kit",
+    tags: ["furniture", "interior", "home"],
+    modelDirectory: ["Models", "GLTF format"],
+    previewDirectory: ["Isometric"],
+    previewSuffix: "_NE",
+  },
+  {
+    slug: "mini-arcade",
+    zip: "kenney_mini-arcade.zip",
+    title: "Mini Arcade",
+    version: "1.2",
+    sourceUrl: "https://kenney.nl/assets/mini-arcade",
+    tags: ["arcade", "game", "entertainment"],
+  },
+  {
+    slug: "food",
+    zip: "kenney_food-kit.zip",
+    title: "Food Kit",
+    version: "2.0",
+    sourceUrl: "https://kenney.nl/assets/food-kit",
+    tags: ["food", "kitchen", "cooking"],
+  },
 ];
 
 const localPolyHavenAssets = [
@@ -264,19 +291,52 @@ function parseCsv(source) {
 
 function humanize(value) {
   return value
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
     .replaceAll(/[-_]+/g, " ")
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
+function slugify(value) {
+  return value
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+    .replaceAll(/[^a-zA-Z0-9]+/g, "-")
+    .replaceAll(/^-+|-+$/g, "")
+    .toLowerCase();
+}
+
 function categoryForKenney(filename, pack) {
-  const value = filename.toLowerCase();
+  const value = slugify(filename);
+  if (pack.slug === "food") return "Food";
+  if (pack.slug === "mini-arcade") {
+    if (/(?:^|-)character(?:-|$)/.test(value)) return "Characters";
+    if (/(?:^|-)(wall|floor|column)(?:-|$)/.test(value)) return "Architecture";
+    return "Gameplay";
+  }
+  if (pack.slug === "furniture") {
+    if (/(?:^|-)(plant|potted-plant)(?:-|$)/.test(value)) return "Nature";
+    if (/(?:^|-)lamp(?:-|$)/.test(value)) return "Lighting";
+    if (
+      /(?:^|-)(computer|dryer|keyboard|laptop|machine|microwave|mouse|radio|speaker|television|toaster|washer)(?:-|$)/.test(
+        value,
+      )
+    ) {
+      return "Electronics";
+    }
+    if (/(?:^|-)(doorway|floor|paneling|stairs|wall)(?:-|$)/.test(value)) {
+      return "Architecture";
+    }
+    return "Furniture";
+  }
   const rules = [
-    ["Characters", /character|archer|human|orc|robot|enemy|player/],
-    ["Nature", /tree|forest|flower|grass|bush|plant|rock|stone|stump|log|mushroom/],
-    ["Vehicles", /vehicle|car|truck|van|bus|forklift/],
-    ["Industrial", /factory|conveyor|machine|pipe|tank|crane|industrial|warehouse/],
-    ["Architecture", /building|roof|wall|floor|door|window|corridor|room|stairs|bridge|column|platform|cave/],
-    ["Gameplay", /checkpoint|spawn|spike|arrow|coin|gem|block|flag|finish|start/],
+    ["Characters", /(?:^|-)(character|archer|human|orc|robot|enemy|player)(?:-|$)/],
+    ["Nature", /(?:^|-)(tree|forest|flower|grass|bush|plant|rock|stone|stump|log|mushroom)(?:-|$)/],
+    ["Vehicles", /(?:^|-)(vehicle|car|truck|van|bus|forklift)(?:-|$)/],
+    ["Lighting", /(?:^|-)(lamp|lantern|light)(?:-|$)/],
+    ["Electronics", /(?:^|-)(computer|keyboard|laptop|mouse|radio|speaker|television|vending|ticket-machine|cash-register)(?:-|$)/],
+    ["Furniture", /(?:^|-)(bath|bed|bench|bookcase|cabinet|chair|coat-rack|couch|desk|dryer|pillow|rug|shelf|shower|sink|sofa|stool|table|toilet|washer)(?:-|$)/],
+    ["Industrial", /(?:^|-)(factory|conveyor|machine|pipe|tank|crane|industrial|warehouse)(?:-|$)/],
+    ["Architecture", /(?:^|-)(building|roof|wall|floor|door|window|corridor|room|stairs|bridge|column|platform|cave)(?:-|$)/],
+    ["Gameplay", /(?:^|-)(arcade|game|checkpoint|spawn|spike|arrow|coin|gem|block|flag|finish|start|pinball|prize|hockey)(?:-|$)/],
   ];
   const match = rules.find(([, pattern]) => pattern.test(value))?.[0];
   if (match) return match;
@@ -288,6 +348,9 @@ function categoryForKenney(filename, pack) {
     "city-suburban": "Architecture",
     "mini-dungeon": "Props",
     "mini-forest": "Nature",
+    furniture: "Furniture",
+    "mini-arcade": "Gameplay",
+    food: "Food",
   }[pack.slug] ?? "Props";
 }
 
@@ -406,9 +469,15 @@ async function extractKenneyModels() {
       stdio: "inherit",
     });
 
-    const glbDirectory = path.join(packTemp, "Models", "GLB format");
+    const glbDirectory = path.join(
+      packTemp,
+      ...(pack.modelDirectory ?? ["Models", "GLB format"]),
+    );
     const glbTextureDirectory = path.join(glbDirectory, "Textures");
-    const previewDirectory = path.join(packTemp, "Previews");
+    const previewDirectory = path.join(
+      packTemp,
+      ...(pack.previewDirectory ?? ["Previews"]),
+    );
     try {
       await stat(glbTextureDirectory);
       await cp(glbTextureDirectory, path.join(packModels, "Textures"), {
@@ -431,23 +500,30 @@ async function extractKenneyModels() {
 
     for (const filename of filenames) {
       const basename = path.basename(filename, ".glb");
+      const stableBasename = slugify(basename);
       const sourceModel = path.join(glbDirectory, filename);
-      const sourcePreview = path.join(previewDirectory, `${basename}.png`);
+      const sourcePreview = path.join(
+        previewDirectory,
+        `${basename}${pack.previewSuffix ?? ""}.png`,
+      );
       const destinationModel = path.join(packModels, filename);
-      const destinationPreview = path.join(packThumbnails, `${basename}.png`);
+      const destinationPreview = path.join(
+        packThumbnails,
+        `${stableBasename}.png`,
+      );
       const modelBuffer = await readFile(sourceModel);
       const analysis = analyzeGlb(modelBuffer);
       const modelRelative = `assets/models/kenney/${pack.slug}/${filename}`;
-      const thumbnailRelative = `assets/thumbs/kenney/${pack.slug}/${basename}.png`;
+      const thumbnailRelative = `assets/thumbs/kenney/${pack.slug}/${stableBasename}.png`;
 
       await Promise.all([
         cp(sourceModel, destinationModel),
         cp(sourcePreview, destinationPreview),
       ]);
 
-      const filenameTags = basename.split(/[-_]+/).filter(Boolean);
+      const filenameTags = stableBasename.split("-").filter(Boolean);
       models.push({
-        id: `kenney-${pack.slug}-${basename}`,
+        id: `kenney-${pack.slug}-${stableBasename}`,
         sourceId: basename,
         name: humanize(basename),
         description: `${humanize(basename)} from Kenney's ${pack.title} ${pack.version} collection.`,
