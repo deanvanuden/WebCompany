@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Lumora MCP is a human and machine-readable library of web-ready 3D models, original Web Component recipes, and animated background references."
+      content="Lumora MCP is a human and machine-readable library of web-ready 3D models, original Web Component recipes, CC0 image and UI assets, and animated background references."
     />
     <meta name="theme-color" content="#1c1d1a" />
     <link rel="canonical" href="https://lumoraofficial.de/mcp/" />
@@ -16,8 +16,8 @@
       href="./manifest.json"
     />
     <link rel="icon" href="../images/LogoLumora.png" type="image/png" />
-    <link rel="stylesheet" href="./app.css?v=20260729.3" />
-    <title>Lumora MCP — Models, Components & Backgrounds</title>
+    <link rel="stylesheet" href="./app.css?v=20260729.4" />
+    <title>Lumora MCP — Models, Components, Images & Backgrounds</title>
     <script type="importmap">
       {
         "imports": {
@@ -56,6 +56,14 @@
         >
           Components
           <span data-stat="components">1,020</span>
+        </button>
+        <button
+          type="button"
+          data-view="images"
+          aria-pressed="false"
+        >
+          Images / UI
+          <span data-stat="images">543</span>
         </button>
         <button
           type="button"
@@ -112,12 +120,12 @@
             <dd data-stat="components">1,020</dd>
           </div>
           <div>
-            <dt>Background links</dt>
-            <dd data-stat="backgrounds">152</dd>
+            <dt>Images / UI</dt>
+            <dd data-stat="images">543</dd>
           </div>
           <div>
-            <dt>Hosted models</dt>
-            <dd data-stat="local-models">835</dd>
+            <dt>Background links</dt>
+            <dd data-stat="backgrounds">152</dd>
           </div>
         </dl>
       </section>
@@ -143,7 +151,7 @@
                 id="catalog-search"
                 type="search"
                 autocomplete="off"
-                placeholder="Object, recipe, background…"
+                placeholder="Object, recipe, image, background…"
               />
               <kbd>/</kbd>
             </span>
@@ -352,6 +360,96 @@
           </section>
 
           <section
+            id="image-inspector"
+            aria-labelledby="image-name"
+            hidden
+          >
+            <header class="inspector-heading">
+              <div>
+                <p><i></i> CC0 VISUAL ASSET</p>
+                <h2 id="image-name">Image asset</h2>
+              </div>
+              <span id="image-index">000 / 543</span>
+            </header>
+
+            <div class="image-stage" id="image-stage">
+              <img id="image-preview" alt="" />
+              <div class="image-stage-hud" aria-hidden="true">
+                <span id="image-stage-format">PNG</span>
+                <i></i>
+                <span>Native asset</span>
+              </div>
+            </div>
+
+            <div class="component-badges" id="image-badges"></div>
+            <p class="object-description" id="image-description"></p>
+
+            <dl class="recipe-specs image-specs">
+              <div>
+                <dt>Dimensions</dt>
+                <dd id="image-dimensions">—</dd>
+              </div>
+              <div>
+                <dt>Payload</dt>
+                <dd id="image-size">—</dd>
+              </div>
+              <div>
+                <dt>Transparency</dt>
+                <dd id="image-alpha">—</dd>
+              </div>
+              <div>
+                <dt>Category</dt>
+                <dd id="image-category">—</dd>
+              </div>
+              <div>
+                <dt>Pack</dt>
+                <dd id="image-pack">—</dd>
+              </div>
+              <div>
+                <dt>Licence</dt>
+                <dd id="image-licence">CC0 1.0</dd>
+              </div>
+            </dl>
+
+            <div class="source-record">
+              <div>
+                <span id="image-source">Kenney</span>
+                <strong>CC0 1.0 · SHIP-SAFE</strong>
+              </div>
+              <a id="image-source-link" href="#" target="_blank" rel="noreferrer">
+                Original pack ↗
+              </a>
+            </div>
+
+            <div class="copy-record">
+              <div>
+                <span>PUBLIC IMAGE URL</span>
+                <code id="image-url"></code>
+              </div>
+              <button type="button" id="copy-image-url">Copy URL</button>
+            </div>
+
+            <div class="copy-record component-prompt">
+              <div>
+                <span>CODEX SELECTION PROMPT</span>
+                <code id="image-prompt"></code>
+              </div>
+              <button type="button" id="copy-image-prompt">
+                Copy prompt
+              </button>
+            </div>
+
+            <a
+              class="full-record-link"
+              id="image-record-link"
+              href="./image-assets.json"
+            >
+              Open complete image records
+              <span aria-hidden="true">↗</span>
+            </a>
+          </section>
+
+          <section
             id="background-inspector"
             aria-labelledby="background-name"
             hidden
@@ -470,7 +568,8 @@
           </h2>
           <p>
             Give Codex the manifest, describe the page goal, and ask it to select
-            only the models, recipes, and motion sources that earn their place.
+            only the models, recipes, image assets, and motion sources that earn
+            their place.
           </p>
         </header>
 
@@ -491,13 +590,14 @@
             <h3>Use a precise Codex brief</h3>
             <p>
               “Read the Lumora MCP manifest. Choose up to two components, one
-              ship-safe 3D model, and at most one commercially licensed animated
-              background that fit this project’s brand, goal, framework, and
-              performance budget. Explain the selection before implementing.”
+              ship-safe 3D model, up to three CC0 image or UI assets, and at most
+              one commercially licensed animated background that fit this
+              project’s brand, goal, framework, and performance budget. Explain
+              the selection before implementing.”
             </p>
             <button
               type="button"
-              data-copy="Read https://lumoraofficial.de/mcp/manifest.json. Choose up to two components, one ship-safe 3D model, and at most one commercially licensed animated background that fit this project's brand, goal, framework, and performance budget. Explain the selection before implementing."
+              data-copy="Read https://lumoraofficial.de/mcp/manifest.json. Choose up to two components, one ship-safe 3D model, up to three CC0 image or UI assets, and at most one commercially licensed animated background that fit this project's brand, goal, framework, and performance budget. Explain the selection before implementing."
             >
               Copy Codex brief
             </button>
@@ -513,6 +613,10 @@ const models = await fetch(
   manifest.endpoints.models
 ).then(response => response.json());
 
+const images = await fetch(
+  manifest.endpoints.imageAssets
+).then(response => response.json());
+
 const backgrounds = await fetch(
   manifest.endpoints.animatedBackgrounds
 ).then(response => response.json());</code></pre>
@@ -521,10 +625,11 @@ const backgrounds = await fetch(
             <span>04 / PROVE</span>
             <h3>Keep provenance intact</h3>
             <p>
-              Models retain creator, source, licence, package metrics, and
-              warnings. Component recipes retain their accessibility, fallback,
-              responsive, performance, and testing contracts. Background records
-              retain their source URLs and Lumora commercial-use entitlement.
+              Models and image assets retain creator, source, licence, package
+              metrics, and warnings. Component recipes retain their
+              accessibility, fallback, responsive, performance, and testing
+              contracts. Background records retain their source URLs and Lumora
+              commercial-use entitlement.
             </p>
             <a href="./provenance.json">Open provenance record ↗</a>
           </article>
@@ -551,6 +656,11 @@ const backgrounds = await fetch(
             <code role="cell">/mcp/components.json</code>
             <span role="cell">1,020 complete briefs</span>
           </a>
+          <a role="row" href="./image-assets.json">
+            <span role="cell">Images / UI assets</span>
+            <code role="cell">/mcp/image-assets.json</code>
+            <span role="cell">543 local CC0 PNG records</span>
+          </a>
           <a role="row" href="./animated-backgrounds.json">
             <span role="cell">Animated backgrounds</span>
             <code role="cell">/mcp/animated-backgrounds.json</code>
@@ -571,7 +681,7 @@ const backgrounds = await fetch(
         <span>LUMORA</span>
         <em>MCP</em>
       </a>
-      <p>Models and backgrounds load only when selected. Recipes remain original briefs.</p>
+      <p>Models and motion load only when selected. Images are local CC0 assets; recipes remain original briefs.</p>
       <div>
         <a href="./instructions.md">Instructions</a>
         <a href="./provenance.json">Provenance</a>
@@ -581,6 +691,6 @@ const backgrounds = await fetch(
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <script type="module" src="./app.js?v=20260729.3"></script>
+    <script type="module" src="./app.js?v=20260729.4"></script>
   </body>
 </html>

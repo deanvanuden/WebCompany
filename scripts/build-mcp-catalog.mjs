@@ -14,7 +14,7 @@ import { fileURLToPath } from "node:url";
 
 /**
  * Optional source overrides:
- * - KENNEY_DOWNLOADS_DIR: directory containing the seven original Kenney ZIPs
+ * - KENNEY_DOWNLOADS_DIR: directory containing the Kenney 3D and image ZIPs
  * - LUMORA_OBJECTS_DIR: previous Lumora Objects project with generated catalogs
  * - WEB_COMPONENT_SKILL_DIR: Lumora Web Design Components skill directory
  */
@@ -36,6 +36,7 @@ const animatedBackgroundSourcePath = path.join(
 );
 const publicRoot = "https://lumoraofficial.de/mcp";
 const tempRoot = path.join(repositoryRoot, ".mcp-import-temp");
+const imageTempRoot = path.join(repositoryRoot, ".mcp-image-import-temp");
 
 const packs = [
   {
@@ -120,6 +121,132 @@ const packs = [
     version: "2.0",
     sourceUrl: "https://kenney.nl/assets/food-kit",
     tags: ["food", "kitchen", "cooking"],
+  },
+];
+
+const imagePacks = [
+  {
+    slug: "background-elements",
+    zip: "kenney_background-elements-remastered.zip",
+    title: "Background Elements Remastered",
+    sourceUrl: "https://kenney.nl/assets/background-elements-remastered",
+    tags: ["background", "scenery", "layered", "nature"],
+    selections: [
+      {
+        prefix: "PNG/Default/",
+        output: "elements",
+        assetType: "Scenery",
+        category: "Scenery elements",
+      },
+      {
+        prefix: "Backgrounds/Elements/",
+        output: "layers",
+        assetType: "Scenery",
+        category: "Background layers",
+      },
+      {
+        prefix: "Backgrounds/",
+        output: "backgrounds",
+        assetType: "Scene",
+        category: "Scene backgrounds",
+      },
+    ],
+  },
+  {
+    slug: "foliage-sprites",
+    zip: "kenney_foliage-sprites.zip",
+    title: "Foliage Sprites",
+    sourceUrl: "https://kenney.nl/assets/foliage-sprites",
+    tags: ["foliage", "nature", "sprite", "shaded"],
+    selections: [
+      {
+        prefix: "PNG/Shaded/",
+        output: "shaded",
+        assetType: "Foliage",
+        category: "Foliage sprites",
+      },
+    ],
+  },
+  {
+    slug: "pixel-vehicles",
+    zip: "kenney_pixel-vehicle-pack.zip",
+    title: "Pixel Vehicle Pack",
+    sourceUrl: "https://kenney.nl/assets/pixel-vehicle-pack",
+    tags: ["pixel-art", "vehicle", "game", "sprite"],
+    pixelArt: true,
+    selections: [
+      {
+        prefix: "PNG/Cars/",
+        output: "cars",
+        assetType: "Pixel art",
+        category: "Vehicles",
+      },
+      {
+        prefix: "PNG/Characters/",
+        output: "characters",
+        assetType: "Pixel art",
+        category: "Characters",
+      },
+      {
+        prefix: "PNG/Props/",
+        output: "props",
+        assetType: "Pixel art",
+        category: "Props",
+      },
+    ],
+  },
+  {
+    slug: "pattern-lines",
+    zip: "kenney_pattern-pack-lines.zip",
+    title: "Pattern Pack: Lines",
+    sourceUrl: "https://kenney.nl/assets/pattern-pack-lines",
+    tags: ["pattern", "line", "tileable", "texture"],
+    tileable: true,
+    selections: [
+      {
+        prefix: "PNG/Thick/Default (256px)/",
+        output: "thick",
+        assetType: "Pattern",
+        category: "Thick line patterns",
+      },
+      {
+        prefix: "PNG/Thin/Default (256px)/",
+        output: "thin",
+        assetType: "Pattern",
+        category: "Thin line patterns",
+      },
+    ],
+  },
+  {
+    slug: "foliage",
+    zip: "kenney_foliage-pack.zip",
+    title: "Foliage Pack",
+    sourceUrl: "https://kenney.nl/assets/foliage-pack",
+    tags: ["foliage", "nature", "leaves", "decoration"],
+    selections: [
+      {
+        prefix: "PNG/Default size/",
+        output: "default",
+        assetType: "Foliage",
+        category: "Foliage elements",
+        recursive: true,
+      },
+    ],
+  },
+  {
+    slug: "generic-items",
+    zip: "kenney_generic-items.zip",
+    title: "Generic Items",
+    sourceUrl: "https://kenney.nl/assets/generic-items",
+    tags: ["icon", "item", "ui", "interface"],
+    selections: [
+      {
+        prefix: "PNG/Colored/",
+        output: "colored",
+        assetType: "UI / Icon",
+        category: "Generic items",
+      },
+    ],
   },
 ];
 
@@ -307,6 +434,226 @@ function slugify(value) {
     .replaceAll(/[^a-zA-Z0-9]+/g, "-")
     .replaceAll(/^-+|-+$/g, "")
     .toLowerCase();
+}
+
+async function walkFiles(directory, relativeDirectory = "") {
+  const entries = await readdir(path.join(directory, relativeDirectory), {
+    withFileTypes: true,
+  });
+  const files = [];
+  for (const entry of entries) {
+    const relativePath = path.join(relativeDirectory, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...(await walkFiles(directory, relativePath)));
+    } else {
+      files.push(relativePath.replaceAll("\\", "/"));
+    }
+  }
+  return files;
+}
+
+function analyzePng(buffer) {
+  const signature = buffer.subarray(0, 8).toString("hex");
+  if (signature !== "89504e470d0a1a0a" || buffer.subarray(12, 16).toString() !== "IHDR") {
+    throw new Error("Invalid PNG image");
+  }
+  const colorType = buffer.readUInt8(25);
+  return {
+    width: buffer.readUInt32BE(16),
+    height: buffer.readUInt32BE(20),
+    hasAlpha:
+      colorType === 4 ||
+      colorType === 6 ||
+      buffer.indexOf(Buffer.from("tRNS")) !== -1,
+  };
+}
+
+function imageAssetName(basename, pack, selection) {
+  const numericSuffix = basename.match(/(\d+)$/)?.[1];
+  if (pack.slug === "foliage-sprites" && numericSuffix) {
+    return `Foliage Sprite ${numericSuffix.padStart(3, "0")}`;
+  }
+  if (pack.slug === "generic-items" && numericSuffix) {
+    return `Generic Item ${numericSuffix.padStart(3, "0")}`;
+  }
+  if (pack.slug === "foliage" && numericSuffix) {
+    return `${basename.includes("leaves") ? "Leaf" : "Foliage"} ${numericSuffix.padStart(3, "0")}`;
+  }
+  if (pack.slug === "pattern-lines" && numericSuffix) {
+    const weight = selection.output === "thick" ? "Thick" : "Thin";
+    return `${weight} Pattern ${numericSuffix.padStart(3, "0")}`;
+  }
+  return humanize(basename).replace(/([A-Za-z])(\d+)/g, "$1 $2");
+}
+
+function imageUseGuidance(pack, selection) {
+  if (pack.pixelArt) {
+    return "Use for playful interfaces, game-inspired sections, diagrams, or small decorative motion. Preserve hard pixel edges.";
+  }
+  if (pack.tileable) {
+    return "Use as a repeating CSS texture, clipped accent, mask, or restrained surface treatment.";
+  }
+  if (selection.category === "Scene backgrounds") {
+    return "Use as a full scene foundation or section backdrop, then layer foreground elements above it.";
+  }
+  if (selection.assetType === "Foliage") {
+    return "Use as transparent decorative foliage, parallax depth, framing, or a lightweight nature accent.";
+  }
+  if (selection.assetType === "UI / Icon") {
+    return "Use as an interface icon, inventory-style item, navigation accent, or illustrated detail.";
+  }
+  return "Use as a transparent scene element, layered illustration, parallax prop, or section decoration.";
+}
+
+async function extractImageAssets() {
+  const imageRoot = path.join(outputRoot, "assets", "images", "kenney");
+  const licenceRoot = path.join(outputRoot, "licences", "kenney-images");
+  const generatedTargets = [imageRoot, licenceRoot, imageTempRoot];
+  generatedTargets.forEach((target) => assertInside(repositoryRoot, target));
+
+  await Promise.all(
+    imagePacks.map((pack) => stat(path.join(downloadsDirectory, pack.zip))),
+  );
+  await Promise.all(
+    generatedTargets.map((target) =>
+      rm(target, { recursive: true, force: true }),
+    ),
+  );
+  await Promise.all([
+    mkdir(imageRoot, { recursive: true }),
+    mkdir(licenceRoot, { recursive: true }),
+    mkdir(imageTempRoot, { recursive: true }),
+  ]);
+
+  const imageAssets = [];
+  const packProvenance = [];
+  let sourceOrder = 0;
+
+  for (const pack of imagePacks) {
+    const zipPath = path.join(downloadsDirectory, pack.zip);
+    const zipStats = await stat(zipPath);
+    const packTemp = path.join(imageTempRoot, pack.slug);
+    const packOutput = path.join(imageRoot, pack.slug);
+    await Promise.all([
+      mkdir(packTemp, { recursive: true }),
+      mkdir(packOutput, { recursive: true }),
+    ]);
+    execFileSync("tar", ["-xf", zipPath, "-C", packTemp], {
+      stdio: "inherit",
+    });
+
+    const licence = await readFile(path.join(packTemp, "License.txt"), "utf8");
+    await writeFile(
+      path.join(licenceRoot, `${pack.slug}.txt`),
+      `${licence
+        .replaceAll("\r\n", "\n")
+        .replace(/[ \t]+$/gm, "")
+        .trim()}\n`,
+    );
+
+    const files = (await walkFiles(packTemp))
+      .filter((filename) => filename.toLowerCase().endsWith(".png"))
+      .sort((left, right) => left.localeCompare(right, undefined, { numeric: true }));
+    let packAssetCount = 0;
+
+    for (const selection of pack.selections) {
+      const selectedFiles = files.filter((filename) => {
+        if (!filename.startsWith(selection.prefix)) return false;
+        const remainder = filename.slice(selection.prefix.length);
+        return Boolean(remainder) && (selection.recursive || !remainder.includes("/"));
+      });
+      const selectionOutput = path.join(packOutput, selection.output);
+      await mkdir(selectionOutput, { recursive: true });
+
+      for (const filename of selectedFiles) {
+        const basename = path.basename(filename, ".png");
+        const stableBasename = slugify(basename);
+        const sourceImage = path.join(packTemp, ...filename.split("/"));
+        const imageBuffer = await readFile(sourceImage);
+        const analysis = analyzePng(imageBuffer);
+        const destinationFilename = `${stableBasename}.png`;
+        const destinationImage = path.join(
+          selectionOutput,
+          destinationFilename,
+        );
+        const imageRelative =
+          `assets/images/kenney/${pack.slug}/${selection.output}/${destinationFilename}`;
+        const category =
+          pack.slug === "foliage" && filename.includes("/Leaves/")
+            ? "Leaves"
+            : selection.category;
+        sourceOrder += 1;
+        packAssetCount += 1;
+
+        await cp(sourceImage, destinationImage);
+        imageAssets.push({
+          id: `kenney-image-${pack.slug}-${selection.output}-${stableBasename}`,
+          name: imageAssetName(basename, pack, selection),
+          description: `${imageAssetName(basename, pack, selection)} from Kenney's ${pack.title} collection.`,
+          source: "Kenney",
+          creator: "Kenney",
+          collection: pack.title,
+          packSlug: pack.slug,
+          assetType: selection.assetType,
+          category,
+          tags: Array.from(
+            new Set([
+              ...pack.tags,
+              ...slugify(basename).split("-").filter(Boolean),
+              category.toLowerCase(),
+            ]),
+          ),
+          format: "PNG",
+          storage: "local",
+          imageUrl: imageRelative,
+          publicImageUrl: `${publicRoot}/${imageRelative}`,
+          downloadUrl: `${publicRoot}/${imageRelative}`,
+          sourceUrl: pack.sourceUrl,
+          sourcePath: filename,
+          licence: "CC0 1.0",
+          licenceClass: "ship-safe",
+          licenceUrl:
+            "https://creativecommons.org/publicdomain/zero/1.0/",
+          attribution: "Kenney attribution optional",
+          rightsNote:
+            "Commercial use, modification, and redistribution allowed; attribution is not required.",
+          fileSizeKB: Number((imageBuffer.length / 1024).toFixed(2)),
+          width: analysis.width,
+          height: analysis.height,
+          dimensions: `${analysis.width} × ${analysis.height} px`,
+          hasAlpha: analysis.hasAlpha,
+          pixelArt: Boolean(pack.pixelArt),
+          tileable: Boolean(pack.tileable),
+          recommendedUse: imageUseGuidance(pack, selection),
+          sourceOrder,
+        });
+      }
+    }
+
+    packProvenance.push({
+      pack: pack.title,
+      sourceUrl: pack.sourceUrl,
+      inputArchive: pack.zip,
+      inputArchiveBytes: zipStats.size,
+      creator: "Kenney",
+      licence: "CC0 1.0",
+      licenceUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+      assetCount: packAssetCount,
+      transformations: [
+        "Selected one canonical PNG variant for each useful standalone asset",
+        "Excluded duplicate retina, flat, monochrome, vector, sheet, sample, and preview variants",
+        "Preserved PNG pixel data and transparency without recompression",
+        "Normalized filenames and recorded dimensions, payload, original path, and intended use",
+      ],
+    });
+  }
+
+  const imageIds = new Set(imageAssets.map((asset) => asset.id));
+  if (imageIds.size !== imageAssets.length) {
+    throw new Error("Duplicate image asset IDs detected");
+  }
+  await rm(imageTempRoot, { recursive: true, force: true });
+  return { imageAssets, packProvenance };
 }
 
 function categoryForKenney(filename, pack) {
@@ -863,12 +1210,14 @@ async function main() {
     { kenneyModels, polyHavenModels, packProvenance },
     componentData,
     backgroundData,
+    imageData,
   ] = await Promise.all([
     process.env.MCP_REUSE_EXISTING_MODELS === "1"
       ? loadExistingModelCatalog()
       : buildFreshModelCatalog(),
     buildComponentCatalog(),
     buildAnimatedBackgroundCatalog(),
+    extractImageAssets(),
   ]);
 
   const models = [...kenneyModels, ...polyHavenModels];
@@ -883,12 +1232,13 @@ async function main() {
     generatedAt: "2026-07-29",
     canonicalUrl: `${publicRoot}/`,
     purpose:
-      "A human and machine-readable design toolkit for selecting web-ready 3D models, original Web Component implementation recipes, and externally hosted animated background references.",
+      "A human and machine-readable design toolkit for selecting web-ready 3D models, original Web Component implementation recipes, CC0 image and UI assets, and externally hosted animated background references.",
     totals: {
       models: models.length,
       localModels: models.filter((model) => model.storage === "local").length,
       streamedModels: models.filter((model) => model.storage === "remote").length,
       componentRecipes: componentData.components.length,
+      imageAssets: imageData.imageAssets.length,
       animatedBackgrounds: backgroundData.backgrounds.length,
       availableAnimatedBackgrounds: backgroundData.backgrounds.filter(
         (background) => background.availability === "Available",
@@ -901,6 +1251,7 @@ async function main() {
       models: `${publicRoot}/models.json`,
       componentIndex: `${publicRoot}/components-index.json`,
       componentRecords: `${publicRoot}/components.json`,
+      imageAssets: `${publicRoot}/image-assets.json`,
       animatedBackgrounds: `${publicRoot}/animated-backgrounds.json`,
       instructions: `${publicRoot}/instructions.md`,
       provenance: `${publicRoot}/provenance.json`,
@@ -912,6 +1263,16 @@ async function main() {
       files:
         "Optional exact dependency URL map used to resolve streamed Poly Haven glTF packages",
       licenceClass: "ship-safe, attribution, or concept-only",
+    },
+    imageAssetSchema: {
+      id: "Stable catalog identifier",
+      imageUrl: "Relative locally hosted PNG path",
+      publicImageUrl: "Absolute PNG URL for Codex and external consumers",
+      dimensions: "Native pixel dimensions",
+      hasAlpha: "Whether the PNG contains transparency",
+      pixelArt: "Whether nearest-neighbor rendering should be preserved",
+      tileable: "Whether the image is intended to repeat as a pattern",
+      licenceClass: "ship-safe CC0 asset",
     },
     animatedBackgroundSchema: {
       id: "Stable catalog identifier",
@@ -983,6 +1344,16 @@ async function main() {
         "Generated a smaller browser index without removing full machine-readable records",
       ],
     },
+    imageAssets: {
+      sourceKind: "user-supplied-cc0-packs",
+      storage: "local PNG files",
+      licence: "CC0 1.0",
+      licenceUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+      assetCount: imageData.imageAssets.length,
+      packs: imageData.packProvenance,
+      selectionPolicy:
+        "One useful canonical PNG set per pack; duplicate resolution, color, vector, sheet, and sample variants are intentionally excluded.",
+    },
     animatedBackgrounds: {
       source: backgroundData.source.sourceFile,
       sourceKind: "user-supplied-external-links",
@@ -1022,7 +1393,7 @@ async function main() {
 
 Canonical entry point: ${publicRoot}/
 
-Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records, original Web Component implementation recipes, and externally hosted animated background references.
+Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records, original Web Component implementation recipes, locally hosted CC0 image and UI assets, and externally hosted animated background references.
 
 ## Machine-readable endpoints
 
@@ -1030,23 +1401,25 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 - 3D models: ${publicRoot}/models.json
 - Component index: ${publicRoot}/components-index.json
 - Complete component records: ${publicRoot}/components.json
+- Images and UI assets: ${publicRoot}/image-assets.json
 - Animated backgrounds: ${publicRoot}/animated-backgrounds.json
 - Provenance: ${publicRoot}/provenance.json
 
 ## Selection protocol for Codex
 
-1. Read the manifest and choose the model, component, or animated-background catalog.
+1. Read the manifest and choose the model, component, image-asset, or animated-background catalog.
 2. Filter candidates by the real page goal, brand, framework, performance budget, and asset class.
 3. For 3D, prefer \`ship-safe\` records and load only the selected model. Use \`publicModelUrl\` in external projects. When a streamed glTF record has a \`files\` map, preserve that dependency mapping or download the official distribution into the target project.
 4. For components, choose zero to three recipes. Treat each record as an implementation brief and build it from first principles in the target project's conventions.
-5. For animated backgrounds, preview candidates from their external URLs, select one winner, and then fetch only that record's \`downloadUrl\`. MP4 records are direct downloads; HLS records are adaptive streams. Optimize the selected media locally and provide a static reduced-motion fallback.
-6. Animated backgrounds are marked \`commercial-use\` based on Lumora's confirmation that the collection was purchased with commercial-use rights.
-7. Preserve source URLs, licence records, trademark warnings, fallbacks, accessibility contracts, and reduced-motion behavior.
-8. Do not mirror the entire catalog into a client project. Copy only the chosen assets or implement only the chosen recipes.
+5. For images and UI assets, choose only the records that serve the composition, then fetch each winner from \`publicImageUrl\` or \`downloadUrl\`. Preserve transparency, use nearest-neighbor rendering for \`pixelArt\`, and use repeating CSS backgrounds only when \`tileable\` is true.
+6. For animated backgrounds, preview candidates from their external URLs, select one winner, and then fetch only that record's \`downloadUrl\`. MP4 records are direct downloads; HLS records are adaptive streams. Optimize the selected media locally and provide a static reduced-motion fallback.
+7. Animated backgrounds are marked \`commercial-use\` based on Lumora's confirmation that the collection was purchased with commercial-use rights.
+8. Preserve source URLs, licence records, trademark warnings, fallbacks, accessibility contracts, and reduced-motion behavior.
+9. Do not mirror the entire catalog into a client project. Copy only the chosen assets or implement only the chosen recipes.
 
 ## Rights
 
-Kenney packs in this catalog are the user-provided GLB distributions licensed CC0 1.0. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. Animated backgrounds remain externally hosted and are recorded as commercial-use based on Lumora's purchase and entitlement confirmation.
+Kenney 3D and image packs in this catalog are user-provided distributions licensed CC0 1.0. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. Animated backgrounds remain externally hosted and are recorded as commercial-use based on Lumora's purchase and entitlement confirmation.
 `;
 
   await Promise.all([
@@ -1065,6 +1438,10 @@ Kenney packs in this catalog are the user-provided GLB distributions licensed CC
     writeFile(
       path.join(outputRoot, "animated-backgrounds.json"),
       `${JSON.stringify(backgroundData.backgrounds, null, 2)}\n`,
+    ),
+    writeFile(
+      path.join(outputRoot, "image-assets.json"),
+      `${JSON.stringify(imageData.imageAssets, null, 2)}\n`,
     ),
     writeFile(
       path.join(outputRoot, "manifest.json"),
@@ -1086,6 +1463,7 @@ Kenney packs in this catalog are the user-provided GLB distributions licensed CC
         localModels: manifest.totals.localModels,
         streamedModels: manifest.totals.streamedModels,
         componentRecipes: componentData.components.length,
+        imageAssets: imageData.imageAssets.length,
         animatedBackgrounds: backgroundData.backgrounds.length,
         availableAnimatedBackgrounds:
           manifest.totals.availableAnimatedBackgrounds,

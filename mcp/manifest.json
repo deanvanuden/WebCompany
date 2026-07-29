@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "generatedAt": "2026-07-29",
   "canonicalUrl": "https://lumoraofficial.de/mcp/",
-  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, original Web Component implementation recipes, and externally hosted animated background references.",
+  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, original Web Component implementation recipes, CC0 image and UI assets, and externally hosted animated background references.",
   "totals": {
     "models": 949,
     "localModels": 835,
     "streamedModels": 114,
     "componentRecipes": 1020,
+    "imageAssets": 543,
     "animatedBackgrounds": 152,
     "availableAnimatedBackgrounds": 151,
     "shipSafeModels": 948
@@ -17,6 +18,7 @@
     "models": "https://lumoraofficial.de/mcp/models.json",
     "componentIndex": "https://lumoraofficial.de/mcp/components-index.json",
     "componentRecords": "https://lumoraofficial.de/mcp/components.json",
+    "imageAssets": "https://lumoraofficial.de/mcp/image-assets.json",
     "animatedBackgrounds": "https://lumoraofficial.de/mcp/animated-backgrounds.json",
     "instructions": "https://lumoraofficial.de/mcp/instructions.md",
     "provenance": "https://lumoraofficial.de/mcp/provenance.json"
@@ -27,6 +29,16 @@
     "publicModelUrl": "Absolute model URL for Codex and external consumers",
     "files": "Optional exact dependency URL map used to resolve streamed Poly Haven glTF packages",
     "licenceClass": "ship-safe, attribution, or concept-only"
+  },
+  "imageAssetSchema": {
+    "id": "Stable catalog identifier",
+    "imageUrl": "Relative locally hosted PNG path",
+    "publicImageUrl": "Absolute PNG URL for Codex and external consumers",
+    "dimensions": "Native pixel dimensions",
+    "hasAlpha": "Whether the PNG contains transparency",
+    "pixelArt": "Whether nearest-neighbor rendering should be preserved",
+    "tileable": "Whether the image is intended to repeat as a pattern",
+    "licenceClass": "ship-safe CC0 asset"
   },
   "animatedBackgroundSchema": {
     "id": "Stable catalog identifier",

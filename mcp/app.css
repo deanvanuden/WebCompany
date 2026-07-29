@@ -692,6 +692,7 @@ canvas {
 
 .model-card,
 .component-card,
+.image-card,
 .background-card {
   min-width: 0;
   display: block;
@@ -711,6 +712,7 @@ canvas {
 
 .model-card:hover,
 .component-card:hover,
+.image-card:hover,
 .background-card:hover {
   transform: translateY(-3px);
   border-color: var(--line-strong);
@@ -719,9 +721,88 @@ canvas {
 
 .model-card.is-selected,
 .component-card.is-selected,
+.image-card.is-selected,
 .background-card.is-selected {
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent);
+}
+
+.image-card-visual,
+.image-stage {
+  background-color: #ded9cf;
+  background-image:
+    linear-gradient(45deg, rgba(28, 29, 26, 0.055) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(28, 29, 26, 0.055) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(28, 29, 26, 0.055) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(28, 29, 26, 0.055) 75%);
+  background-position:
+    0 0,
+    0 12px,
+    12px -12px,
+    -12px 0;
+  background-size: 24px 24px;
+}
+
+.image-card-visual {
+  position: relative;
+  aspect-ratio: 1.18;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.image-card-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
+
+.image-card-visual img {
+  width: 76%;
+  height: 70%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 16px rgba(28, 29, 26, 0.12));
+  transition: transform 320ms var(--ease);
+}
+
+.image-card:hover .image-card-visual img {
+  transform: scale(1.045);
+}
+
+.image-card.is-pixel-art .image-card-visual img {
+  image-rendering: pixelated;
+}
+
+.image-card-pack,
+.image-card-format {
+  position: absolute;
+  z-index: 2;
+  top: 9px;
+  padding: 5px 6px;
+  border: 1px solid rgba(28, 29, 26, 0.12);
+  border-radius: 4px;
+  background: rgba(244, 240, 232, 0.78);
+  color: var(--muted);
+  backdrop-filter: blur(8px);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 6px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.image-card-pack {
+  left: 9px;
+  max-width: calc(100% - 58px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.image-card-format {
+  right: 9px;
 }
 
 .card-media {
@@ -1840,6 +1921,69 @@ canvas {
   font-size: 7px;
 }
 
+.image-stage {
+  position: relative;
+  aspect-ratio: 1.55;
+  display: grid;
+  place-items: center;
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+
+.image-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.55), transparent 58%);
+  pointer-events: none;
+}
+
+.image-stage img {
+  position: relative;
+  z-index: 1;
+  width: 78%;
+  height: 72%;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 24px rgba(28, 29, 26, 0.15));
+}
+
+.image-stage.is-pixel-art img {
+  image-rendering: pixelated;
+}
+
+.image-stage-hud {
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: 1px solid rgba(28, 29, 26, 0.14);
+  border-radius: 4px;
+  background: rgba(244, 240, 232, 0.76);
+  color: var(--muted);
+  backdrop-filter: blur(8px);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 6px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.image-stage-hud i {
+  width: 1px;
+  height: 8px;
+  background: rgba(28, 29, 26, 0.2);
+}
+
+.image-specs {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .background-stage {
   --background-hue: 220;
   position: relative;
@@ -2263,6 +2407,7 @@ footer a:hover {
 
   #model-inspector,
   #component-inspector,
+  #image-inspector,
   #background-inspector {
     display: grid;
     grid-template-columns: minmax(340px, 0.9fr) minmax(330px, 1.1fr);
@@ -2272,6 +2417,7 @@ footer a:hover {
   .inspector-heading,
   .model-stage,
   .component-stage,
+  .image-stage,
   .background-stage,
   .viewer-controls {
     grid-column: 1;
@@ -2304,6 +2450,7 @@ footer a:hover {
   }
 
   .site-header {
+    grid-template-columns: auto minmax(0, 1fr);
     gap: 8px;
     padding: 0 12px;
   }
@@ -2313,10 +2460,27 @@ footer a:hover {
     display: none;
   }
 
+  .site-header > .brand > span:not(.brand-mark) {
+    display: none;
+  }
+
   .view-tabs button {
+    flex: 0 0 auto;
     min-height: 36px;
     padding: 0 9px;
     font-size: 8px;
+  }
+
+  .view-tabs {
+    min-width: 0;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .view-tabs::-webkit-scrollbar {
+    display: none;
   }
 
   .view-tabs button:last-child {
@@ -2378,6 +2542,7 @@ footer a:hover {
 
   #model-inspector,
   #component-inspector,
+  #image-inspector,
   #background-inspector {
     display: block;
   }
@@ -2501,6 +2666,10 @@ footer a:hover {
   }
 
   .background-stage-hud {
+    display: none;
+  }
+
+  .image-stage-hud {
     display: none;
   }
 }

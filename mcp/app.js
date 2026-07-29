@@ -23,10 +23,12 @@ const state = {
   view: "models",
   models: [],
   components: [],
+  images: [],
   backgrounds: [],
   componentRecords: null,
   selectedModelId: null,
   selectedComponentId: null,
+  selectedImageId: null,
   selectedBackgroundId: null,
   query: "",
   primary: "All",
@@ -58,6 +60,7 @@ const elements = {
   loadMore: document.querySelector("#load-more"),
   modelInspector: document.querySelector("#model-inspector"),
   componentInspector: document.querySelector("#component-inspector"),
+  imageInspector: document.querySelector("#image-inspector"),
   backgroundInspector: document.querySelector("#background-inspector"),
   toast: document.querySelector("#toast"),
 };
@@ -139,6 +142,7 @@ function ensureHlsRuntime() {
 function currentDataset() {
   if (state.view === "models") return state.models;
   if (state.view === "components") return state.components;
+  if (state.view === "images") return state.images;
   return state.backgrounds;
 }
 
@@ -161,6 +165,16 @@ function fieldConfiguration() {
       categoryLabel: "Availability",
       secondary: "hostLabel",
       secondaryLabel: "Host",
+    };
+  }
+  if (state.view === "images") {
+    return {
+      primary: "assetType",
+      primaryLabel: "Type",
+      category: "category",
+      categoryLabel: "Category",
+      secondary: "collection",
+      secondaryLabel: "Pack",
     };
   }
   return {
@@ -235,7 +249,15 @@ function renderFilters() {
           Lumora has licensed this collection for commercial work.
         </p>
       `
-      : `
+      : state.view === "images"
+        ? `
+        <span aria-hidden="true">✓</span>
+        <p>
+          <strong>CC0 · commercial use.</strong>
+          Six Kenney packs; attribution is optional.
+        </p>
+      `
+        : `
         <span aria-hidden="true">✓</span>
         <p>
           <strong>Rights travel with the record.</strong>
@@ -276,6 +298,16 @@ function filteredRecords() {
         record.sourceUrl,
         record.summary,
       ];
+    } else if (state.view === "images") {
+      searchable = [
+        record.name,
+        record.assetType,
+        record.category,
+        record.collection,
+        record.description,
+        record.recommendedUse,
+        ...(record.tags ?? []),
+      ];
     } else {
       searchable = [
         record.name,
@@ -310,6 +342,18 @@ function filteredRecords() {
       if (left.source !== right.source) return left.source === "Kenney" ? -1 : 1;
       if (left.storage !== right.storage) return left.storage === "local" ? -1 : 1;
       return left.name.localeCompare(right.name);
+    }
+    if (state.view === "images") {
+      if (state.sort === "size") {
+        return left.fileSizeKB - right.fileSizeKB || left.name.localeCompare(right.name);
+      }
+      if (state.sort === "dimensions") {
+        return (
+          left.width * left.height - right.width * right.height ||
+          left.name.localeCompare(right.name)
+        );
+      }
+      return left.sourceOrder - right.sourceOrder;
     }
     if (state.view === "backgrounds") {
       if (state.sort === "format") {
@@ -415,6 +459,42 @@ function componentCard(record) {
   `;
 }
 
+function imageCard(record) {
+  const selected = state.selectedImageId === record.id;
+  const renderingClass = record.pixelArt ? " is-pixel-art" : "";
+  return `
+    <button
+      type="button"
+      role="listitem"
+      class="image-card${selected ? " is-selected" : ""}${renderingClass}"
+      data-record-id="${escapeHtml(record.id)}"
+      aria-label="Inspect ${escapeHtml(record.name)}"
+      aria-pressed="${selected}"
+    >
+      <span class="image-card-visual">
+        <img
+          src="${escapeHtml(record.imageUrl)}"
+          alt=""
+          width="${record.width}"
+          height="${record.height}"
+          loading="lazy"
+        />
+        <span class="image-card-pack">${escapeHtml(record.collection)}</span>
+        <span class="image-card-format">${escapeHtml(record.format)}</span>
+      </span>
+      <span class="card-copy">
+        <h3>${escapeHtml(record.name)}</h3>
+        <p>${escapeHtml(record.category)} · ${escapeHtml(record.dimensions)}</p>
+        <span class="card-meta">
+          <span>${escapeHtml(record.assetType)}</span>
+          <span>${Number(record.fileSizeKB).toFixed(record.fileSizeKB < 10 ? 1 : 0)} KB</span>
+          <span>${record.hasAlpha ? "alpha" : "opaque"}</span>
+        </span>
+      </span>
+    </button>
+  `;
+}
+
 function backgroundCard(record) {
   const selected = state.selectedBackgroundId === record.id;
   const unavailable = record.availability !== "Available";
@@ -482,7 +562,9 @@ function renderCatalog() {
       ? "objects"
       : state.view === "components"
         ? "recipes"
-        : "backgrounds";
+        : state.view === "images"
+          ? "assets"
+          : "backgrounds";
 
   elements.catalogTitle.textContent =
     state.query ||
@@ -497,7 +579,9 @@ function renderCatalog() {
       ? "Kenney + Poly Haven"
       : state.view === "components"
         ? "12 original art directions"
-        : `${formatCount(state.backgrounds.filter((background) => background.availability === "Available").length)} live external sources`;
+        : state.view === "images"
+          ? "6 CC0 Kenney packs"
+          : `${formatCount(state.backgrounds.filter((background) => background.availability === "Available").length)} live external sources`;
   elements.progressCopy.textContent = records.length
     ? `Showing ${formatCount(visible.length)} of ${formatCount(records.length)} ${noun}`
     : "No matching records";
@@ -521,6 +605,7 @@ function renderCatalog() {
     .map((record) => {
       if (state.view === "models") return modelCard(record);
       if (state.view === "components") return componentCard(record);
+      if (state.view === "images") return imageCard(record);
       return backgroundCard(record);
     })
     .join("");
@@ -541,6 +626,14 @@ function sortOptionsForView() {
       ["name", "Name A–Z"],
       ["format", "Format"],
       ["size", "Smallest MP4"],
+    ];
+  }
+  if (state.view === "images") {
+    return [
+      ["featured", "Source order"],
+      ["name", "Name A–Z"],
+      ["size", "Smallest file"],
+      ["dimensions", "Smallest dimensions"],
     ];
   }
   return [
@@ -673,6 +766,67 @@ async function selectComponent(id, { updateLocation = true } = {}) {
   }
 }
 
+function renderImageInspector(record) {
+  document.querySelector("#image-name").textContent = record.name;
+  document.querySelector("#image-index").textContent =
+    `${String(record.sourceOrder).padStart(3, "0")} / ${String(state.images.length).padStart(3, "0")}`;
+  document.querySelector("#image-description").textContent =
+    `${record.description} ${record.recommendedUse}`;
+  document.querySelector("#image-dimensions").textContent = record.dimensions;
+  document.querySelector("#image-size").textContent =
+    `${Number(record.fileSizeKB).toFixed(record.fileSizeKB < 10 ? 2 : 1)} KB`;
+  document.querySelector("#image-alpha").textContent =
+    record.hasAlpha ? "Transparent PNG" : "Opaque PNG";
+  document.querySelector("#image-category").textContent = record.category;
+  document.querySelector("#image-pack").textContent = record.collection;
+  document.querySelector("#image-licence").textContent =
+    `${record.licence} · ship-safe`;
+  document.querySelector("#image-source").textContent =
+    `${record.source} · ${record.collection}`;
+  document.querySelector("#image-source-link").href = record.sourceUrl;
+  document.querySelector("#image-url").textContent = record.publicImageUrl;
+  document.querySelector("#image-preview").src = record.imageUrl;
+  document.querySelector("#image-preview").alt = `Preview of ${record.name}`;
+  document
+    .querySelector("#image-stage")
+    .classList.toggle("is-pixel-art", record.pixelArt);
+  document.querySelector("#image-stage-format").textContent =
+    record.tileable ? "TILEABLE PNG" : record.pixelArt ? "PIXEL PNG" : "PNG";
+  document.querySelector("#image-badges").innerHTML = [
+    record.assetType,
+    record.category,
+    record.hasAlpha ? "transparent" : "opaque",
+    record.pixelArt ? "pixel art" : null,
+    record.tileable ? "tileable" : null,
+    "CC0",
+  ]
+    .filter(Boolean)
+    .map((badge) => `<span>${escapeHtml(badge)}</span>`)
+    .join("");
+
+  const prompt =
+    `Read the Lumora MCP image asset record "${record.id}" at ` +
+    `${publicRoot}/image-assets.json. Use its publicImageUrl in this project ` +
+    `only if it supports the composition. Preserve transparency, native aspect ` +
+    `ratio, and licence metadata${record.pixelArt ? "; render it with crisp nearest-neighbor pixels" : ""}` +
+    `${record.tileable ? "; repeat it only as an intentional pattern" : ""}. ` +
+    `Optimize delivery without visibly degrading the asset.`;
+  const promptElement = document.querySelector("#image-prompt");
+  promptElement.textContent = prompt;
+  promptElement.dataset.prompt = prompt;
+  document.querySelector("#image-record-link").href =
+    `./image-assets.json#${encodeURIComponent(record.id)}`;
+}
+
+async function selectImage(id, { updateLocation = true } = {}) {
+  const record = state.images.find((image) => image.id === id);
+  if (!record) return;
+  state.selectedImageId = id;
+  renderImageInspector(record);
+  renderCatalog();
+  if (updateLocation) updateHash("images", id);
+}
+
 function renderBackgroundInspector(record) {
   document.querySelector("#background-name").textContent = record.name;
   document.querySelector("#background-index").textContent =
@@ -743,7 +897,11 @@ function resetFilters() {
 }
 
 function setView(view, { updateLocation = true } = {}) {
-  if (!["models", "components", "backgrounds", "integration"].includes(view)) {
+  if (
+    !["models", "components", "images", "backgrounds", "integration"].includes(
+      view,
+    )
+  ) {
     return;
   }
   state.view = view;
@@ -769,13 +927,16 @@ function setView(view, { updateLocation = true } = {}) {
 
   elements.modelInspector.hidden = view !== "models";
   elements.componentInspector.hidden = view !== "components";
+  elements.imageInspector.hidden = view !== "images";
   elements.backgroundInspector.hidden = view !== "backgrounds";
   elements.catalogKicker.textContent =
     view === "models"
       ? "3D INDEX / WEB READY"
       : view === "components"
         ? "COMPONENT INDEX / OWNED ORIGINAL"
-        : "BACKGROUND INDEX / EXTERNAL STREAMS";
+        : view === "images"
+          ? "IMAGE INDEX / LOCAL CC0"
+          : "BACKGROUND INDEX / EXTERNAL STREAMS";
 
   renderSortOptions();
   renderFilters();
@@ -792,6 +953,9 @@ function setView(view, { updateLocation = true } = {}) {
   if (view === "components" && state.selectedComponentId) {
     selectComponent(state.selectedComponentId, { updateLocation });
   }
+  if (view === "images" && state.selectedImageId) {
+    selectImage(state.selectedImageId, { updateLocation });
+  }
   if (view === "backgrounds" && state.selectedBackgroundId) {
     selectBackground(state.selectedBackgroundId, { updateLocation });
   }
@@ -804,6 +968,7 @@ function readInitialRoute() {
   const id = idParts.join("/");
   if (type === "components" && id) return { view: "components", id };
   if (type === "models" && id) return { view: "models", id };
+  if (type === "images" && id) return { view: "images", id };
   if (type === "backgrounds" && id) return { view: "backgrounds", id };
   return { view: "models", id: null };
 }
@@ -1358,6 +1523,7 @@ function bindEvents() {
     if (!card) return;
     if (state.view === "models") selectModel(card.dataset.recordId);
     if (state.view === "components") selectComponent(card.dataset.recordId);
+    if (state.view === "images") selectImage(card.dataset.recordId);
     if (state.view === "backgrounds") selectBackground(card.dataset.recordId);
   });
 
@@ -1412,6 +1578,20 @@ function bindEvents() {
       if (record) copyText(record.downloadUrl, "Background URL copied");
     });
 
+  document.querySelector("#copy-image-url").addEventListener("click", () => {
+    const record = state.images.find(
+      (image) => image.id === state.selectedImageId,
+    );
+    if (record) copyText(record.publicImageUrl, "Image URL copied");
+  });
+
+  document
+    .querySelector("#copy-image-prompt")
+    .addEventListener("click", () => {
+      const prompt = document.querySelector("#image-prompt").dataset.prompt;
+      if (prompt) copyText(prompt, "Codex prompt copied");
+    });
+
   document
     .querySelector("#copy-background-prompt")
     .addEventListener("click", () => {
@@ -1452,31 +1632,36 @@ async function initialize() {
       manifestResponse,
       modelsResponse,
       componentsResponse,
+      imagesResponse,
       backgroundsResponse,
     ] =
       await Promise.all([
         fetch(catalogUrl("./manifest.json")),
         fetch(catalogUrl("./models.json")),
         fetch(catalogUrl("./components-index.json")),
+        fetch(catalogUrl("./image-assets.json")),
         fetch(catalogUrl("./animated-backgrounds.json")),
       ]);
     if (
       !manifestResponse.ok ||
       !modelsResponse.ok ||
       !componentsResponse.ok ||
+      !imagesResponse.ok ||
       !backgroundsResponse.ok
     ) {
       throw new Error("One or more MCP catalog files could not be loaded.");
     }
 
-    const [manifest, models, components, backgrounds] = await Promise.all([
+    const [manifest, models, components, images, backgrounds] = await Promise.all([
       manifestResponse.json(),
       modelsResponse.json(),
       componentsResponse.json(),
+      imagesResponse.json(),
       backgroundsResponse.json(),
     ]);
     state.models = models;
     state.components = components;
+    state.images = images;
     state.backgrounds = backgrounds;
 
     if (componentPreviewCount !== 85) {
@@ -1490,6 +1675,9 @@ async function initialize() {
     });
     document.querySelectorAll('[data-stat="components"]').forEach((element) => {
       element.textContent = formatCount(manifest.totals.componentRecipes);
+    });
+    document.querySelectorAll('[data-stat="images"]').forEach((element) => {
+      element.textContent = formatCount(manifest.totals.imageAssets);
     });
     document
       .querySelectorAll('[data-stat="backgrounds"]')
@@ -1516,6 +1704,12 @@ async function initialize() {
       backgrounds.find(
         (background) => background.id === "animated-background-001",
       ) ?? backgrounds[0];
+    const defaultImage =
+      images.find(
+        (image) =>
+          image.id ===
+          "kenney-image-background-elements-backgrounds-background-forest",
+      ) ?? images[0];
     state.selectedModelId =
       route.view === "models" && models.some((model) => model.id === route.id)
         ? route.id
@@ -1525,6 +1719,11 @@ async function initialize() {
       components.some((component) => component.id === route.id)
         ? route.id
         : defaultComponent.id;
+    state.selectedImageId =
+      route.view === "images" &&
+      images.some((image) => image.id === route.id)
+        ? route.id
+        : defaultImage.id;
     state.selectedBackgroundId =
       route.view === "backgrounds" &&
       backgrounds.some((background) => background.id === route.id)
@@ -1537,6 +1736,11 @@ async function initialize() {
     }
     if (route.view === "components") {
       await selectComponent(state.selectedComponentId, {
+        updateLocation: false,
+      });
+    }
+    if (route.view === "images") {
+      await selectImage(state.selectedImageId, {
         updateLocation: false,
       });
     }

@@ -54,12 +54,13 @@ async function checkLocalFile(value, label) {
   }
 }
 
-const [manifest, models, componentIndex, components, backgrounds, provenance] =
+const [manifest, models, componentIndex, components, images, backgrounds, provenance] =
   await Promise.all([
     readJson("manifest.json"),
     readJson("models.json"),
     readJson("components-index.json"),
     readJson("components.json"),
+    readJson("image-assets.json"),
     readJson("animated-backgrounds.json"),
     readJson("provenance.json"),
   ]);
@@ -74,6 +75,8 @@ const componentPreviewIds = [
 const modelIds = new Set(models.map((model) => model.id));
 const componentIds = new Set(components.map((component) => component.id));
 const componentIndexIds = new Set(componentIndex.map((component) => component.id));
+const imageIds = new Set(images.map((image) => image.id));
+const imageUrls = new Set(images.map((image) => image.publicImageUrl));
 const backgroundIds = new Set(backgrounds.map((background) => background.id));
 const backgroundUrls = new Set(
   backgrounds.map((background) => background.sourceUrl),
@@ -131,6 +134,15 @@ check(
 check(
   manifest.totals.componentRecipes === components.length,
   "Manifest component total does not match components.json",
+);
+check(
+  manifest.totals.imageAssets === images.length,
+  "Manifest image asset total does not match image-assets.json",
+);
+check(
+  manifest.endpoints.imageAssets ===
+    "https://lumoraofficial.de/mcp/image-assets.json",
+  "Manifest image asset endpoint is incorrect",
 );
 check(
   manifest.totals.animatedBackgrounds === backgrounds.length,
@@ -226,6 +238,61 @@ for (const archetype of componentArchetypes) {
     previewArchetypes.has(archetype),
     `Component archetype has no visual preview renderer: ${archetype}`,
   );
+}
+
+check(images.length === 543, `Expected 543 image assets, found ${images.length}`);
+check(
+  imageIds.size === images.length,
+  `Image asset IDs are not unique (${imageIds.size}/${images.length})`,
+);
+check(
+  imageUrls.size === images.length,
+  `Image asset URLs are not unique (${imageUrls.size}/${images.length})`,
+);
+const expectedImagePackCounts = new Map([
+  ["background-elements", 89],
+  ["foliage-sprites", 50],
+  ["pixel-vehicles", 75],
+  ["pattern-lines", 60],
+  ["foliage", 106],
+  ["generic-items", 163],
+]);
+for (const [packSlug, expectedCount] of expectedImagePackCounts) {
+  const actualCount = images.filter((image) => image.packSlug === packSlug).length;
+  check(
+    actualCount === expectedCount,
+    `Expected ${expectedCount} ${packSlug} assets, found ${actualCount}`,
+  );
+}
+for (const image of images) {
+  check(Boolean(image.id), "An image asset has no ID");
+  check(Boolean(image.name), `${image.id} has no name`);
+  check(image.source === "Kenney", `${image.id} must retain its Kenney source`);
+  check(image.storage === "local", `${image.id} must be locally hosted`);
+  check(image.format === "PNG", `${image.id} must remain a PNG`);
+  check(image.licence === "CC0 1.0", `${image.id} has an unexpected licence`);
+  check(
+    image.licenceClass === "ship-safe",
+    `${image.id} must be marked ship-safe`,
+  );
+  check(
+    Number.isInteger(image.width) &&
+      image.width > 0 &&
+      Number.isInteger(image.height) &&
+      image.height > 0,
+    `${image.id} has invalid dimensions`,
+  );
+  check(
+    image.publicImageUrl === image.downloadUrl,
+    `${image.id} public and download URLs must match`,
+  );
+  check(
+    /^https:\/\/lumoraofficial\.de\/mcp\/assets\/images\/kenney\/.+\.png$/i.test(
+      image.publicImageUrl,
+    ),
+    `${image.id} does not expose a valid absolute PNG URL`,
+  );
+  await checkLocalFile(image.imageUrl, `${image.id} image`);
 }
 
 check(
@@ -332,6 +399,17 @@ check(
   "Component provenance total does not match components.json",
 );
 check(
+  provenance.imageAssets.assetCount === images.length,
+  "Image asset provenance total does not match image-assets.json",
+);
+check(
+  provenance.imageAssets.packs.reduce(
+    (total, pack) => total + pack.assetCount,
+    0,
+  ) === images.length,
+  "Image pack provenance total does not match image-assets.json",
+);
+check(
   provenance.animatedBackgrounds.uniqueUrlCount === backgrounds.length,
   "Animated background provenance total does not match the catalog",
 );
@@ -355,6 +433,7 @@ for (const requiredFile of [
   "app.css",
   "app.js",
   "component-previews.js",
+  "image-assets.json",
   "animated-backgrounds.json",
   "instructions.md",
   "provenance.json",
@@ -369,6 +448,12 @@ for (const requiredFile of [
   "licences/kenney/furniture.txt",
   "licences/kenney/mini-arcade.txt",
   "licences/kenney/food.txt",
+  "licences/kenney-images/background-elements.txt",
+  "licences/kenney-images/foliage-sprites.txt",
+  "licences/kenney-images/pixel-vehicles.txt",
+  "licences/kenney-images/pattern-lines.txt",
+  "licences/kenney-images/foliage.txt",
+  "licences/kenney-images/generic-items.txt",
   "vendor/three.module.min.js",
   "vendor/three.core.min.js",
   "vendor/loaders/GLTFLoader.js",
@@ -392,6 +477,7 @@ if (errors.length) {
     streamedModels: streamedModels.length,
     shipSafeModels: shipSafeModels.length,
     componentRecipes: components.length,
+    imageAssets: images.length,
     animatedBackgrounds: backgrounds.length,
     availableAnimatedBackgrounds: backgrounds.filter(
       (background) => background.availability === "Available",

@@ -211,6 +211,112 @@
       "Generated a smaller browser index without removing full machine-readable records"
     ]
   },
+  "imageAssets": {
+    "sourceKind": "user-supplied-cc0-packs",
+    "storage": "local PNG files",
+    "licence": "CC0 1.0",
+    "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "assetCount": 543,
+    "packs": [
+      {
+        "pack": "Background Elements Remastered",
+        "sourceUrl": "https://kenney.nl/assets/background-elements-remastered",
+        "inputArchive": "kenney_background-elements-remastered.zip",
+        "inputArchiveBytes": 1039383,
+        "creator": "Kenney",
+        "licence": "CC0 1.0",
+        "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "assetCount": 89,
+        "transformations": [
+          "Selected one canonical PNG variant for each useful standalone asset",
+          "Excluded duplicate retina, flat, monochrome, vector, sheet, sample, and preview variants",
+          "Preserved PNG pixel data and transparency without recompression",
+          "Normalized filenames and recorded dimensions, payload, original path, and intended use"
+        ]
+      },
+      {
+        "pack": "Foliage Sprites",
+        "sourceUrl": "https://kenney.nl/assets/foliage-sprites",
+        "inputArchive": "kenney_foliage-sprites.zip",
+        "inputArchiveBytes": 2432412,
+        "creator": "Kenney",
+        "licence": "CC0 1.0",
+        "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "assetCount": 50,
+        "transformations": [
+          "Selected one canonical PNG variant for each useful standalone asset",
+          "Excluded duplicate retina, flat, monochrome, vector, sheet, sample, and preview variants",
+          "Preserved PNG pixel data and transparency without recompression",
+          "Normalized filenames and recorded dimensions, payload, original path, and intended use"
+        ]
+      },
+      {
+        "pack": "Pixel Vehicle Pack",
+        "sourceUrl": "https://kenney.nl/assets/pixel-vehicle-pack",
+        "inputArchive": "kenney_pixel-vehicle-pack.zip",
+        "inputArchiveBytes": 60319,
+        "creator": "Kenney",
+        "licence": "CC0 1.0",
+        "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "assetCount": 75,
+        "transformations": [
+          "Selected one canonical PNG variant for each useful standalone asset",
+          "Excluded duplicate retina, flat, monochrome, vector, sheet, sample, and preview variants",
+          "Preserved PNG pixel data and transparency without recompression",
+          "Normalized filenames and recorded dimensions, payload, original path, and intended use"
+        ]
+      },
+      {
+        "pack": "Pattern Pack: Lines",
+        "sourceUrl": "https://kenney.nl/assets/pattern-pack-lines",
+        "inputArchive": "kenney_pattern-pack-lines.zip",
+        "inputArchiveBytes": 774269,
+        "creator": "Kenney",
+        "licence": "CC0 1.0",
+        "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "assetCount": 60,
+        "transformations": [
+          "Selected one canonical PNG variant for each useful standalone asset",
+          "Excluded duplicate retina, flat, monochrome, vector, sheet, sample, and preview variants",
+          "Preserved PNG pixel data and transparency without recompression",
+          "Normalized filenames and recorded dimensions, payload, original path, and intended use"
+        ]
+      },
+      {
+        "pack": "Foliage Pack",
+        "sourceUrl": "https://kenney.nl/assets/foliage-pack",
+        "inputArchive": "kenney_foliage-pack.zip",
+        "inputArchiveBytes": 2230956,
+        "creator": "Kenney",
+        "licence": "CC0 1.0",
+        "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "assetCount": 106,
+        "transformations": [
+          "Selected one canonical PNG variant for each useful standalone asset",
+          "Excluded duplicate retina, flat, monochrome, vector, sheet, sample, and preview variants",
+          "Preserved PNG pixel data and transparency without recompression",
+          "Normalized filenames and recorded dimensions, payload, original path, and intended use"
+        ]
+      },
+      {
+        "pack": "Generic Items",
+        "sourceUrl": "https://kenney.nl/assets/generic-items",
+        "inputArchive": "kenney_generic-items.zip",
+        "inputArchiveBytes": 2278836,
+        "creator": "Kenney",
+        "licence": "CC0 1.0",
+        "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "assetCount": 163,
+        "transformations": [
+          "Selected one canonical PNG variant for each useful standalone asset",
+          "Excluded duplicate retina, flat, monochrome, vector, sheet, sample, and preview variants",
+          "Preserved PNG pixel data and transparency without recompression",
+          "Normalized filenames and recorded dimensions, payload, original path, and intended use"
+        ]
+      }
+    ],
+    "selectionPolicy": "One useful canonical PNG set per pack; duplicate resolution, color, vector, sheet, and sample variants are intentionally excluded."
+  },
   "animatedBackgrounds": {
     "source": "AnimatedBackgrounds.txt",
     "sourceKind": "user-supplied-external-links",
