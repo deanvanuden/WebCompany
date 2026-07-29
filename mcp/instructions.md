@@ -38,10 +38,8 @@ The image catalog intentionally contains overlapping concepts in different visua
 - Lucide is the quiet outline default for product UI.
 - Phosphor records group six coordinated variants; choose one weight consistently.
 - Open Doodles and Open Peeps fit friendly, human, hand-drawn art direction.
-- DiceBear records are CC0 generator templates; replace the example seed deterministically.
 - ambientCG records contain a local selection preview only. Fetch the required production PBR maps from `downloadUrl`.
 - Hero Patterns require the attribution stored on each record.
-- Simple Icons are linked, trademark-aware records. Use them only for brands genuinely referenced by the project and read `trademarkWarning`, `brandGuidelinesUrl`, and `iconLicence`.
 - Kenney remains useful for intentional low-poly, pixel-art, and playful scenes; do not choose it from the subject name alone.
 
 Do not mix icon families or illustration systems casually. Prefer one primary family and one deliberately contrasting supporting family.

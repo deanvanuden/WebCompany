@@ -398,7 +398,7 @@
   "imageAssets": {
     "sourceKind": "mixed local, generator, linked, attribution, and trademark-aware assets",
     "storage": "Local SVG/PNG/WebP previews plus official generator, source, and pinned CDN links",
-    "assetCount": 7783,
+    "assetCount": 4315,
     "packs": [
       {
         "pack": "Background Elements Remastered",
@@ -544,17 +544,6 @@
         "transformations": "Downloaded the official ready-made bust, sitting, and standing SVG compositions."
       },
       {
-        "pack": "DiceBear",
-        "sourceUrl": "https://www.dicebear.com/licenses/",
-        "creator": "DiceBear",
-        "licence": "CC0 1.0",
-        "licenceUrl": "https://www.dicebear.com/licenses/",
-        "assetCount": 18,
-        "phase": "design-assets-2026-07",
-        "localLicencePath": "mcp/licences/design-assets/cc0-sources.txt",
-        "storage": "Official API templates; no avatar permutations mirrored locally."
-      },
-      {
         "pack": "ambientCG",
         "sourceUrl": "https://docs.ambientcg.com/license/",
         "creator": "ambientCG",
@@ -575,19 +564,6 @@
         "phase": "design-assets-2026-07",
         "localLicencePath": "mcp/licences/design-assets/hero-patterns.txt",
         "transformations": "Extracted the official unstyled SVG distributions and preserved required CC BY attribution."
-      },
-      {
-        "pack": "Simple Icons",
-        "sourceUrl": "https://simpleicons.org/",
-        "creator": "Simple Icons contributors",
-        "licence": "CC0 package · brand rights vary",
-        "licenceUrl": "https://github.com/simple-icons/simple-icons/blob/develop/DISCLAIMER.md",
-        "assetCount": 3450,
-        "phase": "design-assets-2026-07",
-        "version": "16.27.1",
-        "localLicencePath": "mcp/licences/design-assets/simple-icons.txt",
-        "localDisclaimerPath": "mcp/licences/design-assets/simple-icons-disclaimer.txt",
-        "storage": "Pinned jsDelivr links plus per-brand source, licence, guideline, color, and trademark-warning metadata."
       }
     ],
     "selectionPolicy": "Overlapping subjects are retained when they provide distinct visual languages. Records expose art-direction fit, usage mode, licence class, and implementation warnings."

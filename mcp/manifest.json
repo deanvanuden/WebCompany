@@ -9,13 +9,13 @@
     "localModels": 907,
     "streamedModels": 114,
     "componentRecipes": 1020,
-    "imageAssets": 7783,
+    "imageAssets": 4315,
     "animatedBackgrounds": 152,
     "availableAnimatedBackgrounds": 151,
     "shipSafeModels": 1020,
     "bundledImageAssets": 4315,
-    "linkedImageAssets": 3468,
-    "imageAssetCollections": 14
+    "linkedImageAssets": 0,
+    "imageAssetCollections": 12
   },
   "endpoints": {
     "models": "https://lumoraofficial.de/mcp/models.json",
@@ -57,18 +57,17 @@
     "conceptId": "Normalized subject for comparing the same concept across visual styles",
     "imageUrl": "Local path or official linked preview URL",
     "publicImageUrl": "Absolute default preview or asset URL",
-    "downloadUrl": "Production asset, source page, generator template, or pinned CDN URL depending on usageMode",
+    "downloadUrl": "Production asset, source page, or local asset URL depending on usageMode",
     "storage": "local, remote, or hybrid",
-    "usageMode": "bundled, grouped variants, generator, linked source, attribution, or trademark-aware link",
-    "format": "SVG, PNG, PBR maps, SVG API, or linked SVG",
+    "usageMode": "bundled, grouped variants, linked source, or attribution",
+    "format": "SVG, PNG, or PBR maps",
     "styleFamily": "Normalized visual language",
     "artStyle": "Human-readable visual treatment",
     "variants": "Optional named style or weight URLs grouped under one concept",
     "selectionGuidance": "Art-direction and implementation advice",
     "bestFor": "Contexts where the asset style is a strong fit",
     "avoidWhen": "Contexts where another visual family should be preferred",
-    "licenceClass": "ship-safe, attribution, generator, linked, or trademark-aware",
-    "trademarkWarning": "True when brand permission and current guidelines require review"
+    "licenceClass": "ship-safe, attribution, or linked"
   },
   "animatedBackgroundSchema": {
     "id": "Stable catalog identifier",
@@ -84,6 +83,6 @@
     "primaryRule": "Search by concept, then choose the visual family that fits the brand; subject-name overlap is intentional.",
     "consistencyRule": "Use one primary icon or illustration family per interface and mix styles only for an explicit hierarchy.",
     "groupedVariants": "Phosphor weights are grouped in one record so Codex can choose a consistent regular, thin, light, bold, fill, or duotone treatment.",
-    "linkedAssets": "ambientCG preview images are not production PBR maps; DiceBear URLs are templates; Simple Icons remain trademark-aware."
+    "linkedAssets": "ambientCG preview images are not production PBR maps; fetch production maps from the official material page."
   }
 }

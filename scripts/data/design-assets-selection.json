@@ -3,30 +3,8 @@
   "generatedAt": "2026-07-29",
   "packages": {
     "lucide-static": "1.27.0",
-    "@phosphor-icons/core": "2.1.1",
-    "simple-icons": "16.27.1"
+    "@phosphor-icons/core": "2.1.1"
   },
-  "diceBearApiVersion": "10.x",
-  "diceBearCc0Styles": [
-    "disco",
-    "glass",
-    "identicon",
-    "initial-face",
-    "initials",
-    "lorelei-neutral",
-    "lorelei",
-    "notionists-neutral",
-    "notionists",
-    "open-peeps",
-    "pixel-art-neutral",
-    "pixel-art",
-    "rings",
-    "shape-grid",
-    "shapes",
-    "stripes",
-    "thumbs",
-    "triangles"
-  ],
   "ambientCgMaterialIds": [
     "Wood051",
     "Wood049",

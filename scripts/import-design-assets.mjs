@@ -33,12 +33,10 @@ const licenceRoot = path.join(mcpRoot, "licences", "design-assets");
 const sourceRanks = {
   "Open Doodles": 10,
   "Open Peeps": 20,
-  DiceBear: 30,
   ambientCG: 40,
   "Hero Patterns": 50,
   Lucide: 60,
   Phosphor: 70,
-  "Simple Icons": 80,
 };
 
 async function exists(filePath) {
@@ -65,14 +63,6 @@ function slugify(value) {
     .toLowerCase()
     .replace(/[\s_]+/g, "-")
     .replace(/-+/g, "-");
-}
-
-function flattenValues(value) {
-  if (Array.isArray(value)) return value.flatMap(flattenValues);
-  if (value && typeof value === "object") {
-    return Object.values(value).flatMap(flattenValues);
-  }
-  return value == null ? [] : [String(value)];
 }
 
 function numberFromAttribute(source, name) {
@@ -539,68 +529,6 @@ async function buildOpenPeepsRecords() {
   });
 }
 
-async function buildDiceBearRecords() {
-  const version = config.diceBearApiVersion;
-  return mapWithConcurrency(config.diceBearCc0Styles, 6, async (style) => {
-    const previewUrl = `https://api.dicebear.com/${version}/${style}/svg?seed=Lumora&size=256`;
-    const templateUrl = `https://api.dicebear.com/${version}/${style}/svg?seed={seed}&size=256`;
-    const response = await fetch(previewUrl, { method: "HEAD" });
-    if (!response.ok) {
-      throw new Error(`DiceBear style unavailable: ${style}`);
-    }
-    const name = titleFromSlug(style);
-    return baseRecord({
-      id: `dicebear-${style}`,
-      name,
-      source: "DiceBear",
-      creator: ["lorelei", "lorelei-neutral"].includes(style)
-        ? "Lisa Wischofsky"
-        : ["notionists", "notionists-neutral"].includes(style)
-          ? "Zoish"
-          : style === "open-peeps"
-            ? "Pablo Stanley"
-            : "DiceBear",
-      collection: "DiceBear CC0 generators",
-      packSlug: "dicebear-cc0",
-      assetType: "Avatar generator",
-      category: style.includes("pixel")
-        ? "Pixel avatars"
-        : ["rings", "shape-grid", "shapes", "stripes", "triangles", "disco", "glass", "identicon"].includes(style)
-          ? "Abstract avatars"
-          : "Character avatars",
-      tags: ["avatar", "generator", "deterministic", "profile", ...style.split("-")],
-      format: "SVG API",
-      storage: "remote",
-      usageMode: "generator",
-      imageUrl: previewUrl,
-      publicImageUrl: previewUrl,
-      downloadUrl: templateUrl,
-      sourceUrl: `https://www.dicebear.com/styles/${style}/`,
-      licence: "CC0 1.0",
-      licenceClass: "ship-safe-generator",
-      licenceUrl: "https://www.dicebear.com/licenses/",
-      attribution: "Attribution is optional for these explicitly CC0 styles.",
-      rightsNote: "Only the DiceBear styles explicitly listed as CC0 in the official licence index are included.",
-      fileSizeKB: 0,
-      width: 256,
-      height: 256,
-      recommendedUse: "Use the URL template with a deterministic seed to create consistent avatars without storing a large image set.",
-      styleFamily: style,
-      artStyle: "Deterministic vector avatar generator",
-      conceptId: `avatar.${style}`,
-      selectionGuidance: "Choose one generator style per product and keep seed handling deterministic. Do not mix unrelated avatar systems in the same interface.",
-      bestFor: ["user profiles", "testimonials", "community", "team placeholders", "demo data"],
-      avoidWhen: ["real staff photography or verified customer identity is required"],
-      extra: {
-        generatorTemplateUrl: templateUrl,
-        generatorApiVersion: version,
-        generatorSeedExample: "Lumora",
-        variantCount: "unbounded",
-      },
-    });
-  });
-}
-
 async function buildAmbientCgRecords() {
   const ids = config.ambientCgMaterialIds;
   const endpoint =
@@ -772,74 +700,6 @@ async function buildHeroPatternRecords() {
   });
 }
 
-async function buildSimpleIconRecords() {
-  const version = config.packages["simple-icons"];
-  const packageRoot = await ensureNpmPackage(
-    "simple-icons",
-    version,
-    "simple-icons",
-  );
-  const icons = JSON.parse(
-    await readFile(
-      path.join(packageRoot, "data", "simple-icons.json"),
-      "utf8",
-    ),
-  );
-  return icons.map((icon) => {
-    const linkedUrl = `https://cdn.jsdelivr.net/npm/simple-icons@${version}/icons/${icon.slug}.svg`;
-    const aliases = flattenValues(icon.aliases);
-    const iconLicence = icon.license?.type ?? "Not supplied in package metadata";
-    const iconLicenceUrl =
-      icon.license?.url ??
-      (icon.license?.type
-        ? `https://spdx.org/licenses/${icon.license.type}.html`
-        : null);
-    return baseRecord({
-      id: `simple-icons-${icon.slug}`,
-      name: icon.title,
-      source: "Simple Icons",
-      creator: "Simple Icons contributors",
-      collection: `Simple Icons ${version} (linked)`,
-      packSlug: "simple-icons-linked",
-      assetType: "Brand / logo",
-      category: "Brand logos",
-      tags: ["brand", "logo", "trademark", icon.title, icon.slug, ...aliases],
-      format: "SVG link",
-      storage: "remote",
-      usageMode: "linked-trademark-aware",
-      imageUrl: linkedUrl,
-      publicImageUrl: linkedUrl,
-      downloadUrl: linkedUrl,
-      sourceUrl: icon.source,
-      licence: "CC0 package · brand rights vary",
-      licenceClass: "trademark-aware",
-      licenceUrl: "https://github.com/simple-icons/simple-icons/blob/develop/DISCLAIMER.md",
-      attribution: "Simple Icons package attribution is optional; follow the brand owner's current trademark and usage guidelines.",
-      rightsNote: "The Simple Icons package is CC0, but that does not make every included brand mark free of trademark, copyright, or brand-guideline restrictions.",
-      fileSizeKB: 0,
-      width: 24,
-      height: 24,
-      recommendedUse: "Use only to identify a technology, platform, integration, client, or partner that the page actually references.",
-      styleFamily: "brand-glyph",
-      artStyle: "Official or community-maintained monochrome brand glyph",
-      conceptId: `brand.${icon.slug}`,
-      selectionGuidance: "Check the linked source, individual licence metadata, and brand guidelines before client use. Never imply endorsement or partnership.",
-      bestFor: ["technology stacks", "integration grids", "client-approved logo rows", "developer documentation"],
-      avoidWhen: ["decorative logo clouds", "unverified partnerships", "altered marks that violate brand rules"],
-      extra: {
-        libraryVersion: version,
-        brandHex: `#${icon.hex}`,
-        brandSourceUrl: icon.source,
-        brandGuidelinesUrl: icon.guidelines ?? null,
-        iconLicence,
-        iconLicenceUrl,
-        trademarkWarning: true,
-        variantCount: 1,
-      },
-    });
-  });
-}
-
 async function writeLicenceFiles(packageRoots) {
   await mkdir(licenceRoot, { recursive: true });
   await copyFile(
@@ -849,14 +709,6 @@ async function writeLicenceFiles(packageRoots) {
   await copyFile(
     path.join(packageRoots.phosphor, "LICENSE"),
     path.join(licenceRoot, "phosphor.txt"),
-  );
-  await copyFile(
-    path.join(packageRoots.simpleIcons, "LICENSE.md"),
-    path.join(licenceRoot, "simple-icons.txt"),
-  );
-  await copyFile(
-    path.join(packageRoots.simpleIcons, "DISCLAIMER.md"),
-    path.join(licenceRoot, "simple-icons-disclaimer.txt"),
   );
   await writeFile(
     path.join(licenceRoot, "hero-patterns.txt"),
@@ -878,9 +730,6 @@ async function writeLicenceFiles(packageRoots) {
       "Open Peeps by Pablo Stanley — CC0 1.0",
       "https://www.openpeeps.com/",
       "",
-      "DiceBear styles listed in design-assets-selection.json — CC0 1.0",
-      "https://www.dicebear.com/licenses/",
-      "",
       "ambientCG assets and preview renders — CC0 1.0",
       "https://docs.ambientcg.com/license/",
       "",
@@ -899,15 +748,9 @@ async function buildDesignCatalog() {
     config.packages["@phosphor-icons/core"],
     "phosphor",
   );
-  const simpleIconsRoot = await ensureNpmPackage(
-    "simple-icons",
-    config.packages["simple-icons"],
-    "simple-icons",
-  );
   await writeLicenceFiles({
     lucide: lucideRoot,
     phosphor: phosphorRoot,
-    simpleIcons: simpleIconsRoot,
   });
 
   const collections = [];
@@ -916,10 +759,8 @@ async function buildDesignCatalog() {
     ["Phosphor", buildPhosphorRecords],
     ["Open Doodles", buildOpenDoodlesRecords],
     ["Open Peeps", buildOpenPeepsRecords],
-    ["DiceBear", buildDiceBearRecords],
     ["ambientCG", buildAmbientCgRecords],
     ["Hero Patterns", buildHeroPatternRecords],
-    ["Simple Icons", buildSimpleIconRecords],
   ]) {
     process.stdout.write(`Building ${label}… `);
     const records = await builder();
@@ -964,10 +805,8 @@ The image catalog intentionally contains overlapping concepts in different visua
 - Lucide is the quiet outline default for product UI.
 - Phosphor records group six coordinated variants; choose one weight consistently.
 - Open Doodles and Open Peeps fit friendly, human, hand-drawn art direction.
-- DiceBear records are CC0 generator templates; replace the example seed deterministically.
 - ambientCG records contain a local selection preview only. Fetch the required production PBR maps from \`downloadUrl\`.
 - Hero Patterns require the attribution stored on each record.
-- Simple Icons are linked, trademark-aware records. Use them only for brands genuinely referenced by the project and read \`trademarkWarning\`, \`brandGuidelinesUrl\`, and \`iconLicence\`.
 - Kenney remains useful for intentional low-poly, pixel-art, and playful scenes; do not choose it from the subject name alone.
 
 Do not mix icon families or illustration systems casually. Prefer one primary family and one deliberately contrasting supporting family.
@@ -1072,18 +911,17 @@ async function mergeCatalog(designRecords) {
     conceptId: "Normalized subject for comparing the same concept across visual styles",
     imageUrl: "Local path or official linked preview URL",
     publicImageUrl: "Absolute default preview or asset URL",
-    downloadUrl: "Production asset, source page, generator template, or pinned CDN URL depending on usageMode",
+    downloadUrl: "Production asset, source page, or local asset URL depending on usageMode",
     storage: "local, remote, or hybrid",
-    usageMode: "bundled, grouped variants, generator, linked source, attribution, or trademark-aware link",
-    format: "SVG, PNG, PBR maps, SVG API, or linked SVG",
+    usageMode: "bundled, grouped variants, linked source, or attribution",
+    format: "SVG, PNG, or PBR maps",
     styleFamily: "Normalized visual language",
     artStyle: "Human-readable visual treatment",
     variants: "Optional named style or weight URLs grouped under one concept",
     selectionGuidance: "Art-direction and implementation advice",
     bestFor: "Contexts where the asset style is a strong fit",
     avoidWhen: "Contexts where another visual family should be preferred",
-    licenceClass: "ship-safe, attribution, generator, linked, or trademark-aware",
-    trademarkWarning: "True when brand permission and current guidelines require review",
+    licenceClass: "ship-safe, attribution, or linked",
   };
   manifest.imageSelectionGuidance = {
     guidanceMode: "advisory",
@@ -1094,7 +932,7 @@ async function mergeCatalog(designRecords) {
     groupedVariants:
       "Phosphor weights are grouped in one record so Codex can choose a consistent regular, thin, light, bold, fill, or duotone treatment.",
     linkedAssets:
-      "ambientCG preview images are not production PBR maps; DiceBear URLs are templates; Simple Icons remain trademark-aware.",
+      "ambientCG preview images are not production PBR maps; fetch production maps from the official material page.",
   };
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
@@ -1131,11 +969,6 @@ async function mergeCatalog(designRecords) {
       transformations:
         "Downloaded the official ready-made bust, sitting, and standing SVG compositions.",
     }),
-    collectionSummary(designRecords, "DiceBear", {
-      sourceUrl: "https://www.dicebear.com/licenses/",
-      localLicencePath: "mcp/licences/design-assets/cc0-sources.txt",
-      storage: "Official API templates; no avatar permutations mirrored locally.",
-    }),
     collectionSummary(designRecords, "ambientCG", {
       sourceUrl: "https://docs.ambientcg.com/license/",
       localLicencePath: "mcp/licences/design-assets/cc0-sources.txt",
@@ -1147,15 +980,6 @@ async function mergeCatalog(designRecords) {
       localLicencePath: "mcp/licences/design-assets/hero-patterns.txt",
       transformations:
         "Extracted the official unstyled SVG distributions and preserved required CC BY attribution.",
-    }),
-    collectionSummary(designRecords, "Simple Icons", {
-      version: config.packages["simple-icons"],
-      sourceUrl: "https://simpleicons.org/",
-      localLicencePath: "mcp/licences/design-assets/simple-icons.txt",
-      localDisclaimerPath:
-        "mcp/licences/design-assets/simple-icons-disclaimer.txt",
-      storage:
-        "Pinned jsDelivr links plus per-brand source, licence, guideline, color, and trademark-warning metadata.",
     }),
   ];
   provenance.generatedAt = config.generatedAt;
@@ -1179,6 +1003,13 @@ if (refresh || !(await exists(designCatalogPath))) {
 } else {
   designRecords = JSON.parse(await readFile(designCatalogPath, "utf8"));
 }
+designRecords = designRecords.filter(
+  (record) => !["DiceBear", "Simple Icons"].includes(record.source),
+);
+await writeFile(
+  designCatalogPath,
+  `${JSON.stringify(designRecords, null, 2)}\n`,
+);
 const merged = await mergeCatalog(designRecords);
 const counts = Object.fromEntries(
   [...new Set(designRecords.map((record) => record.source))]

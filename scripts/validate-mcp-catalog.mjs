@@ -548,10 +548,8 @@ const expectedDesignSourceCounts = new Map([
   ["Phosphor", 1512],
   ["Open Doodles", 33],
   ["Open Peeps", 93],
-  ["DiceBear", 18],
   ["ambientCG", 40],
   ["Hero Patterns", 87],
-  ["Simple Icons", 3450],
 ]);
 for (const [source, expectedCount] of expectedDesignSourceCounts) {
   const records = designAssets.filter((image) => image.source === source);
@@ -567,14 +565,12 @@ for (const image of designAssets.filter((record) => record.source === "Phosphor"
     `${image.id} does not group all six Phosphor variants`,
   );
 }
-for (const image of designAssets.filter((record) => record.source === "Simple Icons")) {
-  check(
-    image.storage === "remote" &&
-      image.trademarkWarning === true &&
-      image.licenceClass === "trademark-aware",
-    `${image.id} is not a linked trademark-aware record`,
-  );
-}
+check(
+  !designAssets.some((record) =>
+    ["DiceBear", "Simple Icons"].includes(record.source),
+  ),
+  "Removed avatar-generator or brand-logo records remain in design-assets.json",
+);
 for (const image of designAssets.filter((record) => record.source === "ambientCG")) {
   check(
     image.previewOnly === true &&
@@ -780,8 +776,6 @@ for (const requiredFile of [
   "licences/kenney-images/generic-items.txt",
   "licences/design-assets/lucide.txt",
   "licences/design-assets/phosphor.txt",
-  "licences/design-assets/simple-icons.txt",
-  "licences/design-assets/simple-icons-disclaimer.txt",
   "licences/design-assets/hero-patterns.txt",
   "licences/design-assets/cc0-sources.txt",
   "vendor/three.module.min.js",

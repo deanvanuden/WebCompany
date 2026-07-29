@@ -17,8 +17,7 @@ Production files for [lumoraofficial.de](https://lumoraofficial.de), served as a
   Kenney ZIPs, Lumora Objects index, and owned-original component catalog.
 - `scripts/import-design-assets.mjs` — refreshes or re-merges the multi-style
   Images/UI phase: full Lucide, grouped Phosphor variants, Open Doodles, Open
-  Peeps, CC0 DiceBear generators, curated ambientCG materials, Hero Patterns,
-  and linked trademark-aware Simple Icons.
+  Peeps, curated ambientCG materials, and Hero Patterns.
 
 The legal pages are part of the application and are available through:
 
