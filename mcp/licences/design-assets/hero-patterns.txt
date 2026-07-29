@@ -1,0 +1,5 @@
+Hero Patterns by Steve Schoger
+Source: https://heropatterns.com/
+Licence: Creative Commons Attribution 4.0 International
+Licence URL: https://creativecommons.org/licenses/by/4.0/
+Required attribution: Hero Patterns by Steve Schoger, licensed under CC BY 4.0.

@@ -54,13 +54,23 @@ async function checkLocalFile(value, label) {
   }
 }
 
-const [manifest, models, componentIndex, components, images, backgrounds, provenance] =
+const [
+  manifest,
+  models,
+  componentIndex,
+  components,
+  images,
+  designAssets,
+  backgrounds,
+  provenance,
+] =
   await Promise.all([
     readJson("manifest.json"),
     readJson("models.json"),
     readJson("components-index.json"),
     readJson("components.json"),
     readJson("image-assets.json"),
+    readJson("design-assets.json"),
     readJson("animated-backgrounds.json"),
     readJson("provenance.json"),
   ]);
@@ -419,7 +429,22 @@ for (const archetype of componentArchetypes) {
   );
 }
 
-check(images.length === 543, `Expected 543 image assets, found ${images.length}`);
+const kenneyImages = images.filter((image) => image.source === "Kenney");
+const importedDesignImages = images.filter(
+  (image) => image.phase === "design-assets-2026-07",
+);
+check(
+  images.length === kenneyImages.length + designAssets.length,
+  `Expected ${kenneyImages.length + designAssets.length} image assets, found ${images.length}`,
+);
+check(
+  kenneyImages.length === 543,
+  `Expected 543 Kenney image assets, found ${kenneyImages.length}`,
+);
+check(
+  importedDesignImages.length === designAssets.length,
+  `Merged design asset count does not match design-assets.json (${importedDesignImages.length}/${designAssets.length})`,
+);
 check(
   imageIds.size === images.length,
   `Image asset IDs are not unique (${imageIds.size}/${images.length})`,
@@ -446,13 +471,25 @@ for (const [packSlug, expectedCount] of expectedImagePackCounts) {
 for (const image of images) {
   check(Boolean(image.id), "An image asset has no ID");
   check(Boolean(image.name), `${image.id} has no name`);
-  check(image.source === "Kenney", `${image.id} must retain its Kenney source`);
-  check(image.storage === "local", `${image.id} must be locally hosted`);
-  check(image.format === "PNG", `${image.id} must remain a PNG`);
-  check(image.licence === "CC0 1.0", `${image.id} has an unexpected licence`);
   check(
-    image.licenceClass === "ship-safe",
-    `${image.id} must be marked ship-safe`,
+    Boolean(image.source) &&
+      Boolean(image.collection) &&
+      Boolean(image.assetType) &&
+      Boolean(image.category),
+    `${image.id} has incomplete source or classification metadata`,
+  );
+  check(
+    Boolean(image.licence) &&
+      Boolean(image.licenceClass) &&
+      Boolean(image.licenceUrl),
+    `${image.id} has incomplete licence metadata`,
+  );
+  check(
+    Boolean(image.usageMode) &&
+      Boolean(image.styleFamily) &&
+      Boolean(image.artStyle) &&
+      Boolean(image.selectionGuidance),
+    `${image.id} has incomplete usage or art-direction guidance`,
   );
   check(
     Number.isInteger(image.width) &&
@@ -460,6 +497,39 @@ for (const image of images) {
       Number.isInteger(image.height) &&
       image.height > 0,
     `${image.id} has invalid dimensions`,
+  );
+  check(
+    /^https:\/\/.+/i.test(image.publicImageUrl) &&
+      /^https:\/\/.+/i.test(image.downloadUrl),
+    `${image.id} does not expose HTTPS public and download URLs`,
+  );
+  if (image.storage === "local" || image.storage === "hybrid") {
+    await checkLocalFile(image.imageUrl, `${image.id} image`);
+  } else {
+    check(
+      /^https:\/\/.+/i.test(image.imageUrl),
+      `${image.id} remote preview is not HTTPS`,
+    );
+  }
+  for (const [variantName, variant] of Object.entries(image.variants ?? {})) {
+    check(
+      Boolean(variant.imageUrl) && Boolean(variant.publicImageUrl),
+      `${image.id} ${variantName} variant has incomplete URLs`,
+    );
+    await checkLocalFile(
+      variant.imageUrl,
+      `${image.id} ${variantName} variant`,
+    );
+  }
+}
+
+for (const image of kenneyImages) {
+  check(image.storage === "local", `${image.id} must be locally hosted`);
+  check(image.format === "PNG", `${image.id} must remain a PNG`);
+  check(image.licence === "CC0 1.0", `${image.id} has an unexpected licence`);
+  check(
+    image.licenceClass === "ship-safe",
+    `${image.id} must be marked ship-safe`,
   );
   check(
     image.publicImageUrl === image.downloadUrl,
@@ -471,7 +541,54 @@ for (const image of images) {
     ),
     `${image.id} does not expose a valid absolute PNG URL`,
   );
-  await checkLocalFile(image.imageUrl, `${image.id} image`);
+}
+
+const expectedDesignSourceCounts = new Map([
+  ["Lucide", 2007],
+  ["Phosphor", 1512],
+  ["Open Doodles", 33],
+  ["Open Peeps", 93],
+  ["DiceBear", 18],
+  ["ambientCG", 40],
+  ["Hero Patterns", 87],
+  ["Simple Icons", 3450],
+]);
+for (const [source, expectedCount] of expectedDesignSourceCounts) {
+  const records = designAssets.filter((image) => image.source === source);
+  check(
+    records.length === expectedCount,
+    `Expected ${expectedCount} ${source} records, found ${records.length}`,
+  );
+}
+for (const image of designAssets.filter((record) => record.source === "Phosphor")) {
+  check(
+    image.variantCount === 6 &&
+      Object.keys(image.variants ?? {}).length === 6,
+    `${image.id} does not group all six Phosphor variants`,
+  );
+}
+for (const image of designAssets.filter((record) => record.source === "Simple Icons")) {
+  check(
+    image.storage === "remote" &&
+      image.trademarkWarning === true &&
+      image.licenceClass === "trademark-aware",
+    `${image.id} is not a linked trademark-aware record`,
+  );
+}
+for (const image of designAssets.filter((record) => record.source === "ambientCG")) {
+  check(
+    image.previewOnly === true &&
+      image.storage === "hybrid" &&
+      image.downloadUrl.startsWith("https://ambientcg.com/a/"),
+    `${image.id} does not separate its local preview from production maps`,
+  );
+}
+for (const image of designAssets.filter((record) => record.source === "Hero Patterns")) {
+  check(
+    image.licenceClass === "attribution" &&
+      /Steve Schoger/i.test(image.attribution),
+    `${image.id} does not preserve Hero Patterns attribution`,
+  );
 }
 
 check(
@@ -639,6 +756,7 @@ for (const requiredFile of [
   "app.js",
   "component-previews.js",
   "image-assets.json",
+  "design-assets.json",
   "animated-backgrounds.json",
   "instructions.md",
   "provenance.json",
@@ -660,6 +778,12 @@ for (const requiredFile of [
   "licences/kenney-images/pattern-lines.txt",
   "licences/kenney-images/foliage.txt",
   "licences/kenney-images/generic-items.txt",
+  "licences/design-assets/lucide.txt",
+  "licences/design-assets/phosphor.txt",
+  "licences/design-assets/simple-icons.txt",
+  "licences/design-assets/simple-icons-disclaimer.txt",
+  "licences/design-assets/hero-patterns.txt",
+  "licences/design-assets/cc0-sources.txt",
   "vendor/three.module.min.js",
   "vendor/three.core.min.js",
   "vendor/loaders/GLTFLoader.js",

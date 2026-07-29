@@ -169,12 +169,12 @@ function fieldConfiguration() {
   }
   if (state.view === "images") {
     return {
-      primary: "assetType",
-      primaryLabel: "Type",
-      category: "category",
-      categoryLabel: "Category",
-      secondary: "collection",
-      secondaryLabel: "Pack",
+      primary: "source",
+      primaryLabel: "Source",
+      category: "assetType",
+      categoryLabel: "Asset kind",
+      secondary: "styleFamily",
+      secondaryLabel: "Visual style",
     };
   }
   return {
@@ -211,12 +211,21 @@ function filterOptionsMarkup(options, selected, group) {
           data-filter-value="${escapeHtml(value)}"
           aria-pressed="${selected === value}"
         >
-          <span>${escapeHtml(value)}</span>
+          <span>${escapeHtml(filterValueLabel(value, group))}</span>
           <span>${String(count).padStart(3, "0")}</span>
         </button>
       `,
     )
     .join("");
+}
+
+function filterValueLabel(value, group) {
+  if (state.view !== "images" || group !== "secondary" || value === "All") {
+    return value;
+  }
+  return value
+    .replaceAll("-", " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
 function renderFilters() {
@@ -253,8 +262,8 @@ function renderFilters() {
         ? `
         <span aria-hidden="true">✓</span>
         <p>
-          <strong>CC0 · commercial use.</strong>
-          Six Kenney packs; attribution is optional.
+          <strong>Usage mode travels with every asset.</strong>
+          Bundled, generated, attributed, linked, and trademark-aware records are clearly separated.
         </p>
       `
         : `
@@ -314,12 +323,21 @@ function filteredRecords() {
     } else if (state.view === "images") {
       searchable = [
         record.name,
+        record.source,
         record.assetType,
         record.category,
         record.collection,
         record.description,
         record.recommendedUse,
+        record.conceptId,
+        record.styleFamily,
+        record.artStyle,
+        record.usageMode,
+        record.selectionGuidance,
+        record.iconLicence,
         ...(record.tags ?? []),
+        ...(record.bestFor ?? []),
+        ...(record.avoidWhen ?? []),
       ];
     } else {
       searchable = [
@@ -363,7 +381,9 @@ function filteredRecords() {
     }
     if (state.view === "images") {
       if (state.sort === "size") {
-        return left.fileSizeKB - right.fileSizeKB || left.name.localeCompare(right.name);
+        const leftSize = left.fileSizeKB || Number.POSITIVE_INFINITY;
+        const rightSize = right.fileSizeKB || Number.POSITIVE_INFINITY;
+        return leftSize - rightSize || left.name.localeCompare(right.name);
       }
       if (state.sort === "dimensions") {
         return (
@@ -371,7 +391,11 @@ function filteredRecords() {
           left.name.localeCompare(right.name)
         );
       }
-      return left.sourceOrder - right.sourceOrder;
+      return (
+        (left.featuredRank ?? 100) - (right.featuredRank ?? 100) ||
+        left.sourceOrder - right.sourceOrder ||
+        left.name.localeCompare(right.name)
+      );
     }
     if (state.view === "backgrounds") {
       if (state.sort === "format") {
@@ -480,6 +504,18 @@ function componentCard(record) {
 function imageCard(record) {
   const selected = state.selectedImageId === record.id;
   const renderingClass = record.pixelArt ? " is-pixel-art" : "";
+  const tilePreview = record.previewMode === "tile";
+  const payload = record.fileSizeKB
+    ? `${Number(record.fileSizeKB).toFixed(record.fileSizeKB < 10 ? 1 : 0)} KB`
+    : record.usageMode === "generator"
+      ? "generator"
+      : record.storage === "remote"
+        ? "linked"
+        : "variable";
+  const variantLabel =
+    Number(record.variantCount) > 1
+      ? `${record.variantCount} variants`
+      : record.dimensions;
   return `
     <button
       type="button"
@@ -489,12 +525,21 @@ function imageCard(record) {
       aria-label="Inspect ${escapeHtml(record.name)}"
       aria-pressed="${selected}"
     >
-      <span class="image-card-visual">
+      <span class="image-card-visual${tilePreview ? " is-tile-preview" : ""}${record.previewMode === "cover" ? " is-cover-preview" : ""}">
+        ${
+          tilePreview
+            ? `<span
+                class="image-card-tile"
+                style="background-image:url('${escapeHtml(record.imageUrl)}')"
+                aria-hidden="true"
+              ></span>`
+            : ""
+        }
         <img
           src="${escapeHtml(record.imageUrl)}"
           alt=""
-          width="${record.width}"
-          height="${record.height}"
+          width="${record.width || 256}"
+          height="${record.height || 256}"
           loading="lazy"
         />
         <span class="image-card-pack">${escapeHtml(record.collection)}</span>
@@ -502,11 +547,11 @@ function imageCard(record) {
       </span>
       <span class="card-copy">
         <h3>${escapeHtml(record.name)}</h3>
-        <p>${escapeHtml(record.category)} · ${escapeHtml(record.dimensions)}</p>
+        <p>${escapeHtml(record.category)} · ${escapeHtml(variantLabel)}</p>
         <span class="card-meta">
           <span>${escapeHtml(record.assetType)}</span>
-          <span>${Number(record.fileSizeKB).toFixed(record.fileSizeKB < 10 ? 1 : 0)} KB</span>
-          <span>${record.hasAlpha ? "alpha" : "opaque"}</span>
+          <span>${escapeHtml(payload)}</span>
+          <span>${escapeHtml(record.source)}</span>
         </span>
       </span>
     </button>
@@ -598,7 +643,7 @@ function renderCatalog() {
       : state.view === "components"
         ? "12 original art directions"
         : state.view === "images"
-          ? "6 CC0 Kenney packs"
+          ? `${formatCount(new Set(state.images.map((image) => image.collection)).size)} collections · bundled + linked + generated`
           : `${formatCount(state.backgrounds.filter((background) => background.availability === "Available").length)} live external sources`;
   elements.progressCopy.textContent = records.length
     ? `Showing ${formatCount(visible.length)} of ${formatCount(records.length)} ${noun}`
@@ -648,7 +693,7 @@ function sortOptionsForView() {
   }
   if (state.view === "images") {
     return [
-      ["featured", "Source order"],
+      ["featured", "Curated sources"],
       ["name", "Name A–Z"],
       ["size", "Smallest file"],
       ["dimensions", "Smallest dimensions"],
@@ -829,51 +874,174 @@ async function selectComponent(id, { updateLocation = true } = {}) {
   }
 }
 
+function imagePayloadLabel(record) {
+  if (record.fileSizeKB) {
+    return `${Number(record.fileSizeKB).toFixed(record.fileSizeKB < 10 ? 2 : 1)} KB`;
+  }
+  if (record.usageMode === "generator") return "Generated remotely";
+  if (record.storage === "remote") return "Linked remotely";
+  return "Variable payload";
+}
+
+function imageDeliveryLabel(record) {
+  if (record.previewOnly) return "Local preview · production maps linked";
+  if (record.usageMode === "generator") return "Deterministic SVG generator";
+  if (record.trademarkWarning) return "Pinned SVG link · trademark-aware";
+  if (record.variantCount > 1) return `${record.variantCount} grouped SVG variants`;
+  if (record.pixelArt) return "Transparent pixel art";
+  return record.hasAlpha ? "Transparent asset" : "Opaque asset";
+}
+
+function imageLicenceLabel(record) {
+  const labels = {
+    "ship-safe": "ship-safe",
+    "ship-safe-generator": "CC0 generator",
+    "ship-safe-linked": "CC0 linked source",
+    attribution: "attribution required",
+    "trademark-aware": "trademark-aware",
+  };
+  return `${record.licence} · ${labels[record.licenceClass] ?? record.licenceClass}`;
+}
+
+function applyImagePreview(record, imageUrl, publicUrl, variantLabel = null) {
+  const stage = document.querySelector("#image-stage");
+  const preview = document.querySelector("#image-preview");
+  const tilePreview = record.previewMode === "tile";
+  stage.classList.toggle("is-pixel-art", Boolean(record.pixelArt));
+  stage.classList.toggle("is-tile-preview", tilePreview);
+  stage.classList.toggle("is-cover-preview", record.previewMode === "cover");
+  stage.style.backgroundImage = tilePreview ? `url("${imageUrl}")` : "";
+  preview.src = imageUrl;
+  preview.alt = `Preview of ${record.name}${variantLabel ? ` in ${variantLabel} style` : ""}`;
+  document.querySelector("#image-url").textContent =
+    publicUrl ?? record.downloadUrl ?? record.publicImageUrl;
+  document.querySelector("#copy-image-url").dataset.copyUrl =
+    publicUrl ?? record.downloadUrl ?? record.publicImageUrl;
+  document.querySelector("#image-stage-format").textContent =
+    variantLabel
+      ? `${record.format} · ${variantLabel}`.toUpperCase()
+      : record.format.toUpperCase();
+}
+
 function renderImageInspector(record) {
+  const usageMode =
+    record.usageMode ?? (record.storage === "local" ? "bundled" : "linked");
   document.querySelector("#image-name").textContent = record.name;
+  document.querySelector("#image-kicker").textContent =
+    `${record.source.toUpperCase()} · ${usageMode.replaceAll("-", " ").toUpperCase()}`;
   document.querySelector("#image-index").textContent =
-    `${String(record.sourceOrder).padStart(3, "0")} / ${String(state.images.length).padStart(3, "0")}`;
+    `${String(state.images.findIndex((image) => image.id === record.id) + 1).padStart(4, "0")} / ${String(state.images.length).padStart(4, "0")}`;
   document.querySelector("#image-description").textContent =
-    `${record.description} ${record.recommendedUse}`;
+    `${record.description} ${record.recommendedUse} ${record.selectionGuidance ?? ""}`.trim();
   document.querySelector("#image-dimensions").textContent = record.dimensions;
-  document.querySelector("#image-size").textContent =
-    `${Number(record.fileSizeKB).toFixed(record.fileSizeKB < 10 ? 2 : 1)} KB`;
-  document.querySelector("#image-alpha").textContent =
-    record.hasAlpha ? "Transparent PNG" : "Opaque PNG";
+  document.querySelector("#image-size").textContent = imagePayloadLabel(record);
+  document.querySelector("#image-alpha").textContent = imageDeliveryLabel(record);
   document.querySelector("#image-category").textContent = record.category;
+  document.querySelector("#image-style").textContent =
+    record.artStyle ?? record.styleFamily ?? "Unclassified";
   document.querySelector("#image-pack").textContent = record.collection;
+  document.querySelector("#image-usage-mode").textContent =
+    usageMode.replaceAll("-", " ");
   document.querySelector("#image-licence").textContent =
-    `${record.licence} · ship-safe`;
+    imageLicenceLabel(record);
   document.querySelector("#image-source").textContent =
     `${record.source} · ${record.collection}`;
-  document.querySelector("#image-source-link").href = record.sourceUrl;
-  document.querySelector("#image-url").textContent = record.publicImageUrl;
-  document.querySelector("#image-preview").src = record.imageUrl;
-  document.querySelector("#image-preview").alt = `Preview of ${record.name}`;
-  document
-    .querySelector("#image-stage")
-    .classList.toggle("is-pixel-art", record.pixelArt);
-  document.querySelector("#image-stage-format").textContent =
-    record.tileable ? "TILEABLE PNG" : record.pixelArt ? "PIXEL PNG" : "PNG";
+  document.querySelector("#image-rights").textContent =
+    record.trademarkWarning
+      ? "BRAND RIGHTS APPLY"
+      : record.licenceClass === "attribution"
+        ? "ATTRIBUTION REQUIRED"
+        : "COMMERCIAL USE";
+  const sourceLink = document.querySelector("#image-source-link");
+  sourceLink.href = record.sourceUrl;
+  sourceLink.textContent = "Original source ↗";
+
+  const copyLabel = document.querySelector("#image-url-label");
+  const copyButton = document.querySelector("#copy-image-url");
+  let copyUrl = record.downloadUrl ?? record.publicImageUrl;
+  if (record.usageMode === "generator") {
+    copyLabel.textContent = "GENERATOR URL TEMPLATE";
+  } else if (record.previewOnly) {
+    copyLabel.textContent = "OFFICIAL MATERIAL PAGE";
+  } else if (record.trademarkWarning) {
+    copyLabel.textContent = "PINNED BRAND SVG URL";
+  } else if (record.variantCount > 1) {
+    copyLabel.textContent = "SELECTED VARIANT URL";
+    copyUrl = record.variants?.[record.defaultVariant ?? "regular"]?.publicImageUrl ?? copyUrl;
+  } else {
+    copyLabel.textContent = "PUBLIC ASSET URL";
+  }
+  copyButton.dataset.copyUrl = copyUrl;
+  document.querySelector("#image-url").textContent = copyUrl;
+
+  const stageMode = document.querySelector("#image-stage-mode");
+  stageMode.textContent = record.previewOnly
+    ? "Selection preview"
+    : record.variantCount > 1
+      ? "Grouped styles"
+      : record.storage === "remote"
+        ? "Official link"
+        : "Native asset";
+  applyImagePreview(record, record.imageUrl, copyUrl);
+
+  const variantPicker = document.querySelector("#image-variant-picker");
+  const variants = Object.entries(record.variants ?? {});
+  variantPicker.hidden = variants.length === 0;
+  variantPicker.innerHTML = variants.length
+    ? `
+      <span>Choose style</span>
+      <div>
+        ${variants
+          .map(
+            ([name, variant], index) => `
+              <button
+                type="button"
+                class="${index === 0 ? "is-active" : ""}"
+                aria-pressed="${index === 0}"
+                data-image-variant="${escapeHtml(name)}"
+                data-image-variant-url="${escapeHtml(variant.imageUrl)}"
+                data-image-variant-public-url="${escapeHtml(variant.publicImageUrl)}"
+              >${escapeHtml(name)}</button>
+            `,
+          )
+          .join("")}
+      </div>
+    `
+    : "";
+
   document.querySelector("#image-badges").innerHTML = [
     record.assetType,
     record.category,
-    record.hasAlpha ? "transparent" : "opaque",
-    record.pixelArt ? "pixel art" : null,
+    record.artStyle,
+    record.variantCount > 1 ? `${record.variantCount} variants` : null,
     record.tileable ? "tileable" : null,
-    "CC0",
+    record.licenceClass,
   ]
     .filter(Boolean)
     .map((badge) => `<span>${escapeHtml(badge)}</span>`)
     .join("");
 
+  const implementationInstruction = record.previewOnly
+    ? `The local publicImageUrl is a preview only; open downloadUrl and fetch the production PBR maps listed in the record.`
+    : record.usageMode === "generator"
+      ? `Replace {seed} in generatorTemplateUrl with a stable project value and use one avatar style consistently.`
+      : record.trademarkWarning
+        ? `Use the pinned SVG only for a brand genuinely referenced by the project; inspect brandGuidelinesUrl, iconLicence, and trademarkWarning first.`
+        : record.variantCount > 1
+          ? `Choose one named variant from variants and use that weight consistently across the interface hierarchy.`
+          : `Use publicImageUrl only if the asset's visual language supports the composition.`;
+  const rightsInstruction =
+    record.licenceClass === "attribution"
+      ? ` Preserve this attribution: ${record.attribution}`
+      : " Preserve the attached source and licence metadata.";
   const prompt =
     `Read the Lumora MCP image asset record "${record.id}" at ` +
-    `${publicRoot}/image-assets.json. Use its publicImageUrl in this project ` +
-    `only if it supports the composition. Preserve transparency, native aspect ` +
-    `ratio, and licence metadata${record.pixelArt ? "; render it with crisp nearest-neighbor pixels" : ""}` +
-    `${record.tileable ? "; repeat it only as an intentional pattern" : ""}. ` +
-    `Optimize delivery without visibly degrading the asset.`;
+    `${publicRoot}/image-assets.json. Compare its styleFamily, artStyle, bestFor, ` +
+    `avoidWhen, and selectionGuidance with other records sharing a similar conceptId. ` +
+    `${implementationInstruction}${rightsInstruction}` +
+    `${record.pixelArt ? " Render it with crisp nearest-neighbor pixels." : ""}` +
+    `${record.previewMode === "tile" ? " Repeat and recolor it only as an intentional background pattern." : ""} ` +
+    `Preserve its native aspect ratio and optimize delivery without visibly degrading it.`;
   const promptElement = document.querySelector("#image-prompt");
   promptElement.textContent = prompt;
   promptElement.dataset.prompt = prompt;
@@ -1622,6 +1790,30 @@ function bindEvents() {
     renderCatalog();
   });
 
+  document
+    .querySelector("#image-variant-picker")
+    .addEventListener("click", (event) => {
+      const button = event.target.closest("[data-image-variant]");
+      if (!button) return;
+      const record = state.images.find(
+        (image) => image.id === state.selectedImageId,
+      );
+      if (!record) return;
+      button.parentElement
+        .querySelectorAll("[data-image-variant]")
+        .forEach((candidate) => {
+          const isActive = candidate === button;
+          candidate.classList.toggle("is-active", isActive);
+          candidate.setAttribute("aria-pressed", String(isActive));
+        });
+      applyImagePreview(
+        record,
+        button.dataset.imageVariantUrl,
+        button.dataset.imageVariantPublicUrl,
+        button.dataset.imageVariant,
+      );
+    });
+
   document.querySelector("#copy-model-url").addEventListener("click", () => {
     const record = state.models.find(
       (model) => model.id === state.selectedModelId,
@@ -1650,11 +1842,12 @@ function bindEvents() {
       if (record) copyText(record.downloadUrl, "Background URL copied");
     });
 
-  document.querySelector("#copy-image-url").addEventListener("click", () => {
+  document.querySelector("#copy-image-url").addEventListener("click", (event) => {
     const record = state.images.find(
       (image) => image.id === state.selectedImageId,
     );
-    if (record) copyText(record.publicImageUrl, "Image URL copied");
+    const url = event.currentTarget.dataset.copyUrl;
+    if (record && url) copyText(url, "Asset URL copied");
   });
 
   document
@@ -1778,9 +1971,7 @@ async function initialize() {
       ) ?? backgrounds[0];
     const defaultImage =
       images.find(
-        (image) =>
-          image.id ===
-          "kenney-image-background-elements-backgrounds-background-forest",
+        (image) => image.id === "open-doodles-coffee",
       ) ?? images[0];
     state.selectedModelId =
       route.view === "models" && models.some((model) => model.id === route.id)

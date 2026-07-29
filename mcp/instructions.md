@@ -29,3 +29,20 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 ## Rights
 
 Kenney 3D and image packs in this catalog are user-provided distributions licensed CC0 1.0. Quaternius models are curated from official CC0 packs, converted to self-contained GLB files, and retain their official source records. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. Animated backgrounds remain externally hosted and are recorded as commercial-use based on Lumora's purchase and entitlement confirmation.
+
+<!-- DESIGN-ASSET-GUIDANCE:START -->
+## Images / UI selection guidance
+
+The image catalog intentionally contains overlapping concepts in different visual systems. Search by concept, then compare `styleFamily`, `artStyle`, `bestFor`, `avoidWhen`, and `selectionGuidance` before choosing.
+
+- Lucide is the quiet outline default for product UI.
+- Phosphor records group six coordinated variants; choose one weight consistently.
+- Open Doodles and Open Peeps fit friendly, human, hand-drawn art direction.
+- DiceBear records are CC0 generator templates; replace the example seed deterministically.
+- ambientCG records contain a local selection preview only. Fetch the required production PBR maps from `downloadUrl`.
+- Hero Patterns require the attribution stored on each record.
+- Simple Icons are linked, trademark-aware records. Use them only for brands genuinely referenced by the project and read `trademarkWarning`, `brandGuidelinesUrl`, and `iconLicence`.
+- Kenney remains useful for intentional low-poly, pixel-art, and playful scenes; do not choose it from the subject name alone.
+
+Do not mix icon families or illustration systems casually. Prefer one primary family and one deliberately contrasting supporting family.
+<!-- DESIGN-ASSET-GUIDANCE:END -->

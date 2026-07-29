@@ -15,6 +15,10 @@ Production files for [lumoraofficial.de](https://lumoraofficial.de), served as a
   provenance.
 - `scripts/build-mcp-catalog.mjs` — rebuilds the MCP catalogs from the verified
   Kenney ZIPs, Lumora Objects index, and owned-original component catalog.
+- `scripts/import-design-assets.mjs` — refreshes or re-merges the multi-style
+  Images/UI phase: full Lucide, grouped Phosphor variants, Open Doodles, Open
+  Peeps, CC0 DiceBear generators, curated ambientCG materials, Hero Patterns,
+  and linked trademark-aware Simple Icons.
 
 The legal pages are part of the application and are available through:
 
@@ -34,3 +38,13 @@ https://lumoraofficial.de/mcp/manifest.json
 The committed `/mcp` output is fully static. Rebuilding the catalog requires
 Node.js plus the source asset archives; optional environment variables are
 documented at the top of `scripts/build-mcp-catalog.mjs`.
+
+After rebuilding the base catalog, re-merge the committed design asset snapshot:
+
+```text
+node scripts/import-design-assets.mjs
+node scripts/validate-mcp-catalog.mjs
+```
+
+Use `node scripts/import-design-assets.mjs --refresh` only when intentionally
+refreshing the pinned upstream packages and official source records.

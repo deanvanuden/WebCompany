@@ -3,16 +3,19 @@
   "version": "1.0.0",
   "generatedAt": "2026-07-29",
   "canonicalUrl": "https://lumoraofficial.de/mcp/",
-  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, original Web Component implementation recipes, CC0 image and UI assets, and externally hosted animated background references.",
+  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, original Web Component implementation recipes, multi-style image and UI assets, and externally hosted animated background references.",
   "totals": {
     "models": 1021,
     "localModels": 907,
     "streamedModels": 114,
     "componentRecipes": 1020,
-    "imageAssets": 543,
+    "imageAssets": 7783,
     "animatedBackgrounds": 152,
     "availableAnimatedBackgrounds": 151,
-    "shipSafeModels": 1020
+    "shipSafeModels": 1020,
+    "bundledImageAssets": 4315,
+    "linkedImageAssets": 3468,
+    "imageAssetCollections": 14
   },
   "endpoints": {
     "models": "https://lumoraofficial.de/mcp/models.json",
@@ -21,7 +24,8 @@
     "imageAssets": "https://lumoraofficial.de/mcp/image-assets.json",
     "animatedBackgrounds": "https://lumoraofficial.de/mcp/animated-backgrounds.json",
     "instructions": "https://lumoraofficial.de/mcp/instructions.md",
-    "provenance": "https://lumoraofficial.de/mcp/provenance.json"
+    "provenance": "https://lumoraofficial.de/mcp/provenance.json",
+    "designAssets": "https://lumoraofficial.de/mcp/design-assets.json"
   },
   "modelSchema": {
     "id": "Stable catalog identifier",
@@ -50,13 +54,21 @@
   },
   "imageAssetSchema": {
     "id": "Stable catalog identifier",
-    "imageUrl": "Relative locally hosted PNG path",
-    "publicImageUrl": "Absolute PNG URL for Codex and external consumers",
-    "dimensions": "Native pixel dimensions",
-    "hasAlpha": "Whether the PNG contains transparency",
-    "pixelArt": "Whether nearest-neighbor rendering should be preserved",
-    "tileable": "Whether the image is intended to repeat as a pattern",
-    "licenceClass": "ship-safe CC0 asset"
+    "conceptId": "Normalized subject for comparing the same concept across visual styles",
+    "imageUrl": "Local path or official linked preview URL",
+    "publicImageUrl": "Absolute default preview or asset URL",
+    "downloadUrl": "Production asset, source page, generator template, or pinned CDN URL depending on usageMode",
+    "storage": "local, remote, or hybrid",
+    "usageMode": "bundled, grouped variants, generator, linked source, attribution, or trademark-aware link",
+    "format": "SVG, PNG, PBR maps, SVG API, or linked SVG",
+    "styleFamily": "Normalized visual language",
+    "artStyle": "Human-readable visual treatment",
+    "variants": "Optional named style or weight URLs grouped under one concept",
+    "selectionGuidance": "Art-direction and implementation advice",
+    "bestFor": "Contexts where the asset style is a strong fit",
+    "avoidWhen": "Contexts where another visual family should be preferred",
+    "licenceClass": "ship-safe, attribution, generator, linked, or trademark-aware",
+    "trademarkWarning": "True when brand permission and current guidelines require review"
   },
   "animatedBackgroundSchema": {
     "id": "Stable catalog identifier",
@@ -66,5 +78,12 @@
     "publicThumbnailUrl": "Absolute opening-frame thumbnail URL for external consumers",
     "availability": "Last observed URL availability",
     "licenceClass": "commercial-use based on Lumora owner confirmation"
+  },
+  "imageSelectionGuidance": {
+    "guidanceMode": "advisory",
+    "primaryRule": "Search by concept, then choose the visual family that fits the brand; subject-name overlap is intentional.",
+    "consistencyRule": "Use one primary icon or illustration family per interface and mix styles only for an explicit hierarchy.",
+    "groupedVariants": "Phosphor weights are grouped in one record so Codex can choose a consistent regular, thin, light, bold, fill, or duotone treatment.",
+    "linkedAssets": "ambientCG preview images are not production PBR maps; DiceBear URLs are templates; Simple Icons remain trademark-aware."
   }
 }

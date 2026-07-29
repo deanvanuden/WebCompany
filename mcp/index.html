@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Lumora MCP is a human and machine-readable library of web-ready 3D models, original Web Component recipes, CC0 image and UI assets, and animated background references."
+      content="Lumora MCP is a human and machine-readable library of web-ready 3D models, original Web Component recipes, multi-style image and UI assets, and animated background references."
     />
     <meta name="theme-color" content="#1c1d1a" />
     <link rel="canonical" href="https://lumoraofficial.de/mcp/" />
@@ -63,7 +63,7 @@
           aria-pressed="false"
         >
           Images / UI
-          <span data-stat="images">543</span>
+          <span data-stat="images">7,783</span>
         </button>
         <button
           type="button"
@@ -121,7 +121,7 @@
           </div>
           <div>
             <dt>Images / UI</dt>
-            <dd data-stat="images">543</dd>
+            <dd data-stat="images">7,783</dd>
           </div>
           <div>
             <dt>Background links</dt>
@@ -409,10 +409,10 @@
           >
             <header class="inspector-heading">
               <div>
-                <p><i></i> CC0 VISUAL ASSET</p>
+                <p><i></i> <span id="image-kicker">VISUAL ASSET</span></p>
                 <h2 id="image-name">Image asset</h2>
               </div>
-              <span id="image-index">000 / 543</span>
+              <span id="image-index">0000 / 7783</span>
             </header>
 
             <div class="image-stage" id="image-stage">
@@ -420,11 +420,17 @@
               <div class="image-stage-hud" aria-hidden="true">
                 <span id="image-stage-format">PNG</span>
                 <i></i>
-                <span>Native asset</span>
+                <span id="image-stage-mode">Native asset</span>
               </div>
             </div>
 
             <div class="component-badges" id="image-badges"></div>
+            <div
+              class="image-variant-picker"
+              id="image-variant-picker"
+              aria-label="Asset style variants"
+              hidden
+            ></div>
             <p class="object-description" id="image-description"></p>
 
             <dl class="recipe-specs image-specs">
@@ -445,8 +451,16 @@
                 <dd id="image-category">—</dd>
               </div>
               <div>
+                <dt>Art style</dt>
+                <dd id="image-style">—</dd>
+              </div>
+              <div>
                 <dt>Pack</dt>
                 <dd id="image-pack">—</dd>
+              </div>
+              <div>
+                <dt>Use mode</dt>
+                <dd id="image-usage-mode">—</dd>
               </div>
               <div>
                 <dt>Licence</dt>
@@ -457,16 +471,16 @@
             <div class="source-record">
               <div>
                 <span id="image-source">Kenney</span>
-                <strong>CC0 1.0 · SHIP-SAFE</strong>
+                <strong id="image-rights">COMMERCIAL USE</strong>
               </div>
               <a id="image-source-link" href="#" target="_blank" rel="noreferrer">
-                Original pack ↗
+                Original source ↗
               </a>
             </div>
 
             <div class="copy-record">
               <div>
-                <span>PUBLIC IMAGE URL</span>
+                <span id="image-url-label">PUBLIC ASSET URL</span>
                 <code id="image-url"></code>
               </div>
               <button type="button" id="copy-image-url">Copy URL</button>
@@ -633,14 +647,14 @@
             <h3>Use a precise Codex brief</h3>
             <p>
               “Read the Lumora MCP manifest. Choose up to two components, one
-              ship-safe 3D model, up to three CC0 image or UI assets, and at most
-              one commercially licensed animated background that fit this
-              project’s brand, goal, framework, and performance budget. Explain
-              the selection before implementing.”
+              ship-safe 3D model, up to three image or UI assets whose style and
+              usage mode fit the project, and at most one commercially licensed
+              animated background. Compare style guidance, rights, and performance
+              before implementing.”
             </p>
             <button
               type="button"
-              data-copy="Read https://lumoraofficial.de/mcp/manifest.json. Choose up to two components, one ship-safe 3D model, up to three CC0 image or UI assets, and at most one commercially licensed animated background that fit this project's brand, goal, framework, and performance budget. Explain the selection before implementing."
+              data-copy="Read https://lumoraofficial.de/mcp/manifest.json. Choose up to two components, one ship-safe 3D model, up to three image or UI assets whose style and usage mode fit the project, and at most one commercially licensed animated background. Compare style guidance, rights, and performance before implementing."
             >
               Copy Codex brief
             </button>
@@ -702,7 +716,7 @@ const backgrounds = await fetch(
           <a role="row" href="./image-assets.json">
             <span role="cell">Images / UI assets</span>
             <code role="cell">/mcp/image-assets.json</code>
-            <span role="cell">543 local CC0 PNG records</span>
+            <span role="cell">7,783 bundled, grouped, generated, and linked records</span>
           </a>
           <a role="row" href="./animated-backgrounds.json">
             <span role="cell">Animated backgrounds</span>
@@ -724,7 +738,7 @@ const backgrounds = await fetch(
         <span>LUMORA</span>
         <em>MCP</em>
       </a>
-      <p>Models and motion load only when selected. Images are local CC0 assets; recipes remain original briefs.</p>
+      <p>Models and motion load only when selected. Visual assets retain their usage mode, provenance, and selection guidance.</p>
       <div>
         <a href="./instructions.md">Instructions</a>
         <a href="./provenance.json">Provenance</a>
