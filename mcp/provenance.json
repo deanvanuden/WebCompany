@@ -189,6 +189,24 @@
       ]
     }
   ],
+  "kenneyStyleGuidance": {
+    "guidanceMode": "advisory",
+    "evaluatedModelCount": 829,
+    "visualFidelityBands": {
+      "standard-low-poly": 207,
+      "detailed-low-poly": 70,
+      "very-low-poly": 552
+    },
+    "selectionPriorities": {
+      "stylized-candidate": 188,
+      "strong-stylized-candidate": 70,
+      "fallback-unless-style-aligned": 551,
+      "supporting-module": 20
+    },
+    "primaryRule": "Judge visible art direction before object name or category. A simplified computer is not automatically appropriate for a premium technology website.",
+    "fallbackRule": "No Kenney asset is hard-blocked. If no closer catalog match exists, use the best available fallback deliberately, generally at a smaller scale or as a supporting object.",
+    "architectureRule": "More detailed architectural records can carry larger stylized roles, but remain low-poly and should not be mistaken for photoreal visualization."
+  },
   "quaternius": {
     "sourceUrl": "https://quaternius.com/",
     "licence": "CC0 1.0",

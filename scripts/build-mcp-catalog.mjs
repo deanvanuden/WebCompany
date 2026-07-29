@@ -792,6 +792,299 @@ function analyzeGlb(buffer) {
   };
 }
 
+const kenneyMoodsByCollection = {
+  "Modular Cave Kit": ["rugged", "fantasy", "modular", "game-like"],
+  "Platformer Kit": ["playful", "colorful", "casual", "game-like"],
+  "Factory Kit": ["industrial", "mechanical", "utilitarian", "game-like"],
+  "City Kit Commercial": ["architectural", "isometric", "clean", "stylized"],
+  "City Kit Suburban": ["friendly", "architectural", "isometric", "stylized"],
+  "Mini Dungeon": ["fantasy", "adventurous", "playful", "game-like"],
+  "Mini Forest": ["organic", "whimsical", "friendly", "low-poly"],
+  "Furniture Kit": ["friendly", "minimal", "isometric", "playful"],
+  "Mini Arcade": ["retro", "playful", "colorful", "game-like"],
+  "Food Kit": ["friendly", "casual", "illustrative", "playful"],
+};
+
+const kenneyIndustriesByCategory = {
+  Architecture: [
+    "architecture",
+    "real estate concepts",
+    "urban planning",
+    "hospitality",
+    "location experiences",
+  ],
+  Characters: ["gaming", "education", "community", "kids"],
+  Electronics: [
+    "gaming",
+    "education",
+    "youth technology",
+    "casual SaaS explainers",
+  ],
+  Food: ["food", "hospitality", "delivery", "casual dining"],
+  Furniture: ["interiors", "hospitality", "real estate concepts", "education"],
+  Gameplay: ["gaming", "entertainment", "events", "community"],
+  Industrial: ["manufacturing", "logistics", "engineering education", "gaming"],
+  Lighting: ["interiors", "hospitality", "events", "stylized environments"],
+  Nature: ["outdoors", "wellness", "sustainability", "education"],
+  Props: ["gaming", "education", "entertainment", "visual storytelling"],
+};
+
+function kenneyFidelityBand(model) {
+  if (
+    model.polygons >= 900 ||
+    (model.category === "Architecture" && model.polygons >= 650)
+  ) {
+    return {
+      id: "detailed-low-poly",
+      label: "Detailed low-poly",
+      rank: 3,
+    };
+  }
+  if (model.polygons >= 220) {
+    return {
+      id: "standard-low-poly",
+      label: "Standard low-poly",
+      rank: 2,
+    };
+  }
+  return {
+    id: "very-low-poly",
+    label: "Very low-poly",
+    rank: 1,
+  };
+}
+
+function withKenneyStyleGuidance(model) {
+  const fidelity = kenneyFidelityBand(model);
+  const isTechnicalProp =
+    model.category === "Electronics" ||
+    /\b(computer|keyboard|laptop|machine|monitor|mouse|phone|screen|server|television)\b/i.test(
+      model.name,
+    );
+  const isMinimalModule =
+    model.category === "Architecture" &&
+    model.polygons <= 48 &&
+    /\b(driveway|floor|path|road|roof|template|wall)\b/i.test(model.name);
+  const isDetailedArchitecture =
+    model.category === "Architecture" &&
+    fidelity.id === "detailed-low-poly";
+
+  let artStyle;
+  let selectionPriority;
+  let agencyUse;
+  let bestFor;
+  let avoidWhen;
+  let sectionFits;
+  let selectionGuidance;
+  let fallbackPolicy;
+  let brandMoods =
+    kenneyMoodsByCollection[model.collection] ?? [
+      "playful",
+      "stylized",
+      "game-like",
+    ];
+
+  if (isMinimalModule) {
+    artStyle = "Minimal modular geometry";
+    selectionPriority = "supporting-module";
+    agencyUse =
+      "Supporting geometry inside a composed low-poly scene, not a standalone visual";
+    bestFor = [
+      "assembled isometric scenes",
+      "diagram foundations",
+      "modular environment building",
+    ];
+    avoidWhen = [
+      "standalone hero object",
+      "product close-up",
+      "realistic architectural visualization",
+    ];
+    sectionFits = ["supporting scene", "interactive map", "diagram"];
+    selectionGuidance =
+      "Treat this as a scene-building module. Its low polygon count is intentional, but it has too little visual information to carry a section alone.";
+    fallbackPolicy =
+      "Use freely as supporting geometry when it completes a coherent scene; do not promote it to a hero simply because no other object was found.";
+  } else if (isTechnicalProp && fidelity.id !== "detailed-low-poly") {
+    artStyle =
+      fidelity.id === "very-low-poly"
+        ? "Very low-poly tech prop"
+        : "Simplified low-poly tech prop";
+    selectionPriority = "fallback-unless-style-aligned";
+    agencyUse =
+      "Playful technology vignette, isometric explainer, game-inspired interface, or small supporting prop";
+    bestFor = [
+      "playful technology",
+      "isometric explainers",
+      "game-inspired interfaces",
+      "small scene details",
+    ];
+    avoidWhen = [
+      "premium high-tech hero",
+      "luxury hardware presentation",
+      "photoreal product visualization",
+      "precision enterprise technology",
+    ];
+    sectionFits = [
+      "supporting illustration",
+      "small isometric scene",
+      "feature explainer",
+      "fallback accent",
+    ];
+    selectionGuidance =
+      "Do not select this because its name sounds high-tech. The geometry is intentionally simplified and can make a premium technology brand feel cheaper unless low-poly styling is part of the art direction.";
+    fallbackPolicy =
+      "If no closer asset exists, it remains usable as a lightweight fallback: keep it secondary, avoid a close-up, and deliberately adapt its lighting, material treatment, and surrounding composition.";
+    brandMoods = ["playful", "isometric", "casual", "game-like"];
+  } else if (isDetailedArchitecture) {
+    artStyle = "Detailed stylized low-poly architecture";
+    selectionPriority = "strong-stylized-candidate";
+    agencyUse =
+      "Stylized architectural hero, interactive city, spatial story, map, or section environment";
+    bestFor = [
+      "stylized architectural heroes",
+      "interactive maps",
+      "isometric cities",
+      "spatial storytelling",
+    ];
+    avoidWhen = [
+      "photoreal real-estate visualization",
+      "luxury architecture requiring realistic materials",
+      "engineering-accurate presentation",
+    ];
+    sectionFits = [
+      "hero scene",
+      "interactive map",
+      "section environment",
+      "scroll story",
+    ];
+    selectionGuidance =
+      "This has substantially more geometry than most Kenney props and can carry a larger website role when the project accepts a clean, stylized architectural language. It is still low-poly rather than photoreal.";
+    fallbackPolicy =
+      "This may be shortlisted before simpler Kenney props for stylized architecture, but compare it with higher-fidelity sources when realism or luxury is central to the brand.";
+    brandMoods = ["architectural", "isometric", "structured", "stylized"];
+  } else if (fidelity.id === "very-low-poly") {
+    artStyle = "Very low-poly / icon-like";
+    selectionPriority = "fallback-unless-style-aligned";
+    agencyUse =
+      "Small supporting illustration, playful micro-scene, diagram object, or intentionally game-like accent";
+    bestFor = [
+      "playful brands",
+      "game-like interfaces",
+      "isometric diagrams",
+      "small supporting scenes",
+    ];
+    avoidWhen = [
+      "premium hero close-up",
+      "photoreal presentation",
+      "luxury visual language",
+      "high-detail product storytelling",
+    ];
+    sectionFits = [
+      "supporting illustration",
+      "micro-scene",
+      "diagram",
+      "fallback",
+    ];
+    selectionGuidance =
+      "Use only when the visibly simplified geometry supports the brand. The object is lightweight and readable at small sizes, but can undercut premium, realistic, or highly technical art direction.";
+    fallbackPolicy =
+      "If no stronger match exists, it can be used as a fallback after an explicit style check; keep it secondary and avoid framing that exposes the missing detail.";
+  } else if (fidelity.id === "standard-low-poly") {
+    artStyle = "Stylized low-poly";
+    selectionPriority = "stylized-candidate";
+    agencyUse =
+      "Supporting 3D scene, feature illustration, scroll vignette, or playful hero when the brand welcomes low-poly styling";
+    bestFor = [
+      "stylized scenes",
+      "friendly explainers",
+      "game-inspired experiences",
+      "interactive vignettes",
+    ];
+    avoidWhen = [
+      "photoreal presentation",
+      "luxury product close-up",
+      "precision technical visualization",
+    ];
+    sectionFits = [
+      "supporting 3D scene",
+      "feature illustration",
+      "scroll vignette",
+      "fallback hero",
+    ];
+    selectionGuidance =
+      "A viable stylized candidate, but the category or object name alone is not enough. Confirm that its visible low-poly geometry matches the website's art direction before using it prominently.";
+    fallbackPolicy =
+      "Acceptable as a fallback for a stylized composition; compare Quaternius or Poly Haven first when a premium hero needs more surface detail.";
+  } else {
+    artStyle = "Detailed stylized low-poly";
+    selectionPriority = "strong-stylized-candidate";
+    agencyUse =
+      "Prominent stylized scene object, interactive feature, scroll story, or hero supporting object";
+    bestFor = [
+      "stylized heroes",
+      "interactive scenes",
+      "spatial storytelling",
+      "feature illustrations",
+    ];
+    avoidWhen = [
+      "photoreal presentation",
+      "luxury close-up requiring realistic materials",
+    ];
+    sectionFits = [
+      "hero support",
+      "interactive scene",
+      "scroll story",
+      "feature illustration",
+    ];
+    selectionGuidance =
+      "One of the more visually developed Kenney assets. It can carry a prominent role in a stylized experience, while still requiring a different source when realism or luxury material detail is essential.";
+    fallbackPolicy =
+      "May be shortlisted early for stylized work; compare with higher-fidelity sources only when the brand requires realism, material richness, or close-up scrutiny.";
+  }
+
+  return {
+    ...model,
+    tags: [
+      ...new Set([
+        ...(model.tags ?? []),
+        fidelity.id,
+        selectionPriority,
+        ...brandMoods,
+        ...bestFor,
+      ]),
+    ],
+    artStyle,
+    visualFidelity: fidelity.id,
+    visualFidelityLabel: fidelity.label,
+    visualFidelityRank: fidelity.rank,
+    guidanceMode: "advisory",
+    selectionPriority,
+    agencyUse,
+    bestFor,
+    avoidWhen,
+    brandMoods,
+    websiteIndustries:
+      kenneyIndustriesByCategory[model.category] ?? [
+        "stylized storytelling",
+        "education",
+        "entertainment",
+      ],
+    sectionFits,
+    selectionGuidance,
+    fallbackPolicy,
+    performanceGuidance:
+      "Very lightweight web payload. Lazy-load near the viewport, keep one primary WebGL scene per page, and use the static preview for reduced motion.",
+  };
+}
+
+function countsBy(records, field) {
+  return records.reduce((counts, record) => {
+    const value = record[field] ?? "unspecified";
+    counts[value] = (counts[value] ?? 0) + 1;
+    return counts;
+  }, {});
+}
+
 async function extractKenneyModels() {
   const modelRoot = path.join(outputRoot, "assets", "models", "kenney");
   const thumbnailRoot = path.join(outputRoot, "assets", "thumbs", "kenney");
@@ -1387,8 +1680,9 @@ async function main() {
     extractImageAssets(),
   ]);
 
+  const guidedKenneyModels = kenneyModels.map(withKenneyStyleGuidance);
   const models = [
-    ...kenneyModels,
+    ...guidedKenneyModels,
     ...quaterniusData.models,
     ...polyHavenModels,
   ];
@@ -1439,6 +1733,27 @@ async function main() {
       websiteIndustries: "Agency verticals where the object is especially useful",
       sectionFits: "Page sections where the object can earn its rendering cost",
       performanceGuidance: "Record-specific loading and motion guidance",
+      visualFidelity:
+        "Advisory geometry band: very-low-poly, standard-low-poly, or detailed-low-poly",
+      selectionPriority:
+        "Advisory shortlist priority; never a hard exclusion rule",
+      selectionGuidance:
+        "Art-direction warning or positive guidance to read before selection",
+      bestFor: "Visual contexts that fit this asset's actual style",
+      avoidWhen: "Visual contexts where the asset is likely to weaken the result",
+      fallbackPolicy:
+        "How the asset may still be used when no stronger catalog match exists",
+    },
+    modelSelectionGuidance: {
+      guidanceMode: "advisory",
+      primaryRule:
+        "Do not infer art-direction fit from an object's name or category alone.",
+      kenney:
+        "Read visualFidelity, selectionPriority, selectionGuidance, avoidWhen, and fallbackPolicy before selecting a Kenney model.",
+      fallback:
+        "A low-poly Kenney asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional.",
+      detailedArchitecture:
+        "Detailed-low-poly architecture may be shortlisted earlier for stylized spatial work, while still being compared with higher-fidelity sources for realism or luxury.",
     },
     imageAssetSchema: {
       id: "Stable catalog identifier",
@@ -1494,6 +1809,21 @@ async function main() {
       },
     ],
     kenney: packProvenance,
+    kenneyStyleGuidance: {
+      guidanceMode: "advisory",
+      evaluatedModelCount: guidedKenneyModels.length,
+      visualFidelityBands: countsBy(guidedKenneyModels, "visualFidelity"),
+      selectionPriorities: countsBy(
+        guidedKenneyModels,
+        "selectionPriority",
+      ),
+      primaryRule:
+        "Judge visible art direction before object name or category. A simplified computer is not automatically appropriate for a premium technology website.",
+      fallbackRule:
+        "No Kenney asset is hard-blocked. If no closer catalog match exists, use the best available fallback deliberately, generally at a smaller scale or as a supporting object.",
+      architectureRule:
+        "More detailed architectural records can carry larger stylized roles, but remain low-poly and should not be mistaken for photoreal visualization.",
+    },
     quaternius: {
       sourceUrl: "https://quaternius.com/",
       licence: "CC0 1.0",
@@ -1596,7 +1926,7 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 
 1. Read the manifest and choose the model, component, image-asset, or animated-background catalog.
 2. Filter candidates by the real page goal, brand, framework, performance budget, and asset class.
-3. For 3D, prefer \`ship-safe\` records and load only the selected model. Filter by \`agencyUse\`, \`brandMoods\`, \`websiteIndustries\`, \`sectionFits\`, and \`performanceGuidance\` before choosing on appearance alone. Use \`publicModelUrl\` in external projects. When a streamed glTF record has a \`files\` map, preserve that dependency mapping or download the official distribution into the target project.
+3. For 3D, prefer \`ship-safe\` records and load only the selected model. Do not infer art-direction fit from an object's name or category alone. Filter by \`agencyUse\`, \`brandMoods\`, \`websiteIndustries\`, \`sectionFits\`, and \`performanceGuidance\`. For Kenney records, also read \`visualFidelity\`, \`selectionPriority\`, \`selectionGuidance\`, \`avoidWhen\`, and \`fallbackPolicy\`. This guidance is advisory: a simplified asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional. Use \`publicModelUrl\` in external projects. When a streamed glTF record has a \`files\` map, preserve that dependency mapping or download the official distribution into the target project.
 4. For components, choose zero to three recipes. Treat each record as an implementation brief and build it from first principles in the target project's conventions.
 5. For images and UI assets, choose only the records that serve the composition, then fetch each winner from \`publicImageUrl\` or \`downloadUrl\`. Preserve transparency, use nearest-neighbor rendering for \`pixelArt\`, and use repeating CSS backgrounds only when \`tileable\` is true.
 6. For animated backgrounds, preview candidates from their external URLs, select one winner, and then fetch only that record's \`downloadUrl\`. MP4 records are direct downloads; HLS records are adaptive streams. Optimize the selected media locally and provide a static reduced-motion fallback.
@@ -1645,7 +1975,7 @@ Kenney 3D and image packs in this catalog are user-provided distributions licens
     JSON.stringify(
       {
         models: models.length,
-        kenneyModels: kenneyModels.length,
+        kenneyModels: guidedKenneyModels.length,
         quaterniusModels: quaterniusData.models.length,
         polyHavenModels: polyHavenModels.length,
         localModels: manifest.totals.localModels,
@@ -1656,7 +1986,7 @@ Kenney 3D and image packs in this catalog are user-provided distributions licens
         availableAnimatedBackgrounds:
           manifest.totals.availableAnimatedBackgrounds,
         kenneyMegabytes: Number(
-          kenneyModels
+          guidedKenneyModels
             .reduce((sum, model) => sum + model.fileSizeMB, 0)
             .toFixed(2),
         ),

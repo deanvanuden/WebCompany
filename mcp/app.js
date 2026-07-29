@@ -288,8 +288,15 @@ function filteredRecords() {
         record.creator,
         record.agencyUse,
         record.artStyle,
+        record.visualFidelity,
+        record.visualFidelityLabel,
+        record.selectionPriority,
+        record.selectionGuidance,
+        record.fallbackPolicy,
         record.performanceGuidance,
         ...(record.tags ?? []),
+        ...(record.bestFor ?? []),
+        ...(record.avoidWhen ?? []),
         ...(record.brandMoods ?? []),
         ...(record.websiteIndustries ?? []),
         ...(record.sectionFits ?? []),
@@ -679,6 +686,7 @@ function renderModelInspector(record) {
   document.querySelector("#model-badges").innerHTML = [
     record.source,
     record.artStyle,
+    record.selectionPriority,
     record.category,
     record.animations ? `${record.animations} animation clips` : "static",
     `${record.performance} performance`,
@@ -688,12 +696,21 @@ function renderModelInspector(record) {
     .join("");
   document.querySelector("#model-best-for").textContent =
     record.agencyUse ?? "A focused scene object selected to support the page narrative";
+  document.querySelector("#model-style-guidance").textContent =
+    record.selectionGuidance ??
+    "Confirm the model's visible art direction supports the brand rather than selecting it from its name or category alone.";
+  document.querySelector("#model-avoid-when").textContent =
+    record.avoidWhen?.join(", ") ??
+    "Any composition where its style, detail level, or material language conflicts with the brand";
   document.querySelector("#model-brand-fit").textContent =
     record.brandMoods?.join(", ") ??
     "Adapt materials, lighting, framing, and motion to the project brand";
   document.querySelector("#model-industries").textContent =
     record.websiteIndustries?.join(", ") ??
     `${record.category} scenes and visual storytelling`;
+  document.querySelector("#model-fallback-policy").textContent =
+    record.fallbackPolicy ??
+    "If it is the closest available asset, adapt it deliberately and keep the static fallback.";
   document.querySelector("#model-performance-note").textContent =
     record.performanceGuidance ??
     "Lazy-load near the viewport and keep a lightweight static fallback.";
@@ -719,7 +736,11 @@ function renderModelInspector(record) {
     `Read the Lumora MCP 3D model record "${record.id}" at ` +
     `${publicRoot}/models.json. Use its publicModelUrl and integrate it as ` +
     `${record.agencyUse ?? "a focused scene object"}. Adapt lighting, framing, ` +
-    `materials, and motion to this project's brand. Follow this performance ` +
+    `materials, and motion to this project's brand. Do not select it from its name ` +
+    `or category alone. Style guidance: ${(record.selectionGuidance ?? "confirm the visible art direction supports the brand").replace(/[.!?]+$/g, "")}. ` +
+    `Avoid when: ${(record.avoidWhen?.join(", ") ?? "its style or detail level conflicts with the brand").replace(/[.!?]+$/g, "")}. ` +
+    `Fallback rule: ${(record.fallbackPolicy ?? "use it deliberately if it is the closest available match").replace(/[.!?]+$/g, "")}. ` +
+    `This guidance is advisory, not a hard exclusion. Follow this performance ` +
     `guidance: ${(record.performanceGuidance ?? "lazy-load near the viewport and keep a static fallback").replace(/[.!?]+$/g, "")}. ` +
     `Pause animation offscreen, respect prefers-reduced-motion, preserve the ` +
     `source and licence record, and do not download unrelated catalog assets.`;

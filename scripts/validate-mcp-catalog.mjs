@@ -68,6 +68,10 @@ const componentPreviewSource = await readFile(
   path.join(mcpRoot, "component-previews.js"),
   "utf8",
 );
+const instructionsSource = await readFile(
+  path.join(mcpRoot, "instructions.md"),
+  "utf8",
+);
 const componentPreviewIds = [
   ...componentPreviewSource.matchAll(/^\s*"([a-z0-9-]+)":\s*\(\)\s*=>/gm),
 ].map((match) => match[1]);
@@ -90,6 +94,14 @@ const quaterniusModels = models.filter(
 const polyHavenModels = models.filter((model) => model.source === "Poly Haven");
 const shipSafeModels = models.filter(
   (model) => model.licenceClass === "ship-safe",
+);
+const kenneyFidelityCounts = Object.fromEntries(
+  ["very-low-poly", "standard-low-poly", "detailed-low-poly"].map(
+    (band) => [
+      band,
+      kenneyModels.filter((model) => model.visualFidelity === band).length,
+    ],
+  ),
 );
 
 check(models.length === 1021, `Expected 1,021 models, found ${models.length}`);
@@ -120,6 +132,12 @@ check(
 check(
   shipSafeModels.length === 1020,
   `Expected 1,020 ship-safe models, found ${shipSafeModels.length}`,
+);
+check(
+  kenneyFidelityCounts["very-low-poly"] === 552 &&
+    kenneyFidelityCounts["standard-low-poly"] === 207 &&
+    kenneyFidelityCounts["detailed-low-poly"] === 70,
+  `Unexpected Kenney fidelity distribution: ${JSON.stringify(kenneyFidelityCounts)}`,
 );
 
 check(
@@ -160,6 +178,33 @@ check(
     backgrounds.filter((background) => background.availability === "Available")
       .length,
   "Manifest available animated background total does not match the catalog",
+);
+for (const schemaField of [
+  "visualFidelity",
+  "selectionPriority",
+  "selectionGuidance",
+  "bestFor",
+  "avoidWhen",
+  "fallbackPolicy",
+]) {
+  check(
+    Boolean(manifest.modelSchema[schemaField]),
+    `Manifest model schema is missing ${schemaField}`,
+  );
+}
+check(
+  manifest.modelSelectionGuidance?.guidanceMode === "advisory",
+  "Manifest model selection guidance is not marked advisory",
+);
+check(
+  /Do not infer art-direction fit/i.test(
+    manifest.modelSelectionGuidance?.primaryRule ?? "",
+  ),
+  "Manifest does not prevent name-only or category-only model selection",
+);
+check(
+  /guidance is advisory/i.test(instructionsSource),
+  "Codex instructions do not preserve the advisory fallback policy",
 );
 
 for (const model of models) {
@@ -226,6 +271,100 @@ for (const model of quaterniusModels) {
   check(
     Boolean(model.performanceGuidance),
     `${model.id} has no performance guidance`,
+  );
+}
+
+const fidelityRanks = {
+  "very-low-poly": 1,
+  "standard-low-poly": 2,
+  "detailed-low-poly": 3,
+};
+const allowedKenneyPriorities = new Set([
+  "fallback-unless-style-aligned",
+  "stylized-candidate",
+  "strong-stylized-candidate",
+  "supporting-module",
+]);
+for (const model of kenneyModels) {
+  check(
+    model.guidanceMode === "advisory",
+    `${model.id} style guidance must remain advisory`,
+  );
+  check(
+    fidelityRanks[model.visualFidelity] === model.visualFidelityRank,
+    `${model.id} has inconsistent visual fidelity metadata`,
+  );
+  check(
+    allowedKenneyPriorities.has(model.selectionPriority),
+    `${model.id} has an invalid selection priority`,
+  );
+  check(Boolean(model.artStyle), `${model.id} has no art style`);
+  check(Boolean(model.agencyUse), `${model.id} has no agency use guidance`);
+  check(
+    model.bestFor?.length > 0,
+    `${model.id} has no positive style contexts`,
+  );
+  check(
+    model.avoidWhen?.length > 0,
+    `${model.id} has no negative style contexts`,
+  );
+  check(
+    Boolean(model.selectionGuidance),
+    `${model.id} has no style selection guidance`,
+  );
+  check(
+    Boolean(model.fallbackPolicy),
+    `${model.id} has no fallback policy`,
+  );
+  check(
+    model.brandMoods?.length > 0 &&
+      model.websiteIndustries?.length > 0 &&
+      model.sectionFits?.length > 0,
+    `${model.id} has incomplete agency matching metadata`,
+  );
+}
+
+for (const name of ["Computer Mouse", "Computer Keyboard", "Laptop"]) {
+  const model = kenneyModels.find((candidate) => candidate.name === name);
+  check(Boolean(model), `Missing Kenney test record: ${name}`);
+  if (!model) continue;
+  check(
+    model.visualFidelity === "very-low-poly" &&
+      model.selectionPriority === "fallback-unless-style-aligned",
+    `${name} is not guarded as a very-low-poly fallback`,
+  );
+  check(
+    model.avoidWhen.some((context) => /premium high-tech/i.test(context)) &&
+      /not select this because its name sounds high-tech/i.test(
+        model.selectionGuidance,
+      ),
+    `${name} does not warn against misleading premium technology use`,
+  );
+  check(
+    /no closer asset exists/i.test(model.fallbackPolicy),
+    `${name} does not remain available as an advisory fallback`,
+  );
+}
+
+const detailedBuilding = kenneyModels.find(
+  (model) => model.name === "Building J",
+);
+check(Boolean(detailedBuilding), "Missing detailed Kenney architecture test record");
+if (detailedBuilding) {
+  check(
+    detailedBuilding.visualFidelity === "detailed-low-poly" &&
+      detailedBuilding.selectionPriority === "strong-stylized-candidate",
+    "Detailed Kenney architecture is not promoted for suitable stylized work",
+  );
+}
+const supportingFloor = kenneyModels.find(
+  (model) => model.name === "Floor Large",
+);
+check(Boolean(supportingFloor), "Missing Kenney supporting-module test record");
+if (supportingFloor) {
+  check(
+    supportingFloor.selectionPriority === "supporting-module",
+    "Minimal Kenney architecture is not restricted to a supporting role",
   );
 }
 
@@ -446,6 +585,19 @@ check(
 check(
   kenneyProvenanceTotal === kenneyModels.length,
   "Kenney provenance total does not match models.json",
+);
+check(
+  provenance.kenneyStyleGuidance?.guidanceMode === "advisory" &&
+    provenance.kenneyStyleGuidance?.evaluatedModelCount ===
+      kenneyModels.length,
+  "Kenney style-guidance provenance does not cover the full collection",
+);
+check(
+  Object.entries(kenneyFidelityCounts).every(
+    ([band, count]) =>
+      provenance.kenneyStyleGuidance?.visualFidelityBands?.[band] === count,
+  ),
+  "Kenney style-guidance provenance fidelity totals are incorrect",
 );
 check(
   provenance.components.recipeCount === components.length,

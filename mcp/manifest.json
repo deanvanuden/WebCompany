@@ -33,7 +33,20 @@
     "brandMoods": "Brand moods this object can support",
     "websiteIndustries": "Agency verticals where the object is especially useful",
     "sectionFits": "Page sections where the object can earn its rendering cost",
-    "performanceGuidance": "Record-specific loading and motion guidance"
+    "performanceGuidance": "Record-specific loading and motion guidance",
+    "visualFidelity": "Advisory geometry band: very-low-poly, standard-low-poly, or detailed-low-poly",
+    "selectionPriority": "Advisory shortlist priority; never a hard exclusion rule",
+    "selectionGuidance": "Art-direction warning or positive guidance to read before selection",
+    "bestFor": "Visual contexts that fit this asset's actual style",
+    "avoidWhen": "Visual contexts where the asset is likely to weaken the result",
+    "fallbackPolicy": "How the asset may still be used when no stronger catalog match exists"
+  },
+  "modelSelectionGuidance": {
+    "guidanceMode": "advisory",
+    "primaryRule": "Do not infer art-direction fit from an object's name or category alone.",
+    "kenney": "Read visualFidelity, selectionPriority, selectionGuidance, avoidWhen, and fallbackPolicy before selecting a Kenney model.",
+    "fallback": "A low-poly Kenney asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional.",
+    "detailedArchitecture": "Detailed-low-poly architecture may be shortlisted earlier for stylized spatial work, while still being compared with higher-fidelity sources for realism or luxury."
   },
   "imageAssetSchema": {
     "id": "Stable catalog identifier",
