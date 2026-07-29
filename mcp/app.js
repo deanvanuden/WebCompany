@@ -8,14 +8,18 @@ import {
 
 const PAGE_SIZE = 30;
 const publicRoot = "https://lumoraofficial.de/mcp";
+const hlsRuntimeUrl =
+  "https://cdn.jsdelivr.net/npm/hls.js@1.6.16/dist/hls.light.min.js";
 
 const state = {
   view: "models",
   models: [],
   components: [],
+  backgrounds: [],
   componentRecords: null,
   selectedModelId: null,
   selectedComponentId: null,
+  selectedBackgroundId: null,
   query: "",
   primary: "All",
   category: "All",
@@ -31,6 +35,7 @@ const elements = {
   search: document.querySelector("#catalog-search"),
   primaryLabel: document.querySelector("#primary-filter-label"),
   primaryFilter: document.querySelector("#primary-filter"),
+  categoryLabel: document.querySelector("#category-filter-label"),
   categoryFilter: document.querySelector("#category-filter"),
   secondaryLabel: document.querySelector("#secondary-filter-label"),
   secondaryFilter: document.querySelector("#secondary-filter"),
@@ -45,11 +50,14 @@ const elements = {
   loadMore: document.querySelector("#load-more"),
   modelInspector: document.querySelector("#model-inspector"),
   componentInspector: document.querySelector("#component-inspector"),
+  backgroundInspector: document.querySelector("#background-inspector"),
   toast: document.querySelector("#toast"),
 };
 
 let toastTimer = null;
 let viewer = null;
+let backgroundPlayer = null;
+let hlsRuntimePromise = null;
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -100,8 +108,30 @@ async function copyText(value, message = "Copied to clipboard") {
   showToast(message);
 }
 
+function ensureHlsRuntime() {
+  if (window.Hls) return Promise.resolve(window.Hls);
+  if (hlsRuntimePromise) return hlsRuntimePromise;
+
+  hlsRuntimePromise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = hlsRuntimeUrl;
+    script.async = true;
+    script.crossOrigin = "anonymous";
+    script.addEventListener("load", () => resolve(window.Hls));
+    script.addEventListener("error", () => {
+      hlsRuntimePromise = null;
+      reject(new Error("The HLS preview runtime could not be loaded."));
+    });
+    document.head.append(script);
+  });
+
+  return hlsRuntimePromise;
+}
+
 function currentDataset() {
-  return state.view === "models" ? state.models : state.components;
+  if (state.view === "models") return state.models;
+  if (state.view === "components") return state.components;
+  return state.backgrounds;
 }
 
 function fieldConfiguration() {
@@ -109,13 +139,27 @@ function fieldConfiguration() {
     return {
       primary: "source",
       primaryLabel: "Source",
+      category: "category",
+      categoryLabel: "Category",
       secondary: "collection",
       secondaryLabel: "Collection",
+    };
+  }
+  if (state.view === "backgrounds") {
+    return {
+      primary: "format",
+      primaryLabel: "Format",
+      category: "availability",
+      categoryLabel: "Availability",
+      secondary: "hostLabel",
+      secondaryLabel: "Host",
     };
   }
   return {
     primary: "impact",
     primaryLabel: "Impact",
+    category: "category",
+    categoryLabel: "Category",
     secondary: "art_direction",
     secondaryLabel: "Art direction",
   };
@@ -156,6 +200,7 @@ function filterOptionsMarkup(options, selected, group) {
 function renderFilters() {
   const config = fieldConfiguration();
   elements.primaryLabel.textContent = config.primaryLabel;
+  elements.categoryLabel.textContent = config.categoryLabel;
   elements.secondaryLabel.textContent = config.secondaryLabel;
   elements.primaryFilter.innerHTML = filterOptionsMarkup(
     optionCounts(config.primary),
@@ -163,7 +208,7 @@ function renderFilters() {
     "primary",
   );
   elements.categoryFilter.innerHTML = filterOptionsMarkup(
-    optionCounts("category"),
+    optionCounts(config.category),
     state.category,
     "category",
   );
@@ -172,7 +217,27 @@ function renderFilters() {
     state.secondary,
     "secondary",
   );
-  elements.rightsCard.hidden = state.view !== "models";
+  elements.rightsCard.hidden = state.view === "components";
+  elements.rightsCard.classList.toggle(
+    "is-warning",
+    state.view === "backgrounds",
+  );
+  elements.rightsCard.innerHTML =
+    state.view === "backgrounds"
+      ? `
+        <span aria-hidden="true">!</span>
+        <p>
+          <strong>External link · rights unverified.</strong>
+          Preview here, then verify creator and licence before client use.
+        </p>
+      `
+      : `
+        <span aria-hidden="true">✓</span>
+        <p>
+          <strong>Rights travel with the record.</strong>
+          Every source, creator, licence, and warning remains attached.
+        </p>
+      `;
 }
 
 function filteredRecords() {
@@ -182,30 +247,42 @@ function filteredRecords() {
     const matchesPrimary =
       state.primary === "All" || record[config.primary] === state.primary;
     const matchesCategory =
-      state.category === "All" || record.category === state.category;
+      state.category === "All" || record[config.category] === state.category;
     const matchesSecondary =
       state.secondary === "All" ||
       record[config.secondary] === state.secondary;
 
-    const searchable =
-      state.view === "models"
-        ? [
-            record.name,
-            record.source,
-            record.collection,
-            record.category,
-            record.creator,
-            ...(record.tags ?? []),
-          ]
-        : [
-            record.name,
-            record.category,
-            record.art_direction,
-            record.summary,
-            record.style_tags,
-            record.best_for,
-            record.framework_fit,
-          ];
+    let searchable;
+    if (state.view === "models") {
+      searchable = [
+        record.name,
+        record.source,
+        record.collection,
+        record.category,
+        record.creator,
+        ...(record.tags ?? []),
+      ];
+    } else if (state.view === "backgrounds") {
+      searchable = [
+        record.name,
+        record.format,
+        record.availability,
+        record.hostLabel,
+        record.sourceHost,
+        record.sourceUrl,
+        record.summary,
+      ];
+    } else {
+      searchable = [
+        record.name,
+        record.category,
+        record.art_direction,
+        record.summary,
+        record.style_tags,
+        record.best_for,
+        record.framework_fit,
+      ];
+    }
     const matchesQuery =
       !query || normalized(searchable.join(" ")).includes(query);
 
@@ -229,6 +306,25 @@ function filteredRecords() {
       if (left.source !== right.source) return left.source === "Kenney" ? -1 : 1;
       if (left.storage !== right.storage) return left.storage === "local" ? -1 : 1;
       return left.name.localeCompare(right.name);
+    }
+    if (state.view === "backgrounds") {
+      if (state.sort === "format") {
+        return (
+          left.format.localeCompare(right.format) ||
+          left.sourceOrder - right.sourceOrder
+        );
+      }
+      if (state.sort === "size") {
+        return (
+          (left.fileSizeMB ?? Number.POSITIVE_INFINITY) -
+            (right.fileSizeMB ?? Number.POSITIVE_INFINITY) ||
+          left.sourceOrder - right.sourceOrder
+        );
+      }
+      if (left.availability !== right.availability) {
+        return left.availability === "Available" ? -1 : 1;
+      }
+      return left.sourceOrder - right.sourceOrder;
     }
     if (state.sort === "novelty") {
       return right.novelty_score - left.novelty_score || right.quality_score - left.quality_score;
@@ -315,11 +411,74 @@ function componentCard(record) {
   `;
 }
 
+function backgroundCard(record) {
+  const selected = state.selectedBackgroundId === record.id;
+  const unavailable = record.availability !== "Available";
+  const sizeLabel = record.fileSizeMB
+    ? `${record.fileSizeMB.toFixed(1)} MB`
+    : "adaptive";
+  return `
+    <button
+      type="button"
+      role="listitem"
+      class="background-card${selected ? " is-selected" : ""}${unavailable ? " is-unavailable" : ""}"
+      data-record-id="${escapeHtml(record.id)}"
+      data-background-format="${escapeHtml(record.format)}"
+      aria-label="Preview ${escapeHtml(record.name)}"
+      aria-pressed="${selected}"
+    >
+      <span
+        class="background-card-visual"
+        data-pattern="${record.previewPattern}"
+        style="--background-hue: ${record.accentHue}"
+      >
+        ${
+          record.thumbnailUrl
+            ? `<img
+                src="${escapeHtml(record.thumbnailUrl)}"
+                alt=""
+                width="640"
+                height="360"
+                loading="lazy"
+              />`
+            : ""
+        }
+        <video
+          aria-hidden="true"
+          muted
+          loop
+          playsinline
+          preload="none"
+        ></video>
+        <span class="background-card-index">BG / ${String(record.sourceOrder).padStart(3, "0")}</span>
+        <span class="background-card-format">${escapeHtml(record.format)}</span>
+        <span class="background-card-action">
+          ${unavailable ? "SOURCE OFFLINE" : record.format === "MP4" ? "HOVER TO PREVIEW" : "SELECT TO PREVIEW"}
+        </span>
+      </span>
+      <span class="card-copy">
+        <h3>${escapeHtml(record.name)}</h3>
+        <p>${escapeHtml(record.hostLabel)} · externally hosted</p>
+        <span class="card-meta">
+          <span>${escapeHtml(sizeLabel)}</span>
+          <span>${escapeHtml(record.availability)}</span>
+          <span>rights: verify</span>
+        </span>
+      </span>
+    </button>
+  `;
+}
+
 function renderCatalog() {
   if (state.view === "integration") return;
   const records = filteredRecords();
   const visible = records.slice(0, state.visibleCount);
-  const noun = state.view === "models" ? "objects" : "recipes";
+  const noun =
+    state.view === "models"
+      ? "objects"
+      : state.view === "components"
+        ? "recipes"
+        : "backgrounds";
 
   elements.catalogTitle.textContent =
     state.query ||
@@ -332,7 +491,9 @@ function renderCatalog() {
   elements.catalogScope.textContent =
     state.view === "models"
       ? "Kenney + Poly Haven"
-      : "12 original art directions";
+      : state.view === "components"
+        ? "12 original art directions"
+        : `${formatCount(state.backgrounds.filter((background) => background.availability === "Available").length)} live external sources`;
   elements.progressCopy.textContent = records.length
     ? `Showing ${formatCount(visible.length)} of ${formatCount(records.length)} ${noun}`
     : "No matching records";
@@ -346,14 +507,18 @@ function renderCatalog() {
     elements.catalogGrid.innerHTML = `
       <div class="empty-state" role="status">
         <strong>No matching ${noun}</strong>
-        <span>Try a broader term, category, or collection.</span>
+        <span>Try a broader term or filter.</span>
       </div>
     `;
     return;
   }
 
   elements.catalogGrid.innerHTML = visible
-    .map(state.view === "models" ? modelCard : componentCard)
+    .map((record) => {
+      if (state.view === "models") return modelCard(record);
+      if (state.view === "components") return componentCard(record);
+      return backgroundCard(record);
+    })
     .join("");
 }
 
@@ -364,6 +529,14 @@ function sortOptionsForView() {
       ["name", "Name A–Z"],
       ["lightest", "Lightest first"],
       ["geometry", "Lowest geometry"],
+    ];
+  }
+  if (state.view === "backgrounds") {
+    return [
+      ["featured", "Source order"],
+      ["name", "Name A–Z"],
+      ["format", "Format"],
+      ["size", "Smallest MP4"],
     ];
   }
   return [
@@ -496,6 +669,66 @@ async function selectComponent(id, { updateLocation = true } = {}) {
   }
 }
 
+function renderBackgroundInspector(record) {
+  document.querySelector("#background-name").textContent = record.name;
+  document.querySelector("#background-index").textContent =
+    `${String(record.sourceOrder).padStart(3, "0")} / ${String(state.backgrounds.length).padStart(3, "0")}`;
+  document.querySelector("#background-summary").textContent =
+    `${record.summary} ${record.performanceGuidance}`;
+  document.querySelector("#background-format").textContent = record.format;
+  document.querySelector("#background-host").textContent = record.hostLabel;
+  document.querySelector("#background-retrieval").textContent =
+    record.retrievalMode === "direct-download"
+      ? "Direct download"
+      : "Adaptive stream";
+  document.querySelector("#background-availability").textContent =
+    `${record.availability} · HTTP ${record.httpStatus}`;
+  document.querySelector("#background-rights").textContent =
+    "Verify per item before use";
+  document.querySelector("#background-source-host").textContent =
+    record.sourceHost;
+  document.querySelector("#background-source-link").href = record.sourceUrl;
+  document.querySelector("#background-url").textContent = record.downloadUrl;
+  document.querySelector("#background-stage").style.setProperty(
+    "--background-hue",
+    record.accentHue,
+  );
+  document.querySelector("#background-stage").dataset.pattern =
+    record.previewPattern;
+  document.querySelector("#background-badges").innerHTML = [
+    record.format,
+    record.hostLabel,
+    record.availability,
+    record.storage,
+    "rights: verify",
+  ]
+    .map((badge) => `<span>${escapeHtml(badge)}</span>`)
+    .join("");
+
+  const prompt =
+    `Read the Lumora MCP animated background record "${record.id}" at ` +
+    `${publicRoot}/animated-backgrounds.json. Preview its external source, ` +
+    `verify creator and licence rights, and only then fetch the selected ` +
+    `${record.format} from its downloadUrl. Adapt it to this project's brand, ` +
+    `remove audio, optimize resolution and bitrate, lazy-load it, and provide ` +
+    `a static prefers-reduced-motion fallback.`;
+  const promptElement = document.querySelector("#background-prompt");
+  promptElement.textContent = prompt;
+  promptElement.dataset.prompt = prompt;
+  document.querySelector("#background-record-link").href =
+    `./animated-backgrounds.json#${encodeURIComponent(record.id)}`;
+}
+
+async function selectBackground(id, { updateLocation = true } = {}) {
+  const record = state.backgrounds.find((background) => background.id === id);
+  if (!record) return;
+  state.selectedBackgroundId = id;
+  renderBackgroundInspector(record);
+  renderCatalog();
+  if (updateLocation) updateHash("backgrounds", id);
+  await backgroundPlayer?.load(record);
+}
+
 function resetFilters() {
   state.query = "";
   state.primary = "All";
@@ -506,7 +739,9 @@ function resetFilters() {
 }
 
 function setView(view, { updateLocation = true } = {}) {
-  if (!["models", "components", "integration"].includes(view)) return;
+  if (!["models", "components", "backgrounds", "integration"].includes(view)) {
+    return;
+  }
   state.view = view;
   resetFilters();
   state.sort = "featured";
@@ -521,6 +756,7 @@ function setView(view, { updateLocation = true } = {}) {
   elements.workspace.hidden = integration;
   elements.integration.hidden = !integration;
   viewer?.setActive(view === "models");
+  backgroundPlayer?.setActive(view === "backgrounds");
 
   if (integration) {
     if (updateLocation) history.replaceState(null, "", "#protocol");
@@ -529,10 +765,13 @@ function setView(view, { updateLocation = true } = {}) {
 
   elements.modelInspector.hidden = view !== "models";
   elements.componentInspector.hidden = view !== "components";
+  elements.backgroundInspector.hidden = view !== "backgrounds";
   elements.catalogKicker.textContent =
     view === "models"
       ? "3D INDEX / WEB READY"
-      : "COMPONENT INDEX / OWNED ORIGINAL";
+      : view === "components"
+        ? "COMPONENT INDEX / OWNED ORIGINAL"
+        : "BACKGROUND INDEX / EXTERNAL STREAMS";
 
   renderSortOptions();
   renderFilters();
@@ -549,6 +788,9 @@ function setView(view, { updateLocation = true } = {}) {
   if (view === "components" && state.selectedComponentId) {
     selectComponent(state.selectedComponentId, { updateLocation });
   }
+  if (view === "backgrounds" && state.selectedBackgroundId) {
+    selectBackground(state.selectedBackgroundId, { updateLocation });
+  }
 }
 
 function readInitialRoute() {
@@ -558,6 +800,7 @@ function readInitialRoute() {
   const id = idParts.join("/");
   if (type === "components" && id) return { view: "components", id };
   if (type === "models" && id) return { view: "models", id };
+  if (type === "backgrounds" && id) return { view: "backgrounds", id };
   return { view: "models", id: null };
 }
 
@@ -877,6 +1120,193 @@ class ModelViewer {
   }
 }
 
+class BackgroundPlayer {
+  constructor(stage) {
+    this.stage = stage;
+    this.video = document.querySelector("#background-video");
+    this.status = document.querySelector("#background-stage-status");
+    this.statusCopy = this.status.querySelector("span");
+    this.active = false;
+    this.visible = true;
+    this.hls = null;
+    this.loadToken = 0;
+    this.prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    this.intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        this.visible = entry.isIntersecting;
+        this.syncPlayback();
+      },
+      { threshold: 0.04 },
+    );
+    this.intersectionObserver.observe(stage);
+    document.addEventListener("visibilitychange", () => this.syncPlayback());
+  }
+
+  setStatus(message, isError = false) {
+    this.status.hidden = false;
+    this.status.classList.toggle("is-error", isError);
+    this.statusCopy.textContent = message;
+  }
+
+  hideStatus() {
+    this.status.hidden = true;
+    this.status.classList.remove("is-error");
+  }
+
+  destroyHls() {
+    this.hls?.destroy();
+    this.hls = null;
+  }
+
+  clearVideo() {
+    this.destroyHls();
+    this.video.pause();
+    this.video.removeAttribute("src");
+    this.video.load();
+  }
+
+  shouldPlay() {
+    return (
+      this.active &&
+      this.visible &&
+      !this.prefersReducedMotion &&
+      document.visibilityState !== "hidden"
+    );
+  }
+
+  syncPlayback() {
+    if (!this.shouldPlay()) {
+      this.video.pause();
+      return;
+    }
+    if (this.video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      this.video.play().catch(() => {});
+    }
+  }
+
+  setActive(value) {
+    this.active = value;
+    this.syncPlayback();
+  }
+
+  attachVideoEvents(token) {
+    this.video.addEventListener(
+      "loadeddata",
+      () => {
+        if (token !== this.loadToken) return;
+        this.hideStatus();
+        this.syncPlayback();
+      },
+      { once: true },
+    );
+    this.video.addEventListener(
+      "error",
+      () => {
+        if (token !== this.loadToken) return;
+        this.setStatus("Preview failed · source link remains available", true);
+      },
+      { once: true },
+    );
+  }
+
+  async load(record) {
+    const token = ++this.loadToken;
+    this.clearVideo();
+    this.video.poster = record.thumbnailUrl ?? "";
+    this.setStatus(
+      record.availability === "Available"
+        ? `Connecting to ${record.hostLabel}`
+        : `Source unavailable · HTTP ${record.httpStatus}`,
+      record.availability !== "Available",
+    );
+    if (record.availability !== "Available") return;
+
+    this.attachVideoEvents(token);
+    if (record.format === "MP4") {
+      this.video.src = record.previewUrl;
+      this.video.load();
+      return;
+    }
+
+    const nativeHls = this.video.canPlayType("application/vnd.apple.mpegurl");
+    if (nativeHls) {
+      this.video.src = record.previewUrl;
+      this.video.load();
+      return;
+    }
+
+    try {
+      const Hls = await ensureHlsRuntime();
+      if (token !== this.loadToken) return;
+      if (!Hls?.isSupported()) {
+        this.setStatus("HLS preview is not supported in this browser", true);
+        return;
+      }
+
+      this.hls = new Hls({
+        capLevelToPlayerSize: true,
+        maxBufferLength: 12,
+        maxMaxBufferLength: 24,
+      });
+      this.hls.attachMedia(this.video);
+      this.hls.on(Hls.Events.MEDIA_ATTACHED, () => {
+        if (token === this.loadToken) this.hls.loadSource(record.previewUrl);
+      });
+      this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        if (token !== this.loadToken) return;
+        this.hideStatus();
+        this.syncPlayback();
+      });
+      this.hls.on(Hls.Events.ERROR, (_event, data) => {
+        if (token !== this.loadToken || !data.fatal) return;
+        this.setStatus("HLS preview failed · source link remains available", true);
+      });
+    } catch (error) {
+      if (token !== this.loadToken) return;
+      this.setStatus(error.message, true);
+    }
+  }
+}
+
+function startBackgroundCardPreview(card) {
+  if (
+    state.view !== "backgrounds" ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    return;
+  }
+  const record = state.backgrounds.find(
+    (background) => background.id === card.dataset.recordId,
+  );
+  if (
+    !record ||
+    record.format !== "MP4" ||
+    record.availability !== "Available"
+  ) {
+    return;
+  }
+  const video = card.querySelector("video");
+  if (!video || video.dataset.loaded === "true") return;
+  video.dataset.loaded = "true";
+  video.src = record.previewUrl;
+  video.load();
+  video.play().catch(() => {});
+  card.classList.add("is-previewing");
+}
+
+function stopBackgroundCardPreview(card) {
+  const video = card.querySelector("video");
+  if (!video || video.dataset.loaded !== "true") return;
+  video.pause();
+  video.removeAttribute("src");
+  video.load();
+  delete video.dataset.loaded;
+  card.classList.remove("is-previewing");
+}
+
 function bindEvents() {
   elements.tabs.forEach((tab) => {
     tab.addEventListener("click", () => setView(tab.dataset.view));
@@ -924,6 +1354,30 @@ function bindEvents() {
     if (!card) return;
     if (state.view === "models") selectModel(card.dataset.recordId);
     if (state.view === "components") selectComponent(card.dataset.recordId);
+    if (state.view === "backgrounds") selectBackground(card.dataset.recordId);
+  });
+
+  elements.catalogGrid.addEventListener("pointerover", (event) => {
+    const card = event.target.closest(".background-card");
+    if (!card || card.contains(event.relatedTarget)) return;
+    startBackgroundCardPreview(card);
+  });
+
+  elements.catalogGrid.addEventListener("pointerout", (event) => {
+    const card = event.target.closest(".background-card");
+    if (!card || card.contains(event.relatedTarget)) return;
+    stopBackgroundCardPreview(card);
+  });
+
+  elements.catalogGrid.addEventListener("focusin", (event) => {
+    const card = event.target.closest(".background-card");
+    if (card) startBackgroundCardPreview(card);
+  });
+
+  elements.catalogGrid.addEventListener("focusout", (event) => {
+    const card = event.target.closest(".background-card");
+    if (!card || card.contains(event.relatedTarget)) return;
+    stopBackgroundCardPreview(card);
   });
 
   elements.loadMore.addEventListener("click", () => {
@@ -942,6 +1396,22 @@ function bindEvents() {
     .querySelector("#copy-component-prompt")
     .addEventListener("click", () => {
       const prompt = document.querySelector("#component-prompt").dataset.prompt;
+      if (prompt) copyText(prompt, "Codex prompt copied");
+    });
+
+  document
+    .querySelector("#copy-background-url")
+    .addEventListener("click", () => {
+      const record = state.backgrounds.find(
+        (background) => background.id === state.selectedBackgroundId,
+      );
+      if (record) copyText(record.downloadUrl, "Background URL copied");
+    });
+
+  document
+    .querySelector("#copy-background-prompt")
+    .addEventListener("click", () => {
+      const prompt = document.querySelector("#background-prompt").dataset.prompt;
       if (prompt) copyText(prompt, "Codex prompt copied");
     });
 
@@ -969,29 +1439,41 @@ function bindEvents() {
 async function initialize() {
   bindEvents();
   viewer = new ModelViewer(document.querySelector("#model-stage"));
+  backgroundPlayer = new BackgroundPlayer(
+    document.querySelector("#background-stage"),
+  );
 
   try {
-    const [manifestResponse, modelsResponse, componentsResponse] =
+    const [
+      manifestResponse,
+      modelsResponse,
+      componentsResponse,
+      backgroundsResponse,
+    ] =
       await Promise.all([
         fetch("./manifest.json"),
         fetch("./models.json"),
         fetch("./components-index.json"),
+        fetch("./animated-backgrounds.json"),
       ]);
     if (
       !manifestResponse.ok ||
       !modelsResponse.ok ||
-      !componentsResponse.ok
+      !componentsResponse.ok ||
+      !backgroundsResponse.ok
     ) {
       throw new Error("One or more MCP catalog files could not be loaded.");
     }
 
-    const [manifest, models, components] = await Promise.all([
+    const [manifest, models, components, backgrounds] = await Promise.all([
       manifestResponse.json(),
       modelsResponse.json(),
       componentsResponse.json(),
+      backgroundsResponse.json(),
     ]);
     state.models = models;
     state.components = components;
+    state.backgrounds = backgrounds;
 
     if (componentPreviewCount !== 85) {
       console.warn(
@@ -1005,6 +1487,11 @@ async function initialize() {
     document.querySelectorAll('[data-stat="components"]').forEach((element) => {
       element.textContent = formatCount(manifest.totals.componentRecipes);
     });
+    document
+      .querySelectorAll('[data-stat="backgrounds"]')
+      .forEach((element) => {
+        element.textContent = formatCount(manifest.totals.animatedBackgrounds);
+      });
     document
       .querySelectorAll('[data-stat="local-models"]')
       .forEach((element) => {
@@ -1021,6 +1508,10 @@ async function initialize() {
         (component) =>
           component.id === "reactive-dot-lattice--neo-industrial",
       ) ?? components[0];
+    const defaultBackground =
+      backgrounds.find(
+        (background) => background.id === "animated-background-001",
+      ) ?? backgrounds[0];
     state.selectedModelId =
       route.view === "models" && models.some((model) => model.id === route.id)
         ? route.id
@@ -1030,6 +1521,11 @@ async function initialize() {
       components.some((component) => component.id === route.id)
         ? route.id
         : defaultComponent.id;
+    state.selectedBackgroundId =
+      route.view === "backgrounds" &&
+      backgrounds.some((background) => background.id === route.id)
+        ? route.id
+        : defaultBackground.id;
 
     setView(route.view, { updateLocation: false });
     if (route.view === "models") {
@@ -1037,6 +1533,11 @@ async function initialize() {
     }
     if (route.view === "components") {
       await selectComponent(state.selectedComponentId, {
+        updateLocation: false,
+      });
+    }
+    if (route.view === "backgrounds") {
+      await selectBackground(state.selectedBackgroundId, {
         updateLocation: false,
       });
     }

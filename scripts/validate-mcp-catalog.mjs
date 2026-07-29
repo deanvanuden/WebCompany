@@ -54,12 +54,13 @@ async function checkLocalFile(value, label) {
   }
 }
 
-const [manifest, models, componentIndex, components, provenance] =
+const [manifest, models, componentIndex, components, backgrounds, provenance] =
   await Promise.all([
     readJson("manifest.json"),
     readJson("models.json"),
     readJson("components-index.json"),
     readJson("components.json"),
+    readJson("animated-backgrounds.json"),
     readJson("provenance.json"),
   ]);
 const componentPreviewSource = await readFile(
@@ -73,6 +74,10 @@ const componentPreviewIds = [
 const modelIds = new Set(models.map((model) => model.id));
 const componentIds = new Set(components.map((component) => component.id));
 const componentIndexIds = new Set(componentIndex.map((component) => component.id));
+const backgroundIds = new Set(backgrounds.map((background) => background.id));
+const backgroundUrls = new Set(
+  backgrounds.map((background) => background.sourceUrl),
+);
 const localModels = models.filter((model) => model.storage === "local");
 const streamedModels = models.filter((model) => model.storage === "remote");
 const kenneyModels = models.filter((model) => model.source === "Kenney");
@@ -126,6 +131,16 @@ check(
 check(
   manifest.totals.componentRecipes === components.length,
   "Manifest component total does not match components.json",
+);
+check(
+  manifest.totals.animatedBackgrounds === backgrounds.length,
+  "Manifest animated background total does not match animated-backgrounds.json",
+);
+check(
+  manifest.totals.availableAnimatedBackgrounds ===
+    backgrounds.filter((background) => background.availability === "Available")
+      .length,
+  "Manifest available animated background total does not match the catalog",
 );
 
 for (const model of models) {
@@ -213,6 +228,60 @@ for (const archetype of componentArchetypes) {
   );
 }
 
+check(
+  backgrounds.length === 152,
+  `Expected 152 animated backgrounds, found ${backgrounds.length}`,
+);
+check(
+  backgroundIds.size === backgrounds.length,
+  `Animated background IDs are not unique (${backgroundIds.size}/${backgrounds.length})`,
+);
+check(
+  backgroundUrls.size === backgrounds.length,
+  `Animated background URLs are not unique (${backgroundUrls.size}/${backgrounds.length})`,
+);
+check(
+  backgrounds.filter((background) => background.format === "MP4").length ===
+    125,
+  "Expected 125 MP4 animated backgrounds",
+);
+check(
+  backgrounds.filter((background) => background.format === "HLS").length ===
+    27,
+  "Expected 27 HLS animated backgrounds",
+);
+check(
+  backgrounds.filter((background) => background.availability === "Available")
+    .length === 151,
+  "Expected 151 available animated backgrounds",
+);
+for (const background of backgrounds) {
+  check(Boolean(background.id), "An animated background has no ID");
+  check(Boolean(background.name), `${background.id} has no name`);
+  check(
+    background.storage === "remote",
+    `${background.id} must remain externally hosted`,
+  );
+  check(
+    background.licenceClass === "verify",
+    `${background.id} must remain rights-unverified`,
+  );
+  check(
+    /^https:\/\/.+/i.test(background.sourceUrl),
+    `${background.id} does not use an HTTPS source URL`,
+  );
+  check(
+    background.downloadUrl === background.sourceUrl,
+    `${background.id} download URL does not preserve its source URL`,
+  );
+  if (background.thumbnailUrl) {
+    check(
+      /^https:\/\/image\.mux\.com\//i.test(background.thumbnailUrl),
+      `${background.id} uses an unexpected external thumbnail host`,
+    );
+  }
+}
+
 const kenneyProvenanceTotal = provenance.kenney.reduce(
   (total, pack) => total + pack.modelCount,
   0,
@@ -226,6 +295,10 @@ check(
   "Component provenance total does not match components.json",
 );
 check(
+  provenance.animatedBackgrounds.uniqueUrlCount === backgrounds.length,
+  "Animated background provenance total does not match the catalog",
+);
+check(
   provenance.polyHaven.localModelCount +
     provenance.polyHaven.streamedModelCount ===
     polyHavenModels.length,
@@ -237,6 +310,7 @@ for (const requiredFile of [
   "app.css",
   "app.js",
   "component-previews.js",
+  "animated-backgrounds.json",
   "instructions.md",
   "provenance.json",
   "licences/three.txt",
@@ -273,6 +347,10 @@ if (errors.length) {
     streamedModels: streamedModels.length,
     shipSafeModels: shipSafeModels.length,
     componentRecipes: components.length,
+    animatedBackgrounds: backgrounds.length,
+    availableAnimatedBackgrounds: backgrounds.filter(
+      (background) => background.availability === "Available",
+    ).length,
     verifiedLocalFiles: checkedFiles.size,
   };
   console.log(`Lumora MCP validation passed:\n${JSON.stringify(result, null, 2)}`);

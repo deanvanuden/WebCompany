@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Lumora MCP is a human and machine-readable library of web-ready 3D models and original Web Component recipes."
+      content="Lumora MCP is a human and machine-readable library of web-ready 3D models, original Web Component recipes, and animated background references."
     />
     <meta name="theme-color" content="#1c1d1a" />
     <link rel="canonical" href="https://lumoraofficial.de/mcp/" />
@@ -17,7 +17,7 @@
     />
     <link rel="icon" href="../images/LogoLumora.png" type="image/png" />
     <link rel="stylesheet" href="./app.css" />
-    <title>Lumora MCP — Models & Web Components</title>
+    <title>Lumora MCP — Models, Components & Backgrounds</title>
     <script type="importmap">
       {
         "imports": {
@@ -59,6 +59,14 @@
         </button>
         <button
           type="button"
+          data-view="backgrounds"
+          aria-pressed="false"
+        >
+          Backgrounds
+          <span data-stat="backgrounds">152</span>
+        </button>
+        <button
+          type="button"
           data-view="integration"
           aria-pressed="false"
           aria-label="Codex Protocol"
@@ -88,7 +96,7 @@
             Ship the <em>feeling.</em>
           </h1>
           <p class="hero-lede">
-            Lumora’s shared memory for objects and interactions. Browse it
+            Lumora’s shared memory for objects, interactions, and motion. Browse it
             visually, or point Codex at the machine-readable records and let it
             select the right ingredients for the job.
           </p>
@@ -104,12 +112,12 @@
             <dd data-stat="components">1,020</dd>
           </div>
           <div>
-            <dt>Hosted models</dt>
-            <dd data-stat="local-models">835</dd>
+            <dt>Background links</dt>
+            <dd data-stat="backgrounds">152</dd>
           </div>
           <div>
-            <dt>Rights indexed</dt>
-            <dd>100%</dd>
+            <dt>Hosted models</dt>
+            <dd data-stat="local-models">835</dd>
           </div>
         </dl>
       </section>
@@ -135,7 +143,7 @@
                 id="catalog-search"
                 type="search"
                 autocomplete="off"
-                placeholder="Object, recipe, style…"
+                placeholder="Object, recipe, background…"
               />
               <kbd>/</kbd>
             </span>
@@ -147,7 +155,7 @@
           </div>
 
           <div class="filter-group">
-            <p>Category</p>
+            <p id="category-filter-label">Category</p>
             <div id="category-filter" class="filter-options"></div>
           </div>
 
@@ -342,6 +350,113 @@
               <span aria-hidden="true">↗</span>
             </a>
           </section>
+
+          <section
+            id="background-inspector"
+            aria-labelledby="background-name"
+            hidden
+          >
+            <header class="inspector-heading">
+              <div>
+                <p><i></i> EXTERNAL MOTION SOURCE</p>
+                <h2 id="background-name">Animated background</h2>
+              </div>
+              <span id="background-index">000 / 152</span>
+            </header>
+
+            <div class="background-stage" id="background-stage" data-pattern="0">
+              <video
+                id="background-video"
+                controls
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Preview of selected animated background"
+              ></video>
+              <div
+                class="stage-status background-stage-status"
+                id="background-stage-status"
+                role="status"
+              >
+                <i></i>
+                <span>Connecting to source</span>
+              </div>
+              <div class="background-stage-hud" aria-hidden="true">
+                <span>External preview</span>
+                <i></i>
+                <span>Muted loop</span>
+              </div>
+            </div>
+
+            <div class="component-badges" id="background-badges"></div>
+            <p class="object-description" id="background-summary"></p>
+
+            <dl class="recipe-specs background-specs">
+              <div>
+                <dt>Format</dt>
+                <dd id="background-format">—</dd>
+              </div>
+              <div>
+                <dt>Host</dt>
+                <dd id="background-host">—</dd>
+              </div>
+              <div>
+                <dt>Retrieval</dt>
+                <dd id="background-retrieval">—</dd>
+              </div>
+              <div>
+                <dt>Availability</dt>
+                <dd id="background-availability">—</dd>
+              </div>
+              <div>
+                <dt>Rights</dt>
+                <dd id="background-rights">Verify per item before use</dd>
+              </div>
+            </dl>
+
+            <div class="source-record background-source-record">
+              <div>
+                <span id="background-source-host">External host</span>
+                <strong>LICENCE · VERIFY</strong>
+              </div>
+              <a
+                id="background-source-link"
+                href="#"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open source ↗
+              </a>
+            </div>
+
+            <div class="copy-record">
+              <div>
+                <span>EXTERNAL DOWNLOAD / STREAM URL</span>
+                <code id="background-url"></code>
+              </div>
+              <button type="button" id="copy-background-url">Copy URL</button>
+            </div>
+
+            <div class="copy-record component-prompt">
+              <div>
+                <span>CODEX SELECTION PROMPT</span>
+                <code id="background-prompt"></code>
+              </div>
+              <button type="button" id="copy-background-prompt">
+                Copy prompt
+              </button>
+            </div>
+
+            <a
+              class="full-record-link"
+              id="background-record-link"
+              href="./animated-backgrounds.json"
+            >
+              Open complete background records
+              <span aria-hidden="true">↗</span>
+            </a>
+          </section>
         </aside>
       </section>
 
@@ -355,7 +470,7 @@
           </h2>
           <p>
             Give Codex the manifest, describe the page goal, and ask it to select
-            only the models and recipes that earn their place.
+            only the models, recipes, and motion sources that earn their place.
           </p>
         </header>
 
@@ -375,13 +490,14 @@
             <span>02 / SELECT</span>
             <h3>Use a precise Codex brief</h3>
             <p>
-              “Read the Lumora MCP manifest. Choose up to two components and one
-              ship-safe 3D model that fit this project’s brand, goal, framework,
-              and performance budget. Explain the selection before implementing.”
+              “Read the Lumora MCP manifest. Choose up to two components, one
+              ship-safe 3D model, and at most one rights-verified animated
+              background that fit this project’s brand, goal, framework, and
+              performance budget. Explain the selection before implementing.”
             </p>
             <button
               type="button"
-              data-copy="Read https://lumoraofficial.de/mcp/manifest.json. Choose up to two components and one ship-safe 3D model that fit this project's brand, goal, framework, and performance budget. Explain the selection before implementing."
+              data-copy="Read https://lumoraofficial.de/mcp/manifest.json. Choose up to two components, one ship-safe 3D model, and at most one rights-verified animated background that fit this project's brand, goal, framework, and performance budget. Explain the selection before implementing."
             >
               Copy Codex brief
             </button>
@@ -395,6 +511,10 @@
 
 const models = await fetch(
   manifest.endpoints.models
+).then(response => response.json());
+
+const backgrounds = await fetch(
+  manifest.endpoints.animatedBackgrounds
 ).then(response => response.json());</code></pre>
           </article>
           <article>
@@ -403,7 +523,8 @@ const models = await fetch(
             <p>
               Models retain creator, source, licence, package metrics, and
               warnings. Component recipes retain their accessibility, fallback,
-              responsive, performance, and testing contracts.
+              responsive, performance, and testing contracts. Background links
+              remain marked rights-unverified until checked per item.
             </p>
             <a href="./provenance.json">Open provenance record ↗</a>
           </article>
@@ -430,6 +551,11 @@ const models = await fetch(
             <code role="cell">/mcp/components.json</code>
             <span role="cell">1,020 complete briefs</span>
           </a>
+          <a role="row" href="./animated-backgrounds.json">
+            <span role="cell">Animated backgrounds</span>
+            <code role="cell">/mcp/animated-backgrounds.json</code>
+            <span role="cell">152 external motion references</span>
+          </a>
           <a role="row" href="./instructions.md">
             <span role="cell">Instructions</span>
             <code role="cell">/mcp/instructions.md</code>
@@ -445,7 +571,7 @@ const models = await fetch(
         <span>LUMORA</span>
         <em>MCP</em>
       </a>
-      <p>Models are loaded only when selected. Recipes are briefs, not copied demos.</p>
+      <p>Models and backgrounds load only when selected. Recipes remain original briefs.</p>
       <div>
         <a href="./instructions.md">Instructions</a>
         <a href="./provenance.json">Provenance</a>

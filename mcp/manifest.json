@@ -3,18 +3,21 @@
   "version": "1.0.0",
   "generatedAt": "2026-07-29",
   "canonicalUrl": "https://lumoraofficial.de/mcp/",
-  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models and original Web Component implementation recipes.",
+  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, original Web Component implementation recipes, and externally hosted animated background references.",
   "totals": {
     "models": 949,
     "localModels": 835,
     "streamedModels": 114,
     "componentRecipes": 1020,
+    "animatedBackgrounds": 152,
+    "availableAnimatedBackgrounds": 151,
     "shipSafeModels": 948
   },
   "endpoints": {
     "models": "https://lumoraofficial.de/mcp/models.json",
     "componentIndex": "https://lumoraofficial.de/mcp/components-index.json",
     "componentRecords": "https://lumoraofficial.de/mcp/components.json",
+    "animatedBackgrounds": "https://lumoraofficial.de/mcp/animated-backgrounds.json",
     "instructions": "https://lumoraofficial.de/mcp/instructions.md",
     "provenance": "https://lumoraofficial.de/mcp/provenance.json"
   },
@@ -24,5 +27,12 @@
     "publicModelUrl": "Absolute model URL for Codex and external consumers",
     "files": "Optional exact dependency URL map used to resolve streamed Poly Haven glTF packages",
     "licenceClass": "ship-safe, attribution, or concept-only"
+  },
+  "animatedBackgroundSchema": {
+    "id": "Stable catalog identifier",
+    "previewUrl": "Original externally hosted MP4 or HLS media URL",
+    "downloadUrl": "Direct MP4 download or adaptive HLS manifest URL",
+    "availability": "Last observed URL availability",
+    "licenceClass": "verify until creator and licence metadata are supplied"
   }
 }

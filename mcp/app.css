@@ -598,6 +598,12 @@ canvas {
   margin-bottom: 2px;
 }
 
+.rights-card.is-warning {
+  border-color: rgba(166, 91, 27, 0.3);
+  background: #f1e3cf;
+  color: #795022;
+}
+
 .rail-endpoint {
   display: flex;
   align-items: center;
@@ -691,7 +697,8 @@ canvas {
 }
 
 .model-card,
-.component-card {
+.component-card,
+.background-card {
   min-width: 0;
   display: block;
   padding: 0;
@@ -709,14 +716,16 @@ canvas {
 }
 
 .model-card:hover,
-.component-card:hover {
+.component-card:hover,
+.background-card:hover {
   transform: translateY(-3px);
   border-color: var(--line-strong);
   box-shadow: 0 18px 36px rgba(28, 29, 26, 0.09);
 }
 
 .model-card.is-selected,
-.component-card.is-selected {
+.component-card.is-selected,
+.background-card.is-selected {
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent);
 }
@@ -831,6 +840,223 @@ canvas {
   font-size: 7px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+
+.background-card {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.background-card-visual {
+  --background-hue: 220;
+  position: relative;
+  aspect-ratio: 1.55;
+  min-height: 154px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(
+      circle at 72% 28%,
+      hsl(var(--background-hue) 78% 68% / 0.92),
+      transparent 34%
+    ),
+    linear-gradient(
+      135deg,
+      hsl(calc(var(--background-hue) + 30) 42% 16%),
+      hsl(calc(var(--background-hue) - 45) 48% 8%)
+    );
+  isolation: isolate;
+}
+
+.background-card-visual::before,
+.background-stage::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -24%;
+  background:
+    repeating-linear-gradient(
+      115deg,
+      transparent 0 18px,
+      hsl(var(--background-hue) 85% 66% / 0.12) 18px 20px
+    ),
+    radial-gradient(
+      circle at 35% 64%,
+      hsl(calc(var(--background-hue) + 100) 86% 60% / 0.52),
+      transparent 32%
+    );
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.background-card-visual[data-pattern="1"]::before,
+.background-stage[data-pattern="1"]::before {
+  background:
+    conic-gradient(
+      from 48deg at 55% 45%,
+      transparent,
+      hsl(var(--background-hue) 90% 65% / 0.6),
+      transparent 35%
+    ),
+    repeating-radial-gradient(
+      circle at center,
+      transparent 0 18px,
+      hsl(calc(var(--background-hue) + 70) 70% 70% / 0.16) 19px 21px
+    );
+}
+
+.background-card-visual[data-pattern="2"]::before,
+.background-stage[data-pattern="2"]::before {
+  background:
+    linear-gradient(
+      90deg,
+      transparent 18%,
+      hsl(var(--background-hue) 90% 64% / 0.46) 18% 24%,
+      transparent 24% 62%,
+      hsl(calc(var(--background-hue) + 120) 88% 62% / 0.36) 62% 70%,
+      transparent 70%
+    ),
+    linear-gradient(
+      hsl(var(--background-hue) 80% 68% / 0.12) 1px,
+      transparent 1px
+    );
+  background-size: auto, 100% 16px;
+}
+
+.background-card-visual[data-pattern="3"]::before,
+.background-stage[data-pattern="3"]::before {
+  background:
+    radial-gradient(ellipse at 20% 50%, #fff4, transparent 26%),
+    radial-gradient(
+      ellipse at 80% 42%,
+      hsl(var(--background-hue) 90% 64% / 0.68),
+      transparent 30%
+    ),
+    linear-gradient(24deg, transparent 38%, #fff2 39% 41%, transparent 42%);
+  filter: blur(8px);
+}
+
+.background-card-visual[data-pattern="4"]::before,
+.background-stage[data-pattern="4"]::before {
+  background:
+    repeating-conic-gradient(
+      from 15deg,
+      transparent 0 8deg,
+      hsl(var(--background-hue) 82% 62% / 0.22) 8deg 10deg
+    );
+  transform: scale(0.78);
+  border-radius: 50%;
+}
+
+.background-card-visual[data-pattern="5"]::before,
+.background-stage[data-pattern="5"]::before {
+  background:
+    linear-gradient(135deg, transparent 40%, #fff3 41% 43%, transparent 44%),
+    linear-gradient(
+      45deg,
+      hsl(var(--background-hue) 88% 60% / 0.42),
+      transparent 62%
+    );
+  clip-path: polygon(0 20%, 76% 0, 100% 74%, 24% 100%);
+}
+
+.background-card-visual[data-pattern="6"]::before,
+.background-stage[data-pattern="6"]::before {
+  background-image:
+    linear-gradient(hsl(var(--background-hue) 90% 65% / 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--background-hue) 90% 65% / 0.18) 1px, transparent 1px);
+  background-size: 22px 22px;
+  transform: perspective(300px) rotateX(50deg) scale(1.5);
+}
+
+.background-card-visual[data-pattern="7"]::before,
+.background-stage[data-pattern="7"]::before {
+  background:
+    radial-gradient(circle at 20% 30%, #fff8 0 2px, transparent 3px),
+    radial-gradient(
+      circle at 70% 62%,
+      hsl(var(--background-hue) 90% 70%) 0 3px,
+      transparent 4px
+    );
+  background-size: 34px 34px, 52px 52px;
+  filter: blur(0.4px);
+}
+
+.background-card-visual::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: linear-gradient(180deg, #080b0905 42%, #080b09d9);
+  pointer-events: none;
+}
+
+.background-card-visual img,
+.background-card-visual video {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.background-card-visual img {
+  transition: opacity 220ms ease;
+}
+
+.background-card-visual video {
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.background-card.is-previewing .background-card-visual video {
+  opacity: 1;
+}
+
+.background-card.is-previewing .background-card-visual img {
+  opacity: 0;
+}
+
+.background-card-index,
+.background-card-format,
+.background-card-action {
+  position: absolute;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 6px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.background-card-index {
+  top: 10px;
+  left: 10px;
+}
+
+.background-card-format {
+  top: 10px;
+  right: 10px;
+  padding: 4px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(10, 12, 10, 0.28);
+  backdrop-filter: blur(6px);
+}
+
+.background-card-action {
+  bottom: 10px;
+  left: 10px;
+}
+
+.background-card.is-unavailable {
+  opacity: 0.62;
+}
+
+.background-card.is-unavailable .background-card-visual {
+  filter: grayscale(1);
 }
 
 .component-card {
@@ -1620,6 +1846,94 @@ canvas {
   font-size: 7px;
 }
 
+.background-stage {
+  --background-hue: 220;
+  position: relative;
+  aspect-ratio: 1.55;
+  margin-top: 18px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(
+      circle at 72% 28%,
+      hsl(var(--background-hue) 78% 68% / 0.92),
+      transparent 34%
+    ),
+    linear-gradient(
+      135deg,
+      hsl(calc(var(--background-hue) + 30) 42% 16%),
+      hsl(calc(var(--background-hue) - 45) 48% 8%)
+    );
+  isolation: isolate;
+}
+
+.background-stage::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: inherit;
+  background: linear-gradient(180deg, transparent 60%, rgba(7, 9, 7, 0.46));
+  pointer-events: none;
+}
+
+.background-stage video {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  object-fit: cover;
+}
+
+.background-stage video::-webkit-media-controls-panel {
+  background: linear-gradient(transparent, rgba(5, 7, 5, 0.78));
+}
+
+.background-stage-status {
+  z-index: 4;
+  padding: 9px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  background: rgba(10, 12, 10, 0.62);
+  backdrop-filter: blur(10px);
+}
+
+.background-stage-hud {
+  position: absolute;
+  z-index: 3;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 4px;
+  background: rgba(10, 12, 10, 0.42);
+  color: rgba(255, 255, 255, 0.64);
+  backdrop-filter: blur(8px);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 6px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.background-stage-hud i {
+  width: 1px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.background-source-record {
+  border-color: #c6a77d;
+  background: #f0e3d0;
+  color: #684922;
+}
+
 .component-badges {
   display: flex;
   flex-wrap: wrap;
@@ -1954,7 +2268,8 @@ footer a:hover {
   }
 
   #model-inspector,
-  #component-inspector {
+  #component-inspector,
+  #background-inspector {
     display: grid;
     grid-template-columns: minmax(340px, 0.9fr) minmax(330px, 1.1fr);
     gap: 18px 24px;
@@ -1963,6 +2278,7 @@ footer a:hover {
   .inspector-heading,
   .model-stage,
   .component-stage,
+  .background-stage,
   .viewer-controls {
     grid-column: 1;
   }
@@ -2067,7 +2383,8 @@ footer a:hover {
   }
 
   #model-inspector,
-  #component-inspector {
+  #component-inspector,
+  #background-inspector {
     display: block;
   }
 
@@ -2163,7 +2480,6 @@ footer a:hover {
     grid-template-columns: auto 1fr;
   }
 
-  .brand > span:not(.brand-mark),
   .view-tabs button {
     padding-inline: 7px;
   }
@@ -2188,6 +2504,34 @@ footer a:hover {
 
   .stage-hud {
     display: none;
+  }
+
+  .background-stage-hud {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header {
+    gap: 4px;
+    padding-inline: 8px;
+  }
+
+  .brand > span:not(.brand-mark) {
+    display: none;
+  }
+
+  .view-tabs {
+    gap: 0;
+  }
+
+  .view-tabs button {
+    padding-inline: 5px;
+    font-size: 7px;
+  }
+
+  .view-tabs button:last-child::after {
+    font-size: 7px;
   }
 }
 

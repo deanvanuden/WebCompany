@@ -29,6 +29,11 @@ const lumoraObjectsRoot =
 const componentSkillRoot =
   process.env.WEB_COMPONENT_SKILL_DIR ??
   path.join(os.homedir(), ".codex", "skills", "web-design-components");
+const animatedBackgroundSourcePath = path.join(
+  scriptDirectory,
+  "data",
+  "animated-backgrounds-source.json",
+);
 const publicRoot = "https://lumoraofficial.de/mcp";
 const tempRoot = path.join(repositoryRoot, ".mcp-import-temp");
 
@@ -741,16 +746,104 @@ async function buildComponentCatalog() {
   return { components, index };
 }
 
+function backgroundHostLabel(hostname) {
+  if (hostname === "stream.mux.com") return "Mux";
+  if (hostname.endsWith("cloudfront.net")) return "CloudFront";
+  if (hostname.endsWith("cloudflarestream.com")) return "Cloudflare Stream";
+  if (hostname.endsWith("r2.dev")) return "Cloudflare R2";
+  return hostname;
+}
+
+function muxThumbnailUrl(sourceUrl) {
+  const url = new URL(sourceUrl);
+  if (url.hostname !== "stream.mux.com") return null;
+  const playbackId = path.basename(url.pathname, ".m3u8");
+  return `https://image.mux.com/${playbackId}/thumbnail.jpg?time=1&width=640&fit_mode=smartcrop`;
+}
+
+async function buildAnimatedBackgroundCatalog() {
+  const source = JSON.parse(
+    await readFile(animatedBackgroundSourcePath, "utf8"),
+  );
+  const backgrounds = source.entries.map((entry) => {
+    const sourceUrl = new URL(entry.url);
+    const sequence = String(entry.sourceIndex).padStart(3, "0");
+    const format = entry.format;
+
+    return {
+      id: `animated-background-${sequence}`,
+      name: `Motion Background ${sequence}`,
+      sourceOrder: entry.sourceIndex,
+      category: "Animated background",
+      format,
+      mediaType:
+        format === "MP4" ? "video/mp4" : "application/vnd.apple.mpegurl",
+      retrievalMode:
+        format === "MP4" ? "direct-download" : "adaptive-hls-stream",
+      source: "User-supplied external URL",
+      sourceHost: sourceUrl.hostname,
+      hostLabel: backgroundHostLabel(sourceUrl.hostname),
+      creator: "Unknown",
+      licence: "Unverified",
+      licenceClass: "verify",
+      rightsNote:
+        "Creator and licence metadata were not supplied. Verify rights before client, public, or commercial use.",
+      storage: "remote",
+      sourceUrl: entry.url,
+      downloadUrl: entry.url,
+      previewUrl: entry.url,
+      thumbnailUrl: muxThumbnailUrl(entry.url),
+      availability: entry.available ? "Available" : "Unavailable",
+      httpStatus: entry.httpStatus,
+      checkedAt: source.importedAt,
+      fileSizeMB: entry.fileSizeBytes
+        ? Number((entry.fileSizeBytes / 1024 / 1024).toFixed(2))
+        : null,
+      accentHue: (entry.sourceIndex * 47) % 360,
+      previewPattern: (entry.sourceIndex - 1) % 8,
+      summary:
+        format === "MP4"
+          ? "Externally hosted motion footage with a direct MP4 download URL."
+          : "Externally hosted adaptive HLS motion stream.",
+      performanceGuidance:
+        "Select one background, download or stream only that winner, lazy-load it, remove audio, cap resolution and bitrate, and provide a reduced-motion still.",
+      publicRecordUrl: `${publicRoot}/animated-backgrounds.json#animated-background-${sequence}`,
+    };
+  });
+
+  if (backgrounds.length !== source.uniqueUrlCount) {
+    throw new Error(
+      `Animated background source count mismatch (${backgrounds.length}/${source.uniqueUrlCount})`,
+    );
+  }
+
+  return {
+    backgrounds,
+    source: {
+      importedAt: source.importedAt,
+      sourceFile: source.sourceFile,
+      parsedUrlCount: source.parsedUrlCount,
+      uniqueUrlCount: source.uniqueUrlCount,
+      duplicateCount: source.duplicateCount,
+    },
+  };
+}
+
 async function main() {
   await mkdir(path.join(outputRoot, "assets", "models"), { recursive: true });
   await mkdir(path.join(outputRoot, "assets", "thumbs"), { recursive: true });
 
-  const [{ models: kenneyModels, packProvenance }, polyHavenModels, componentData] =
-    await Promise.all([
-      extractKenneyModels(),
-      buildPolyHavenModels(),
-      buildComponentCatalog(),
-    ]);
+  const [
+    { models: kenneyModels, packProvenance },
+    polyHavenModels,
+    componentData,
+    backgroundData,
+  ] = await Promise.all([
+    extractKenneyModels(),
+    buildPolyHavenModels(),
+    buildComponentCatalog(),
+    buildAnimatedBackgroundCatalog(),
+  ]);
 
   const models = [...kenneyModels, ...polyHavenModels];
   const modelIds = new Set(models.map((model) => model.id));
@@ -764,12 +857,16 @@ async function main() {
     generatedAt: "2026-07-29",
     canonicalUrl: `${publicRoot}/`,
     purpose:
-      "A human and machine-readable design toolkit for selecting web-ready 3D models and original Web Component implementation recipes.",
+      "A human and machine-readable design toolkit for selecting web-ready 3D models, original Web Component implementation recipes, and externally hosted animated background references.",
     totals: {
       models: models.length,
       localModels: models.filter((model) => model.storage === "local").length,
       streamedModels: models.filter((model) => model.storage === "remote").length,
       componentRecipes: componentData.components.length,
+      animatedBackgrounds: backgroundData.backgrounds.length,
+      availableAnimatedBackgrounds: backgroundData.backgrounds.filter(
+        (background) => background.availability === "Available",
+      ).length,
       shipSafeModels: models.filter(
         (model) => model.licenceClass === "ship-safe",
       ).length,
@@ -778,6 +875,7 @@ async function main() {
       models: `${publicRoot}/models.json`,
       componentIndex: `${publicRoot}/components-index.json`,
       componentRecords: `${publicRoot}/components.json`,
+      animatedBackgrounds: `${publicRoot}/animated-backgrounds.json`,
       instructions: `${publicRoot}/instructions.md`,
       provenance: `${publicRoot}/provenance.json`,
     },
@@ -788,6 +886,13 @@ async function main() {
       files:
         "Optional exact dependency URL map used to resolve streamed Poly Haven glTF packages",
       licenceClass: "ship-safe, attribution, or concept-only",
+    },
+    animatedBackgroundSchema: {
+      id: "Stable catalog identifier",
+      previewUrl: "Original externally hosted MP4 or HLS media URL",
+      downloadUrl: "Direct MP4 download or adaptive HLS manifest URL",
+      availability: "Last observed URL availability",
+      licenceClass: "verify until creator and licence metadata are supplied",
     },
   };
 
@@ -809,6 +914,18 @@ async function main() {
           "BufferGeometryUtils.js",
           "SkeletonUtils.js",
         ],
+      },
+      {
+        name: "hls.js",
+        version: "1.6.16",
+        sourceUrl: "https://github.com/video-dev/hls.js",
+        licence: "Apache-2.0",
+        licenceUrl:
+          "https://github.com/video-dev/hls.js/blob/v1.6.16/LICENSE",
+        runtimeUrl:
+          "https://cdn.jsdelivr.net/npm/hls.js@1.6.16/dist/hls.light.min.js",
+        loading:
+          "Loaded on demand only when an HLS animated background is selected in a browser without native HLS support.",
       },
     ],
     kenney: packProvenance,
@@ -838,13 +955,37 @@ async function main() {
         "Generated a smaller browser index without removing full machine-readable records",
       ],
     },
+    animatedBackgrounds: {
+      source: backgroundData.source.sourceFile,
+      sourceKind: "user-supplied-external-links",
+      importedAt: backgroundData.source.importedAt,
+      parsedUrlCount: backgroundData.source.parsedUrlCount,
+      uniqueUrlCount: backgroundData.source.uniqueUrlCount,
+      duplicateCount: backgroundData.source.duplicateCount,
+      availableCount: backgroundData.backgrounds.filter(
+        (background) => background.availability === "Available",
+      ).length,
+      unavailableCount: backgroundData.backgrounds.filter(
+        (background) => background.availability !== "Available",
+      ).length,
+      storage: "external-only",
+      licenceClass: "verify",
+      rightsNote:
+        "The supplied URLs did not include creator or licence metadata. Each selected asset must be verified before client, public, or commercial use.",
+      transformations: [
+        "Removed exact duplicate URLs while preserving first-seen order",
+        "Recorded URL format, host, last observed availability, and direct retrieval URL",
+        "Did not download, mirror, or redistribute the background media",
+        "Uses remote Mux thumbnails where available and otherwise previews the original media only on interaction",
+      ],
+    },
   };
 
   const instructions = `# Lumora MCP
 
 Canonical entry point: ${publicRoot}/
 
-Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records and original Web Component implementation recipes.
+Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records, original Web Component implementation recipes, and externally hosted animated background references.
 
 ## Machine-readable endpoints
 
@@ -852,20 +993,23 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 - 3D models: ${publicRoot}/models.json
 - Component index: ${publicRoot}/components-index.json
 - Complete component records: ${publicRoot}/components.json
+- Animated backgrounds: ${publicRoot}/animated-backgrounds.json
 - Provenance: ${publicRoot}/provenance.json
 
 ## Selection protocol for Codex
 
-1. Read the manifest and choose either the model or component catalog.
+1. Read the manifest and choose the model, component, or animated-background catalog.
 2. Filter candidates by the real page goal, brand, framework, performance budget, and rights class.
 3. For 3D, prefer \`ship-safe\` records and load only the selected model. Use \`publicModelUrl\` in external projects. When a streamed glTF record has a \`files\` map, preserve that dependency mapping or download the official distribution into the target project.
 4. For components, choose zero to three recipes. Treat each record as an implementation brief and build it from first principles in the target project's conventions.
-5. Preserve source URLs, creator names, licences, trademark warnings, fallbacks, accessibility contracts, and reduced-motion behavior.
-6. Do not mirror the entire catalog into a client project. Copy only the chosen assets or implement only the chosen recipes.
+5. For animated backgrounds, preview candidates from their external URLs, select one winner, and then fetch only that record's \`downloadUrl\`. MP4 records are direct downloads; HLS records are adaptive streams. Optimize the selected media locally and provide a static reduced-motion fallback.
+6. Every animated background is marked \`verify\` because the supplied link list did not contain creator or licence metadata. Do not use one in client, public, or commercial work until its rights are confirmed.
+7. Preserve source URLs, creator names, licences, trademark warnings, fallbacks, accessibility contracts, and reduced-motion behavior.
+8. Do not mirror the entire catalog into a client project. Copy only the chosen assets or implement only the chosen recipes.
 
 ## Rights
 
-Kenney packs in this catalog are the user-provided GLB distributions licensed CC0 1.0. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs.
+Kenney packs in this catalog are the user-provided GLB distributions licensed CC0 1.0. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. Animated backgrounds remain externally hosted and rights-unverified until per-item creator and licence metadata is supplied.
 `;
 
   await Promise.all([
@@ -880,6 +1024,10 @@ Kenney packs in this catalog are the user-provided GLB distributions licensed CC
     writeFile(
       path.join(outputRoot, "components-index.json"),
       `${JSON.stringify(componentData.index, null, 2)}\n`,
+    ),
+    writeFile(
+      path.join(outputRoot, "animated-backgrounds.json"),
+      `${JSON.stringify(backgroundData.backgrounds, null, 2)}\n`,
     ),
     writeFile(
       path.join(outputRoot, "manifest.json"),
@@ -901,6 +1049,9 @@ Kenney packs in this catalog are the user-provided GLB distributions licensed CC
         localModels: manifest.totals.localModels,
         streamedModels: manifest.totals.streamedModels,
         componentRecipes: componentData.components.length,
+        animatedBackgrounds: backgroundData.backgrounds.length,
+        availableAnimatedBackgrounds:
+          manifest.totals.availableAnimatedBackgrounds,
         kenneyMegabytes: Number(
           kenneyModels
             .reduce((sum, model) => sum + model.fileSizeMB, 0)

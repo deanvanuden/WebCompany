@@ -16,6 +16,15 @@
         "BufferGeometryUtils.js",
         "SkeletonUtils.js"
       ]
+    },
+    {
+      "name": "hls.js",
+      "version": "1.6.16",
+      "sourceUrl": "https://github.com/video-dev/hls.js",
+      "licence": "Apache-2.0",
+      "licenceUrl": "https://github.com/video-dev/hls.js/blob/v1.6.16/LICENSE",
+      "runtimeUrl": "https://cdn.jsdelivr.net/npm/hls.js@1.6.16/dist/hls.light.min.js",
+      "loading": "Loaded on demand only when an HLS animated background is selected in a browser without native HLS support."
     }
   ],
   "kenney": [
@@ -200,6 +209,25 @@
     "transformations": [
       "Converted the internal CSV catalog to complete JSON records",
       "Generated a smaller browser index without removing full machine-readable records"
+    ]
+  },
+  "animatedBackgrounds": {
+    "source": "AnimatedBackgrounds.txt",
+    "sourceKind": "user-supplied-external-links",
+    "importedAt": "2026-07-29",
+    "parsedUrlCount": 158,
+    "uniqueUrlCount": 152,
+    "duplicateCount": 6,
+    "availableCount": 151,
+    "unavailableCount": 1,
+    "storage": "external-only",
+    "licenceClass": "verify",
+    "rightsNote": "The supplied URLs did not include creator or licence metadata. Each selected asset must be verified before client, public, or commercial use.",
+    "transformations": [
+      "Removed exact duplicate URLs while preserving first-seen order",
+      "Recorded URL format, host, last observed availability, and direct retrieval URL",
+      "Did not download, mirror, or redistribute the background media",
+      "Uses remote Mux thumbnails where available and otherwise previews the original media only on interaction"
     ]
   }
 }
