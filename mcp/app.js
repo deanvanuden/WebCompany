@@ -10,6 +10,14 @@ const PAGE_SIZE = 30;
 const publicRoot = "https://lumoraofficial.de/mcp";
 const hlsRuntimeUrl =
   "https://cdn.jsdelivr.net/npm/hls.js@1.6.16/dist/hls.light.min.js";
+const buildVersion =
+  new URL(import.meta.url).searchParams.get("v") ?? "development";
+
+function catalogUrl(relativePath) {
+  const url = new URL(relativePath, import.meta.url);
+  url.searchParams.set("v", buildVersion);
+  return url;
+}
 
 const state = {
   view: "models",
@@ -600,7 +608,7 @@ async function selectModel(id, { updateLocation = true } = {}) {
 
 async function ensureComponentRecords() {
   if (state.componentRecords) return state.componentRecords;
-  const response = await fetch("./components.json");
+  const response = await fetch(catalogUrl("./components.json"));
   if (!response.ok) throw new Error("Complete component records are unavailable.");
   const records = await response.json();
   state.componentRecords = new Map(records.map((record) => [record.id, record]));
@@ -1451,10 +1459,10 @@ async function initialize() {
       backgroundsResponse,
     ] =
       await Promise.all([
-        fetch("./manifest.json"),
-        fetch("./models.json"),
-        fetch("./components-index.json"),
-        fetch("./animated-backgrounds.json"),
+        fetch(catalogUrl("./manifest.json")),
+        fetch(catalogUrl("./models.json")),
+        fetch(catalogUrl("./components-index.json")),
+        fetch(catalogUrl("./animated-backgrounds.json")),
       ]);
     if (
       !manifestResponse.ok ||
