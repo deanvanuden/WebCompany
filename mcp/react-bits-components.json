@@ -72,7 +72,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-blob-cursor",
@@ -132,7 +142,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-animated-content",
@@ -192,7 +212,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-magnet",
@@ -252,7 +282,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-fade-content",
@@ -312,7 +352,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-crosshair",
@@ -372,7 +422,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-shape-blur",
@@ -432,7 +492,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-star-border",
@@ -492,7 +562,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-noise",
@@ -552,7 +632,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-magnet-lines",
@@ -612,7 +702,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-splash-cursor",
@@ -672,7 +772,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-click-spark",
@@ -732,7 +842,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-pixel-transition",
@@ -792,7 +912,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-image-trail",
@@ -852,7 +982,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-pixel-trail",
@@ -912,7 +1052,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-ribbons",
@@ -972,7 +1122,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-meta-balls",
@@ -1032,7 +1192,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-metallic-paint",
@@ -1092,7 +1262,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-glare-hover",
@@ -1152,7 +1332,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-cubes",
@@ -1212,7 +1402,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-target-cursor",
@@ -1272,7 +1472,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-sticker-peel",
@@ -1332,7 +1542,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-electric-border",
@@ -1392,7 +1612,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-laser-flow",
@@ -1452,7 +1682,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-ghost-cursor",
@@ -1512,7 +1752,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-antigravity",
@@ -1572,7 +1822,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-orbit-images",
@@ -1632,7 +1892,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-magic-rings",
@@ -1692,7 +1962,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-strands",
@@ -1752,7 +2032,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-cursor-grid",
@@ -1812,7 +2102,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-split-text",
@@ -1872,7 +2172,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-blur-text",
@@ -1932,7 +2242,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-shiny-text",
@@ -1992,7 +2312,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-gradient-text",
@@ -2052,7 +2382,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-count-up",
@@ -2112,7 +2452,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-decrypted-text",
@@ -2172,7 +2522,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-true-focus",
@@ -2232,7 +2592,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-variable-proximity",
@@ -2292,7 +2662,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-text-pressure",
@@ -2352,7 +2732,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-ascii-text",
@@ -2412,7 +2802,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-falling-text",
@@ -2472,7 +2872,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-rotating-text",
@@ -2532,7 +2942,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-circular-text",
@@ -2592,7 +3012,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-scroll-velocity",
@@ -2652,7 +3082,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-scroll-reveal",
@@ -2712,7 +3152,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-scroll-float",
@@ -2772,7 +3222,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-glitch-text",
@@ -2832,7 +3292,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-fuzzy-text",
@@ -2892,7 +3362,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-text-cursor",
@@ -2952,7 +3432,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-scrambled-text",
@@ -3012,7 +3502,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-curved-loop",
@@ -3072,7 +3572,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-text-type",
@@ -3132,7 +3642,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-logo-loop",
@@ -3192,7 +3712,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-shuffle",
@@ -3252,7 +3782,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "text animations",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-stack",
@@ -3312,7 +3852,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-dock",
@@ -3372,7 +3922,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-spotlight-card",
@@ -3432,7 +3992,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-border-glow",
@@ -3492,7 +4062,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-elastic-slider",
@@ -3552,7 +4132,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-decay-card",
@@ -3612,7 +4202,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-bounce-cards",
@@ -3672,7 +4272,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-pixel-card",
@@ -3732,7 +4342,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-tilted-card",
@@ -3792,7 +4412,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-infinite-menu",
@@ -3852,7 +4482,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-flying-posters",
@@ -3912,7 +4552,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-flowing-menu",
@@ -3972,7 +4622,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-circular-gallery",
@@ -4032,7 +4692,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-stepper",
@@ -4092,7 +4762,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-carousel",
@@ -4152,7 +4832,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-counter",
@@ -4212,7 +4902,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-lanyard",
@@ -4272,7 +4972,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-glass-icons",
@@ -4332,7 +5042,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-animated-list",
@@ -4392,7 +5112,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-folder",
@@ -4452,7 +5182,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-gooey-nav",
@@ -4512,7 +5252,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-chroma-grid",
@@ -4572,7 +5322,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-profile-card",
@@ -4632,7 +5392,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-card-swap",
@@ -4692,7 +5462,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-model-viewer",
@@ -4752,7 +5532,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-fluid-glass",
@@ -4812,7 +5602,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-masonry",
@@ -4872,7 +5672,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-magic-bento",
@@ -4932,7 +5742,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-scroll-stack",
@@ -4992,7 +5812,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-glass-surface",
@@ -5052,7 +5882,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-pill-nav",
@@ -5112,7 +5952,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-card-nav",
@@ -5172,7 +6022,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-bubble-menu",
@@ -5232,7 +6092,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-dome-gallery",
@@ -5292,7 +6162,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-staggered-menu",
@@ -5352,7 +6232,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-reflective-card",
@@ -5412,7 +6302,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-line-sidebar",
@@ -5472,7 +6372,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-curved-input",
@@ -5532,7 +6442,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-option-wheel",
@@ -5592,7 +6512,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-specular-button",
@@ -5652,7 +6582,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "hybrid-section-or-enhancement",
+      "enhancement_family": "components",
+      "required_review": true,
+      "can_be_structural": true,
+      "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-silk",
@@ -5712,7 +6652,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-aurora",
@@ -5772,7 +6722,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-shape-grid",
@@ -5832,7 +6792,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-hyperspeed",
@@ -5892,7 +6862,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-iridescence",
@@ -5952,7 +6932,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-grid-motion",
@@ -6012,7 +7002,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-waves",
@@ -6072,7 +7072,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-ballpit",
@@ -6132,7 +7142,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-letter-glitch",
@@ -6192,7 +7212,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-grid-distortion",
@@ -6252,7 +7282,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-orb",
@@ -6312,7 +7352,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-particles",
@@ -6372,7 +7422,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-liquid-chrome",
@@ -6432,7 +7492,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-balatro",
@@ -6492,7 +7562,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-threads",
@@ -6552,7 +7632,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-dither",
@@ -6612,7 +7702,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-lightning",
@@ -6672,7 +7772,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-dot-grid",
@@ -6732,7 +7842,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-beams",
@@ -6792,7 +7912,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-ripple-grid",
@@ -6852,7 +7982,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-dark-veil",
@@ -6912,7 +8052,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-galaxy",
@@ -6972,7 +8122,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-light-rays",
@@ -7032,7 +8192,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-faulty-terminal",
@@ -7092,7 +8262,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-plasma",
@@ -7152,7 +8332,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-plasma-wave",
@@ -7212,7 +8402,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-prism",
@@ -7272,7 +8472,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-gradient-blinds",
@@ -7332,7 +8542,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-grainient",
@@ -7392,7 +8612,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-prismatic-burst",
@@ -7452,7 +8682,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-pixel-blast",
@@ -7512,7 +8752,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-liquid-ether",
@@ -7572,7 +8822,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-color-bends",
@@ -7632,7 +8892,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-line-waves",
@@ -7692,7 +8962,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-grid-scan",
@@ -7752,7 +9032,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-floating-lines",
@@ -7812,7 +9102,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-light-pillar",
@@ -7872,7 +9172,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-pixel-snow",
@@ -7932,7 +9242,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-radar",
@@ -7992,7 +9312,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-soft-aurora",
@@ -8052,7 +9382,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-evil-eye",
@@ -8112,7 +9452,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-dot-field",
@@ -8172,7 +9522,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-side-rays",
@@ -8232,7 +9592,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-lightfall",
@@ -8292,7 +9662,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     },
     {
       "id": "reactbits-ferrofluid",
@@ -8352,7 +9732,17 @@
         "JS-TW",
         "TS-CSS",
         "TS-TW"
-      ]
+      ],
+      "selection_pass": "enhancement",
+      "selection_pass_label": "Pass 2 · Effects / motion",
+      "component_role": "enhancement",
+      "enhancement_family": "backgrounds",
+      "required_review": true,
+      "can_be_structural": false,
+      "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      "codex_selection_instruction": "Required Pass 2 review source: React Bits. Compare this effect against the selected layout even if the final decision is to use none.",
+      "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
     }
   ]
 }

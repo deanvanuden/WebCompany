@@ -87,6 +87,11 @@ const componentPreviewSource = await readFile(
   "utf8",
 );
 const appCssSource = await readFile(path.join(mcpRoot, "app.css"), "utf8");
+const appSource = await readFile(path.join(mcpRoot, "app.js"), "utf8");
+const indexHtmlSource = await readFile(
+  path.join(mcpRoot, "index.html"),
+  "utf8",
+);
 const instructionsSource = await readFile(
   path.join(mcpRoot, "instructions.md"),
   "utf8",
@@ -233,6 +238,12 @@ for (const schemaField of [
   "officialVariants",
   "previewVideoUrl",
   "licenceClass",
+  "selectionPass",
+  "componentRole",
+  "enhancementFamily",
+  "requiredReview",
+  "canBeStructural",
+  "pairingGuidance",
 ]) {
   check(
     Boolean(manifest.componentSchema?.[schemaField]),
@@ -284,6 +295,21 @@ check(
 check(
   /guidance is advisory/i.test(instructionsSource),
   "Codex instructions do not preserve the advisory fallback policy",
+);
+check(
+  /always work in two passes/i.test(instructionsSource) &&
+    /skipping the review is not valid/i.test(instructionsSource) &&
+    /OriginKit, React Bits, and Canvas UI/i.test(instructionsSource),
+  "Codex instructions do not require the two-pass linked-library review",
+);
+check(
+  /selection_pass_label/.test(appSource) &&
+    /data-component-pass/.test(appSource) &&
+    /id="component-workflow"/.test(indexHtmlSource) &&
+    /Always use two component passes/.test(indexHtmlSource) &&
+    /manifest\.endpoints\.componentRecords/.test(indexHtmlSource) &&
+    /\.component-workflow/.test(appCssSource),
+  "Component catalog UI does not expose the two-pass workflow",
 );
 
 for (const model of models) {
@@ -459,6 +485,12 @@ const linkedReactBitsComponents = components.filter(
 const linkedCanvasUiComponents = components.filter(
   (component) => component.source === "Canvas UI",
 );
+const structureComponents = components.filter(
+  (component) => component.selection_pass === "structure",
+);
+const enhancementComponents = components.filter(
+  (component) => component.selection_pass === "enhancement",
+);
 check(
   components.length === 1330,
   `Expected 1,330 component records, found ${components.length}`,
@@ -481,6 +513,15 @@ check(
   linkedCanvasUiComponents.length === 25 &&
     canvasUiComponents.length === 25,
   `Expected 25 linked Canvas UI records, found ${linkedCanvasUiComponents.length}/${canvasUiComponents.length}`,
+);
+check(
+  structureComponents.length === 492 &&
+    enhancementComponents.length === 838 &&
+    manifest.totals.structureComponentRecipes ===
+      structureComponents.length &&
+    manifest.totals.enhancementComponentRecipes ===
+      enhancementComponents.length,
+  `Unexpected two-pass component totals: ${structureComponents.length}/${enhancementComponents.length}`,
 );
 check(
   reactBitsSnapshot.license === "MIT + Commons Clause v1.0" &&
@@ -521,6 +562,16 @@ for (const component of ownedComponents) {
     componentIndexIds.has(component.id),
     `${component.id} is missing from components-index.json`,
   );
+  check(
+    ["structure", "enhancement"].includes(component.selection_pass) &&
+      Boolean(component.selection_pass_label) &&
+      Boolean(component.component_role) &&
+      Boolean(component.enhancement_family) &&
+      Boolean(component.pairing_guidance) &&
+      Boolean(component.codex_selection_instruction) &&
+      Boolean(component.stacking_limit),
+    `${component.id} has incomplete two-pass selection guidance`,
+  );
 }
 
 for (const component of linkedOriginKitComponents) {
@@ -538,6 +589,8 @@ for (const component of linkedOriginKitComponents) {
   check(
     component.source_kind === "external-linked-component" &&
       component.licence_class === "linked-source" &&
+      component.selection_pass === "enhancement" &&
+      component.required_review === true &&
       component.source_code_bundled === false &&
       component.media_mirrored === false,
     `${component.id} does not preserve the linked-source boundary`,
@@ -588,6 +641,8 @@ for (const component of linkedReactBitsComponents) {
     component.source_kind === "external-linked-component" &&
       component.license === "MIT + Commons Clause v1.0" &&
       component.licence_class === "end-project-only-linked-source" &&
+      component.selection_pass === "enhancement" &&
+      component.required_review === true &&
       component.source_code_bundled === false &&
       component.media_mirrored === false,
     `${component.id} does not preserve the React Bits source boundary`,
@@ -637,6 +692,8 @@ for (const component of linkedCanvasUiComponents) {
     component.source_kind === "external-linked-component" &&
       component.license === "MIT + Commons Clause v1.0" &&
       component.licence_class === "end-project-only-linked-source" &&
+      component.selection_pass === "enhancement" &&
+      component.required_review === true &&
       component.source_code_bundled === false &&
       component.media_mirrored === false,
     `${component.id} does not preserve the Canvas UI source boundary`,
@@ -670,6 +727,14 @@ for (const component of linkedCanvasUiComponents) {
     `${component.id} has incomplete Canvas UI implementation guidance`,
   );
 }
+check(
+  components.filter(
+    (component) =>
+      component.selection_pass === "enhancement" &&
+      component.can_be_structural === true,
+  ).length === 75,
+  "Unexpected hybrid section-or-enhancement record count",
+);
 
 const componentArchetypes = new Set(
   ownedComponents.map((component) => component.id.split("--")[0]),
@@ -1007,7 +1072,10 @@ check(
     provenance.components.linkedComponentCount ===
       linkedOriginKitComponents.length +
         linkedReactBitsComponents.length +
-        linkedCanvasUiComponents.length,
+        linkedCanvasUiComponents.length &&
+    provenance.components.structureCount === structureComponents.length &&
+    provenance.components.enhancementCount ===
+      enhancementComponents.length,
   "Component provenance total does not match components.json",
 );
 check(
@@ -1103,6 +1171,11 @@ if (errors.length) {
     shipSafeModels: shipSafeModels.length,
     componentRecipes: components.length,
     ownedComponentRecipes: ownedComponents.length,
+    structureComponentRecipes: structureComponents.length,
+    enhancementComponentRecipes: enhancementComponents.length,
+    requiredLinkedEnhancementReviews: components.filter(
+      (component) => component.required_review,
+    ).length,
     linkedOriginKitComponents: linkedOriginKitComponents.length,
     linkedReactBitsComponents: linkedReactBitsComponents.length,
     linkedCanvasUiComponents: linkedCanvasUiComponents.length,

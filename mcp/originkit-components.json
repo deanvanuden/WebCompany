@@ -48,7 +48,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-3d-stagger-flip"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-3d-stagger-flip",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-3d-text-unfold",
@@ -99,7 +109,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-3d-text-unfold"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-3d-text-unfold",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-appear-text",
@@ -150,7 +170,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-appear-text"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-appear-text",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-ascii-flame",
@@ -201,7 +231,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-ascii-flame"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-ascii-flame",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "background animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-ascii-rain",
@@ -252,7 +292,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-ascii-rain"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-ascii-rain",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "background animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-ascii-reveal",
@@ -303,7 +353,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-ascii-reveal"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-ascii-reveal",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-axis-cursor",
@@ -354,7 +414,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-axis-cursor"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-axis-cursor",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "cursor",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-blackhole",
@@ -405,7 +475,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-blackhole"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-blackhole",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "interactive elements",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-blinkingsquares",
@@ -456,7 +536,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-blinkingsquares"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-blinkingsquares",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "background animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-blob-text-reveal",
@@ -507,7 +597,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-blob-text-reveal"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-blob-text-reveal",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-blurcarousel",
@@ -558,7 +658,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-blurcarousel"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-blurcarousel",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-boxcarousel",
@@ -609,7 +719,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-boxcarousel"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-boxcarousel",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-brush-reveal",
@@ -660,7 +780,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-brush-reveal"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-brush-reveal",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-button-carousel",
@@ -711,7 +841,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-button-carousel"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-button-carousel",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-character-waves",
@@ -762,7 +902,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-character-waves"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-character-waves",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "background animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-chromatic-waves",
@@ -813,7 +963,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-chromatic-waves"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-chromatic-waves",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "background animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-clickeffects",
@@ -864,7 +1024,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-clickeffects"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-clickeffects",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "cursor",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-cosmic-orb",
@@ -915,7 +1085,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-cosmic-orb"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-cosmic-orb",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "interactive elements",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-coverflowcarousel",
@@ -966,7 +1146,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-coverflowcarousel"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-coverflowcarousel",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-coverflowgallery",
@@ -1017,7 +1207,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-coverflowgallery"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-coverflowgallery",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-crystal-glow",
@@ -1068,7 +1268,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-crystal-glow"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-crystal-glow",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-cube",
@@ -1119,7 +1329,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-cube"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-cube",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "interactive elements",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-cube-roll-letter-role",
@@ -1170,7 +1390,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-cube-roll-letter-role"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-cube-roll-letter-role",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-cursor-image-gallery",
@@ -1221,7 +1451,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-cursor-image-gallery"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-cursor-image-gallery",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-cursor-image-trail",
@@ -1272,7 +1512,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-cursor-image-trail"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-cursor-image-trail",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-curvedmarquee",
@@ -1323,7 +1573,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-curvedmarquee"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-curvedmarquee",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-directionhover",
@@ -1374,7 +1634,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-directionhover"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-directionhover",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-domino-text-fall",
@@ -1425,7 +1695,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-domino-text-fall"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-domino-text-fall",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-dot-image-reveal",
@@ -1476,7 +1756,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-dot-image-reveal"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-dot-image-reveal",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-dotmatrix",
@@ -1527,7 +1817,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-dotmatrix"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-dotmatrix",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "background animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-dot-scatter",
@@ -1578,7 +1878,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-dot-scatter"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-dot-scatter",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-draggable-grid",
@@ -1629,7 +1939,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-draggable-grid"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-draggable-grid",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-draggablesticker",
@@ -1680,7 +2000,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-draggablesticker"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-draggablesticker",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-dust-text-reveal",
@@ -1731,7 +2061,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-dust-text-reveal"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-dust-text-reveal",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-dynamic-weight",
@@ -1782,7 +2122,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-dynamic-weight"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-dynamic-weight",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-elastic-text",
@@ -1833,7 +2183,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-elastic-text"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-elastic-text",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-electricborder",
@@ -1884,7 +2244,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-electricborder"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-electricborder",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "border",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-emojiburst",
@@ -1935,7 +2305,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-emojiburst"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-emojiburst",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "button",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-emoji-particle",
@@ -1986,7 +2366,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-emoji-particle"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-emoji-particle",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-encrypt-button",
@@ -2037,7 +2427,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-encrypt-button"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-encrypt-button",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "button",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-eye-gallery",
@@ -2088,7 +2488,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-eye-gallery"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-eye-gallery",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-falling-text",
@@ -2139,7 +2549,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-falling-text"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-falling-text",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-flickertext",
@@ -2190,7 +2610,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-flickertext"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-flickertext",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-flip-gallery",
@@ -2241,7 +2671,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-flip-gallery"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-flip-gallery",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-floatingicons",
@@ -2292,7 +2732,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-floatingicons"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-floatingicons",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-fluid-image-reveal",
@@ -2343,7 +2793,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-fluid-image-reveal"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-fluid-image-reveal",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-fluidtrail",
@@ -2394,7 +2854,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-fluidtrail"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-fluidtrail",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "cursor",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-focus-reveal",
@@ -2445,7 +2915,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-focus-reveal"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-focus-reveal",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-gallery-tunnel",
@@ -2496,7 +2976,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-gallery-tunnel"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-gallery-tunnel",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-glitch-text",
@@ -2547,7 +3037,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-glitch-text"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-glitch-text",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-glitterwrap",
@@ -2598,7 +3098,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-glitterwrap"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-glitterwrap",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-globe",
@@ -2649,7 +3159,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-globe"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-globe",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "interactive elements",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-gradient-text",
@@ -2700,7 +3220,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-gradient-text"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-gradient-text",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-gravitygallery",
@@ -2751,7 +3281,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-gravitygallery"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-gravitygallery",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-grid-hole",
@@ -2802,7 +3342,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-grid-hole"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-grid-hole",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-hover-image-reveal",
@@ -2853,7 +3403,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-hover-image-reveal"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-hover-image-reveal",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-image-flipper",
@@ -2904,7 +3464,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-image-flipper"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-image-flipper",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-imagefold",
@@ -2955,7 +3525,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-imagefold"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-imagefold",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-imagegallery",
@@ -3006,7 +3586,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-imagegallery"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-imagegallery",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-image-group-circle",
@@ -3057,7 +3647,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-image-group-circle"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-image-group-circle",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-image-magnifier",
@@ -3108,7 +3708,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-image-magnifier"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-image-magnifier",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-image-ripple",
@@ -3159,7 +3769,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-image-ripple"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-image-ripple",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-image-spotlight",
@@ -3210,7 +3830,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-image-spotlight"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-image-spotlight",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-infinite-text-passage",
@@ -3261,7 +3891,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-infinite-text-passage"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-infinite-text-passage",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-infinitegallery",
@@ -3312,7 +3952,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-infinitegallery"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-infinitegallery",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-inkbleed",
@@ -3363,7 +4013,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-inkbleed"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-inkbleed",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-interactive-grid",
@@ -3414,7 +4074,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-interactive-grid"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-interactive-grid",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-juiceeffect",
@@ -3465,7 +4135,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-juiceeffect"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-juiceeffect",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-kineticgrid",
@@ -3516,7 +4196,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-kineticgrid"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-kineticgrid",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "cursor",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-letter-drop",
@@ -3567,7 +4257,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-letter-drop"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-letter-drop",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-letter-swing",
@@ -3618,7 +4318,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-letter-swing"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-letter-swing",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-line-ripple-background",
@@ -3669,7 +4379,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-line-ripple-background"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-line-ripple-background",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "background animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-link-preview",
@@ -3720,7 +4440,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-link-preview"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-link-preview",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "button",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-liquid-distortion",
@@ -3771,7 +4501,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-liquid-distortion"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-liquid-distortion",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-live-chat",
@@ -3822,7 +4562,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-live-chat"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-live-chat",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-magneticcarousel",
@@ -3873,7 +4623,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-magneticcarousel"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-magneticcarousel",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-magnetic-hover-button",
@@ -3924,7 +4684,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-magnetic-hover-button"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-magnetic-hover-button",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "button",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-mask-text-reveal",
@@ -3975,7 +4745,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-mask-text-reveal"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-mask-text-reveal",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-mechanical-flip",
@@ -4026,7 +4806,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-mechanical-flip"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-mechanical-flip",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-meshtexthover",
@@ -4077,7 +4867,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-meshtexthover"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-meshtexthover",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-motion-text-wave",
@@ -4128,7 +4928,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-motion-text-wave"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-motion-text-wave",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-particlesphere",
@@ -4179,7 +4989,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-particlesphere"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-particlesphere",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "interactive elements",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-particletunnel",
@@ -4230,7 +5050,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-particletunnel"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-particletunnel",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-pixelcard",
@@ -4281,7 +5111,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixelcard"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixelcard",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "background animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-pixeldrift",
@@ -4332,7 +5172,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixeldrift"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixeldrift",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-pixel-led-display",
@@ -4383,7 +5233,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixel-led-display"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixel-led-display",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-pixelreveal",
@@ -4434,7 +5294,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixelreveal"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixelreveal",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-pixel-unfold",
@@ -4485,7 +5355,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixel-unfold"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixel-unfold",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-pixelate-image",
@@ -4536,7 +5416,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixelate-image"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixelate-image",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-popcorn-text",
@@ -4587,7 +5477,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-popcorn-text"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-popcorn-text",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-prism-grid",
@@ -4638,7 +5538,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-prism-grid"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-prism-grid",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-proximityorbit",
@@ -4689,7 +5599,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-proximityorbit"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-proximityorbit",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-pulse-lines",
@@ -4740,7 +5660,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pulse-lines"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pulse-lines",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "background animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-random-letter-swap",
@@ -4791,7 +5721,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-random-letter-swap"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-random-letter-swap",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-reactivegrid",
@@ -4842,7 +5782,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-reactivegrid"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-reactivegrid",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-reactive-lines",
@@ -4893,7 +5843,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-reactive-lines"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-reactive-lines",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-ribbon-trails",
@@ -4944,7 +5904,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-ribbon-trails"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-ribbon-trails",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "cursor",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-ring-gallery",
@@ -4995,7 +5965,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-ring-gallery"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-ring-gallery",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-risinglines",
@@ -5046,7 +6026,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-risinglines"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-risinglines",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-rolling-letters",
@@ -5097,7 +6087,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-rolling-letters"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-rolling-letters",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-roundcarousel",
@@ -5148,7 +6148,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-roundcarousel"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-roundcarousel",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-scrambletext",
@@ -5199,7 +6209,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-scrambletext"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-scrambletext",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-scroll-text-highlight",
@@ -5250,7 +6270,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-scroll-text-highlight"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-scroll-text-highlight",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-scroll-text-reveal",
@@ -5301,7 +6331,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-scroll-text-reveal"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-scroll-text-reveal",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-shiny-pill",
@@ -5352,7 +6392,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-shiny-pill"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-shiny-pill",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-skew-in-text-effect",
@@ -5403,7 +6453,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-skew-in-text-effect"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-skew-in-text-effect",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-smokytext",
@@ -5454,7 +6514,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-smokytext"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-smokytext",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-snake-grid",
@@ -5505,7 +6575,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-snake-grid"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-snake-grid",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-snowfall",
@@ -5556,7 +6636,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-snowfall"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-snowfall",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "background animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-spinimage",
@@ -5607,7 +6697,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-spinimage"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-spinimage",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-spiralimages",
@@ -5658,7 +6758,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-spiralimages"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-spiralimages",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-spiral-text",
@@ -5709,7 +6819,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-spiral-text"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-spiral-text",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-spotlighttext",
@@ -5760,7 +6880,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-spotlighttext"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-spotlighttext",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-spring-text",
@@ -5811,7 +6941,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-spring-text"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-spring-text",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-stagger-text-rise",
@@ -5862,7 +7002,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-stagger-text-rise"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-stagger-text-rise",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-starburst",
@@ -5913,7 +7063,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-starburst"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-starburst",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-stardust",
@@ -5964,7 +7124,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-stardust"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-stardust",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "background animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-sticker-peel",
@@ -6015,7 +7185,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-sticker-peel"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-sticker-peel",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "image",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-svgparticles",
@@ -6066,7 +7246,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-svgparticles"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-svgparticles",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-swipe-stack",
@@ -6117,7 +7307,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-swipe-stack"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-swipe-stack",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "image gallery",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-sync-scroll",
@@ -6168,7 +7368,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-sync-scroll"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-sync-scroll",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-pixel-tetris",
@@ -6219,7 +7429,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixel-tetris"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-pixel-tetris",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-text-carousel",
@@ -6270,7 +7490,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-carousel"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-carousel",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-text-colour-sweep",
@@ -6321,7 +7551,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-colour-sweep"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-colour-sweep",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-text-distortion",
@@ -6372,7 +7612,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-distortion"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-distortion",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-text-emerge",
@@ -6423,7 +7673,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-emerge"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-emerge",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-text-gather",
@@ -6474,7 +7734,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-gather"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-gather",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-textlift",
@@ -6525,7 +7795,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-textlift"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-textlift",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-textmorph",
@@ -6576,7 +7856,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-textmorph"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-textmorph",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-text-noise",
@@ -6627,7 +7917,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-noise"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-noise",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-textpath",
@@ -6678,7 +7978,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-textpath"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-textpath",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-text-reveal-wall",
@@ -6729,7 +8039,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-reveal-wall"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-reveal-wall",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-text-ring",
@@ -6780,7 +8100,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-ring"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-ring",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-text-vaporize",
@@ -6831,7 +8161,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-vaporize"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-vaporize",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-text-wave",
@@ -6882,7 +8222,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-wave"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-wave",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "background animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-text-wipe",
@@ -6933,7 +8283,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-wipe"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-text-wipe",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-thunderstrike",
@@ -6984,7 +8344,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-thunderstrike"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-thunderstrike",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "interactive elements",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-tornado",
@@ -7035,7 +8405,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-tornado"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-tornado",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "interactive elements",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-type-sequence",
@@ -7086,7 +8466,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-type-sequence"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-type-sequence",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-typewriter",
@@ -7137,7 +8527,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-typewriter"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-typewriter",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-usercursor",
@@ -7188,7 +8588,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-usercursor"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-usercursor",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "cursor",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-video-text",
@@ -7239,7 +8649,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-video-text"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-video-text",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-water-button",
@@ -7290,7 +8710,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-water-button"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-water-button",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "button",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-wave-arcs",
@@ -7341,7 +8771,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-wave-arcs"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-wave-arcs",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "animation",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-weight-hover",
@@ -7392,7 +8832,17 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-weight-hover"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-weight-hover",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "enhancement",
+    "enhancement_family": "text",
+    "required_review": true,
+    "can_be_structural": false,
+    "pairing_guidance": "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   },
   {
     "id": "originkit-word-globe",
@@ -7443,6 +8893,16 @@
     "implementation_mode": "open-official-source",
     "inventory_date": "2026-07-30",
     "phase": "originkit-linked-2026-07",
-    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-word-globe"
+    "public_record_url": "https://lumoraofficial.de/mcp/components.json#originkit-word-globe",
+    "selection_pass": "enhancement",
+    "selection_pass_label": "Pass 2 · Effects / motion",
+    "component_role": "hybrid-section-or-enhancement",
+    "enhancement_family": "interactive elements",
+    "required_review": true,
+    "can_be_structural": true,
+    "pairing_guidance": "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit.",
+    "codex_selection_instruction": "Required Pass 2 review source: OriginKit. Compare this effect against the selected layout even if the final decision is to use none.",
+    "enhancement_slot_policy": "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+    "stacking_limit": "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport."
   }
 ]

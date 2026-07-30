@@ -6,6 +6,7 @@ import {
 } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { applyComponentSelectionGuidance } from "./component-selection-guidance.mjs";
 
 const repoRoot = path.resolve(process.cwd());
 const mcpRoot = path.join(repoRoot, "mcp");
@@ -359,6 +360,16 @@ function toIndexRecord(record) {
     official_featured,
     implementation_mode,
     phase,
+    selection_pass,
+    selection_pass_label,
+    component_role,
+    enhancement_family,
+    required_review,
+    can_be_structural,
+    pairing_guidance,
+    codex_selection_instruction,
+    enhancement_slot_policy,
+    stacking_limit,
   } = record;
   return {
     id,
@@ -386,6 +397,16 @@ function toIndexRecord(record) {
     official_featured,
     implementation_mode,
     phase,
+    selection_pass,
+    selection_pass_label,
+    component_role,
+    enhancement_family,
+    required_review,
+    can_be_structural,
+    pairing_guidance,
+    codex_selection_instruction,
+    enhancement_slot_policy,
+    stacking_limit,
   };
 }
 
@@ -396,13 +417,15 @@ async function updateInstructions() {
   const block = `${start}
 ## OriginKit linked components
 
-OriginKit records are external linked components with official remote previews. The MCP does not mirror OriginKit source code or media files.
+OriginKit records are external linked components with official remote previews and are required-review candidates during Pass 2. The MCP does not mirror OriginKit source code or media files.
 
 - Search or filter \`art_direction: "OriginKit"\` to see the complete linked inventory.
 - Open \`source_url\` to inspect and copy the current official implementation.
 - Read the official source and dependency list before adapting the component.
 - Brand-adapt the component and preserve responsive, accessibility, reduced-motion, fallback, and performance requirements.
 - Load \`preview_video_url\` only for selection; do not ship the catalog preview as production website media.
+- Compare the best matching OriginKit candidate after choosing the base layout, even when the final decision is to use none.
+- Records with \`can_be_structural: true\` may also replace one section or widget when their content and interaction contract are a stronger fit.
 
 The user confirmed that OriginKit components are free to use. Keep the implementation connected to its official source record and do not bulk-republish unrelated source or preview files.
 ${end}`;
@@ -450,6 +473,12 @@ async function mergeCatalog(records) {
   manifest.totals.linkedCanvasUiComponents = merged.filter(
     (record) => record.source === "Canvas UI",
   ).length;
+  manifest.totals.structureComponentRecipes = merged.filter(
+    (record) => record.selection_pass === "structure",
+  ).length;
+  manifest.totals.enhancementComponentRecipes = merged.filter(
+    (record) => record.selection_pass === "enhancement",
+  ).length;
   manifest.endpoints.originKitComponents =
     `${publicRoot}/originkit-components.json`;
   manifest.componentSelectionGuidance = {
@@ -493,6 +522,12 @@ async function mergeCatalog(records) {
     linkedOriginKitCount: records.length,
     linkedReactBitsCount: reactBitsCount,
     linkedCanvasUiCount: canvasUiCount,
+    structureCount: merged.filter(
+      (record) => record.selection_pass === "structure",
+    ).length,
+    enhancementCount: merged.filter(
+      (record) => record.selection_pass === "enhancement",
+    ).length,
     sources: [
       {
         source: "Lumora Web Design Components skill",
@@ -548,6 +583,8 @@ if (refresh || !(await exists(snapshotPath))) {
 } else {
   records = JSON.parse(await readFile(snapshotPath, "utf8"));
 }
+records = records.map(applyComponentSelectionGuidance);
+await writeFile(snapshotPath, `${JSON.stringify(records, null, 2)}\n`);
 const ids = new Set(records.map((record) => record.id));
 if (ids.size !== records.length) {
   throw new Error("Duplicate OriginKit component IDs detected.");

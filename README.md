@@ -25,6 +25,9 @@ Production files for [lumoraofficial.de](https://lumoraofficial.de), served as a
   public React Bits and complete Canvas UI inventories, including official
   registry commands and remote preview films. React Bits Pro is deliberately
   excluded.
+- `scripts/component-selection-guidance.mjs` — classifies every component into
+  the structure-first or required enhancement-review pass, including hybrid
+  linked records that may also replace a section or widget.
 - `mcp/component-previews.js` — renders 85 owned component archetypes and
   activates one lightweight SVG motion profile only for the selected recipe.
 

@@ -5,7 +5,7 @@ import {
   componentPreviewCount,
   componentPreviewMarkup,
   componentPreviewMotionCount,
-} from "./component-previews.js?v=20260730.2";
+} from "./component-previews.js?v=20260730.3";
 
 const PAGE_SIZE = 30;
 const publicRoot = "https://lumoraofficial.de/mcp";
@@ -55,6 +55,7 @@ const elements = {
   catalogTitle: document.querySelector("#catalog-title"),
   catalogCount: document.querySelector("#catalog-count"),
   catalogScope: document.querySelector("#catalog-scope"),
+  componentWorkflow: document.querySelector("#component-workflow"),
   catalogGrid: document.querySelector("#catalog-grid"),
   catalogSort: document.querySelector("#catalog-sort"),
   progressCopy: document.querySelector("#catalog-progress-copy"),
@@ -179,8 +180,8 @@ function fieldConfiguration() {
     };
   }
   return {
-    primary: "impact",
-    primaryLabel: "Impact",
+    primary: "selection_pass_label",
+    primaryLabel: "Selection pass",
     category: "category",
     categoryLabel: "Category",
     secondary: "art_direction",
@@ -349,6 +350,11 @@ function filteredRecords() {
         record.style_tags,
         record.best_for,
         record.framework_fit,
+        record.selection_pass_label,
+        record.component_role,
+        record.enhancement_family,
+        record.pairing_guidance,
+        record.codex_selection_instruction,
       ];
     }
     const matchesQuery =
@@ -428,9 +434,20 @@ function filteredRecords() {
         right.quality_score - left.quality_score
       );
     }
+    const passRank = { structure: 0, enhancement: 1 };
+    const passDifference =
+      (passRank[left.selection_pass] ?? 2) -
+      (passRank[right.selection_pass] ?? 2);
+    if (passDifference) return passDifference;
+    if (left.selection_pass === "enhancement") {
+      const requiredDifference =
+        Number(Boolean(right.required_review)) -
+        Number(Boolean(left.required_review));
+      if (requiredDifference) return requiredDifference;
+    }
     return (
-      right.quality_score - left.quality_score ||
-      right.novelty_score - left.novelty_score ||
+      (right.quality_score ?? -1) - (left.quality_score ?? -1) ||
+      (right.novelty_score ?? -1) - (left.novelty_score ?? -1) ||
       left.name.localeCompare(right.name)
     );
   });
@@ -655,6 +672,8 @@ function resetComponentPreviewPointer(event) {
 function componentCard(record) {
   const archetype = record.id.split("--")[0];
   const external = isExternalComponent(record);
+  const passLabel =
+    record.selection_pass === "structure" ? "PASS 1" : "PASS 2";
   return `
     <button
       type="button"
@@ -674,8 +693,8 @@ function componentCard(record) {
         <h3>${escapeHtml(record.name)}</h3>
         <p>${escapeHtml(record.summary)}</p>
         <span class="card-meta">
-          <span>${external ? "OFFICIAL" : `Q${record.quality_score}`}</span>
-          <span>${external ? "LINKED" : `N${record.novelty_score}`}</span>
+          <span>${passLabel}</span>
+          <span>${external ? escapeHtml(externalComponentSource(record)) : `Q${record.quality_score}`}</span>
           <span>${escapeHtml(record.category)}</span>
         </span>
       </span>
@@ -800,6 +819,7 @@ function backgroundCard(record) {
 
 function renderCatalog() {
   if (state.view === "integration") return;
+  renderComponentWorkflow();
   const records = filteredRecords();
   const visible = records.slice(0, state.visibleCount);
   const noun =
@@ -873,6 +893,36 @@ function renderCatalog() {
   }
 }
 
+function renderComponentWorkflow() {
+  const isComponentView = state.view === "components";
+  elements.componentWorkflow.hidden = !isComponentView;
+  if (!isComponentView) return;
+
+  const counts = state.components.reduce(
+    (result, record) => {
+      if (record.selection_pass === "structure") result.structure += 1;
+      if (record.selection_pass === "enhancement") result.enhancement += 1;
+      return result;
+    },
+    { structure: 0, enhancement: 0 },
+  );
+  elements.componentWorkflow
+    .querySelectorAll("[data-component-pass-count]")
+    .forEach((element) => {
+      element.textContent = formatCount(
+        counts[element.dataset.componentPassCount],
+      );
+    });
+  elements.componentWorkflow
+    .querySelectorAll("[data-component-pass]")
+    .forEach((button) => {
+      button.setAttribute(
+        "aria-pressed",
+        String(state.primary === button.dataset.componentPass),
+      );
+    });
+}
+
 function sortOptionsForView() {
   if (state.view === "models") {
     return [
@@ -899,7 +949,7 @@ function sortOptionsForView() {
     ];
   }
   return [
-    ["featured", "Highest quality"],
+    ["featured", "Two-pass order"],
     ["novelty", "Highest novelty"],
     ["name", "Name A–Z"],
     ["performance", "Lightest first"],
@@ -1039,6 +1089,8 @@ function renderComponentInspector(record) {
     record.accessibility_contract ??
     "Preserve semantics, keyboard behavior, and reduced-motion fallbacks.";
   document.querySelector("#component-badges").innerHTML = [
+    record.selection_pass_label,
+    record.component_role,
     record.category,
     record.art_direction,
     record.impact,
@@ -1051,9 +1103,11 @@ function renderComponentInspector(record) {
 
   const prompt =
     external
-      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. Open its official_source_url to inspect the current ${externalSource} implementation, licence boundary, variants, and dependencies.${record.install_command ? ` Use the recorded install_command (${record.install_command}) only if it matches this project's framework.` : ""} Adapt only the selected component to this project's content and brand; preserve responsive behavior, semantic content, accessibility, reduced motion, offscreen pause, fallback, cleanup, and performance. Do not use the remote catalog preview as production media or redistribute the component library.`
+      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. This is a Pass 2 enhancement-review candidate from ${externalSource}. ${record.codex_selection_instruction ?? "Compare it against the chosen base composition before deciding whether to use it."} Pairing guidance: ${record.pairing_guidance ?? "use it only when it improves the page hierarchy or brand character"} Open its official_source_url to inspect the current implementation, licence boundary, variants, and dependencies.${record.install_command ? ` Use the recorded install_command (${record.install_command}) only if it matches this project's framework.` : ""} Adapt only the selected component to this project's content and brand; preserve responsive behavior, semantic content, accessibility, reduced motion, offscreen pause, fallback, cleanup, and performance. Follow this stacking limit: ${record.stacking_limit ?? "one heavy effect near the initial viewport"}. Do not use the remote catalog preview as production media or redistribute the component library.`
       : `Read the Lumora MCP component record "${record.id}" at ` +
-        `${publicRoot}/components.json. Implement it from first principles in this ` +
+        `${publicRoot}/components.json. Selection pass: ${record.selection_pass_label ?? "review the record's intended role"}. ` +
+        `${record.codex_selection_instruction ?? ""} Pairing guidance: ${record.pairing_guidance ?? "use it only when it improves the page goal"}. ` +
+        `Implement it from first principles in this ` +
         `project's framework and brand. Preserve its content, responsive, ` +
         `accessibility, fallback, performance, and test contracts.`;
   document.querySelector("#component-prompt").textContent = prompt;
@@ -1978,6 +2032,18 @@ function bindEvents() {
       renderCatalog();
     });
   }
+
+  elements.componentWorkflow.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-component-pass]");
+    if (!button) return;
+    state.primary =
+      state.primary === button.dataset.componentPass
+        ? "All"
+        : button.dataset.componentPass;
+    state.visibleCount = PAGE_SIZE;
+    renderFilters();
+    renderCatalog();
+  });
 
   elements.catalogSort.addEventListener("change", (event) => {
     state.sort = event.target.value;

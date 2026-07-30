@@ -6,6 +6,7 @@ import {
 } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { applyComponentSelectionGuidance } from "./component-selection-guidance.mjs";
 
 const repoRoot = path.resolve(process.cwd());
 const mcpRoot = path.join(repoRoot, "mcp");
@@ -206,6 +207,16 @@ function toIndexRecord(record) {
     "official_featured",
     "implementation_mode",
     "phase",
+    "selection_pass",
+    "selection_pass_label",
+    "component_role",
+    "enhancement_family",
+    "required_review",
+    "can_be_structural",
+    "pairing_guidance",
+    "codex_selection_instruction",
+    "enhancement_slot_policy",
+    "stacking_limit",
   ];
   return Object.fromEntries(fields.map((field) => [field, record[field]]));
 }
@@ -527,15 +538,16 @@ async function buildCanvasUiSnapshot() {
 }
 
 async function loadOrRefreshSnapshot(source, builder) {
-  if (refresh || !(await exists(source.snapshot))) {
-    const snapshot = await builder();
-    await writeFile(
-      source.snapshot,
-      `${JSON.stringify(snapshot, null, 2)}\n`,
-    );
-    return snapshot;
-  }
-  return JSON.parse(await readFile(source.snapshot, "utf8"));
+  const snapshot =
+    refresh || !(await exists(source.snapshot))
+      ? await builder()
+      : JSON.parse(await readFile(source.snapshot, "utf8"));
+  snapshot.records = snapshot.records.map(applyComponentSelectionGuidance);
+  await writeFile(
+    source.snapshot,
+    `${JSON.stringify(snapshot, null, 2)}\n`,
+  );
+  return snapshot;
 }
 
 function replaceMarkdownBlock(source, start, end, content) {
@@ -554,13 +566,15 @@ async function updateInstructions(reactSnapshot, canvasSnapshot) {
   const content = `
 ## React Bits and Canvas UI linked components
 
-These records expose official live demos, install commands, registry URLs, framework guidance, and remote selection previews. Lumora does not mirror their source code or preview media.
+These records expose official live demos, install commands, registry URLs, framework guidance, and remote selection previews. They are required-review candidates during Pass 2, even when the final decision is to use none. Lumora does not mirror their source code or preview media.
 
 - Filter \`art_direction\` by \`React Bits\` or \`Canvas UI\`.
 - Open \`official_source_url\` and inspect \`registry_url\` before installing only the selected component.
 - React Bits records cover the ${reactSnapshot.recordCount}-component public catalog and exclude every React Bits Pro component, block, and template.
 - Canvas UI records cover all ${canvasSnapshot.recordCount} official effects and list its six framework flavors.
 - Use \`preview_video_url\` only to evaluate the effect; do not ship catalog preview films as production media.
+- After choosing a structural recipe, compare the best matching candidates from both libraries plus OriginKit before finalizing the enhancement shortlist.
+- Records with \`can_be_structural: true\` may also replace one section or widget when their content and interaction contract are a stronger fit.
 - Both sources currently use MIT + Commons Clause v1.0: commercial project use is allowed, but the components themselves may not be sold, sublicensed, or redistributed as a library, bundle, or port.
 - Preserve semantic content, reduced motion, offscreen pause, cleanup, responsive fallbacks, and browser fallbacks after adaptation.
 `;
@@ -599,7 +613,7 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
   const linkedRecords = [
     ...reactSnapshot.records,
     ...canvasSnapshot.records,
-  ];
+  ].map(applyComponentSelectionGuidance);
   const phases = new Set([
     sources.reactBits.phase,
     sources.canvasUi.phase,
@@ -607,15 +621,11 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
   const componentsPath = path.join(mcpRoot, "components.json");
   const indexPath = path.join(mcpRoot, "components-index.json");
   const components = JSON.parse(await readFile(componentsPath, "utf8"));
-  const index = JSON.parse(await readFile(indexPath, "utf8"));
   const merged = [
     ...components.filter((record) => !phases.has(record.phase)),
     ...linkedRecords,
-  ];
-  const mergedIndex = [
-    ...index.filter((record) => !phases.has(record.phase)),
-    ...linkedRecords.map(toIndexRecord),
-  ];
+  ].map(applyComponentSelectionGuidance);
+  const mergedIndex = merged.map(toIndexRecord);
   const ownedCount = merged.filter(
     (record) => record.source_kind === "owned-original-recipe",
   ).length;
@@ -628,7 +638,7 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
 
   const manifestPath = path.join(mcpRoot, "manifest.json");
   const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-  manifest.version = "1.1.0";
+  manifest.version = "1.2.0";
   manifest.generatedAt = inventoryDate;
   manifest.totals.componentRecipes = merged.length;
   manifest.totals.ownedComponentRecipes = ownedCount;
@@ -638,6 +648,12 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
     reactSnapshot.records.length;
   manifest.totals.linkedCanvasUiComponents =
     canvasSnapshot.records.length;
+  manifest.totals.structureComponentRecipes = merged.filter(
+    (record) => record.selection_pass === "structure",
+  ).length;
+  manifest.totals.enhancementComponentRecipes = merged.filter(
+    (record) => record.selection_pass === "enhancement",
+  ).length;
   manifest.endpoints.reactBitsComponents =
     `${publicRoot}/react-bits-components.json`;
   manifest.endpoints.canvasUiComponents =
@@ -658,6 +674,18 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
       "Optional official remote selection preview; never production media",
     licenceClass:
       "owned-original, linked-source, or end-project-only-linked-source",
+    selectionPass:
+      "structure for Pass 1 or enhancement for the required Pass 2 review",
+    componentRole:
+      "base-composition, enhancement, or hybrid-section-or-enhancement",
+    enhancementFamily:
+      "Functional effect family used for pairing and duplicate detection",
+    requiredReview:
+      "True when Codex must explicitly evaluate this linked source during Pass 2",
+    canBeStructural:
+      "True when an enhancement may also replace a section or widget",
+    pairingGuidance:
+      "How to combine the candidate with the selected base composition",
   };
   manifest.componentSelectionGuidance = {
     ...manifest.componentSelectionGuidance,
@@ -669,6 +697,14 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
       "React Bits and Canvas UI use MIT + Commons Clause v1.0: commercial end-project use is allowed, but do not sell or redistribute the component libraries themselves.",
     previewEngine:
       "All 85 owned archetypes have representative SVG compositions. Linked cards load a paused official opening frame only near the viewport; only the selected inspector plays motion. Previews guide selection and are not production source or media.",
+    selectionSequence:
+      "Pass 1 chooses the structural layout or section recipe. Pass 2 always reviews compatible effects, animation, text, background, media, cursor, scroll, canvas, and WebGL treatments before the final shortlist.",
+    mandatoryEnhancementReview:
+      "After choosing a base composition, explicitly scan OriginKit, React Bits, and Canvas UI. A valid outcome is zero enhancements, but skipping the review is not valid.",
+    sourceCoverageRule:
+      "During Pass 2, compare at least the best matching candidate from each relevant linked source rather than stopping at Lumora-owned recipes.",
+    stackingRule:
+      "Choose zero to three enhancements total, normally one signature and up to two supporting or subtle treatments; keep one heavy canvas, WebGL, or 3D effect near the initial viewport.",
   };
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
@@ -699,6 +735,12 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
     linkedOriginKitCount: originKitCount,
     linkedReactBitsCount: reactSnapshot.records.length,
     linkedCanvasUiCount: canvasSnapshot.records.length,
+    structureCount: merged.filter(
+      (record) => record.selection_pass === "structure",
+    ).length,
+    enhancementCount: merged.filter(
+      (record) => record.selection_pass === "enhancement",
+    ).length,
     sources: [
       {
         source: "Lumora Web Design Components skill",
@@ -741,6 +783,7 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
       "Excluded all paid React Bits Pro components, blocks, and templates.",
       "Kept third-party source code and preview media on the official services.",
       "Grid cards request a paused opening frame only when rendered; motion runs only for the selected inspector.",
+      "Classified every component into a structure-first or enhancement-review pass and marked external hybrid records that may also replace a section.",
     ],
   };
   await writeFile(provenancePath, `${JSON.stringify(provenance, null, 2)}\n`);

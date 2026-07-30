@@ -395,6 +395,8 @@
     "linkedOriginKitCount": 146,
     "linkedReactBitsCount": 139,
     "linkedCanvasUiCount": 25,
+    "structureCount": 492,
+    "enhancementCount": 838,
     "sources": [
       {
         "source": "Lumora Web Design Components skill",
@@ -447,7 +449,8 @@
       "Added Lumora brand-fit, responsive, accessibility, fallback, browser, and performance guidance.",
       "Excluded all paid React Bits Pro components, blocks, and templates.",
       "Kept third-party source code and preview media on the official services.",
-      "Grid cards request a paused opening frame only when rendered; motion runs only for the selected inspector."
+      "Grid cards request a paused opening frame only when rendered; motion runs only for the selected inspector.",
+      "Classified every component into a structure-first or enhancement-review pass and marked external hybrid records that may also replace a section."
     ]
   },
   "imageAssets": {
