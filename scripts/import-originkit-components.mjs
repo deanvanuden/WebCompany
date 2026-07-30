@@ -366,6 +366,11 @@ function toIndexRecord(record) {
     enhancement_family,
     required_review,
     can_be_structural,
+    section_canvas,
+    requires_structural_pairing,
+    text_overlay_capability,
+    foreground_content_guidance,
+    overlay_readability_guidance,
     pairing_guidance,
     codex_selection_instruction,
     enhancement_slot_policy,
@@ -403,6 +408,11 @@ function toIndexRecord(record) {
     enhancement_family,
     required_review,
     can_be_structural,
+    section_canvas,
+    requires_structural_pairing,
+    text_overlay_capability,
+    foreground_content_guidance,
+    overlay_readability_guidance,
     pairing_guidance,
     codex_selection_instruction,
     enhancement_slot_policy,
@@ -426,6 +436,7 @@ OriginKit records are external linked components with official remote previews a
 - Load \`preview_video_url\` only for selection; do not ship the catalog preview as production website media.
 - Compare the best matching OriginKit candidate after choosing the base layout, even when the final decision is to use none.
 - Records with \`can_be_structural: true\` may also replace one section or widget when their content and interaction contract are a stronger fit.
+- Records with \`section_canvas: true\` may define the visual identity of a hero or full-width section, but still require separate semantic Pass 1 content, contrast treatment, and a static reduced-motion fallback.
 
 The user confirmed that OriginKit components are free to use. Keep the implementation connected to its official source record and do not bulk-republish unrelated source or preview files.
 ${end}`;

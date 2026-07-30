@@ -5,7 +5,7 @@ import {
   componentPreviewCount,
   componentPreviewMarkup,
   componentPreviewMotionCount,
-} from "./component-previews.js?v=20260730.3";
+} from "./component-previews.js?v=20260730.4";
 
 const PAGE_SIZE = 30;
 const publicRoot = "https://lumoraofficial.de/mcp";
@@ -673,7 +673,11 @@ function componentCard(record) {
   const archetype = record.id.split("--")[0];
   const external = isExternalComponent(record);
   const passLabel =
-    record.selection_pass === "structure" ? "PASS 1" : "PASS 2";
+    record.selection_pass === "structure"
+      ? "PASS 1"
+      : record.section_canvas
+        ? "PASS 2 · SECTION CANVAS"
+        : "PASS 2";
   return `
     <button
       type="button"
@@ -1090,7 +1094,9 @@ function renderComponentInspector(record) {
     "Preserve semantics, keyboard behavior, and reduced-motion fallbacks.";
   document.querySelector("#component-badges").innerHTML = [
     record.selection_pass_label,
-    record.component_role,
+    record.section_canvas
+      ? "SECTION CANVAS / FULL BACKGROUND"
+      : record.component_role,
     record.category,
     record.art_direction,
     record.impact,
@@ -1103,10 +1109,12 @@ function renderComponentInspector(record) {
 
   const prompt =
     external
-      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. This is a Pass 2 enhancement-review candidate from ${externalSource}. ${record.codex_selection_instruction ?? "Compare it against the chosen base composition before deciding whether to use it."} Pairing guidance: ${record.pairing_guidance ?? "use it only when it improves the page hierarchy or brand character"} Open its official_source_url to inspect the current implementation, licence boundary, variants, and dependencies.${record.install_command ? ` Use the recorded install_command (${record.install_command}) only if it matches this project's framework.` : ""} Adapt only the selected component to this project's content and brand; preserve responsive behavior, semantic content, accessibility, reduced motion, offscreen pause, fallback, cleanup, and performance. Follow this stacking limit: ${record.stacking_limit ?? "one heavy effect near the initial viewport"}. Do not use the remote catalog preview as production media or redistribute the component library.`
+      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. This is a Pass 2 enhancement-review candidate from ${externalSource}. ${record.codex_selection_instruction ?? "Compare it against the chosen base composition before deciding whether to use it."} Pairing guidance: ${record.pairing_guidance ?? "Use it only when it improves the page hierarchy or brand character."}${record.foreground_content_guidance ? ` Foreground content guidance: ${record.foreground_content_guidance}` : ""}${record.overlay_readability_guidance ? ` Overlay readability guidance: ${record.overlay_readability_guidance}` : ""} Open its official_source_url to inspect the current implementation, licence boundary, variants, and dependencies.${record.install_command ? ` Use the recorded install_command (${record.install_command}) only if it matches this project's framework.` : ""} Adapt only the selected component to this project's content and brand; preserve responsive behavior, semantic content, accessibility, reduced motion, offscreen pause, fallback, cleanup, and performance. Follow this stacking limit: ${record.stacking_limit ?? "Use one heavy effect near the initial viewport."} Do not use the remote catalog preview as production media or redistribute the component library.`
       : `Read the Lumora MCP component record "${record.id}" at ` +
         `${publicRoot}/components.json. Selection pass: ${record.selection_pass_label ?? "review the record's intended role"}. ` +
-        `${record.codex_selection_instruction ?? ""} Pairing guidance: ${record.pairing_guidance ?? "use it only when it improves the page goal"}. ` +
+        `${record.codex_selection_instruction ?? ""} Pairing guidance: ${record.pairing_guidance ?? "Use it only when it improves the page goal."} ` +
+        `${record.foreground_content_guidance ? `Foreground content guidance: ${record.foreground_content_guidance} ` : ""}` +
+        `${record.overlay_readability_guidance ? `Overlay readability guidance: ${record.overlay_readability_guidance} ` : ""}` +
         `Implement it from first principles in this ` +
         `project's framework and brand. Preserve its content, responsive, ` +
         `accessibility, fallback, performance, and test contracts.`;

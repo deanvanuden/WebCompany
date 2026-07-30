@@ -22,7 +22,7 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 1. Read the manifest and choose the model, component, image-asset, or animated-background catalog.
 2. Filter candidates by the real page goal, brand, framework, performance budget, and asset class.
 3. For 3D, prefer `ship-safe` records and load only the selected model. Do not infer art-direction fit from an object's name or category alone. Filter by `agencyUse`, `brandMoods`, `websiteIndustries`, `sectionFits`, and `performanceGuidance`. For Kenney records, also read `visualFidelity`, `selectionPriority`, `selectionGuidance`, `avoidWhen`, and `fallbackPolicy`. This guidance is advisory: a simplified asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional. Use `publicModelUrl` in external projects. When a streamed glTF record has a `files` map, preserve that dependency mapping or download the official distribution into the target project.
-4. For components, always work in two passes. Pass 1 selects the structural layout or section recipe. Pass 2 must explicitly review compatible effects, motion, text, background, media, cursor, scroll, canvas, and WebGL treatments, including the best matching candidates from OriginKit, React Bits, and Canvas UI. A valid Pass 2 result is “use none”; skipping the review is not valid. Choose zero to three enhancements total, normally one signature and up to two supporting or subtle treatments. Linked records marked `can_be_structural: true` may replace one section when their content and interaction contract are stronger than the Pass 1 candidate.
+4. For components, always work in two passes. Pass 1 selects the structural layout or section recipe. Pass 2 must explicitly review compatible effects, motion, text, background, media, cursor, scroll, canvas, and WebGL treatments, including the best matching candidates from OriginKit, React Bits, and Canvas UI. A valid Pass 2 result is “use none”; skipping the review is not valid. Choose zero to three enhancements total, normally one signature and up to two supporting or subtle treatments. Linked records marked `can_be_structural: true` may replace one section when their content and interaction contract are stronger than the Pass 1 candidate. Records marked `section_canvas: true` may define an entire hero or section visually, but still require a semantic Pass 1 content structure.
 5. For images and UI assets, choose only the records that serve the composition, then fetch each winner from `publicImageUrl` or `downloadUrl`. Preserve transparency, use nearest-neighbor rendering for `pixelArt`, and use repeating CSS backgrounds only when `tileable` is true.
 6. For animated backgrounds, preview candidates from their external URLs, select one winner, and then fetch only that record's `downloadUrl`. MP4 records are direct downloads; HLS records are adaptive streams. Optimize the selected media locally and provide a static reduced-motion fallback.
 7. Animated backgrounds are marked `commercial-use` based on Lumora's confirmation that the collection was purchased with commercial-use rights.
@@ -48,6 +48,11 @@ Every component record exposes:
 - `enhancement_family`: background, text, scroll, media, 3D, canvas, interaction, or another functional family;
 - `required_review`: true for linked OriginKit, React Bits, and Canvas UI records;
 - `can_be_structural`: true when an enhancement record may also replace a section or widget;
+- `section_canvas`: true for section-scale background visuals that can define a hero or full-width section;
+- `requires_structural_pairing`: true when the visual still needs a semantic Pass 1 content structure;
+- `text_overlay_capability`: whether text can be layered over the visual and under what readability condition;
+- `foreground_content_guidance`: how to layer real heading, body, CTA, and navigation content;
+- `overlay_readability_guidance`: how to preserve contrast across animated frames and provide reduced-motion fallback;
 - `pairing_guidance`: how to combine the record with the chosen base composition; and
 - `stacking_limit`: the maximum continuous or heavy effects to keep active together.
 
@@ -90,6 +95,7 @@ OriginKit records are external linked components with official remote previews a
 - Load `preview_video_url` only for selection; do not ship the catalog preview as production website media.
 - Compare the best matching OriginKit candidate after choosing the base layout, even when the final decision is to use none.
 - Records with `can_be_structural: true` may also replace one section or widget when their content and interaction contract are a stronger fit.
+- Records with `section_canvas: true` may define the visual identity of a hero or full-width section, but still require separate semantic Pass 1 content, contrast treatment, and a static reduced-motion fallback.
 
 The user confirmed that OriginKit components are free to use. Keep the implementation connected to its official source record and do not bulk-republish unrelated source or preview files.
 <!-- ORIGINKIT-GUIDANCE:END -->
@@ -106,6 +112,7 @@ These records expose official live demos, install commands, registry URLs, frame
 - Use `preview_video_url` only to evaluate the effect; do not ship catalog preview films as production media.
 - After choosing a structural recipe, compare the best matching candidates from both libraries plus OriginKit before finalizing the enhancement shortlist.
 - Records with `can_be_structural: true` may also replace one section or widget when their content and interaction contract are a stronger fit.
+- Records with `section_canvas: true` are section-scale visual foundations. Pair one with a semantic Pass 1 hero or full-width section, keep foreground content in a separate layer, audit contrast across moving frames, and provide a static reduced-motion fallback.
 - Both sources currently use MIT + Commons Clause v1.0: commercial project use is allowed, but the components themselves may not be sold, sublicensed, or redistributed as a library, bundle, or port.
 - Preserve semantic content, reduced motion, offscreen pause, cleanup, responsive fallbacks, and browser fallbacks after adaptation.
 <!-- LINKED-COMPONENT-LIBRARIES:END -->

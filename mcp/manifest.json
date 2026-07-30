@@ -1,6 +1,6 @@
 {
   "name": "Lumora MCP",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "generatedAt": "2026-07-30",
   "canonicalUrl": "https://lumoraofficial.de/mcp/",
   "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, multi-style image and UI assets, and externally hosted animated background references.",
@@ -22,7 +22,8 @@
     "linkedReactBitsComponents": 139,
     "linkedCanvasUiComponents": 25,
     "structureComponentRecipes": 492,
-    "enhancementComponentRecipes": 838
+    "enhancementComponentRecipes": 838,
+    "sectionCanvasComponentRecipes": 177
   },
   "endpoints": {
     "models": "https://lumoraofficial.de/mcp/models.json",
@@ -106,7 +107,8 @@
     "selectionSequence": "Pass 1 chooses the structural layout or section recipe. Pass 2 always reviews compatible effects, animation, text, background, media, cursor, scroll, canvas, and WebGL treatments before the final shortlist.",
     "mandatoryEnhancementReview": "After choosing a base composition, explicitly scan OriginKit, React Bits, and Canvas UI. A valid outcome is zero enhancements, but skipping the review is not valid.",
     "sourceCoverageRule": "During Pass 2, compare at least the best matching candidate from each relevant linked source rather than stopping at Lumora-owned recipes.",
-    "stackingRule": "Choose zero to three enhancements total, normally one signature and up to two supporting or subtle treatments; keep one heavy canvas, WebGL, or 3D effect near the initial viewport."
+    "stackingRule": "Choose zero to three enhancements total, normally one signature and up to two supporting or subtle treatments; keep one heavy canvas, WebGL, or 3D effect near the initial viewport.",
+    "sectionCanvasRule": "Background records marked section_canvas may define an entire hero or section visually, but they remain Pass 2 because semantic content and layout must come from a Pass 1 structure."
   },
   "componentSchema": {
     "id": "Stable catalog identifier",
@@ -118,10 +120,15 @@
     "previewVideoUrl": "Optional official remote selection preview; never production media",
     "licenceClass": "owned-original, linked-source, or end-project-only-linked-source",
     "selectionPass": "structure for Pass 1 or enhancement for the required Pass 2 review",
-    "componentRole": "base-composition, enhancement, or hybrid-section-or-enhancement",
+    "componentRole": "base-composition, enhancement, hybrid-section-or-enhancement, or section-canvas",
     "enhancementFamily": "Functional effect family used for pairing and duplicate detection",
     "requiredReview": "True when Codex must explicitly evaluate this linked source during Pass 2",
     "canBeStructural": "True when an enhancement may also replace a section or widget",
+    "sectionCanvas": "True when the enhancement can provide the full visual canvas behind a hero or section",
+    "requiresStructuralPairing": "True when the visual must be paired with a semantic Pass 1 content structure",
+    "textOverlayCapability": "Whether foreground text is supported and what readability condition applies",
+    "foregroundContentGuidance": "How to layer real heading, body, CTA, and navigation content over the visual",
+    "overlayReadabilityGuidance": "Contrast, scrim, quiet-zone, and reduced-motion requirements for foreground content",
     "pairingGuidance": "How to combine the candidate with the selected base composition"
   }
 }

@@ -115,6 +115,9 @@ const componentPreviewMotionIds = componentPreviewMotionEntries.map(
 const modelIds = new Set(models.map((model) => model.id));
 const componentIds = new Set(components.map((component) => component.id));
 const componentIndexIds = new Set(componentIndex.map((component) => component.id));
+const componentIndexById = new Map(
+  componentIndex.map((component) => [component.id, component]),
+);
 const originKitComponentIds = new Set(
   originKitComponents.map((component) => component.id),
 );
@@ -243,6 +246,11 @@ for (const schemaField of [
   "enhancementFamily",
   "requiredReview",
   "canBeStructural",
+  "sectionCanvas",
+  "requiresStructuralPairing",
+  "textOverlayCapability",
+  "foregroundContentGuidance",
+  "overlayReadabilityGuidance",
   "pairingGuidance",
 ]) {
   check(
@@ -304,6 +312,7 @@ check(
 );
 check(
   /selection_pass_label/.test(appSource) &&
+    /SECTION CANVAS/.test(appSource) &&
     /data-component-pass/.test(appSource) &&
     /id="component-workflow"/.test(indexHtmlSource) &&
     /Always use two component passes/.test(indexHtmlSource) &&
@@ -491,6 +500,9 @@ const structureComponents = components.filter(
 const enhancementComponents = components.filter(
   (component) => component.selection_pass === "enhancement",
 );
+const sectionCanvasComponents = components.filter(
+  (component) => component.section_canvas === true,
+);
 check(
   components.length === 1330,
   `Expected 1,330 component records, found ${components.length}`,
@@ -522,6 +534,12 @@ check(
     manifest.totals.enhancementComponentRecipes ===
       enhancementComponents.length,
   `Unexpected two-pass component totals: ${structureComponents.length}/${enhancementComponents.length}`,
+);
+check(
+  sectionCanvasComponents.length === 177 &&
+    manifest.totals.sectionCanvasComponentRecipes ===
+      sectionCanvasComponents.length,
+  `Expected 177 section-canvas components, found ${sectionCanvasComponents.length}`,
 );
 check(
   reactBitsSnapshot.license === "MIT + Commons Clause v1.0" &&
@@ -571,6 +589,33 @@ for (const component of ownedComponents) {
       Boolean(component.codex_selection_instruction) &&
       Boolean(component.stacking_limit),
     `${component.id} has incomplete two-pass selection guidance`,
+  );
+}
+
+for (const component of sectionCanvasComponents) {
+  const indexRecord = componentIndexById.get(component.id);
+  check(
+    component.selection_pass === "enhancement" &&
+      component.component_role === "section-canvas" &&
+      component.can_be_structural === false &&
+      component.requires_structural_pairing === true &&
+      component.text_overlay_capability ===
+        "supported-with-contrast-audit" &&
+      Boolean(component.foreground_content_guidance) &&
+      Boolean(component.overlay_readability_guidance) &&
+      /hero or full-width section/i.test(component.pairing_guidance) &&
+      /section-capable visual foundation/i.test(
+        component.codex_selection_instruction,
+      ),
+    `${component.id} has incomplete section-canvas guidance`,
+  );
+  check(
+    indexRecord?.section_canvas === true &&
+      indexRecord.component_role === "section-canvas" &&
+      indexRecord.requires_structural_pairing === true &&
+      Boolean(indexRecord.foreground_content_guidance) &&
+      Boolean(indexRecord.overlay_readability_guidance),
+    `${component.id} has incomplete section-canvas index metadata`,
   );
 }
 
@@ -1075,7 +1120,9 @@ check(
         linkedCanvasUiComponents.length &&
     provenance.components.structureCount === structureComponents.length &&
     provenance.components.enhancementCount ===
-      enhancementComponents.length,
+      enhancementComponents.length &&
+    provenance.components.sectionCanvasCount ===
+      sectionCanvasComponents.length,
   "Component provenance total does not match components.json",
 );
 check(
@@ -1179,6 +1226,7 @@ if (errors.length) {
     linkedOriginKitComponents: linkedOriginKitComponents.length,
     linkedReactBitsComponents: linkedReactBitsComponents.length,
     linkedCanvasUiComponents: linkedCanvasUiComponents.length,
+    sectionCanvasComponents: sectionCanvasComponents.length,
     imageAssets: images.length,
     animatedBackgrounds: backgrounds.length,
     availableAnimatedBackgrounds: backgrounds.filter(

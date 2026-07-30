@@ -397,6 +397,7 @@
     "linkedCanvasUiCount": 25,
     "structureCount": 492,
     "enhancementCount": 838,
+    "sectionCanvasCount": 177,
     "sources": [
       {
         "source": "Lumora Web Design Components skill",
@@ -450,7 +451,8 @@
       "Excluded all paid React Bits Pro components, blocks, and templates.",
       "Kept third-party source code and preview media on the official services.",
       "Grid cards request a paused opening frame only when rendered; motion runs only for the selected inspector.",
-      "Classified every component into a structure-first or enhancement-review pass and marked external hybrid records that may also replace a section."
+      "Classified every component into a structure-first or enhancement-review pass and marked external hybrid records that may also replace a section.",
+      "Classified background components as section canvases that may define a hero or section visually while still requiring semantic Pass 1 content, contrast protection, and reduced-motion fallback."
     ]
   },
   "imageAssets": {

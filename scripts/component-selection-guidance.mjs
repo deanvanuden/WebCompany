@@ -21,6 +21,19 @@ const hybridExternalCategories = new Set([
   "interactive-elements",
 ]);
 
+function isSectionCanvas(record) {
+  const category = String(record.category ?? "").toLowerCase();
+  const sourceCategory = String(
+    record.source_category ?? "",
+  ).toLowerCase();
+  return (
+    category === "backgrounds" ||
+    category.includes("background") ||
+    sourceCategory === "backgrounds" ||
+    sourceCategory === "background-animation"
+  );
+}
+
 function externalFamily(record) {
   const category = String(
     record.source_category ?? record.category ?? "effect",
@@ -35,6 +48,7 @@ function externalFamily(record) {
 export function componentSelectionProfile(record) {
   const external = record.source_kind === "external-linked-component";
   const structure = !external && structureCategories.has(record.category);
+  const sectionCanvas = isSectionCanvas(record);
   const hybrid =
     external &&
     hybridExternalCategories.has(
@@ -59,6 +73,29 @@ export function componentSelectionProfile(record) {
   const family = external
     ? externalFamily(record)
     : ownedEnhancementFamilies[record.category] ?? "effect / interaction";
+  if (sectionCanvas) {
+    return {
+      selection_pass: "enhancement",
+      selection_pass_label: "Pass 2 · Effects / motion",
+      component_role: "section-canvas",
+      enhancement_family: "background / section canvas",
+      required_review: external,
+      can_be_structural: false,
+      section_canvas: true,
+      requires_structural_pairing: true,
+      text_overlay_capability: "supported-with-contrast-audit",
+      foreground_content_guidance:
+        "Use this as the visual canvas behind a semantic Pass 1 hero or full-width section. Add real heading, body, CTA, and navigation content in a separate foreground layer; this background does not replace the content structure.",
+      overlay_readability_guidance:
+        "Test text contrast against the brightest and busiest animation frames. Add a brand-matched scrim, gradient, quiet zone, blur, or solid content panel when needed, and provide a static prefers-reduced-motion fallback.",
+      pairing_guidance:
+        "Pair this with a Pass 1 hero or full-width section as its section-scale visual canvas. It may define the section's visual identity, but it must not replace semantic content, layout, or controls.",
+      codex_selection_instruction: external
+        ? `Required Pass 2 review source: ${record.source}. Treat this as a section-capable visual foundation, not a small decorative effect. Compare it against the selected hero or section structure even if the final decision is to use none.`
+        : "Review this during Pass 2 as a section-capable visual foundation. Pair it with the selected hero or full-width section only when it earns the signature enhancement slot.",
+    };
+  }
+
   return {
     selection_pass: "enhancement",
     selection_pass_label: "Pass 2 · Effects / motion",
@@ -76,9 +113,17 @@ export function componentSelectionProfile(record) {
 }
 
 export function applyComponentSelectionGuidance(record) {
+  const {
+    section_canvas: _sectionCanvas,
+    requires_structural_pairing: _requiresStructuralPairing,
+    text_overlay_capability: _textOverlayCapability,
+    foreground_content_guidance: _foregroundContentGuidance,
+    overlay_readability_guidance: _overlayReadabilityGuidance,
+    ...baseRecord
+  } = record;
   return {
-    ...record,
-    ...componentSelectionProfile(record),
+    ...baseRecord,
+    ...componentSelectionProfile(baseRecord),
     enhancement_slot_policy:
       "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
     stacking_limit:
