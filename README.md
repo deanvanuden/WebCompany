@@ -18,6 +18,9 @@ Production files for [lumoraofficial.de](https://lumoraofficial.de), served as a
 - `scripts/import-design-assets.mjs` — refreshes or re-merges the multi-style
   Images/UI phase: full Lucide, grouped Phosphor variants, Open Doodles, Open
   Peeps, curated ambientCG materials, and Hero Patterns.
+- `scripts/import-originkit-components.mjs` — refreshes or re-merges the
+  complete linked OriginKit component inventory, including official detail
+  pages and remote poster/video previews without mirroring source code.
 
 The legal pages are part of the application and are available through:
 
@@ -42,8 +45,11 @@ After rebuilding the base catalog, re-merge the committed design asset snapshot:
 
 ```text
 node scripts/import-design-assets.mjs
+node scripts/import-originkit-components.mjs
 node scripts/validate-mcp-catalog.mjs
 ```
 
 Use `node scripts/import-design-assets.mjs --refresh` only when intentionally
 refreshing the pinned upstream packages and official source records.
+Use `node scripts/import-originkit-components.mjs --refresh` to reconcile the
+committed OriginKit snapshot with its current public registry and sitemap.

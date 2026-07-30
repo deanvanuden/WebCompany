@@ -1,0 +1,9 @@
+OriginKit linked component source boundary
+Inventory date: 2026-07-30
+Official catalog: https://www.originkit.dev/
+Official sitemap: https://www.originkit.dev/sitemap.xml
+
+The user confirmed that OriginKit components are free to use.
+Lumora MCP stores metadata and official links only.
+OriginKit source code, poster files, and preview videos are not mirrored in this repository.
+Open each record's official_source_url to retrieve the current implementation and dependencies.

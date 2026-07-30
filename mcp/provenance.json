@@ -1,6 +1,6 @@
 {
   "project": "Lumora MCP",
-  "generatedAt": "2026-07-29",
+  "generatedAt": "2026-07-30",
   "runtimeDependencies": [
     {
       "name": "three",
@@ -386,13 +386,34 @@
     ]
   },
   "components": {
-    "source": "Lumora Web Design Components skill",
-    "sourceKind": "owned-original-recipe",
-    "licence": "owned-original",
-    "recipeCount": 1020,
+    "source": "Lumora owned-original recipes plus linked OriginKit components",
+    "sourceKind": "mixed owned-original and external-linked-component",
+    "licence": "Owned-original for Lumora recipes; user-confirmed-free-use with official-source linking for OriginKit",
+    "recipeCount": 1166,
+    "ownedOriginalCount": 1020,
+    "linkedOriginKitCount": 146,
+    "sources": [
+      {
+        "source": "Lumora Web Design Components skill",
+        "sourceKind": "owned-original-recipe",
+        "licence": "owned-original",
+        "recordCount": 1020
+      },
+      {
+        "source": "OriginKit",
+        "sourceUrl": "https://www.originkit.dev",
+        "sitemapUrl": "https://www.originkit.dev/sitemap.xml",
+        "sourceKind": "external-linked-component",
+        "licence": "user-confirmed-free-use · official-source-link",
+        "recordCount": 146,
+        "inventoryDate": "2026-07-30",
+        "storage": "Metadata snapshot with official component-page, poster, and video URLs; no OriginKit source code or media mirrored locally."
+      }
+    ],
     "transformations": [
-      "Converted the internal CSV catalog to complete JSON records",
-      "Generated a smaller browser index without removing full machine-readable records"
+      "Preserved the official component name, category, featured state, detail page, poster URL, and preview-video URL.",
+      "Added Lumora implementation, brand-fit, responsive, accessibility, fallback, and performance guidance.",
+      "Kept OriginKit source code and preview media on the official OriginKit service."
     ]
   },
   "imageAssets": {

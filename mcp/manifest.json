@@ -1,21 +1,23 @@
 {
   "name": "Lumora MCP",
   "version": "1.0.0",
-  "generatedAt": "2026-07-29",
+  "generatedAt": "2026-07-30",
   "canonicalUrl": "https://lumoraofficial.de/mcp/",
-  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, original Web Component implementation recipes, multi-style image and UI assets, and externally hosted animated background references.",
+  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, multi-style image and UI assets, and externally hosted animated background references.",
   "totals": {
     "models": 1021,
     "localModels": 907,
     "streamedModels": 114,
-    "componentRecipes": 1020,
+    "componentRecipes": 1166,
     "imageAssets": 4315,
     "animatedBackgrounds": 152,
     "availableAnimatedBackgrounds": 151,
     "shipSafeModels": 1020,
     "bundledImageAssets": 4315,
     "linkedImageAssets": 0,
-    "imageAssetCollections": 12
+    "imageAssetCollections": 12,
+    "ownedComponentRecipes": 1020,
+    "linkedOriginKitComponents": 146
   },
   "endpoints": {
     "models": "https://lumoraofficial.de/mcp/models.json",
@@ -25,7 +27,8 @@
     "animatedBackgrounds": "https://lumoraofficial.de/mcp/animated-backgrounds.json",
     "instructions": "https://lumoraofficial.de/mcp/instructions.md",
     "provenance": "https://lumoraofficial.de/mcp/provenance.json",
-    "designAssets": "https://lumoraofficial.de/mcp/design-assets.json"
+    "designAssets": "https://lumoraofficial.de/mcp/design-assets.json",
+    "originKitComponents": "https://lumoraofficial.de/mcp/originkit-components.json"
   },
   "modelSchema": {
     "id": "Stable catalog identifier",
@@ -84,5 +87,10 @@
     "consistencyRule": "Use one primary icon or illustration family per interface and mix styles only for an explicit hierarchy.",
     "groupedVariants": "Phosphor weights are grouped in one record so Codex can choose a consistent regular, thin, light, bold, fill, or duotone treatment.",
     "linkedAssets": "ambientCG preview images are not production PBR maps; fetch production maps from the official material page."
+  },
+  "componentSelectionGuidance": {
+    "ownedOriginal": "Lumora owned-original recipes are implementation briefs built from first principles.",
+    "originKit": "OriginKit records link to the official current implementation and remote selection previews; source code and media are not mirrored.",
+    "selectionRule": "Choose by page purpose and art direction, then verify dependencies, responsive behavior, accessibility, reduced motion, and performance in the target project."
   }
 }

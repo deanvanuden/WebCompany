@@ -59,6 +59,7 @@ const [
   models,
   componentIndex,
   components,
+  originKitComponents,
   images,
   designAssets,
   backgrounds,
@@ -69,6 +70,7 @@ const [
     readJson("models.json"),
     readJson("components-index.json"),
     readJson("components.json"),
+    readJson("originkit-components.json"),
     readJson("image-assets.json"),
     readJson("design-assets.json"),
     readJson("animated-backgrounds.json"),
@@ -89,6 +91,9 @@ const componentPreviewIds = [
 const modelIds = new Set(models.map((model) => model.id));
 const componentIds = new Set(components.map((component) => component.id));
 const componentIndexIds = new Set(componentIndex.map((component) => component.id));
+const originKitComponentIds = new Set(
+  originKitComponents.map((component) => component.id),
+);
 const imageIds = new Set(images.map((image) => image.id));
 const imageUrls = new Set(images.map((image) => image.publicImageUrl));
 const backgroundIds = new Set(backgrounds.map((background) => background.id));
@@ -169,6 +174,17 @@ check(
 check(
   manifest.totals.componentRecipes === components.length,
   "Manifest component total does not match components.json",
+);
+check(
+  manifest.totals.ownedComponentRecipes === 1020 &&
+    manifest.totals.linkedOriginKitComponents ===
+      originKitComponents.length,
+  "Manifest owned/OriginKit component totals are incorrect",
+);
+check(
+  manifest.endpoints.originKitComponents ===
+    "https://lumoraofficial.de/mcp/originkit-components.json",
+  "Manifest OriginKit component endpoint is incorrect",
 );
 check(
   manifest.totals.imageAssets === images.length,
@@ -378,9 +394,24 @@ if (supportingFloor) {
   );
 }
 
+const ownedComponents = components.filter(
+  (component) => component.source_kind === "owned-original-recipe",
+);
+const linkedOriginKitComponents = components.filter(
+  (component) => component.source_kind === "external-linked-component",
+);
 check(
-  components.length === 1020,
-  `Expected 1,020 component records, found ${components.length}`,
+  components.length === 1166,
+  `Expected 1,166 component records, found ${components.length}`,
+);
+check(
+  ownedComponents.length === 1020,
+  `Expected 1,020 owned-original records, found ${ownedComponents.length}`,
+);
+check(
+  linkedOriginKitComponents.length === 146 &&
+    originKitComponents.length === 146,
+  `Expected 146 linked OriginKit records, found ${linkedOriginKitComponents.length}/${originKitComponents.length}`,
 );
 check(
   componentIndex.length === components.length,
@@ -395,7 +426,7 @@ check(
   "Component index IDs are not unique",
 );
 
-for (const component of components) {
+for (const component of ownedComponents) {
   check(
     component.source_kind === "owned-original-recipe",
     `${component.id} is not marked as an owned original recipe`,
@@ -410,8 +441,62 @@ for (const component of components) {
   );
 }
 
+for (const component of linkedOriginKitComponents) {
+  check(
+    originKitComponentIds.has(component.id) &&
+      component.id.startsWith("originkit-"),
+    `${component.id} is missing from the OriginKit snapshot`,
+  );
+  check(
+    component.source === "OriginKit" &&
+      component.art_direction === "OriginKit" &&
+      component.phase === "originkit-linked-2026-07",
+    `${component.id} has incomplete OriginKit source metadata`,
+  );
+  check(
+    component.source_kind === "external-linked-component" &&
+      component.licence_class === "linked-source" &&
+      component.source_code_bundled === false &&
+      component.media_mirrored === false,
+    `${component.id} does not preserve the linked-source boundary`,
+  );
+  check(
+    /^https:\/\/www\.originkit\.dev\/components\/[a-z0-9-]+$/.test(
+      component.official_source_url,
+    ),
+    `${component.id} has an invalid official OriginKit source URL`,
+  );
+  check(
+    /^https:\/\/cdn\.originkit\.dev\/components\/.+\.(jpg|png|webp)(\?.*)?$/i.test(
+      component.preview_poster_url,
+    ) &&
+      /^https:\/\/cdn\.originkit\.dev\/components\/.+\.mp4(\?.*)?$/i.test(
+        component.preview_video_url,
+      ),
+    `${component.id} has invalid official preview media`,
+  );
+  check(
+    Boolean(component.summary) &&
+      Boolean(component.responsive_strategy) &&
+      Boolean(component.accessibility_contract) &&
+      Boolean(component.fallback_strategy),
+    `${component.id} has incomplete implementation guidance`,
+  );
+  check(
+    componentIndexIds.has(component.id),
+    `${component.id} is missing from components-index.json`,
+  );
+}
+
+for (const component of originKitComponents) {
+  check(
+    componentIds.has(component.id),
+    `${component.id} is missing from components.json`,
+  );
+}
+
 const componentArchetypes = new Set(
-  components.map((component) => component.id.split("--")[0]),
+  ownedComponents.map((component) => component.id.split("--")[0]),
 );
 const previewArchetypes = new Set(componentPreviewIds);
 check(
@@ -713,7 +798,10 @@ check(
   "Kenney style-guidance provenance fidelity totals are incorrect",
 );
 check(
-  provenance.components.recipeCount === components.length,
+  provenance.components.recipeCount === components.length &&
+    provenance.components.ownedOriginalCount === ownedComponents.length &&
+    provenance.components.linkedOriginKitCount ===
+      linkedOriginKitComponents.length,
   "Component provenance total does not match components.json",
 );
 check(
@@ -751,6 +839,7 @@ for (const requiredFile of [
   "app.css",
   "app.js",
   "component-previews.js",
+  "originkit-components.json",
   "image-assets.json",
   "design-assets.json",
   "animated-backgrounds.json",
@@ -778,6 +867,7 @@ for (const requiredFile of [
   "licences/design-assets/phosphor.txt",
   "licences/design-assets/hero-patterns.txt",
   "licences/design-assets/cc0-sources.txt",
+  "licences/originkit-linked-source.txt",
   "vendor/three.module.min.js",
   "vendor/three.core.min.js",
   "vendor/loaders/GLTFLoader.js",
@@ -802,6 +892,8 @@ if (errors.length) {
     streamedModels: streamedModels.length,
     shipSafeModels: shipSafeModels.length,
     componentRecipes: components.length,
+    ownedComponentRecipes: ownedComponents.length,
+    linkedOriginKitComponents: linkedOriginKitComponents.length,
     imageAssets: images.length,
     animatedBackgrounds: backgrounds.length,
     availableAnimatedBackgrounds: backgrounds.filter(

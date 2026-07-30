@@ -471,13 +471,52 @@ function modelCard(record) {
   `;
 }
 
+function isExternalComponent(record) {
+  return record.source_kind === "external-linked-component";
+}
+
+function componentVisualMarkup(record, { inspector = false } = {}) {
+  if (!isExternalComponent(record) || !record.preview_poster_url) {
+    return componentPreviewMarkup(record);
+  }
+  const reducedMotion =
+    inspector &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  const video =
+    inspector && record.preview_video_url
+      ? `
+        <video
+          src="${escapeHtml(record.preview_video_url)}"
+          poster="${escapeHtml(record.preview_poster_url)}"
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          ${reducedMotion ? "" : "autoplay"}
+          aria-hidden="true"
+        ></video>
+      `
+      : "";
+  return `
+    <span class="external-component-preview">
+      <img
+        src="${escapeHtml(record.preview_poster_url)}"
+        alt=""
+        loading="${inspector ? "eager" : "lazy"}"
+      />
+      ${video}
+    </span>
+  `;
+}
+
 function componentCard(record) {
   const archetype = record.id.split("--")[0];
+  const external = isExternalComponent(record);
   return `
     <button
       type="button"
       role="listitem"
-      class="component-card${state.selectedComponentId === record.id ? " is-selected" : ""}"
+      class="component-card${external ? " is-external" : ""}${state.selectedComponentId === record.id ? " is-selected" : ""}"
       data-record-id="${escapeHtml(record.id)}"
       data-direction="${escapeHtml(record.art_direction)}"
       data-archetype="${escapeHtml(archetype)}"
@@ -485,15 +524,15 @@ function componentCard(record) {
       aria-pressed="${state.selectedComponentId === record.id}"
     >
       <span class="component-card-visual">
-        ${componentPreviewMarkup(record)}
-        <span class="component-visual-label">${escapeHtml(record.art_direction)}</span>
+        ${componentVisualMarkup(record)}
+        <span class="component-visual-label">${escapeHtml(external ? "OriginKit · official preview" : record.art_direction)}</span>
       </span>
       <span class="card-copy">
         <h3>${escapeHtml(record.name)}</h3>
         <p>${escapeHtml(record.summary)}</p>
         <span class="card-meta">
-          <span>Q${record.quality_score}</span>
-          <span>N${record.novelty_score}</span>
+          <span>${external ? "OFFICIAL" : `Q${record.quality_score}`}</span>
+          <span>${external ? "LINKED" : `N${record.novelty_score}`}</span>
           <span>${escapeHtml(record.category)}</span>
         </span>
       </span>
@@ -813,15 +852,19 @@ async function ensureComponentRecords() {
 }
 
 function renderComponentInspector(record) {
+  const external = isExternalComponent(record);
   document.querySelector("#component-name").textContent = record.name;
   document.querySelector("#component-score").textContent =
-    `Q${record.quality_score} / N${record.novelty_score}`;
+    external
+      ? "OFFICIAL / LINKED"
+      : `Q${record.quality_score} / N${record.novelty_score}`;
   const stage = document.querySelector("#component-stage");
   stage.dataset.direction = record.art_direction;
   stage.dataset.archetype = record.id.split("--")[0];
+  stage.classList.toggle("is-external", external);
   stage.innerHTML = `
-    ${componentPreviewMarkup(record)}
-    <span class="component-visual-label">${escapeHtml(record.art_direction.toUpperCase())}</span>
+    ${componentVisualMarkup(record, { inspector: true })}
+    <span class="component-visual-label">${escapeHtml(external ? "ORIGINKIT · REMOTE PREVIEW" : record.art_direction.toUpperCase())}</span>
   `;
   document.querySelector("#component-summary").textContent = record.summary;
   document.querySelector("#component-technique").textContent =
@@ -845,14 +888,24 @@ function renderComponentInspector(record) {
     .join("");
 
   const prompt =
-    `Read the Lumora MCP component record "${record.id}" at ` +
-    `${publicRoot}/components.json. Implement it from first principles in this ` +
-    `project's framework and brand. Preserve its content, responsive, ` +
-    `accessibility, fallback, performance, and test contracts.`;
+    external
+      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. Open its official_source_url to inspect and retrieve the current OriginKit implementation and dependencies. Adapt it to this project's framework, content, and brand; preserve responsive behavior, accessibility, reduced motion, fallback, cleanup, and performance. Do not use the remote catalog preview as production media.`
+      : `Read the Lumora MCP component record "${record.id}" at ` +
+        `${publicRoot}/components.json. Implement it from first principles in this ` +
+        `project's framework and brand. Preserve its content, responsive, ` +
+        `accessibility, fallback, performance, and test contracts.`;
   document.querySelector("#component-prompt").textContent = prompt;
   document.querySelector("#component-prompt").dataset.prompt = prompt;
-  document.querySelector("#component-record-link").href =
-    `./components.json#${encodeURIComponent(record.id)}`;
+  const recordLink = document.querySelector("#component-record-link");
+  const recordLinkLabel = document.querySelector("#component-record-link-label");
+  recordLink.href = external
+    ? record.official_source_url
+    : `./components.json#${encodeURIComponent(record.id)}`;
+  recordLink.target = external ? "_blank" : "";
+  recordLink.rel = external ? "noreferrer" : "";
+  recordLinkLabel.textContent = external
+    ? "Open official OriginKit component"
+    : "Open complete component records";
 }
 
 async function selectComponent(id, { updateLocation = true } = {}) {

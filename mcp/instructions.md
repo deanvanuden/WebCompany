@@ -44,3 +44,17 @@ The image catalog intentionally contains overlapping concepts in different visua
 
 Do not mix icon families or illustration systems casually. Prefer one primary family and one deliberately contrasting supporting family.
 <!-- DESIGN-ASSET-GUIDANCE:END -->
+
+<!-- ORIGINKIT-GUIDANCE:START -->
+## OriginKit linked components
+
+OriginKit records are external linked components with official remote previews. The MCP does not mirror OriginKit source code or media files.
+
+- Search or filter `art_direction: "OriginKit"` to see the complete linked inventory.
+- Open `source_url` to inspect and copy the current official implementation.
+- Read the official source and dependency list before adapting the component.
+- Brand-adapt the component and preserve responsive, accessibility, reduced-motion, fallback, and performance requirements.
+- Load `preview_video_url` only for selection; do not ship the catalog preview as production website media.
+
+The user confirmed that OriginKit components are free to use. Keep the implementation connected to its official source record and do not bulk-republish unrelated source or preview files.
+<!-- ORIGINKIT-GUIDANCE:END -->
