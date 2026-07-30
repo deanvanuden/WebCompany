@@ -4,7 +4,8 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import {
   componentPreviewCount,
   componentPreviewMarkup,
-} from "./component-previews.js";
+  componentPreviewMotionCount,
+} from "./component-previews.js?v=20260730.1";
 
 const PAGE_SIZE = 30;
 const publicRoot = "https://lumoraofficial.de/mcp";
@@ -477,7 +478,7 @@ function isExternalComponent(record) {
 
 function componentVisualMarkup(record, { inspector = false } = {}) {
   if (!isExternalComponent(record) || !record.preview_poster_url) {
-    return componentPreviewMarkup(record);
+    return componentPreviewMarkup(record, { live: inspector });
   }
   const reducedMotion =
     inspector &&
@@ -507,6 +508,45 @@ function componentVisualMarkup(record, { inspector = false } = {}) {
       ${video}
     </span>
   `;
+}
+
+function setComponentPreviewActivity(active) {
+  const stage = document.querySelector("#component-stage");
+  if (!stage) return;
+  const shouldPlay =
+    active &&
+    document.visibilityState === "visible" &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  stage.classList.toggle("is-preview-paused", !shouldPlay);
+
+  const video = stage.querySelector("video");
+  if (!video) return;
+  if (shouldPlay) {
+    video.play().catch(() => {});
+  } else {
+    video.pause();
+  }
+}
+
+function updateComponentPreviewPointer(event) {
+  const preview = event.currentTarget.querySelector(".recipe-preview.is-live");
+  if (
+    !preview ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    return;
+  }
+  const bounds = event.currentTarget.getBoundingClientRect();
+  const x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
+  const y = ((event.clientY - bounds.top) / bounds.height) * 2 - 1;
+  preview.style.setProperty("--pv-pointer-x", x.toFixed(3));
+  preview.style.setProperty("--pv-pointer-y", y.toFixed(3));
+}
+
+function resetComponentPreviewPointer(event) {
+  const preview = event.currentTarget.querySelector(".recipe-preview.is-live");
+  preview?.style.setProperty("--pv-pointer-x", "0");
+  preview?.style.setProperty("--pv-pointer-y", "0");
 }
 
 function componentCard(record) {
@@ -680,7 +720,7 @@ function renderCatalog() {
     state.view === "models"
       ? "Kenney + Quaternius + Poly Haven"
       : state.view === "components"
-        ? "12 original art directions"
+        ? `${formatCount(state.components.filter((component) => !isExternalComponent(component)).length)} owned · ${formatCount(state.components.filter(isExternalComponent).length)} OriginKit`
         : state.view === "images"
           ? `${formatCount(new Set(state.images.map((image) => image.collection)).size)} collections · bundled + linked + generated`
           : `${formatCount(state.backgrounds.filter((background) => background.availability === "Available").length)} live external sources`;
@@ -866,6 +906,7 @@ function renderComponentInspector(record) {
     ${componentVisualMarkup(record, { inspector: true })}
     <span class="component-visual-label">${escapeHtml(external ? "ORIGINKIT · REMOTE PREVIEW" : record.art_direction.toUpperCase())}</span>
   `;
+  setComponentPreviewActivity(state.view === "components");
   document.querySelector("#component-summary").textContent = record.summary;
   document.querySelector("#component-technique").textContent =
     record.technique ?? "Open the complete record for implementation detail.";
@@ -1203,6 +1244,7 @@ function setView(view, { updateLocation = true } = {}) {
   elements.integration.hidden = !integration;
   viewer?.setActive(view === "models");
   backgroundPlayer?.setActive(view === "backgrounds");
+  setComponentPreviewActivity(view === "components");
 
   if (integration) {
     if (updateLocation) history.replaceState(null, "", "#protocol");
@@ -1217,7 +1259,7 @@ function setView(view, { updateLocation = true } = {}) {
     view === "models"
       ? "3D INDEX / WEB READY"
       : view === "components"
-        ? "COMPONENT INDEX / OWNED ORIGINAL"
+        ? "COMPONENT INDEX / OWNED + LINKED"
         : view === "images"
           ? "IMAGE INDEX / LOCAL CC0"
           : "BACKGROUND INDEX / EXTERNAL STREAMS";
@@ -1785,6 +1827,22 @@ function bindEvents() {
     }
   });
 
+  document.addEventListener("visibilitychange", () => {
+    setComponentPreviewActivity(state.view === "components");
+  });
+  window
+    .matchMedia("(prefers-reduced-motion: reduce)")
+    .addEventListener("change", () => {
+      setComponentPreviewActivity(state.view === "components");
+    });
+
+  const componentStage = document.querySelector("#component-stage");
+  componentStage.addEventListener("pointermove", updateComponentPreviewPointer);
+  componentStage.addEventListener(
+    "pointerleave",
+    resetComponentPreviewPointer,
+  );
+
   for (const container of [
     elements.primaryFilter,
     elements.categoryFilter,
@@ -1982,9 +2040,9 @@ async function initialize() {
     state.images = images;
     state.backgrounds = backgrounds;
 
-    if (componentPreviewCount !== 85) {
+    if (componentPreviewCount !== 85 || componentPreviewMotionCount !== 85) {
       console.warn(
-        `Expected 85 component preview archetypes, found ${componentPreviewCount}.`,
+        `Expected 85 component preview archetypes and motion profiles, found ${componentPreviewCount}/${componentPreviewMotionCount}.`,
       );
     }
 

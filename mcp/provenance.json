@@ -413,7 +413,8 @@
     "transformations": [
       "Preserved the official component name, category, featured state, detail page, poster URL, and preview-video URL.",
       "Added Lumora implementation, brand-fit, responsive, accessibility, fallback, and performance guidance.",
-      "Kept OriginKit source code and preview media on the official OriginKit service."
+      "Kept OriginKit source code and preview media on the official OriginKit service.",
+      "Kept grid-card previews static and activated motion only for the selected component inspector."
     ]
   },
   "imageAssets": {

@@ -1241,6 +1241,694 @@ canvas {
   transform: scale(1.025);
 }
 
+.recipe-preview.is-live {
+  --pv-pointer-x: 0;
+  --pv-pointer-y: 0;
+}
+
+.recipe-preview.is-live > g,
+.recipe-preview.is-live > g > * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.component-stage.is-preview-paused .recipe-preview.is-live *,
+#component-inspector[hidden] .recipe-preview.is-live * {
+  animation-play-state: paused !important;
+}
+
+.recipe-preview-state {
+  position: absolute;
+  z-index: 3;
+  top: 12px;
+  right: 12px;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 9px;
+  border: 1px solid color-mix(in srgb, var(--pv-fg) 22%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--pv-bg) 86%, transparent);
+  color: var(--pv-fg);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 6px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.recipe-preview-state i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--pv-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pv-accent) 18%, transparent);
+  animation: pv-status-pulse 1.8s ease-in-out infinite;
+}
+
+.recipe-preview-state b {
+  font-weight: 760;
+}
+
+.recipe-preview-state span {
+  color: var(--pv-muted);
+}
+
+.recipe-preview.is-live[data-motion="ambient-drift"] > g {
+  animation: pv-ambient-drift 7s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="ambient-drift"] .pv-wide-accent,
+.recipe-preview.is-live[data-motion="ambient-drift"] .pv-wide-accent-2 {
+  animation: pv-ribbon-breathe 4.8s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="reactive-pulse"] .pv-accent,
+.recipe-preview.is-live[data-motion="reactive-pulse"] .pv-accent-ring,
+.recipe-preview.is-live[data-motion="reactive-pulse"] .pv-glow {
+  animation: pv-reactive-pulse 2.6s ease-in-out infinite;
+}
+
+.recipe-preview.is-live[data-motion="trace"] path,
+.recipe-preview.is-live[data-motion="trace"] line,
+.recipe-preview.is-live[data-motion="flow"] path,
+.recipe-preview.is-live[data-motion="flow"] line,
+.recipe-preview.is-live[data-motion="trail"] path {
+  stroke-dasharray: 14 9;
+  animation: pv-line-trace 3.8s linear infinite;
+}
+
+.recipe-preview.is-live[data-motion="network"] line,
+.recipe-preview.is-live[data-motion="network"] path {
+  stroke-dasharray: 9 7;
+  animation: pv-line-trace 5s linear infinite;
+}
+
+.recipe-preview.is-live[data-motion="network"] circle:nth-of-type(2n),
+.recipe-preview.is-live[data-motion="network"] .pv-accent,
+.recipe-preview.is-live[data-motion="network"] .pv-accent-2 {
+  animation: pv-node-pulse 2.4s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="lens"] > g,
+.recipe-preview.is-live[data-motion="magnetic"] > g,
+.recipe-preview.is-live[data-motion="tilt"] > g {
+  transform:
+    translate(
+      calc(var(--pv-pointer-x) * 7px),
+      calc(var(--pv-pointer-y) * 5px)
+    )
+    rotate(calc(var(--pv-pointer-x) * 1.4deg));
+  transition: transform 140ms ease-out;
+}
+
+.recipe-preview.is-live[data-motion="lens"] .pv-accent-ring,
+.recipe-preview.is-live[data-motion="lens"] .pv-accent-soft,
+.recipe-preview.is-live[data-motion="magnetic"] .pv-accent,
+.recipe-preview.is-live[data-motion="tilt"] .pv-glow {
+  animation: pv-lens-breathe 2.8s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="text-reveal"] > g > *,
+.recipe-preview.is-live[data-motion="cascade"] > g > * {
+  animation: pv-cascade 4.2s var(--ease) infinite;
+}
+
+.recipe-preview.is-live[data-motion="text-reveal"] > g > *:nth-child(2),
+.recipe-preview.is-live[data-motion="cascade"] > g > *:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.recipe-preview.is-live[data-motion="text-reveal"] > g > *:nth-child(3),
+.recipe-preview.is-live[data-motion="cascade"] > g > *:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.recipe-preview.is-live[data-motion="text-reveal"] > g > *:nth-child(n + 4),
+.recipe-preview.is-live[data-motion="cascade"] > g > *:nth-child(n + 4) {
+  animation-delay: 270ms;
+}
+
+.recipe-preview.is-live[data-motion="type-wave"] text:nth-of-type(1) {
+  animation: pv-type-wave 3.2s ease-in-out infinite;
+}
+
+.recipe-preview.is-live[data-motion="type-wave"] text:nth-of-type(2) {
+  animation: pv-type-wave 3.2s 180ms ease-in-out infinite;
+}
+
+.recipe-preview.is-live[data-motion="marquee"] text {
+  animation: pv-marquee 5.5s linear infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="scramble"] text:first-of-type {
+  animation: pv-scramble 2.8s steps(2, end) infinite;
+}
+
+.recipe-preview.is-live[data-motion="scramble"] text:nth-of-type(2) {
+  animation: pv-cascade 4s var(--ease) infinite;
+}
+
+.recipe-preview.is-live[data-motion="echo"] text {
+  animation: pv-echo 3.2s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="echo"] text:nth-of-type(2) {
+  animation-delay: 140ms;
+}
+
+.recipe-preview.is-live[data-motion="echo"] text:nth-of-type(3) {
+  animation-delay: 280ms;
+}
+
+.recipe-preview.is-live[data-motion="liquid"] path {
+  transform-origin: center bottom;
+  animation: pv-liquid-fill 3.4s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="nudge"] path,
+.recipe-preview.is-live[data-motion="cursor"] path:last-of-type {
+  transform:
+    translate(
+      calc(var(--pv-pointer-x) * 8px),
+      calc(var(--pv-pointer-y) * 6px)
+    );
+  animation: pv-nudge 1.8s ease-in-out infinite alternate;
+  transition: transform 120ms ease-out;
+}
+
+.recipe-preview.is-live[data-motion="switch"] circle:last-of-type {
+  animation: pv-switch 3s var(--ease) infinite;
+}
+
+.recipe-preview.is-live[data-motion="press"] > g > rect:nth-of-type(2) {
+  animation: pv-press 2.4s var(--ease) infinite;
+}
+
+.recipe-preview.is-live[data-motion="focus"] .pv-accent-ring,
+.recipe-preview.is-live[data-motion="focus"] .pv-accent-ring-dashed {
+  animation: pv-focus-halo 2.3s ease-in-out infinite;
+}
+
+.recipe-preview.is-live[data-motion="orbit"] .pv-accent,
+.recipe-preview.is-live[data-motion="orbit"] .pv-accent-2 {
+  transform-box: view-box;
+  transform-origin: 160px 90px;
+  animation: pv-orbit 6s linear infinite;
+}
+
+.recipe-preview.is-live[data-motion="peel"] > g > path:first-of-type {
+  transform-origin: right top;
+  animation: pv-peel 3.2s var(--ease) infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="stack"] > g > rect:nth-of-type(1) {
+  animation: pv-stack-back 3.8s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="stack"] > g > rect:nth-of-type(2) {
+  animation: pv-stack-middle 3.8s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="compare"] line,
+.recipe-preview.is-live[data-motion="compare"] circle {
+  animation: pv-compare 3.6s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="expand"] > g > rect:first-of-type,
+.recipe-preview.is-live[data-motion="morph"] > g > rect:last-of-type {
+  animation: pv-expand 3s var(--ease) infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="dock"] circle {
+  animation: pv-dock 2.8s var(--ease) infinite;
+}
+
+.recipe-preview.is-live[data-motion="dock"] circle:nth-of-type(2) {
+  animation-delay: 110ms;
+}
+
+.recipe-preview.is-live[data-motion="dock"] circle:nth-of-type(3) {
+  animation-delay: 220ms;
+}
+
+.recipe-preview.is-live[data-motion="dock"] circle:nth-of-type(4) {
+  animation-delay: 330ms;
+}
+
+.recipe-preview.is-live[data-motion="shift"] > g > rect:nth-of-type(2n),
+.recipe-preview.is-live[data-motion="fold"] > g > path,
+.recipe-preview.is-live[data-motion="coverflow"] > g > *:first-child,
+.recipe-preview.is-live[data-motion="coverflow"] > g > *:last-child {
+  animation: pv-shift 3.6s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="curtain"] > g > rect:first-of-type {
+  animation: pv-curtain-left 4s var(--ease) infinite;
+}
+
+.recipe-preview.is-live[data-motion="curtain"] > g > rect:nth-of-type(2) {
+  animation: pv-curtain-right 4s var(--ease) infinite;
+}
+
+.recipe-preview.is-live[data-motion="parallax"] > g > *:nth-child(odd) {
+  transform:
+    translate(
+      calc(var(--pv-pointer-x) * -5px),
+      calc(var(--pv-pointer-y) * -3px)
+    );
+  animation: pv-parallax-a 4.6s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="parallax"] > g > *:nth-child(even) {
+  transform:
+    translate(
+      calc(var(--pv-pointer-x) * 5px),
+      calc(var(--pv-pointer-y) * 3px)
+    );
+  animation: pv-parallax-b 4.6s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="progress"] rect.pv-accent {
+  transform-origin: left center;
+  animation: pv-progress 3.8s var(--ease) infinite;
+}
+
+.recipe-preview.is-live[data-motion="progress"] circle.pv-accent {
+  animation: pv-node-pulse 1.9s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="portal"] > g > path:first-of-type {
+  animation: pv-portal 3.2s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="slide"] > g {
+  animation: pv-slide 5s var(--ease) infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="zoom"] > g {
+  animation: pv-zoom 4.6s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="pixel"] > g > rect:nth-of-type(3n),
+.recipe-preview.is-live[data-motion="scan"] > g > rect:nth-of-type(4n) {
+  animation: pv-pixel 2.6s steps(2, end) infinite;
+}
+
+.recipe-preview.is-live[data-motion="scan"] > g {
+  animation: pv-scan 4s linear infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="slider"] circle {
+  animation: pv-slider 3.4s var(--ease) infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="upload"] path {
+  animation: pv-upload 2.1s ease-in-out infinite;
+}
+
+.recipe-preview.is-live[data-motion="success"] path,
+.recipe-preview.is-live[data-motion="burst"] path {
+  animation: pv-success 2.8s var(--ease) infinite;
+}
+
+.recipe-preview.is-live[data-motion="burst"] line {
+  transform-box: view-box;
+  transform-origin: 160px 90px;
+  animation: pv-burst 2.8s var(--ease) infinite;
+}
+
+.recipe-preview.is-live[data-motion="float"] > g {
+  animation: pv-float 3.8s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="rotate"] > g {
+  transform-box: view-box;
+  transform-origin: 160px 90px;
+  animation: pv-rotate 10s linear infinite;
+}
+
+.recipe-preview.is-live[data-motion="chart"] rect {
+  transform-origin: center bottom;
+  animation: pv-chart 3.6s var(--ease) infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="explode"] > g > *:nth-child(2n) {
+  animation: pv-explode-a 3.8s ease-in-out infinite alternate;
+}
+
+.recipe-preview.is-live[data-motion="explode"] > g > *:nth-child(odd) {
+  animation: pv-explode-b 3.8s ease-in-out infinite alternate;
+}
+
+@keyframes pv-status-pulse {
+  50% {
+    opacity: 0.46;
+    transform: scale(0.72);
+  }
+}
+
+@keyframes pv-ambient-drift {
+  to {
+    transform: translate3d(7px, -4px, 0) scale(1.025);
+  }
+}
+
+@keyframes pv-ribbon-breathe {
+  to {
+    opacity: 0.7;
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pv-reactive-pulse {
+  50% {
+    opacity: 0.45;
+    transform: scale(1.16);
+  }
+}
+
+@keyframes pv-line-trace {
+  to {
+    stroke-dashoffset: -46;
+  }
+}
+
+@keyframes pv-node-pulse {
+  to {
+    opacity: 0.48;
+    transform: scale(1.32);
+  }
+}
+
+@keyframes pv-lens-breathe {
+  to {
+    opacity: 0.58;
+    transform: scale(1.13);
+  }
+}
+
+@keyframes pv-cascade {
+  0%,
+  12% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  28%,
+  78% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  92%,
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pv-type-wave {
+  50% {
+    letter-spacing: 0.08em;
+    transform: translateY(-7px) scaleX(1.06);
+  }
+}
+
+@keyframes pv-marquee {
+  to {
+    transform: translateX(18px);
+  }
+}
+
+@keyframes pv-scramble {
+  0%,
+  24%,
+  42%,
+  100% {
+    opacity: 0.32;
+    transform: translateX(-2px);
+  }
+  12%,
+  32%,
+  64% {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+}
+
+@keyframes pv-echo {
+  to {
+    opacity: 0.42;
+    transform: translate(6px, 5px);
+  }
+}
+
+@keyframes pv-liquid-fill {
+  to {
+    transform: translateY(-7px) scaleY(1.15);
+  }
+}
+
+@keyframes pv-nudge {
+  to {
+    transform: translateX(7px);
+  }
+}
+
+@keyframes pv-switch {
+  0%,
+  28% {
+    transform: translateX(-10px) scale(0.88);
+  }
+  48%,
+  82% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes pv-press {
+  45%,
+  65% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes pv-focus-halo {
+  50% {
+    opacity: 0.4;
+    transform: scale(1.09);
+  }
+}
+
+@keyframes pv-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pv-peel {
+  to {
+    transform: rotate(-18deg) scale(1.05);
+  }
+}
+
+@keyframes pv-stack-back {
+  to {
+    transform: translate(8px, -5px);
+  }
+}
+
+@keyframes pv-stack-middle {
+  to {
+    transform: translate(4px, -2px);
+  }
+}
+
+@keyframes pv-compare {
+  to {
+    transform: translateX(34px);
+  }
+}
+
+@keyframes pv-expand {
+  to {
+    transform: scale(1.07);
+  }
+}
+
+@keyframes pv-dock {
+  34% {
+    transform: translateY(-9px);
+  }
+  62% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pv-shift {
+  to {
+    transform: translate(5px, -5px);
+  }
+}
+
+@keyframes pv-curtain-left {
+  0%,
+  18% {
+    transform: translateX(0);
+  }
+  52%,
+  78% {
+    transform: translateX(-55px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pv-curtain-right {
+  0%,
+  18% {
+    transform: translateX(0);
+  }
+  52%,
+  78% {
+    transform: translateX(55px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pv-parallax-a {
+  to {
+    transform: translate(-6px, 3px);
+  }
+}
+
+@keyframes pv-parallax-b {
+  to {
+    transform: translate(7px, -4px);
+  }
+}
+
+@keyframes pv-progress {
+  0%,
+  16% {
+    transform: scaleX(0.18);
+  }
+  72%,
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pv-portal {
+  to {
+    opacity: 0.52;
+    transform: scaleX(1.2) scaleY(0.82);
+  }
+}
+
+@keyframes pv-slide {
+  to {
+    transform: translateX(-12px);
+  }
+}
+
+@keyframes pv-zoom {
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes pv-pixel {
+  50% {
+    opacity: 0.18;
+  }
+}
+
+@keyframes pv-scan {
+  to {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pv-slider {
+  to {
+    transform: translateX(36px);
+  }
+}
+
+@keyframes pv-upload {
+  45% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes pv-success {
+  0%,
+  18% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  40%,
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pv-burst {
+  0%,
+  22% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  48%,
+  78% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.16);
+  }
+}
+
+@keyframes pv-float {
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pv-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pv-chart {
+  from {
+    transform: scaleY(0.38);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes pv-explode-a {
+  to {
+    transform: translate(7px, -8px);
+  }
+}
+
+@keyframes pv-explode-b {
+  to {
+    transform: translate(-6px, 7px);
+  }
+}
+
 .component-visual-label {
   position: absolute;
   z-index: 2;
@@ -2842,9 +3530,29 @@ footer a:hover {
   }
 }
 
+@media (pointer: coarse) {
+  .recipe-preview-state span {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .recipe-preview-state i {
+    box-shadow: none;
+  }
+
+  .recipe-preview-state b,
+  .recipe-preview-state span {
+    display: none;
+  }
+
+  .recipe-preview-state::after {
+    content: "Static preview";
+    color: var(--pv-muted);
   }
 
   *,

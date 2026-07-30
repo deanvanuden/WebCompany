@@ -2,7 +2,7 @@
 
 Canonical entry point: https://lumoraofficial.de/mcp/
 
-Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records, original Web Component implementation recipes, locally hosted CC0 image and UI assets, and externally hosted animated background references.
+Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records, owned-original Web Component implementation recipes, linked OriginKit components, locally hosted CC0 image and UI assets, and externally hosted animated background references.
 
 ## Machine-readable endpoints
 
@@ -10,6 +10,7 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 - 3D models: https://lumoraofficial.de/mcp/models.json
 - Component index: https://lumoraofficial.de/mcp/components-index.json
 - Complete component records: https://lumoraofficial.de/mcp/components.json
+- OriginKit component snapshot: https://lumoraofficial.de/mcp/originkit-components.json
 - Images and UI assets: https://lumoraofficial.de/mcp/image-assets.json
 - Animated backgrounds: https://lumoraofficial.de/mcp/animated-backgrounds.json
 - Provenance: https://lumoraofficial.de/mcp/provenance.json
@@ -19,12 +20,21 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 1. Read the manifest and choose the model, component, image-asset, or animated-background catalog.
 2. Filter candidates by the real page goal, brand, framework, performance budget, and asset class.
 3. For 3D, prefer `ship-safe` records and load only the selected model. Do not infer art-direction fit from an object's name or category alone. Filter by `agencyUse`, `brandMoods`, `websiteIndustries`, `sectionFits`, and `performanceGuidance`. For Kenney records, also read `visualFidelity`, `selectionPriority`, `selectionGuidance`, `avoidWhen`, and `fallbackPolicy`. This guidance is advisory: a simplified asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional. Use `publicModelUrl` in external projects. When a streamed glTF record has a `files` map, preserve that dependency mapping or download the official distribution into the target project.
-4. For components, choose zero to three recipes. Treat each record as an implementation brief and build it from first principles in the target project's conventions.
+4. For components, choose zero to three candidates. Build owned-original recipes from first principles in the target project's conventions; for linked OriginKit records, inspect the current official source before adapting it.
 5. For images and UI assets, choose only the records that serve the composition, then fetch each winner from `publicImageUrl` or `downloadUrl`. Preserve transparency, use nearest-neighbor rendering for `pixelArt`, and use repeating CSS backgrounds only when `tileable` is true.
 6. For animated backgrounds, preview candidates from their external URLs, select one winner, and then fetch only that record's `downloadUrl`. MP4 records are direct downloads; HLS records are adaptive streams. Optimize the selected media locally and provide a static reduced-motion fallback.
 7. Animated backgrounds are marked `commercial-use` based on Lumora's confirmation that the collection was purchased with commercial-use rights.
 8. Preserve source URLs, licence records, trademark warnings, fallbacks, accessibility contracts, and reduced-motion behavior.
 9. Do not mirror the entire catalog into a client project. Copy only the chosen assets or implement only the chosen recipes.
+
+## Component preview fidelity
+
+Every owned-original recipe has a representative visual renderer for its functional archetype and art direction. Grid cards use a static frame; only the selected component runs its lightweight SVG motion profile.
+
+- Use the preview to judge composition, hierarchy, motion character, density, and brand fit.
+- Treat the preview as a selection aid, not production source code or a pixel-exact implementation contract.
+- Read the complete record before implementation, especially its content, responsive, interaction, accessibility, fallback, performance, and test fields.
+- Preserve the selected behavior while adapting typography, color, spacing, geometry, timing, and content to the client website.
 
 ## Rights
 

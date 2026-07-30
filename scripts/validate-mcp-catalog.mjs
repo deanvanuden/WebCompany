@@ -80,6 +80,7 @@ const componentPreviewSource = await readFile(
   path.join(mcpRoot, "component-previews.js"),
   "utf8",
 );
+const appCssSource = await readFile(path.join(mcpRoot, "app.css"), "utf8");
 const instructionsSource = await readFile(
   path.join(mcpRoot, "instructions.md"),
   "utf8",
@@ -87,6 +88,18 @@ const instructionsSource = await readFile(
 const componentPreviewIds = [
   ...componentPreviewSource.matchAll(/^\s*"([a-z0-9-]+)":\s*\(\)\s*=>/gm),
 ].map((match) => match[1]);
+const componentPreviewMotionBlock =
+  componentPreviewSource.match(
+    /const previewMotions = Object\.freeze\(\{([\s\S]*?)\}\);/,
+  )?.[1] ?? "";
+const componentPreviewMotionEntries = [
+  ...componentPreviewMotionBlock.matchAll(
+    /^\s*"([a-z0-9-]+)":\s*"([a-z0-9-]+)",?$/gm,
+  ),
+].map((match) => ({ archetype: match[1], motion: match[2] }));
+const componentPreviewMotionIds = componentPreviewMotionEntries.map(
+  (entry) => entry.archetype,
+);
 
 const modelIds = new Set(models.map((model) => model.id));
 const componentIds = new Set(components.map((component) => component.id));
@@ -499,6 +512,7 @@ const componentArchetypes = new Set(
   ownedComponents.map((component) => component.id.split("--")[0]),
 );
 const previewArchetypes = new Set(componentPreviewIds);
+const previewMotionArchetypes = new Set(componentPreviewMotionIds);
 check(
   componentArchetypes.size === 85,
   `Expected 85 component archetypes, found ${componentArchetypes.size}`,
@@ -511,6 +525,27 @@ for (const archetype of componentArchetypes) {
   check(
     previewArchetypes.has(archetype),
     `Component archetype has no visual preview renderer: ${archetype}`,
+  );
+  check(
+    previewMotionArchetypes.has(archetype),
+    `Component archetype has no live-preview motion profile: ${archetype}`,
+  );
+}
+check(
+  previewMotionArchetypes.size === componentArchetypes.size,
+  `Live-preview motion profile count does not match component archetypes (${previewMotionArchetypes.size}/${componentArchetypes.size})`,
+);
+check(
+  /\.recipe-preview\.is-live\[data-motion=/.test(appCssSource) &&
+    /prefers-reduced-motion:\s*reduce/.test(appCssSource),
+  "Live component previews are missing scoped motion or reduced-motion CSS",
+);
+for (const motion of new Set(
+  componentPreviewMotionEntries.map((entry) => entry.motion),
+)) {
+  check(
+    appCssSource.includes(`[data-motion="${motion}"]`),
+    `Live-preview motion profile has no scoped CSS: ${motion}`,
   );
 }
 

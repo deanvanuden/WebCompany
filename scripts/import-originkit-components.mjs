@@ -450,6 +450,8 @@ async function mergeCatalog(records) {
       "OriginKit records link to the official current implementation and remote selection previews; source code and media are not mirrored.",
     selectionRule:
       "Choose by page purpose and art direction, then verify dependencies, responsive behavior, accessibility, reduced motion, and performance in the target project.",
+    previewEngine:
+      "All 85 owned archetypes have representative SVG compositions. Grid cards remain static and only the selected recipe runs a scoped motion profile; previews guide selection and are not production source code.",
   };
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
@@ -487,6 +489,7 @@ async function mergeCatalog(records) {
       "Preserved the official component name, category, featured state, detail page, poster URL, and preview-video URL.",
       "Added Lumora implementation, brand-fit, responsive, accessibility, fallback, and performance guidance.",
       "Kept OriginKit source code and preview media on the official OriginKit service.",
+      "Kept grid-card previews static and activated motion only for the selected component inspector.",
     ],
   };
   await writeFile(provenancePath, `${JSON.stringify(provenance, null, 2)}\n`);

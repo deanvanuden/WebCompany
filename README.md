@@ -21,6 +21,8 @@ Production files for [lumoraofficial.de](https://lumoraofficial.de), served as a
 - `scripts/import-originkit-components.mjs` — refreshes or re-merges the
   complete linked OriginKit component inventory, including official detail
   pages and remote poster/video previews without mirroring source code.
+- `mcp/component-previews.js` — renders 85 owned component archetypes and
+  activates one lightweight SVG motion profile only for the selected recipe.
 
 The legal pages are part of the application and are available through:
 

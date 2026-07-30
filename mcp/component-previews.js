@@ -78,6 +78,101 @@ function imageFrame(x, y, width, height, className = "pv-surface") {
   `;
 }
 
+const previewMotions = Object.freeze({
+  "aurora-ribbon-field": "ambient-drift",
+  "reactive-dot-lattice": "reactive-pulse",
+  "noise-light-mesh": "trace",
+  "topographic-pulse-map": "trace",
+  "particle-constellation": "network",
+  "liquid-lens-field": "lens",
+  "kinetic-mask-heading": "text-reveal",
+  "variable-font-wave": "type-wave",
+  "path-marquee": "marquee",
+  "semantic-scramble-reveal": "scramble",
+  "typographic-cutout-window": "text-reveal",
+  "counter-cascade": "cascade",
+  "magnetic-cta": "magnetic",
+  "liquid-fill-button": "liquid",
+  "split-label-arrow-button": "nudge",
+  "elastic-icon-switch": "switch",
+  "tilt-spotlight-card": "tilt",
+  "peel-away-card": "peel",
+  "depth-stack-card": "stack",
+  "cursor-reveal-comparison-card": "compare",
+  "expandable-story-card": "expand",
+  "morphing-island-nav": "morph",
+  "editorial-rail-menu": "text-reveal",
+  "command-dock": "dock",
+  "magnetic-mega-menu": "magnetic",
+  "product-orbit-hero": "orbit",
+  "layered-narrative-hero": "parallax",
+  "bento-signal-grid": "shift",
+  "pinned-feature-story": "text-reveal",
+  "logo-current-strip": "marquee",
+  "curtain-section-reveal": "curtain",
+  "parallax-type-image-pair": "parallax",
+  "scroll-scrub-timeline": "progress",
+  "view-transition-portal": "portal",
+  "chromatic-cursor-trail": "trail",
+  "magnetic-media-lens": "lens",
+  "draggable-coverflow": "coverflow",
+  "infinite-ribbon-gallery": "ambient-drift",
+  "focus-halo-field": "focus",
+  "progressive-form-stepper": "progress",
+  "morphing-async-status": "success",
+  "orbital-metric-cluster": "orbit",
+  "shader-product-pedestal": "float",
+  "particle-data-globe": "rotate",
+  "isometric-process-scene": "flow",
+  "vector-flow-field": "flow",
+  "halftone-light-field": "reactive-pulse",
+  "paper-cut-terrain": "parallax",
+  "pixel-weather-map": "scan",
+  "glyph-cascade": "cascade",
+  "outline-echo-heading": "echo",
+  "scroll-weave-sentence": "trace",
+  "word-orbit-cloud": "orbit",
+  "orbit-icon-button": "orbit",
+  "pressure-depth-button": "press",
+  "halo-border-cta": "focus",
+  "radial-choice-cluster": "orbit",
+  "holographic-identity-card": "tilt",
+  "timeline-fold-card": "fold",
+  "shimmer-edge-feature": "trace",
+  "spatial-bento-cell": "shift",
+  "ribbon-chapter-nav": "ambient-drift",
+  "radial-context-menu": "orbit",
+  "breadcrumb-motion-track": "progress",
+  "split-screen-menu": "curtain",
+  "masked-film-hero": "text-reveal",
+  "exploded-product-hero": "explode",
+  "process-diagram-hero": "progress",
+  "stacked-feature-deck": "stack",
+  "horizontal-story-track": "slide",
+  "image-zoom-chapter": "zoom",
+  "text-wipe-progress": "progress",
+  "sticky-comparison-rail": "compare",
+  "image-trail-gallery": "trail",
+  "pixelate-reveal-gallery": "pixel",
+  "draggable-mosaic": "shift",
+  "cursor-label-preview": "cursor",
+  "elastic-search-command": "expand",
+  "narrative-slider-control": "slider",
+  "upload-drop-reactor": "upload",
+  "success-signal-burst": "burst",
+  "morphing-chart-story": "chart",
+  "layered-network-map": "network",
+  "scrollytelling-data-canvas": "chart",
+  "holographic-model-viewer": "rotate",
+});
+
+const pointerDrivenMotions = new Set([
+  "cursor",
+  "lens",
+  "magnetic",
+  "tilt",
+]);
+
 const previewRenderers = {
   "aurora-ribbon-field": () => `
     ${path("M-20 130 C50 40 112 178 184 84 C232 20 286 40 350 4", "pv-wide-accent")}
@@ -713,25 +808,40 @@ function fallbackPreview(archetype) {
   `;
 }
 
-export function componentPreviewMarkup(record) {
+export function componentPreviewMarkup(record, { live = false } = {}) {
   const archetype = String(record?.id ?? "").split("--")[0];
   const renderer = previewRenderers[archetype];
   const artwork = renderer ? renderer() : fallbackPreview(archetype);
+  const motion = previewMotions[archetype] ?? "text-reveal";
+  const cue = pointerDrivenMotions.has(motion)
+    ? "Move pointer"
+    : "Live motion";
 
   return `
     <svg
-      class="recipe-preview"
+      class="recipe-preview${live ? " is-live" : ""}"
       viewBox="0 0 320 180"
       preserveAspectRatio="xMidYMid slice"
       focusable="false"
       aria-hidden="true"
       data-preview="${archetype}"
+      data-motion="${motion}"
+      data-live="${live}"
     >
       <rect width="320" height="180" class="pv-canvas" />
       <g>${artwork}</g>
     </svg>
+    ${
+      live
+        ? `<span class="recipe-preview-state"><i></i><b>Live preview</b><span>${cue}</span></span>`
+        : ""
+    }
   `;
 }
 
 export const componentPreviewIds = Object.freeze(Object.keys(previewRenderers));
 export const componentPreviewCount = componentPreviewIds.length;
+export const componentPreviewMotionIds = Object.freeze(
+  Object.keys(previewMotions),
+);
+export const componentPreviewMotionCount = componentPreviewMotionIds.length;

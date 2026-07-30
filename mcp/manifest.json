@@ -91,6 +91,7 @@
   "componentSelectionGuidance": {
     "ownedOriginal": "Lumora owned-original recipes are implementation briefs built from first principles.",
     "originKit": "OriginKit records link to the official current implementation and remote selection previews; source code and media are not mirrored.",
-    "selectionRule": "Choose by page purpose and art direction, then verify dependencies, responsive behavior, accessibility, reduced motion, and performance in the target project."
+    "selectionRule": "Choose by page purpose and art direction, then verify dependencies, responsive behavior, accessibility, reduced motion, and performance in the target project.",
+    "previewEngine": "All 85 owned archetypes have representative SVG compositions. Grid cards remain static and only the selected recipe runs a scoped motion profile; previews guide selection and are not production source code."
   }
 }
