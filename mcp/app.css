@@ -1208,11 +1208,67 @@ canvas {
   inset: 0;
 }
 
-.component-card.is-external .external-component-preview img {
+.external-preview-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 5px;
+  color: #f7f5ef;
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      color-mix(in srgb, var(--external-accent) 34%, transparent),
+      transparent 48%
+    ),
+    linear-gradient(135deg, #08090a, #15161a);
+  text-align: center;
+}
+
+.external-preview-fallback > span {
+  display: grid;
+  width: 46px;
+  aspect-ratio: 1;
+  place-content: center;
+  border: 1px solid color-mix(in srgb, var(--external-accent) 72%, white);
+  border-radius: 50%;
+  color: var(--external-accent);
+  font: 650 13px/1 var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
+.external-preview-fallback small {
+  max-width: 180px;
+  overflow: hidden;
+  color: rgba(247, 245, 239, 0.88);
+  font: 550 11px/1.2 var(--font-sans);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.external-preview-fallback em {
+  color: rgba(247, 245, 239, 0.48);
+  font: 500 7px/1 var(--font-mono);
+  font-style: normal;
+  letter-spacing: 0.12em;
+}
+
+.external-component-preview video[data-preview-frame] {
+  opacity: 0;
+}
+
+.external-component-preview.has-frame video[data-preview-frame] {
+  opacity: 1;
+}
+
+.component-card.is-external .external-component-preview img,
+.component-card.is-external .external-component-preview video {
   transition: transform 500ms var(--ease), filter 500ms var(--ease);
 }
 
-.component-card.is-external:hover .external-component-preview img {
+.component-card.is-external:hover .external-component-preview img,
+.component-card.is-external:hover .external-component-preview video {
   transform: scale(1.035);
   filter: saturate(1.08);
 }

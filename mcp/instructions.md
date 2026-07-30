@@ -2,7 +2,7 @@
 
 Canonical entry point: https://lumoraofficial.de/mcp/
 
-Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records, owned-original Web Component implementation recipes, linked OriginKit components, locally hosted CC0 image and UI assets, and externally hosted animated background references.
+Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records, owned-original Web Component implementation recipes, officially linked OriginKit, React Bits, and Canvas UI components, locally hosted CC0 image and UI assets, and externally hosted animated background references.
 
 ## Machine-readable endpoints
 
@@ -11,6 +11,8 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 - Component index: https://lumoraofficial.de/mcp/components-index.json
 - Complete component records: https://lumoraofficial.de/mcp/components.json
 - OriginKit component snapshot: https://lumoraofficial.de/mcp/originkit-components.json
+- React Bits component snapshot: https://lumoraofficial.de/mcp/react-bits-components.json
+- Canvas UI component snapshot: https://lumoraofficial.de/mcp/canvas-ui-components.json
 - Images and UI assets: https://lumoraofficial.de/mcp/image-assets.json
 - Animated backgrounds: https://lumoraofficial.de/mcp/animated-backgrounds.json
 - Provenance: https://lumoraofficial.de/mcp/provenance.json
@@ -20,7 +22,7 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 1. Read the manifest and choose the model, component, image-asset, or animated-background catalog.
 2. Filter candidates by the real page goal, brand, framework, performance budget, and asset class.
 3. For 3D, prefer `ship-safe` records and load only the selected model. Do not infer art-direction fit from an object's name or category alone. Filter by `agencyUse`, `brandMoods`, `websiteIndustries`, `sectionFits`, and `performanceGuidance`. For Kenney records, also read `visualFidelity`, `selectionPriority`, `selectionGuidance`, `avoidWhen`, and `fallbackPolicy`. This guidance is advisory: a simplified asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional. Use `publicModelUrl` in external projects. When a streamed glTF record has a `files` map, preserve that dependency mapping or download the official distribution into the target project.
-4. For components, choose zero to three candidates. Build owned-original recipes from first principles in the target project's conventions; for linked OriginKit records, inspect the current official source before adapting it.
+4. For components, choose zero to three candidates. Build owned-original recipes from first principles in the target project's conventions. For linked OriginKit, React Bits, and Canvas UI records, inspect the current official source, licence boundary, variants, dependencies, and install command before adapting only the selected component.
 5. For images and UI assets, choose only the records that serve the composition, then fetch each winner from `publicImageUrl` or `downloadUrl`. Preserve transparency, use nearest-neighbor rendering for `pixelArt`, and use repeating CSS backgrounds only when `tileable` is true.
 6. For animated backgrounds, preview candidates from their external URLs, select one winner, and then fetch only that record's `downloadUrl`. MP4 records are direct downloads; HLS records are adaptive streams. Optimize the selected media locally and provide a static reduced-motion fallback.
 7. Animated backgrounds are marked `commercial-use` based on Lumora's confirmation that the collection was purchased with commercial-use rights.
@@ -38,7 +40,7 @@ Every owned-original recipe has a representative visual renderer for its functio
 
 ## Rights
 
-Kenney 3D and image packs in this catalog are user-provided distributions licensed CC0 1.0. Quaternius models are curated from official CC0 packs, converted to self-contained GLB files, and retain their official source records. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. Animated backgrounds remain externally hosted and are recorded as commercial-use based on Lumora's purchase and entitlement confirmation.
+Kenney 3D and image packs in this catalog are user-provided distributions licensed CC0 1.0. Quaternius models are curated from official CC0 packs, converted to self-contained GLB files, and retain their official source records. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. React Bits and Canvas UI linked records use MIT + Commons Clause v1.0: use in commercial end projects is allowed, but resale or redistribution of the components themselves is restricted. Animated backgrounds remain externally hosted and are recorded as commercial-use based on Lumora's purchase and entitlement confirmation.
 
 <!-- DESIGN-ASSET-GUIDANCE:START -->
 ## Images / UI selection guidance
@@ -68,3 +70,17 @@ OriginKit records are external linked components with official remote previews. 
 
 The user confirmed that OriginKit components are free to use. Keep the implementation connected to its official source record and do not bulk-republish unrelated source or preview files.
 <!-- ORIGINKIT-GUIDANCE:END -->
+
+<!-- LINKED-COMPONENT-LIBRARIES:START -->
+## React Bits and Canvas UI linked components
+
+These records expose official live demos, install commands, registry URLs, framework guidance, and remote selection previews. Lumora does not mirror their source code or preview media.
+
+- Filter `art_direction` by `React Bits` or `Canvas UI`.
+- Open `official_source_url` and inspect `registry_url` before installing only the selected component.
+- React Bits records cover the 139-component public catalog and exclude every React Bits Pro component, block, and template.
+- Canvas UI records cover all 25 official effects and list its six framework flavors.
+- Use `preview_video_url` only to evaluate the effect; do not ship catalog preview films as production media.
+- Both sources currently use MIT + Commons Clause v1.0: commercial project use is allowed, but the components themselves may not be sold, sublicensed, or redistributed as a library, bundle, or port.
+- Preserve semantic content, reduced motion, offscreen pause, cleanup, responsive fallbacks, and browser fallbacks after adaptation.
+<!-- LINKED-COMPONENT-LIBRARIES:END -->

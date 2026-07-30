@@ -1,6 +1,6 @@
 {
   "name": "Lumora MCP",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "generatedAt": "2026-07-30",
   "canonicalUrl": "https://lumoraofficial.de/mcp/",
   "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, multi-style image and UI assets, and externally hosted animated background references.",
@@ -8,7 +8,7 @@
     "models": 1021,
     "localModels": 907,
     "streamedModels": 114,
-    "componentRecipes": 1166,
+    "componentRecipes": 1330,
     "imageAssets": 4315,
     "animatedBackgrounds": 152,
     "availableAnimatedBackgrounds": 151,
@@ -17,7 +17,10 @@
     "linkedImageAssets": 0,
     "imageAssetCollections": 12,
     "ownedComponentRecipes": 1020,
-    "linkedOriginKitComponents": 146
+    "linkedOriginKitComponents": 146,
+    "linkedComponentRecipes": 310,
+    "linkedReactBitsComponents": 139,
+    "linkedCanvasUiComponents": 25
   },
   "endpoints": {
     "models": "https://lumoraofficial.de/mcp/models.json",
@@ -28,7 +31,9 @@
     "instructions": "https://lumoraofficial.de/mcp/instructions.md",
     "provenance": "https://lumoraofficial.de/mcp/provenance.json",
     "designAssets": "https://lumoraofficial.de/mcp/design-assets.json",
-    "originKitComponents": "https://lumoraofficial.de/mcp/originkit-components.json"
+    "originKitComponents": "https://lumoraofficial.de/mcp/originkit-components.json",
+    "reactBitsComponents": "https://lumoraofficial.de/mcp/react-bits-components.json",
+    "canvasUiComponents": "https://lumoraofficial.de/mcp/canvas-ui-components.json"
   },
   "modelSchema": {
     "id": "Stable catalog identifier",
@@ -92,6 +97,19 @@
     "ownedOriginal": "Lumora owned-original recipes are implementation briefs built from first principles.",
     "originKit": "OriginKit records link to the official current implementation and remote selection previews; source code and media are not mirrored.",
     "selectionRule": "Choose by page purpose and art direction, then verify dependencies, responsive behavior, accessibility, reduced motion, and performance in the target project.",
-    "previewEngine": "All 85 owned archetypes have representative SVG compositions. Grid cards remain static and only the selected recipe runs a scoped motion profile; previews guide selection and are not production source code."
+    "previewEngine": "All 85 owned archetypes have representative SVG compositions. Linked cards load a paused official opening frame only near the viewport; only the selected inspector plays motion. Previews guide selection and are not production source or media.",
+    "reactBits": "React Bits records link to its public registry, official live demos, and remote selection previews. React Bits Pro is excluded.",
+    "canvasUi": "Canvas UI records link to official six-framework registry variants and remote selection previews. Preserve documented browser fallbacks.",
+    "linkedSourceBoundary": "React Bits and Canvas UI use MIT + Commons Clause v1.0: commercial end-project use is allowed, but do not sell or redistribute the component libraries themselves."
+  },
+  "componentSchema": {
+    "id": "Stable catalog identifier",
+    "sourceKind": "owned-original-recipe or external-linked-component",
+    "officialSourceUrl": "Official detail page for a linked component",
+    "registryUrl": "Optional official shadcn-compatible registry payload for the selected component",
+    "installCommand": "Optional official single-component installation command",
+    "officialVariants": "Available language, styling, or framework variants",
+    "previewVideoUrl": "Optional official remote selection preview; never production media",
+    "licenceClass": "owned-original, linked-source, or end-project-only-linked-source"
   }
 }

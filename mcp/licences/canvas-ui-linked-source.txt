@@ -1,0 +1,41 @@
+Canvas UI linked component source boundary
+Inventory date: 2026-07-30
+Official catalog: https://canvasui.dev
+Official repository: https://github.com/DavidHDev/canvas-ui
+Pinned revision: 6c9cccf12df6eb85689ae74d1759a24d7328f88e
+Official licence: https://github.com/DavidHDev/canvas-ui/blob/6c9cccf12df6eb85689ae74d1759a24d7328f88e/LICENSE.md
+
+Lumora MCP stores metadata and official links only.
+Component source code and preview media are not mirrored in this repository.
+Install only selected components from the official registry into an end project.
+
+Pinned official licence text:
+
+# MIT + Commons Clause License Condition v1.0
+
+Copyright (c) 2026 David Haz
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, and distribute the Software **as part of
+an application, website, or product**, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+## Commons Clause Restriction
+
+You may use this Software, including for any commercial purpose, **so long as
+you do not sell, sublicense, or redistribute the components themselves -
+whether alone, in a bundle, or as a ported version.**
+
+## No Warranty
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

@@ -386,12 +386,15 @@
     ]
   },
   "components": {
-    "source": "Lumora owned-original recipes plus linked OriginKit components",
+    "source": "Lumora owned-original recipes plus officially linked OriginKit, React Bits, and Canvas UI catalogs",
     "sourceKind": "mixed owned-original and external-linked-component",
-    "licence": "Owned-original for Lumora recipes; user-confirmed-free-use with official-source linking for OriginKit",
-    "recipeCount": 1166,
+    "licence": "Owned-original; OriginKit user-confirmed free use; React Bits and Canvas UI MIT + Commons Clause v1.0",
+    "recipeCount": 1330,
     "ownedOriginalCount": 1020,
+    "linkedComponentCount": 310,
     "linkedOriginKitCount": 146,
+    "linkedReactBitsCount": 139,
+    "linkedCanvasUiCount": 25,
     "sources": [
       {
         "source": "Lumora Web Design Components skill",
@@ -408,13 +411,43 @@
         "recordCount": 146,
         "inventoryDate": "2026-07-30",
         "storage": "Metadata snapshot with official component-page, poster, and video URLs; no OriginKit source code or media mirrored locally."
+      },
+      {
+        "source": "React Bits",
+        "sourceUrl": "https://reactbits.dev",
+        "repositoryUrl": "https://github.com/DavidHDev/react-bits",
+        "sourceRevision": "b9158acb37e7bdfd6c5bc5894da1826fe1d05a6b",
+        "sourceKind": "external-linked-component",
+        "licence": "MIT + Commons Clause v1.0",
+        "licenceUrl": "https://github.com/DavidHDev/react-bits/blob/b9158acb37e7bdfd6c5bc5894da1826fe1d05a6b/LICENSE.md",
+        "recordCount": 139,
+        "inventoryDate": "2026-07-30",
+        "exclusions": [
+          "React Bits Pro components",
+          "React Bits Pro blocks",
+          "React Bits Pro templates"
+        ],
+        "storage": "Official metadata, page, registry, and remote preview URLs only; no source code or preview media mirrored."
+      },
+      {
+        "source": "Canvas UI",
+        "sourceUrl": "https://canvasui.dev",
+        "repositoryUrl": "https://github.com/DavidHDev/canvas-ui",
+        "sourceRevision": "6c9cccf12df6eb85689ae74d1759a24d7328f88e",
+        "sourceKind": "external-linked-component",
+        "licence": "MIT + Commons Clause v1.0",
+        "licenceUrl": "https://github.com/DavidHDev/canvas-ui/blob/6c9cccf12df6eb85689ae74d1759a24d7328f88e/LICENSE.md",
+        "recordCount": 25,
+        "inventoryDate": "2026-07-30",
+        "storage": "Official metadata, page, registry, and remote preview URLs only; no source code or preview media mirrored."
       }
     ],
     "transformations": [
-      "Preserved the official component name, category, featured state, detail page, poster URL, and preview-video URL.",
-      "Added Lumora implementation, brand-fit, responsive, accessibility, fallback, and performance guidance.",
-      "Kept OriginKit source code and preview media on the official OriginKit service.",
-      "Kept grid-card previews static and activated motion only for the selected component inspector."
+      "Preserved official names, categories, detail pages, registry URLs, install commands, framework variants, source revisions, and preview-video URLs.",
+      "Added Lumora brand-fit, responsive, accessibility, fallback, browser, and performance guidance.",
+      "Excluded all paid React Bits Pro components, blocks, and templates.",
+      "Kept third-party source code and preview media on the official services.",
+      "Grid cards request a paused opening frame only when rendered; motion runs only for the selected inspector."
     ]
   },
   "imageAssets": {

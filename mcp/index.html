@@ -16,7 +16,7 @@
       href="./manifest.json"
     />
     <link rel="icon" href="../images/LogoLumora.png" type="image/png" />
-    <link rel="stylesheet" href="./app.css?v=20260730.1" />
+    <link rel="stylesheet" href="./app.css?v=20260730.2" />
     <title>Lumora MCP — Models, Components, Images & Backgrounds</title>
     <script type="importmap">
       {
@@ -55,7 +55,7 @@
           aria-pressed="false"
         >
           Components
-          <span data-stat="components">1,166</span>
+          <span data-stat="components">1,330</span>
         </button>
         <button
           type="button"
@@ -117,7 +117,7 @@
           </div>
           <div>
             <dt>Component recipes</dt>
-            <dd data-stat="components">1,166</dd>
+            <dd data-stat="components">1,330</dd>
           </div>
           <div>
             <dt>Images / UI</dt>
@@ -713,7 +713,17 @@ const backgrounds = await fetch(
           <a role="row" href="./components.json">
             <span role="cell">Component records</span>
             <code role="cell">/mcp/components.json</code>
-            <span role="cell">1,166 owned and linked component records</span>
+            <span role="cell">1,330 owned and linked component records</span>
+          </a>
+          <a role="row" href="./react-bits-components.json">
+            <span role="cell">React Bits snapshot</span>
+            <code role="cell">/mcp/react-bits-components.json</code>
+            <span role="cell">139 public linked components · Pro excluded</span>
+          </a>
+          <a role="row" href="./canvas-ui-components.json">
+            <span role="cell">Canvas UI snapshot</span>
+            <code role="cell">/mcp/canvas-ui-components.json</code>
+            <span role="cell">25 linked canvas and WebGL effects</span>
           </a>
           <a role="row" href="./image-assets.json">
             <span role="cell">Images / UI assets</span>
@@ -750,6 +760,6 @@ const backgrounds = await fetch(
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <script type="module" src="./app.js?v=20260730.1"></script>
+    <script type="module" src="./app.js?v=20260730.2"></script>
   </body>
 </html>

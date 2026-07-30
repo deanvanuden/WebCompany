@@ -60,6 +60,8 @@ const [
   componentIndex,
   components,
   originKitComponents,
+  reactBitsSnapshot,
+  canvasUiSnapshot,
   images,
   designAssets,
   backgrounds,
@@ -71,11 +73,15 @@ const [
     readJson("components-index.json"),
     readJson("components.json"),
     readJson("originkit-components.json"),
+    readJson("react-bits-components.json"),
+    readJson("canvas-ui-components.json"),
     readJson("image-assets.json"),
     readJson("design-assets.json"),
     readJson("animated-backgrounds.json"),
     readJson("provenance.json"),
   ]);
+const reactBitsComponents = reactBitsSnapshot.records;
+const canvasUiComponents = canvasUiSnapshot.records;
 const componentPreviewSource = await readFile(
   path.join(mcpRoot, "component-previews.js"),
   "utf8",
@@ -106,6 +112,12 @@ const componentIds = new Set(components.map((component) => component.id));
 const componentIndexIds = new Set(componentIndex.map((component) => component.id));
 const originKitComponentIds = new Set(
   originKitComponents.map((component) => component.id),
+);
+const reactBitsComponentIds = new Set(
+  reactBitsComponents.map((component) => component.id),
+);
+const canvasUiComponentIds = new Set(
+  canvasUiComponents.map((component) => component.id),
 );
 const imageIds = new Set(images.map((image) => image.id));
 const imageUrls = new Set(images.map((image) => image.publicImageUrl));
@@ -191,14 +203,42 @@ check(
 check(
   manifest.totals.ownedComponentRecipes === 1020 &&
     manifest.totals.linkedOriginKitComponents ===
-      originKitComponents.length,
-  "Manifest owned/OriginKit component totals are incorrect",
+      originKitComponents.length &&
+    manifest.totals.linkedReactBitsComponents ===
+      reactBitsComponents.length &&
+    manifest.totals.linkedCanvasUiComponents ===
+      canvasUiComponents.length &&
+    manifest.totals.linkedComponentRecipes ===
+      originKitComponents.length +
+        reactBitsComponents.length +
+        canvasUiComponents.length,
+  "Manifest linked component totals are incorrect",
 );
 check(
   manifest.endpoints.originKitComponents ===
     "https://lumoraofficial.de/mcp/originkit-components.json",
   "Manifest OriginKit component endpoint is incorrect",
 );
+check(
+  manifest.endpoints.reactBitsComponents ===
+    "https://lumoraofficial.de/mcp/react-bits-components.json" &&
+    manifest.endpoints.canvasUiComponents ===
+      "https://lumoraofficial.de/mcp/canvas-ui-components.json",
+  "Manifest React Bits or Canvas UI endpoint is incorrect",
+);
+for (const schemaField of [
+  "officialSourceUrl",
+  "registryUrl",
+  "installCommand",
+  "officialVariants",
+  "previewVideoUrl",
+  "licenceClass",
+]) {
+  check(
+    Boolean(manifest.componentSchema?.[schemaField]),
+    `Manifest component schema is missing ${schemaField}`,
+  );
+}
 check(
   manifest.totals.imageAssets === images.length,
   "Manifest image asset total does not match image-assets.json",
@@ -411,11 +451,17 @@ const ownedComponents = components.filter(
   (component) => component.source_kind === "owned-original-recipe",
 );
 const linkedOriginKitComponents = components.filter(
-  (component) => component.source_kind === "external-linked-component",
+  (component) => component.source === "OriginKit",
+);
+const linkedReactBitsComponents = components.filter(
+  (component) => component.source === "React Bits",
+);
+const linkedCanvasUiComponents = components.filter(
+  (component) => component.source === "Canvas UI",
 );
 check(
-  components.length === 1166,
-  `Expected 1,166 component records, found ${components.length}`,
+  components.length === 1330,
+  `Expected 1,330 component records, found ${components.length}`,
 );
 check(
   ownedComponents.length === 1020,
@@ -425,6 +471,29 @@ check(
   linkedOriginKitComponents.length === 146 &&
     originKitComponents.length === 146,
   `Expected 146 linked OriginKit records, found ${linkedOriginKitComponents.length}/${originKitComponents.length}`,
+);
+check(
+  linkedReactBitsComponents.length === 139 &&
+    reactBitsComponents.length === 139,
+  `Expected 139 linked React Bits records, found ${linkedReactBitsComponents.length}/${reactBitsComponents.length}`,
+);
+check(
+  linkedCanvasUiComponents.length === 25 &&
+    canvasUiComponents.length === 25,
+  `Expected 25 linked Canvas UI records, found ${linkedCanvasUiComponents.length}/${canvasUiComponents.length}`,
+);
+check(
+  reactBitsSnapshot.license === "MIT + Commons Clause v1.0" &&
+    /^[a-f0-9]{40}$/.test(reactBitsSnapshot.sourceRevision) &&
+    reactBitsSnapshot.excluded?.some((entry) =>
+      /React Bits Pro components/.test(entry),
+    ),
+  "React Bits snapshot is missing its pinned licence or Pro exclusion",
+);
+check(
+  canvasUiSnapshot.license === "MIT + Commons Clause v1.0" &&
+    /^[a-f0-9]{40}$/.test(canvasUiSnapshot.sourceRevision),
+  "Canvas UI snapshot is missing its pinned licence metadata",
 );
 check(
   componentIndex.length === components.length,
@@ -505,6 +574,100 @@ for (const component of originKitComponents) {
   check(
     componentIds.has(component.id),
     `${component.id} is missing from components.json`,
+  );
+}
+
+for (const component of linkedReactBitsComponents) {
+  check(
+    reactBitsComponentIds.has(component.id) &&
+      component.id.startsWith("reactbits-") &&
+      component.phase === "react-bits-linked-2026-07",
+    `${component.id} is missing from the React Bits snapshot`,
+  );
+  check(
+    component.source_kind === "external-linked-component" &&
+      component.license === "MIT + Commons Clause v1.0" &&
+      component.licence_class === "end-project-only-linked-source" &&
+      component.source_code_bundled === false &&
+      component.media_mirrored === false,
+    `${component.id} does not preserve the React Bits source boundary`,
+  );
+  check(
+    /^https:\/\/reactbits\.dev\/(animations|text-animations|components|backgrounds)\/[a-z0-9-]+$/.test(
+      component.official_source_url,
+    ) &&
+      /^https:\/\/reactbits\.dev\/r\/.+-TS-TW\.json$/.test(
+        component.registry_url,
+      ) &&
+      /^npx shadcn@latest add @react-bits\/.+-TS-TW$/.test(
+        component.install_command,
+      ),
+    `${component.id} has invalid official React Bits source or registry metadata`,
+  );
+  check(
+    !component.preview_video_url ||
+      /^https:\/\/reactbits\.dev\/assets\/video\/.+\.(webm|mp4)$/.test(
+        component.preview_video_url,
+      ),
+    `${component.id} has invalid React Bits preview media`,
+  );
+  check(
+    Boolean(component.summary) &&
+      Boolean(component.responsive_strategy) &&
+      Boolean(component.accessibility_contract) &&
+      Boolean(component.fallback_strategy) &&
+      componentIndexIds.has(component.id),
+    `${component.id} has incomplete React Bits implementation guidance`,
+  );
+}
+check(
+  linkedReactBitsComponents.filter((component) => component.preview_video_url)
+    .length === 134,
+  "React Bits official remote-preview count has changed",
+);
+
+for (const component of linkedCanvasUiComponents) {
+  check(
+    canvasUiComponentIds.has(component.id) &&
+      component.id.startsWith("canvasui-") &&
+      component.phase === "canvas-ui-linked-2026-07",
+    `${component.id} is missing from the Canvas UI snapshot`,
+  );
+  check(
+    component.source_kind === "external-linked-component" &&
+      component.license === "MIT + Commons Clause v1.0" &&
+      component.licence_class === "end-project-only-linked-source" &&
+      component.source_code_bundled === false &&
+      component.media_mirrored === false,
+    `${component.id} does not preserve the Canvas UI source boundary`,
+  );
+  check(
+    /^https:\/\/canvasui\.dev\/docs\/components\/[a-z0-9-]+$/.test(
+      component.official_source_url,
+    ) &&
+      /^https:\/\/canvasui\.dev\/r\/[a-z0-9-]+-react\.json$/.test(
+        component.registry_url,
+      ) &&
+      /^npx shadcn@latest add @canvas-ui\/[a-z0-9-]+-react$/.test(
+        component.install_command,
+      ),
+    `${component.id} has invalid official Canvas UI source or registry metadata`,
+  );
+  check(
+    /^https:\/\/canvasui\.dev\/assets\/videos\/[a-z0-9-]+\.webm$/.test(
+      component.preview_video_url,
+    ) &&
+      Array.isArray(component.official_variants) &&
+      component.official_variants.length === 6,
+    `${component.id} has incomplete Canvas UI preview or framework metadata`,
+  );
+  check(
+    Boolean(component.summary) &&
+      Boolean(component.responsive_strategy) &&
+      Boolean(component.accessibility_contract) &&
+      Boolean(component.fallback_strategy) &&
+      componentIndexIds.has(component.id),
+    `${component.id} has incomplete Canvas UI implementation guidance`,
   );
 }
 
@@ -836,7 +999,15 @@ check(
   provenance.components.recipeCount === components.length &&
     provenance.components.ownedOriginalCount === ownedComponents.length &&
     provenance.components.linkedOriginKitCount ===
-      linkedOriginKitComponents.length,
+      linkedOriginKitComponents.length &&
+    provenance.components.linkedReactBitsCount ===
+      linkedReactBitsComponents.length &&
+    provenance.components.linkedCanvasUiCount ===
+      linkedCanvasUiComponents.length &&
+    provenance.components.linkedComponentCount ===
+      linkedOriginKitComponents.length +
+        linkedReactBitsComponents.length +
+        linkedCanvasUiComponents.length,
   "Component provenance total does not match components.json",
 );
 check(
@@ -875,6 +1046,8 @@ for (const requiredFile of [
   "app.js",
   "component-previews.js",
   "originkit-components.json",
+  "react-bits-components.json",
+  "canvas-ui-components.json",
   "image-assets.json",
   "design-assets.json",
   "animated-backgrounds.json",
@@ -903,6 +1076,8 @@ for (const requiredFile of [
   "licences/design-assets/hero-patterns.txt",
   "licences/design-assets/cc0-sources.txt",
   "licences/originkit-linked-source.txt",
+  "licences/react-bits-linked-source.txt",
+  "licences/canvas-ui-linked-source.txt",
   "vendor/three.module.min.js",
   "vendor/three.core.min.js",
   "vendor/loaders/GLTFLoader.js",
@@ -929,6 +1104,8 @@ if (errors.length) {
     componentRecipes: components.length,
     ownedComponentRecipes: ownedComponents.length,
     linkedOriginKitComponents: linkedOriginKitComponents.length,
+    linkedReactBitsComponents: linkedReactBitsComponents.length,
+    linkedCanvasUiComponents: linkedCanvasUiComponents.length,
     imageAssets: images.length,
     animatedBackgrounds: backgrounds.length,
     availableAnimatedBackgrounds: backgrounds.filter(

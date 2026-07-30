@@ -5,7 +5,7 @@ import {
   componentPreviewCount,
   componentPreviewMarkup,
   componentPreviewMotionCount,
-} from "./component-previews.js?v=20260730.1";
+} from "./component-previews.js?v=20260730.2";
 
 const PAGE_SIZE = 30;
 const publicRoot = "https://lumoraofficial.de/mcp";
@@ -476,19 +476,58 @@ function isExternalComponent(record) {
   return record.source_kind === "external-linked-component";
 }
 
+function externalComponentSource(record) {
+  return record.source || record.art_direction || "Official source";
+}
+
+function externalComponentPreviewLabel(record, { inspector = false } = {}) {
+  const source = externalComponentSource(record);
+  if (!record.preview_video_url && !record.preview_poster_url) {
+    return `${source} · live demo link`;
+  }
+  return `${source} · ${inspector ? "remote preview" : "official preview"}`;
+}
+
+function externalComponentFallbackMarkup(record) {
+  const source = externalComponentSource(record);
+  const initials = source
+    .split(/\s+/)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 3)
+    .toUpperCase();
+  return `
+    <span class="external-preview-fallback" aria-hidden="true">
+      <span>${escapeHtml(initials)}</span>
+      <small>${escapeHtml(record.name)}</small>
+      <em>OPEN LIVE DEMO</em>
+    </span>
+  `;
+}
+
 function componentVisualMarkup(record, { inspector = false } = {}) {
-  if (!isExternalComponent(record) || !record.preview_poster_url) {
+  if (!isExternalComponent(record)) {
     return componentPreviewMarkup(record, { live: inspector });
   }
   const reducedMotion =
     inspector &&
     window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-  const video =
-    inspector && record.preview_video_url
+  const fallback = externalComponentFallbackMarkup(record);
+  const poster = record.preview_poster_url
+    ? `
+      <img
+        src="${escapeHtml(record.preview_poster_url)}"
+        alt=""
+        loading="${inspector ? "eager" : "lazy"}"
+      />
+    `
+    : "";
+  const video = record.preview_video_url
+    ? inspector
       ? `
         <video
           src="${escapeHtml(record.preview_video_url)}"
-          poster="${escapeHtml(record.preview_poster_url)}"
+          ${record.preview_poster_url ? `poster="${escapeHtml(record.preview_poster_url)}"` : ""}
           muted
           loop
           playsinline
@@ -497,17 +536,81 @@ function componentVisualMarkup(record, { inspector = false } = {}) {
           aria-hidden="true"
         ></video>
       `
+      : record.preview_poster_url
+        ? ""
+        : `
+          <video
+            data-preview-frame
+            data-src="${escapeHtml(record.preview_video_url)}"
+            muted
+            playsinline
+            preload="none"
+            aria-hidden="true"
+          ></video>
+        `
       : "";
   return `
-    <span class="external-component-preview">
-      <img
-        src="${escapeHtml(record.preview_poster_url)}"
-        alt=""
-        loading="${inspector ? "eager" : "lazy"}"
-      />
+    <span
+      class="external-component-preview"
+      style="--external-accent:${escapeHtml(record.preview_accent || "#8B5CF6")}"
+    >
+      ${fallback}
+      ${poster}
       ${video}
     </span>
   `;
+}
+
+let componentPreviewObserver = null;
+
+function prepareExternalPreviewFrames() {
+  componentPreviewObserver?.disconnect();
+  componentPreviewObserver = null;
+  const videos = [
+    ...elements.catalogGrid.querySelectorAll("video[data-preview-frame]"),
+  ];
+  if (!videos.length) return;
+
+  const loadFrame = (video) => {
+    if (video.src || !video.dataset.src) return;
+    video.addEventListener(
+      "loadedmetadata",
+      () => {
+        if (Number.isFinite(video.duration) && video.duration > 0.15) {
+          video.currentTime = 0.12;
+        }
+      },
+      { once: true },
+    );
+    video.addEventListener(
+      "loadeddata",
+      () => video.closest(".external-component-preview")?.classList.add("has-frame"),
+      { once: true },
+    );
+    video.addEventListener(
+      "error",
+      () => video.closest(".external-component-preview")?.classList.add("has-error"),
+      { once: true },
+    );
+    video.src = video.dataset.src;
+    video.load();
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    videos.forEach(loadFrame);
+    return;
+  }
+  componentPreviewObserver = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        loadFrame(entry.target);
+        componentPreviewObserver?.unobserve(entry.target);
+      }
+    },
+    { rootMargin: "240px 0px" },
+  );
+  videos.forEach((video) => componentPreviewObserver.observe(video));
 }
 
 function setComponentPreviewActivity(active) {
@@ -565,7 +668,7 @@ function componentCard(record) {
     >
       <span class="component-card-visual">
         ${componentVisualMarkup(record)}
-        <span class="component-visual-label">${escapeHtml(external ? "OriginKit · official preview" : record.art_direction)}</span>
+        <span class="component-visual-label">${escapeHtml(external ? externalComponentPreviewLabel(record) : record.art_direction)}</span>
       </span>
       <span class="card-copy">
         <h3>${escapeHtml(record.name)}</h3>
@@ -720,7 +823,18 @@ function renderCatalog() {
     state.view === "models"
       ? "Kenney + Quaternius + Poly Haven"
       : state.view === "components"
-        ? `${formatCount(state.components.filter((component) => !isExternalComponent(component)).length)} owned · ${formatCount(state.components.filter(isExternalComponent).length)} OriginKit`
+        ? [
+            `${formatCount(state.components.filter((component) => !isExternalComponent(component)).length)} owned`,
+            ...Object.entries(
+              state.components
+                .filter(isExternalComponent)
+                .reduce((counts, component) => {
+                  const source = externalComponentSource(component);
+                  counts[source] = (counts[source] ?? 0) + 1;
+                  return counts;
+                }, {}),
+            ).map(([source, count]) => `${formatCount(count)} ${source}`),
+          ].join(" · ")
         : state.view === "images"
           ? `${formatCount(new Set(state.images.map((image) => image.collection)).size)} collections · bundled + linked + generated`
           : `${formatCount(state.backgrounds.filter((background) => background.availability === "Available").length)} live external sources`;
@@ -751,6 +865,12 @@ function renderCatalog() {
       return backgroundCard(record);
     })
     .join("");
+  if (state.view === "components") {
+    prepareExternalPreviewFrames();
+  } else {
+    componentPreviewObserver?.disconnect();
+    componentPreviewObserver = null;
+  }
 }
 
 function sortOptionsForView() {
@@ -893,10 +1013,11 @@ async function ensureComponentRecords() {
 
 function renderComponentInspector(record) {
   const external = isExternalComponent(record);
+  const externalSource = externalComponentSource(record);
   document.querySelector("#component-name").textContent = record.name;
   document.querySelector("#component-score").textContent =
     external
-      ? "OFFICIAL / LINKED"
+      ? `${externalSource.toUpperCase()} / LINKED`
       : `Q${record.quality_score} / N${record.novelty_score}`;
   const stage = document.querySelector("#component-stage");
   stage.dataset.direction = record.art_direction;
@@ -904,7 +1025,7 @@ function renderComponentInspector(record) {
   stage.classList.toggle("is-external", external);
   stage.innerHTML = `
     ${componentVisualMarkup(record, { inspector: true })}
-    <span class="component-visual-label">${escapeHtml(external ? "ORIGINKIT · REMOTE PREVIEW" : record.art_direction.toUpperCase())}</span>
+    <span class="component-visual-label">${escapeHtml(external ? externalComponentPreviewLabel(record, { inspector: true }).toUpperCase() : record.art_direction.toUpperCase())}</span>
   `;
   setComponentPreviewActivity(state.view === "components");
   document.querySelector("#component-summary").textContent = record.summary;
@@ -930,7 +1051,7 @@ function renderComponentInspector(record) {
 
   const prompt =
     external
-      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. Open its official_source_url to inspect and retrieve the current OriginKit implementation and dependencies. Adapt it to this project's framework, content, and brand; preserve responsive behavior, accessibility, reduced motion, fallback, cleanup, and performance. Do not use the remote catalog preview as production media.`
+      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. Open its official_source_url to inspect the current ${externalSource} implementation, licence boundary, variants, and dependencies.${record.install_command ? ` Use the recorded install_command (${record.install_command}) only if it matches this project's framework.` : ""} Adapt only the selected component to this project's content and brand; preserve responsive behavior, semantic content, accessibility, reduced motion, offscreen pause, fallback, cleanup, and performance. Do not use the remote catalog preview as production media or redistribute the component library.`
       : `Read the Lumora MCP component record "${record.id}" at ` +
         `${publicRoot}/components.json. Implement it from first principles in this ` +
         `project's framework and brand. Preserve its content, responsive, ` +
@@ -945,7 +1066,7 @@ function renderComponentInspector(record) {
   recordLink.target = external ? "_blank" : "";
   recordLink.rel = external ? "noreferrer" : "";
   recordLinkLabel.textContent = external
-    ? "Open official OriginKit component"
+    ? `Open official ${externalSource} component`
     : "Open complete component records";
 }
 

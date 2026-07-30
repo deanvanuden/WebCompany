@@ -424,9 +424,7 @@ async function mergeCatalog(records) {
   const merged = [...base, ...records];
   const index = [
     ...JSON.parse(await readFile(indexPath, "utf8")).filter(
-      (record) =>
-        record.phase !== phase &&
-        record.source_kind !== "external-linked-component",
+      (record) => record.phase !== phase,
     ),
     ...records.map(toIndexRecord),
   ];
@@ -439,11 +437,23 @@ async function mergeCatalog(records) {
   manifest.purpose =
     "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, multi-style image and UI assets, and externally hosted animated background references.";
   manifest.totals.componentRecipes = merged.length;
-  manifest.totals.ownedComponentRecipes = base.length;
+  manifest.totals.ownedComponentRecipes = merged.filter(
+    (record) => record.source_kind === "owned-original-recipe",
+  ).length;
+  manifest.totals.linkedComponentRecipes = merged.filter(
+    (record) => record.source_kind === "external-linked-component",
+  ).length;
   manifest.totals.linkedOriginKitComponents = records.length;
+  manifest.totals.linkedReactBitsComponents = merged.filter(
+    (record) => record.source === "React Bits",
+  ).length;
+  manifest.totals.linkedCanvasUiComponents = merged.filter(
+    (record) => record.source === "Canvas UI",
+  ).length;
   manifest.endpoints.originKitComponents =
     `${publicRoot}/originkit-components.json`;
   manifest.componentSelectionGuidance = {
+    ...manifest.componentSelectionGuidance,
     ownedOriginal:
       "Lumora owned-original recipes are implementation briefs built from first principles.",
     originKit:
@@ -451,27 +461,44 @@ async function mergeCatalog(records) {
     selectionRule:
       "Choose by page purpose and art direction, then verify dependencies, responsive behavior, accessibility, reduced motion, and performance in the target project.",
     previewEngine:
-      "All 85 owned archetypes have representative SVG compositions. Grid cards remain static and only the selected recipe runs a scoped motion profile; previews guide selection and are not production source code.",
+      "All 85 owned archetypes have representative SVG compositions. Linked cards load a paused official opening frame only near the viewport; only the selected inspector plays motion. Previews guide selection and are not production source or media.",
   };
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
   const provenancePath = path.join(mcpRoot, "provenance.json");
   const provenance = JSON.parse(await readFile(provenancePath, "utf8"));
+  const ownedCount = merged.filter(
+    (record) => record.source_kind === "owned-original-recipe",
+  ).length;
+  const reactBitsCount = merged.filter(
+    (record) => record.source === "React Bits",
+  ).length;
+  const canvasUiCount = merged.filter(
+    (record) => record.source === "Canvas UI",
+  ).length;
+  const otherLinkedSources = (provenance.components?.sources ?? []).filter(
+    (source) =>
+      source.sourceKind === "external-linked-component" &&
+      source.source !== "OriginKit",
+  );
   provenance.generatedAt = inventoryDate;
   provenance.components = {
-    source: "Lumora owned-original recipes plus linked OriginKit components",
+    source: "Lumora owned-original recipes plus officially linked component catalogs",
     sourceKind: "mixed owned-original and external-linked-component",
     licence:
-      "Owned-original for Lumora recipes; user-confirmed-free-use with official-source linking for OriginKit",
+      "Owned-original for Lumora recipes; source-specific linked-component rights preserved in each record",
     recipeCount: merged.length,
-    ownedOriginalCount: base.length,
+    ownedOriginalCount: ownedCount,
+    linkedComponentCount: merged.length - ownedCount,
     linkedOriginKitCount: records.length,
+    linkedReactBitsCount: reactBitsCount,
+    linkedCanvasUiCount: canvasUiCount,
     sources: [
       {
         source: "Lumora Web Design Components skill",
         sourceKind: "owned-original-recipe",
         licence: "owned-original",
-        recordCount: base.length,
+        recordCount: ownedCount,
       },
       {
         source: "OriginKit",
@@ -484,6 +511,7 @@ async function mergeCatalog(records) {
         storage:
           "Metadata snapshot with official component-page, poster, and video URLs; no OriginKit source code or media mirrored locally.",
       },
+      ...otherLinkedSources,
     ],
     transformations: [
       "Preserved the official component name, category, featured state, detail page, poster URL, and preview-video URL.",
