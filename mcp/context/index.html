@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Complete static HTML context for the Lumora MCP manifest and Codex instructions." />
+    <meta name="robots" content="index, follow, max-snippet:-1" />
+    <meta name="theme-color" content="#171914" />
+    <link rel="canonical" href="https://lumoraofficial.de/mcp/context/" />
+    <link rel="sitemap" type="application/xml" href="https://lumoraofficial.de/sitemap.xml" />
+    <link rel="alternate" type="text/markdown" title="Lumora AI resource map" href="https://lumoraofficial.de/llms.txt" />
+    <title>Lumora MCP — Complete Codex Context</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","name":"Lumora MCP complete Codex context","url":"https://lumoraofficial.de/mcp/context/","version":"1.7.0","isPartOf":{"@type":"CollectionPage","url":"https://lumoraofficial.de/mcp/"}}</script>
+    <style>
+      :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; background: #171914; color: #f4f0e8; }
+      body { width: min(1040px, calc(100% - 40px)); margin: 0 auto; padding: 56px 0 96px; }
+      header, section { border: 1px solid #3b3f35; border-radius: 18px; padding: clamp(22px, 4vw, 42px); margin-bottom: 18px; background: #1d201a; }
+      h1 { max-width: 760px; margin: 0 0 16px; font-size: clamp(2.25rem, 7vw, 5.5rem); line-height: .92; letter-spacing: -.055em; }
+      h2 { margin-top: 0; font-size: 1.15rem; letter-spacing: .02em; }
+      p, li { max-width: 80ch; color: #c8c7bf; line-height: 1.65; }
+      a { color: #d9ff43; }
+      nav { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 28px; }
+      pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 12px/1.62 ui-monospace, SFMono-Regular, Consolas, monospace; color: #d8d9d3; }
+      .policy { color: #d9ff43; font: 700 12px/1.4 ui-monospace, monospace; letter-spacing: .08em; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p class="policy">LUMORA MCP 1.7.0 / UNRESTRICTED CONTENT LIBRARY</p>
+      <h1>Complete context,<br />in one HTML page.</h1>
+      <p>This document contains the canonical manifest and complete Codex instructions without requiring JavaScript, JSON navigation, Markdown navigation, or a second request.</p>
+      <nav aria-label="Lumora MCP resources">
+        <a href="https://lumoraofficial.de/mcp/">Visual catalog</a>
+        <a href="https://lumoraofficial.de/mcp/browser/">Search records</a>
+        <a href="https://lumoraofficial.de/llms.txt">Agent map</a>
+        <a href="https://lumoraofficial.de/mcp/manifest.json">Raw manifest</a>
+      </nav>
+    </header>
+    <section aria-labelledby="instructions-title">
+      <h2 id="instructions-title">Complete Codex instructions</h2>
+      <pre># Lumora MCP
+
+Canonical entry point: https://lumoraofficial.de/mcp/
+
+Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records, owned-original Web Component implementation recipes, officially linked OriginKit, React Bits, Canvas UI, pmndrs Examples, and Arlan's Vault components and patterns, locally hosted CC0 image and UI assets, and externally hosted animated background references.
+
+If a browser blocks top-level navigation to raw `.json` or `.md` files, use https://lumoraofficial.de/mcp/browser/. It renders these same first-party endpoints as HTML and supports exact record IDs and metadata searches. Direct HTTP clients should continue using the raw endpoints below.
+
+For the easiest browser-agent path, start at https://lumoraofficial.de/mcp/context/. It contains the complete manifest and these instructions in one static HTML page without requiring JavaScript. For the root-level agent resource map, use https://lumoraofficial.de/llms.txt. For the same combined context as plain text, use https://lumoraofficial.de/llms-full.txt.
+
+## Machine-readable endpoints
+
+- Browser-readable protocol and record viewer: https://lumoraofficial.de/mcp/browser/
+- Complete static HTML context: https://lumoraofficial.de/mcp/context/
+- Agent resource map: https://lumoraofficial.de/llms.txt
+- Full agent context: https://lumoraofficial.de/llms-full.txt
+- Manifest: https://lumoraofficial.de/mcp/manifest.json
+- 3D models: https://lumoraofficial.de/mcp/models.json
+- Component index: https://lumoraofficial.de/mcp/components-index.json
+- Complete component records: https://lumoraofficial.de/mcp/components.json
+- OriginKit component snapshot: https://lumoraofficial.de/mcp/originkit-components.json
+- React Bits component snapshot: https://lumoraofficial.de/mcp/react-bits-components.json
+- Canvas UI component snapshot: https://lumoraofficial.de/mcp/canvas-ui-components.json
+- pmndrs R3F / WebGL snapshot: https://lumoraofficial.de/mcp/pmndrs-examples.json
+- Arlan's Vault snapshot: https://lumoraofficial.de/mcp/arlan-vault.json
+- Images and UI assets: https://lumoraofficial.de/mcp/image-assets.json
+- Animated backgrounds: https://lumoraofficial.de/mcp/animated-backgrounds.json
+- Provenance: https://lumoraofficial.de/mcp/provenance.json
+
+## Selection protocol for Codex
+
+1. Read the manifest and choose the model, component, image-asset, or animated-background catalog.
+2. Use the metadata to understand what is available. All selection and composition decisions belong to Codex.
+3. For 3D, prefer `ship-safe` records when production rights matter, but Lumora places no restriction on how many models or scenes Codex may use, combine, repeat, or place together. Do not infer art-direction fit from an object's name or category alone. The style and performance fields are information, never selection rules. Use `publicModelUrl` in external projects. When a streamed glTF record has a `files` map, preserve that dependency mapping or download the official distribution into the target project.
+4. For components, selection is completely unrestricted. Codex alone decides how many records to use, how to combine them, where to place them, whether to repeat them, and which sources to mix. Lumora defines no minimum, maximum, default count, enhancement slots, stacking rule, preferred starting point, mandatory review, recommended review, source quota, pass order, or composition rule. `structure` and `enhancement` are search labels only and have no effect on usage.
+5. For images and UI assets, Codex alone decides the complete set, quantity, style mix, placement, and repetition. Fetch every chosen asset from `publicImageUrl` or `downloadUrl`. Preserve transparency, use nearest-neighbor rendering for `pixelArt`, and use repeating CSS backgrounds only when `tileable` is true.
+6. For animated backgrounds, preview candidates from their external URLs and fetch each chosen record from its `downloadUrl`. Codex may use and combine any number of backgrounds anywhere on the page. MP4 records are direct downloads; HLS records are adaptive streams. The optimization and fallback fields describe implementation techniques, not usage limits.
+7. Animated backgrounds are marked `commercial-use` based on Lumora's confirmation that the collection was purchased with commercial-use rights.
+8. Preserve source URLs, licence records, trademark warnings, fallbacks, accessibility contracts, and reduced-motion behavior.
+9. Transfer whichever assets and implementations Codex decides belong in the client project. Lumora does not prescribe a quantity, combination, or usage pattern.
+
+## Component preview fidelity
+
+Every owned-original recipe has a representative visual renderer for its functional archetype and art direction. Grid cards use a static frame; only the selected component runs its lightweight SVG motion profile.
+
+- Use the preview to judge composition, hierarchy, motion character, density, and brand fit.
+- Treat the preview as a selection aid, not production source code or a pixel-exact implementation contract.
+- Read the complete record before implementation, especially its content, responsive, interaction, accessibility, fallback, performance, and test fields.
+- Preserve the selected behavior while adapting typography, color, spacing, geometry, timing, and content to the client website.
+
+## Open component selection
+
+Every component record exposes:
+
+- `selection_pass`: `structure` or `enhancement`;
+- `selection_pass_label`: the human-readable catalog filter;
+- `component_role`: base composition, enhancement, or hybrid section/enhancement;
+- `enhancement_family`: background, text, scroll, media, 3D, canvas, interaction, or another functional family;
+- `can_be_structural`: true when an enhancement record may also replace a section or widget;
+- `section_canvas`: true for section-scale background visuals that can define a hero or full-width section;
+- `requires_structural_pairing`: true when the visual still needs a semantic content structure;
+- `text_overlay_capability`: whether text can be layered over the visual and under what readability condition;
+- `foreground_content_guidance`: how to layer real heading, body, CTA, and navigation content;
+- `overlay_readability_guidance`: how to preserve contrast across animated frames and provide reduced-motion fallback;
+- `pairing_guidance`: how to combine the record with the chosen base composition; and
+- `selection_freedom`: the explicit unrestricted-use policy.
+
+The labels can help with browsing, but do not define a workflow:
+
+1. Search either group in any order.
+2. Use, combine, repeat, adapt, or replace any records Codex wants.
+3. Use any number of sources, section canvases, effects, models, and backgrounds.
+4. Treat accessibility, fallbacks, loading, cleanup, and optimization as implementation work—not reasons imposed by Lumora to reduce the selection.
+
+## Rights
+
+Kenney 3D and image packs in this catalog are user-provided distributions licensed CC0 1.0. Quaternius models are curated from official CC0 packs, converted to self-contained GLB files, and retain their official source records. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. React Bits and Canvas UI linked records use MIT + Commons Clause v1.0: use in commercial end projects is allowed, but resale or redistribution of the components themselves is restricted. pmndrs example code is MIT; visible demo models, textures, audio, fonts, logos, and imagery remain a separate per-item boundary and should be replaced unless independently confirmed. Arlan's Vault pages are explicitly marked MIT/free to copy; credited brand references and demo media remain separate boundaries and should be replaced during adaptation. Animated backgrounds remain externally hosted and are recorded as commercial-use based on Lumora's purchase and entitlement confirmation.
+
+&lt;!-- DESIGN-ASSET-GUIDANCE:START --&gt;
+## Images / UI selection guidance
+
+The image catalog intentionally contains overlapping concepts in different visual systems. Search by concept, then compare `styleFamily`, `artStyle`, `bestFor`, `avoidWhen`, and `selectionGuidance` before choosing.
+
+- Lucide is the quiet outline default for product UI.
+- Phosphor records group six coordinated variants; Codex may mix and repeat them freely.
+- Open Doodles and Open Peeps fit friendly, human, hand-drawn art direction.
+- ambientCG records contain a local selection preview only. Fetch the required production PBR maps from `downloadUrl`.
+- Hero Patterns require the attribution stored on each record.
+- Kenney remains useful for intentional low-poly, pixel-art, and playful scenes; do not choose it from the subject name alone.
+
+All style-family and variant guidance is descriptive. Codex may mix any icon families, illustration systems, weights, and visual styles in any quantity.
+&lt;!-- DESIGN-ASSET-GUIDANCE:END --&gt;
+
+&lt;!-- ORIGINKIT-GUIDANCE:START --&gt;
+## OriginKit linked components
+
+OriginKit records are external linked components with official remote previews. The MCP does not mirror OriginKit source code or media files.
+
+- Search or filter `art_direction: "OriginKit"` to see the complete linked inventory.
+- Open `source_url` to inspect and copy the current official implementation.
+- Read the official source and dependency list before adapting the component.
+- Brand-adapt the component and preserve responsive, accessibility, reduced-motion, fallback, and performance requirements.
+- Load `preview_video_url` only for selection; do not ship the catalog preview as production website media.
+- Use any matching OriginKit candidates whenever they strengthen the design; this is not limited to a separate enhancement pass.
+- Records with `can_be_structural: true` may replace or define any suitable section or widget when their content and interaction contract fit.
+- Records with `section_canvas: true` may define the visual identity of a hero or full-width section, with separate semantic content, contrast treatment, and a static reduced-motion fallback.
+
+The user confirmed that OriginKit components are free to use. Keep the implementation connected to its official source record and do not bulk-republish unrelated source or preview files.
+&lt;!-- ORIGINKIT-GUIDANCE:END --&gt;
+
+&lt;!-- LINKED-COMPONENT-LIBRARIES:START --&gt;
+## React Bits and Canvas UI linked components
+
+These records expose official live demos, install commands, registry URLs, framework guidance, and remote selection previews. They are unrestricted catalog sources without review requirements, quotas, or enhancement slots. Lumora does not mirror their source code or preview media.
+
+- Filter `art_direction` by `React Bits` or `Canvas UI`.
+- Open `official_source_url` and inspect `registry_url` before installing only the selected component.
+- React Bits records cover the 139-component public catalog and exclude every React Bits Pro component, block, and template.
+- Canvas UI records cover all 25 official effects and list its six framework flavors.
+- Use `preview_video_url` only to evaluate the effect; do not ship catalog preview films as production media.
+- Use any matching candidates from these libraries plus OriginKit whenever they strengthen the page; combine them with other records when their roles are compatible.
+- Records with `can_be_structural: true` may replace or define suitable sections and widgets when their content and interaction contract fit.
+- Records with `section_canvas: true` are section-scale visual foundations. Pair them with semantic heroes or full-width sections, keep foreground content in a separate layer, audit contrast across moving frames, and provide static reduced-motion fallbacks.
+- Both sources currently use MIT + Commons Clause v1.0: commercial project use is allowed, but the components themselves may not be sold, sublicensed, or redistributed as a library, bundle, or port.
+- Preserve semantic content, reduced motion, offscreen pause, cleanup, responsive fallbacks, and browser fallbacks after adaptation.
+&lt;!-- LINKED-COMPONENT-LIBRARIES:END --&gt;
+
+&lt;!-- PMNDRS-EXAMPLES:START --&gt;
+## pmndrs Examples · R3F / WebGL patterns
+
+These 80 records are a curated agency-facing subset of the official pmndrs examples collection. They cover signature 3D scenes, scroll storytelling, product configurators, mixed DOM/WebGL interfaces, portals, materials, interactive effects, and production loading/media foundations.
+
+- Filter `art_direction: "pmndrs Examples"` to review the collection.
+- Use `official_source_url` for the live example, `preview_poster_url` for selection, and `code_url` for the pinned source directory.
+- Treat the effects/motion label as a discovery category, not a usage restriction. Records marked `section_canvas: true` may carry heroes or sections visually but still need semantic foreground content. Hybrid records may define structural sections when their content and interaction contract fits.
+- Codex may use and combine any number of WebGL scenes. Lazy-loading, DPR controls, pausing, disposal, and poster fallbacks are implementation options, never selection limits.
+- The repository's example code is MIT and may be adapted with its notice preserved.
+- Demo assets are a separate boundary. Do not assume visible models, textures, audio, fonts, logos, or branded products share the code licence. Use the technique with Lumora-owned, client-owned, or separately confirmed assets.
+- Do not paste an unchanged demo composition. Adapt camera, content, materials, colors, typography, controls, timing, and responsive behavior to the project.
+&lt;!-- PMNDRS-EXAMPLES:END --&gt;
+
+&lt;!-- ARLAN-VAULT:START --&gt;
+## Arlan's Vault linked design-engineering experiments
+
+These 15 records cover every currently published Vault experiment with a dedicated live demo and code page. The collection is especially useful for typography, material depth, buttons, image reveals, canvas/GPU media treatments, and compact interaction ideas.
+
+- Filter `art_direction: "Arlan's Vault"` whenever its techniques fit, and freely combine any compatible candidates with other sources.
+- Use `official_source_url` to inspect the live behavior and `code_url` to reach the implementation section. Copy only the selected experiment.
+- Most records are effects, but Liquid UI, Ghosty reveal, and the vector editor can also carry structural sections or product widgets when their content contracts fit. Symbols effect, Dia gradient, and Midjourney Medical's ASCII are section canvases that still need semantic foreground content.
+- The official collection and detail pages state `MIT → free to copy`. Preserve the creator/source record and the licence notice.
+- Credited brand references and demo media remain a separate boundary. Adapt the interaction principle with original project copy, imagery, video, palette, and identity assets.
+- Local WebP files are selection previews captured from the live official cards. They are not production website assets.
+- Codex may use and combine any number of treatments. Reduced motion, touch input, offscreen pausing, and cleanup remain implementation responsibilities, never usage limits.
+&lt;!-- ARLAN-VAULT:END --&gt;</pre>
+    </section>
+    <section aria-labelledby="manifest-title">
+      <h2 id="manifest-title">Canonical manifest</h2>
+      <pre>{
+  "name": "Lumora MCP",
+  "version": "1.7.0",
+  "generatedAt": "2026-07-31",
+  "canonicalUrl": "https://lumoraofficial.de/mcp/",
+  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, design-engineering experiments, curated R3F/WebGL patterns, multi-style image and UI assets, and externally hosted animated background references.",
+  "totals": {
+    "models": 1021,
+    "localModels": 907,
+    "streamedModels": 114,
+    "componentRecipes": 1425,
+    "imageAssets": 4315,
+    "animatedBackgrounds": 152,
+    "availableAnimatedBackgrounds": 151,
+    "shipSafeModels": 1020,
+    "bundledImageAssets": 4315,
+    "linkedImageAssets": 0,
+    "imageAssetCollections": 12,
+    "ownedComponentRecipes": 1020,
+    "linkedOriginKitComponents": 146,
+    "linkedComponentRecipes": 405,
+    "linkedReactBitsComponents": 139,
+    "linkedCanvasUiComponents": 25,
+    "structureComponentRecipes": 492,
+    "enhancementComponentRecipes": 933,
+    "sectionCanvasComponentRecipes": 195,
+    "linkedPmndrsExamples": 80,
+    "linkedArlanVaultComponents": 15
+  },
+  "endpoints": {
+    "browserReader": "https://lumoraofficial.de/mcp/browser/",
+    "htmlContext": "https://lumoraofficial.de/mcp/context/",
+    "llms": "https://lumoraofficial.de/llms.txt",
+    "llmsFull": "https://lumoraofficial.de/llms-full.txt",
+    "sitemap": "https://lumoraofficial.de/sitemap.xml",
+    "models": "https://lumoraofficial.de/mcp/models.json",
+    "componentIndex": "https://lumoraofficial.de/mcp/components-index.json",
+    "componentRecords": "https://lumoraofficial.de/mcp/components.json",
+    "imageAssets": "https://lumoraofficial.de/mcp/image-assets.json",
+    "animatedBackgrounds": "https://lumoraofficial.de/mcp/animated-backgrounds.json",
+    "instructions": "https://lumoraofficial.de/mcp/instructions.md",
+    "provenance": "https://lumoraofficial.de/mcp/provenance.json",
+    "designAssets": "https://lumoraofficial.de/mcp/design-assets.json",
+    "originKitComponents": "https://lumoraofficial.de/mcp/originkit-components.json",
+    "reactBitsComponents": "https://lumoraofficial.de/mcp/react-bits-components.json",
+    "canvasUiComponents": "https://lumoraofficial.de/mcp/canvas-ui-components.json",
+    "pmndrsExamples": "https://lumoraofficial.de/mcp/pmndrs-examples.json",
+    "arlanVault": "https://lumoraofficial.de/mcp/arlan-vault.json"
+  },
+  "modelSchema": {
+    "id": "Stable catalog identifier",
+    "modelUrl": "Relative local path or official remote glTF URL",
+    "publicModelUrl": "Absolute model URL for Codex and external consumers",
+    "files": "Optional exact dependency URL map used to resolve streamed Poly Haven glTF packages",
+    "licenceClass": "ship-safe, attribution, or concept-only",
+    "agencyUse": "Recommended website role for the selected object",
+    "brandMoods": "Brand moods this object can support",
+    "websiteIndustries": "Agency verticals where the object is especially useful",
+    "sectionFits": "Page sections where the object can earn its rendering cost",
+    "performanceGuidance": "Record-specific loading and motion guidance",
+    "visualFidelity": "Advisory geometry band: very-low-poly, standard-low-poly, or detailed-low-poly",
+    "selectionPriority": "Advisory shortlist priority; never a hard exclusion rule",
+    "selectionGuidance": "Art-direction warning or positive guidance to read before selection",
+    "bestFor": "Visual contexts that fit this asset's actual style",
+    "avoidWhen": "Visual contexts where the asset is likely to weaken the result",
+    "fallbackPolicy": "How the asset may still be used when no stronger catalog match exists"
+  },
+  "modelSelectionGuidance": {
+    "guidanceMode": "advisory",
+    "selectionFreedom": "UNRESTRICTED: Codex may use, combine, and repeat any number of models or scenes anywhere on the page. Lumora imposes no usage rules.",
+    "primaryRule": "Do not infer art-direction fit from an object's name or category alone.",
+    "kenney": "Read visualFidelity, selectionPriority, selectionGuidance, avoidWhen, and fallbackPolicy before selecting a Kenney model.",
+    "fallback": "A low-poly Kenney asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional.",
+    "detailedArchitecture": "Detailed-low-poly architecture may be shortlisted earlier for stylized spatial work, while still being compared with higher-fidelity sources for realism or luxury."
+  },
+  "imageAssetSchema": {
+    "id": "Stable catalog identifier",
+    "conceptId": "Normalized subject for comparing the same concept across visual styles",
+    "imageUrl": "Local path or official linked preview URL",
+    "publicImageUrl": "Absolute default preview or asset URL",
+    "downloadUrl": "Production asset, source page, or local asset URL depending on usageMode",
+    "storage": "local, remote, or hybrid",
+    "usageMode": "bundled, grouped variants, linked source, or attribution",
+    "format": "SVG, PNG, or PBR maps",
+    "styleFamily": "Normalized visual language",
+    "artStyle": "Human-readable visual treatment",
+    "variants": "Optional named style or weight URLs grouped under one concept",
+    "selectionGuidance": "Art-direction and implementation advice",
+    "bestFor": "Contexts where the asset style is a strong fit",
+    "avoidWhen": "Contexts where another visual family should be preferred",
+    "licenceClass": "ship-safe, attribution, or linked"
+  },
+  "animatedBackgroundSchema": {
+    "id": "Stable catalog identifier",
+    "previewUrl": "Original externally hosted MP4 or HLS media URL",
+    "downloadUrl": "Direct MP4 download or adaptive HLS manifest URL",
+    "thumbnailUrl": "Local 640x360 WebP extracted from the opening frame",
+    "publicThumbnailUrl": "Absolute opening-frame thumbnail URL for external consumers",
+    "availability": "Last observed URL availability",
+    "licenceClass": "commercial-use based on Lumora owner confirmation",
+    "selectionFreedom": "Unrestricted authority for Codex to use, combine, layer, and repeat backgrounds in any quantity",
+    "performanceGuidance": "Advisory simultaneous loading, playback, and fallback guidance"
+  },
+  "imageSelectionGuidance": {
+    "guidanceMode": "advisory",
+    "primaryRule": "Style metadata is descriptive only. Codex has unrestricted authority to choose, mix, layer, and repeat any assets.",
+    "consistencyRule": "UNRESTRICTED: Codex may mix any icon families, illustration systems, weights, and visual styles in any quantity.",
+    "groupedVariants": "Phosphor weights are grouped for convenient access; grouping does not impose consistency or usage rules.",
+    "linkedAssets": "ambientCG preview images are not production PBR maps; fetch production maps from the official material page."
+  },
+  "componentSelectionGuidance": {
+    "ownedOriginal": "Lumora owned-original recipes are implementation briefs built from first principles.",
+    "originKit": "OriginKit records link to the official current implementation and remote selection previews; source code and media are not mirrored.",
+    "selectionRule": "All metadata is descriptive. Codex has unrestricted authority over every selection, count, combination, placement, source, and repetition.",
+    "previewEngine": "All 85 owned archetypes have representative SVG compositions. Linked cards load a paused official opening frame only near the viewport; only the selected inspector plays motion. Previews guide selection and are not production source or media.",
+    "reactBits": "React Bits records link to its public registry, official live demos, and remote selection previews. React Bits Pro is excluded.",
+    "canvasUi": "Canvas UI records link to official six-framework registry variants and remote selection previews. Preserve documented browser fallbacks.",
+    "linkedSourceBoundary": "React Bits and Canvas UI allow commercial end-project use under their recorded terms. pmndrs example code and Arlan's Vault implementations are MIT-marked; visible demo assets and credited brand references remain separate boundaries.",
+    "selectionSequence": "Structure and enhancement are search labels only; they impose no workflow or order.",
+    "sectionCanvasRule": "Background records marked section_canvas can define heroes or sections and may be used, combined, and repeated without catalog limits.",
+    "pmndrs": "pmndrs Examples records are curated React Three Fiber/WebGL patterns with official static thumbnails, live demos, and pinned source directories. Codex may use and combine any number of scenes; implementation metadata does not limit selection.",
+    "arlanVault": "Arlan's Vault records are compact MIT-marked design-engineering experiments. Review them for typography, material, button, reveal, canvas, and GPU treatments; copy only the selected implementation and replace credited brand/demo media.",
+    "selectionFreedom": "UNRESTRICTED: Codex alone decides all record counts, combinations, placement, repetition, sources, and selection order. Lumora imposes no usage rules."
+  },
+  "componentSchema": {
+    "id": "Stable catalog identifier",
+    "sourceKind": "owned-original-recipe or external-linked-component",
+    "officialSourceUrl": "Official detail page for a linked component",
+    "registryUrl": "Optional official shadcn-compatible registry payload for the selected component",
+    "installCommand": "Optional official single-component installation command",
+    "officialVariants": "Available language, styling, or framework variants",
+    "previewVideoUrl": "Optional official remote selection preview; never production media",
+    "licenceClass": "owned-original, linked-source, or end-project-only-linked-source",
+    "selectionPass": "Search label only: structure or enhancement; never a workflow or usage rule",
+    "componentRole": "base-composition, enhancement, hybrid-section-or-enhancement, or section-canvas",
+    "enhancementFamily": "Functional effect family used for pairing and duplicate detection",
+    "canBeStructural": "True when an enhancement may also replace a section or widget",
+    "sectionCanvas": "True when the enhancement can provide the full visual canvas behind a hero or section",
+    "requiresStructuralPairing": "True when the visual must be paired with a semantic content structure",
+    "textOverlayCapability": "Whether foreground text is supported and what readability condition applies",
+    "foregroundContentGuidance": "How to layer real heading, body, CTA, and navigation content over the visual",
+    "overlayReadabilityGuidance": "Contrast, scrim, quiet-zone, and reduced-motion requirements for foreground content",
+    "pairingGuidance": "How to combine the candidate with the selected base composition",
+    "selectionFreedom": "Explicit unrestricted authority for Codex to use and combine records in any quantity",
+    "codeUrl": "Optional pinned implementation directory for linked open-source examples",
+    "originalSourceUrl": "Optional original sandbox or upstream reference recorded by the source catalog",
+    "exampleLibraries": "Exact libraries declared by the linked example metadata",
+    "assetRightsBoundary": "Separates reusable example code from demo models, textures, audio, fonts, logos, and imagery",
+    "publicPreviewPosterUrl": "Absolute URL for a linked record's optimized local selection preview",
+    "previewCaptureSourceUrl": "Official page from which a local selection preview was captured"
+  }
+}</pre>
+    </section>
+  </body>
+</html>

@@ -8,10 +8,23 @@
       content="Browser-readable access to the Lumora MCP manifest, instructions, and catalog records."
     />
     <meta name="theme-color" content="#171914" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href="https://lumoraofficial.de/mcp/browser/" />
+    <link rel="sitemap" type="application/xml" href="https://lumoraofficial.de/sitemap.xml" />
+    <link rel="alternate" type="text/markdown" title="Lumora AI resource map" href="https://lumoraofficial.de/llms.txt" />
     <link rel="icon" href="../../images/LogoLumora.png" type="image/png" />
     <link rel="stylesheet" href="./reader.css?v=20260731.1" />
     <title>Lumora MCP — Codex Reader</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Lumora MCP Codex Reader",
+        "url": "https://lumoraofficial.de/mcp/browser/",
+        "description": "HTML-compatible access to the Lumora MCP protocol and searchable catalog records.",
+        "isPartOf": {"@type": "CollectionPage", "url": "https://lumoraofficial.de/mcp/"}
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#reader-output">Skip to record data</a>
@@ -30,11 +43,15 @@
       <section class="intro" aria-labelledby="reader-title">
         <p class="eyebrow"><i></i> FIRST-PARTY CATALOG ACCESS</p>
         <h1 id="reader-title">The raw records,<br /><em>inside a normal page.</em></h1>
-        <p>
-          This reader exposes the same live Lumora manifest, instructions, and
-          catalog metadata through HTML. It exists for browser environments that
-          block top-level navigation to <code>.json</code> or <code>.md</code> files.
-        </p>
+          <p>
+            This reader exposes the same live Lumora manifest, instructions, and
+            catalog metadata through HTML. It exists for browser environments that
+            block top-level navigation to <code>.json</code> or <code>.md</code> files.
+          </p>
+          <p>
+            Need the whole protocol without JavaScript? Open the
+            <a href="../context/">complete static Codex context</a>.
+          </p>
         <div class="reader-principle">
           <span>UNRESTRICTED</span>
           <p>
@@ -108,10 +125,34 @@
             <span id="reader-status" role="status" aria-live="polite">Connecting…</span>
             <code id="raw-endpoint">https://lumoraofficial.de/mcp/manifest.json</code>
           </div>
-          <pre id="reader-output" tabindex="0" aria-busy="true">Loading Lumora MCP…</pre>
+          <pre id="reader-output" tabindex="0" aria-busy="true">LUMORA MCP / FIRST-PARTY AGENT ENTRY
+
+SELECTION POLICY: UNRESTRICTED
+Catalog metadata is descriptive. Codex controls every selection, count,
+combination, placement, source mix, layer, and repetition.
+
+START HERE
+Complete static context: https://lumoraofficial.de/mcp/context/
+HTML reader: https://lumoraofficial.de/mcp/browser/
+Agent map: https://lumoraofficial.de/llms.txt
+Full context: https://lumoraofficial.de/llms-full.txt
+Manifest: https://lumoraofficial.de/mcp/manifest.json
+Instructions: https://lumoraofficial.de/mcp/instructions.md
+
+CATALOG DATA
+3D models: https://lumoraofficial.de/mcp/models.json
+Component index: https://lumoraofficial.de/mcp/components-index.json
+Complete components: https://lumoraofficial.de/mcp/components.json
+Images / UI: https://lumoraofficial.de/mcp/image-assets.json
+Animated backgrounds: https://lumoraofficial.de/mcp/animated-backgrounds.json
+Provenance: https://lumoraofficial.de/mcp/provenance.json
+
+This core protocol is present in the static HTML so text-only agents and
+crawlers can discover the catalog before JavaScript runs. The interactive
+reader replaces it with the selected live records after loading.</pre>
           <noscript>
-            JavaScript is required for the browser compatibility reader. The raw
-            records remain available through the endpoints listed in the manifest.
+            The core protocol and canonical endpoints above work without
+            JavaScript. Enable JavaScript only for record search and filtering.
           </noscript>
         </article>
       </section>

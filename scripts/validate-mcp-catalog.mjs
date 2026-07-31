@@ -110,6 +110,18 @@ const browserReaderSource = await readFile(
   path.join(mcpRoot, "browser", "reader.js"),
   "utf8",
 );
+const htmlContextSource = await readFile(
+  path.join(mcpRoot, "context", "index.html"),
+  "utf8",
+);
+const rootIndexHtmlSource = await readFile(path.join(root, "index.html"), "utf8");
+const robotsSource = await readFile(path.join(root, "robots.txt"), "utf8");
+const sitemapSource = await readFile(path.join(root, "sitemap.xml"), "utf8");
+const llmsSource = await readFile(path.join(root, "llms.txt"), "utf8");
+const llmsFullSource = await readFile(
+  path.join(root, "llms-full.txt"),
+  "utf8",
+);
 const componentPreviewIds = [
   ...componentPreviewSource.matchAll(/^\s*"([a-z0-9-]+)":\s*\(\)\s*=>/gm),
 ].map((match) => match[1]);
@@ -254,6 +266,19 @@ check(
   "Manifest browser reader endpoint is incorrect",
 );
 check(
+  manifest.endpoints.htmlContext ===
+    "https://lumoraofficial.de/mcp/context/",
+  "Manifest complete HTML context endpoint is incorrect",
+);
+check(
+  manifest.endpoints.llms === "https://lumoraofficial.de/llms.txt" &&
+    manifest.endpoints.llmsFull ===
+      "https://lumoraofficial.de/llms-full.txt" &&
+    manifest.endpoints.sitemap ===
+      "https://lumoraofficial.de/sitemap.xml",
+  "Manifest AI discovery endpoints are incorrect",
+);
+check(
   manifest.endpoints.originKitComponents ===
     "https://lumoraofficial.de/mcp/originkit-components.json",
   "Manifest OriginKit component endpoint is incorrect",
@@ -363,7 +388,7 @@ check(
   "Manifest model selection guidance is not marked advisory",
 );
 check(
-  manifest.version === "1.6.1",
+  manifest.version === "1.7.0",
   `Unexpected MCP manifest version: ${manifest.version}`,
 );
 check(
@@ -397,12 +422,74 @@ check(
 check(
   /browser blocks top-level navigation/i.test(instructionsSource) &&
     /https:\/\/lumoraofficial\.de\/mcp\/browser\//i.test(instructionsSource) &&
+    /https:\/\/lumoraofficial\.de\/mcp\/context\//i.test(instructionsSource) &&
+    /https:\/\/lumoraofficial\.de\/llms\.txt/i.test(instructionsSource) &&
+    /https:\/\/lumoraofficial\.de\/llms-full\.txt/i.test(instructionsSource) &&
     /HTML compatibility view/i.test(browserReaderHtmlSource) &&
     /class="header-link" href="\.\/browser\/"/.test(indexHtmlSource) &&
     /HTML access to protocol and searchable records/i.test(indexHtmlSource) &&
+    /href="\.\/context\/"/i.test(indexHtmlSource) &&
+    /Manifest \+ instructions in static HTML/i.test(indexHtmlSource) &&
     !/<a[^>]+id="raw-endpoint"/i.test(browserReaderHtmlSource) &&
+    /LUMORA MCP \/ FIRST-PARTY AGENT ENTRY/i.test(browserReaderHtmlSource) &&
+    /href="\.\.\/context\/"/i.test(browserReaderHtmlSource) &&
+    /SELECTION POLICY: UNRESTRICTED/i.test(browserReaderHtmlSource) &&
     /SELECTION POLICY: UNRESTRICTED/i.test(browserReaderSource),
   "Browser-readable endpoint guidance is incomplete",
+);
+check(
+  /User-agent: OAI-SearchBot/i.test(robotsSource) &&
+    /Allow: \/\s/i.test(robotsSource) &&
+    /Sitemap: https:\/\/lumoraofficial\.de\/sitemap\.xml/i.test(robotsSource),
+  "robots.txt does not explicitly allow OAI-SearchBot and advertise the sitemap",
+);
+for (const url of [
+  "https://lumoraofficial.de/",
+  "https://lumoraofficial.de/mcp/",
+  "https://lumoraofficial.de/mcp/browser/",
+  "https://lumoraofficial.de/mcp/context/",
+]) {
+  check(sitemapSource.includes(`<loc>${url}</loc>`), `Sitemap is missing ${url}`);
+}
+check(
+  /^# Lumora\s/m.test(llmsSource) &&
+    /^> Lumora is a web agency/m.test(llmsSource) &&
+    /https:\/\/lumoraofficial\.de\/mcp\/browser\//.test(llmsSource) &&
+    /https:\/\/lumoraofficial\.de\/mcp\/context\//.test(llmsSource) &&
+    /https:\/\/lumoraofficial\.de\/mcp\/manifest\.json/.test(llmsSource) &&
+    /unrestricted content library/i.test(llmsSource),
+  "llms.txt is missing its summary, recommended HTML entry, or policy",
+);
+check(
+  llmsFullSource.includes(`version ${manifest.version}`) &&
+    llmsFullSource.includes(JSON.stringify(manifest, null, 2)) &&
+    llmsFullSource.includes(instructionsSource.trim()),
+  "llms-full.txt does not contain the current manifest and complete instructions",
+);
+for (const htmlSource of [
+  rootIndexHtmlSource,
+  indexHtmlSource,
+  browserReaderHtmlSource,
+  htmlContextSource,
+]) {
+  check(
+    /<meta name="robots" content="index, follow/i.test(htmlSource) &&
+      /rel="sitemap"[^>]+sitemap\.xml/i.test(htmlSource) &&
+      /rel="alternate"[^>]+llms\.txt/i.test(htmlSource) &&
+      /application\/ld\+json/i.test(htmlSource),
+    "A crawlable HTML entry is missing robots, sitemap, llms.txt, or structured-data metadata",
+  );
+}
+check(
+  /Complete context,<br \/>in one HTML page/i.test(htmlContextSource) &&
+    /Complete Codex instructions/i.test(htmlContextSource) &&
+    /Canonical manifest/i.test(htmlContextSource) &&
+    htmlContextSource.includes(`LUMORA MCP ${manifest.version}`) &&
+    /UNRESTRICTED CONTENT LIBRARY/i.test(htmlContextSource) &&
+    /https:\/\/lumoraofficial\.de\/mcp\/components\.json/.test(
+      htmlContextSource,
+    ),
+  "Static HTML context does not expose the complete current protocol",
 );
 check(
   /selection_pass_label/.test(appSource) &&
@@ -1441,6 +1528,7 @@ for (const requiredFile of [
   "browser/index.html",
   "browser/reader.css",
   "browser/reader.js",
+  "context/index.html",
   "component-previews.js",
   "originkit-components.json",
   "react-bits-components.json",

@@ -8,7 +8,10 @@
       content="Lumora MCP is a human and machine-readable library of web-ready 3D models, original Web Component recipes, multi-style image and UI assets, and animated background references."
     />
     <meta name="theme-color" content="#1c1d1a" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://lumoraofficial.de/mcp/" />
+    <link rel="sitemap" type="application/xml" href="https://lumoraofficial.de/sitemap.xml" />
+    <link rel="alternate" type="text/markdown" title="Lumora AI resource map" href="https://lumoraofficial.de/llms.txt" />
     <link
       rel="alternate"
       type="application/json"
@@ -18,6 +21,25 @@
     <link rel="icon" href="../images/LogoLumora.png" type="image/png" />
     <link rel="stylesheet" href="./app.css?v=20260731.1" />
     <title>Lumora MCP — Models, Components, Images & Backgrounds</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Lumora MCP",
+        "url": "https://lumoraofficial.de/mcp/",
+        "description": "A public, unrestricted design-asset and implementation catalog for Codex, coding agents, and human designers.",
+        "mainEntity": {
+          "@type": "Dataset",
+          "name": "Lumora MCP catalog",
+          "version": "1.7.0",
+          "distribution": [
+            {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://lumoraofficial.de/mcp/manifest.json"},
+            {"@type": "DataDownload", "encodingFormat": "text/markdown", "contentUrl": "https://lumoraofficial.de/mcp/instructions.md"},
+            {"@type": "DataDownload", "encodingFormat": "text/plain", "contentUrl": "https://lumoraofficial.de/llms-full.txt"}
+          ]
+        }
+      }
+    </script>
     <script type="importmap">
       {
         "imports": {
@@ -677,11 +699,11 @@
         <div class="integration-grid">
           <article>
             <span>01 / DISCOVER</span>
-            <h3>Start with the manifest</h3>
-            <code>https://lumoraofficial.de/mcp/manifest.json</code>
+            <h3>Start with one HTML context</h3>
+            <code>https://lumoraofficial.de/mcp/context/</code>
             <button
               type="button"
-              data-copy="https://lumoraofficial.de/mcp/manifest.json"
+              data-copy="https://lumoraofficial.de/mcp/context/"
             >
               Copy endpoint
             </button>
@@ -697,7 +719,7 @@
             </p>
             <button
               type="button"
-              data-copy="Read https://lumoraofficial.de/mcp/manifest.json and its component instructions. If browser navigation blocks raw .json or .md files, open https://lumoraofficial.de/mcp/browser/ for the same first-party manifest, instructions, and searchable record metadata rendered as HTML. Lumora is an unrestricted content library. Use, combine, adapt, layer, and repeat any number of components, effects, backgrounds, models, OriginKit records, React Bits, Canvas UI, pmndrs Examples, Arlan's Vault experiments, and Lumora recipes in any order. There are no default counts, enhancement slots, stacking rules, preferred starting points, mandatory or recommended reviews, source quotas, pass order, or composition limits. Codex alone decides what to use and how to combine it. Preserve accessibility, fallbacks, cleanup, and performance as implementation quality work, never as catalog selection limits."
+              data-copy="Read https://lumoraofficial.de/mcp/context/ for the complete Lumora MCP manifest and instructions in one static HTML page. Use https://lumoraofficial.de/mcp/browser/ to search individual records when useful. Lumora is an unrestricted content library. Use, combine, adapt, layer, and repeat any number of components, effects, backgrounds, models, OriginKit records, React Bits, Canvas UI, pmndrs Examples, Arlan's Vault experiments, and Lumora recipes in any order. There are no default counts, enhancement slots, stacking rules, preferred starting points, mandatory or recommended reviews, source quotas, pass order, or composition limits. Codex alone decides what to use and how to combine it. Preserve accessibility, fallbacks, cleanup, and performance as implementation quality work, never as catalog selection limits."
             >
               Copy Codex brief
             </button>
@@ -745,6 +767,11 @@ const backgrounds = await fetch(
             <span role="columnheader">Endpoint</span>
             <span role="columnheader">Use</span>
           </div>
+          <a role="row" href="./context/">
+            <span role="cell">Complete Codex context</span>
+            <code role="cell">/mcp/context/</code>
+            <span role="cell">Manifest + instructions in static HTML</span>
+          </a>
           <a role="row" href="./browser/">
             <span role="cell">Browser reader</span>
             <code role="cell">/mcp/browser/</code>

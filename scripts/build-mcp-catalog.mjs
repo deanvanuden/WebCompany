@@ -1695,8 +1695,8 @@ async function main() {
 
   const manifest = {
     name: "Lumora MCP",
-    version: "1.0.0",
-    generatedAt: "2026-07-29",
+    version: "1.7.0",
+    generatedAt: "2026-07-31",
     canonicalUrl: `${publicRoot}/`,
     purpose:
       "A human and machine-readable design toolkit for selecting web-ready 3D models, original Web Component implementation recipes, CC0 image and UI assets, and externally hosted animated background references.",
@@ -1716,6 +1716,10 @@ async function main() {
     },
     endpoints: {
       browserReader: `${publicRoot}/browser/`,
+      htmlContext: `${publicRoot}/context/`,
+      llms: "https://lumoraofficial.de/llms.txt",
+      llmsFull: "https://lumoraofficial.de/llms-full.txt",
+      sitemap: "https://lumoraofficial.de/sitemap.xml",
       models: `${publicRoot}/models.json`,
       componentIndex: `${publicRoot}/components-index.json`,
       componentRecords: `${publicRoot}/components.json`,
@@ -1921,9 +1925,14 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 
 If a browser blocks top-level navigation to raw \`.json\` or \`.md\` files, use ${publicRoot}/browser/. It renders these same first-party endpoints as HTML and supports exact record IDs and metadata searches. Direct HTTP clients should continue using the raw endpoints below.
 
+For the easiest browser-agent entry, use ${publicRoot}/context/. It contains the complete manifest and instructions in one static HTML page without requiring JavaScript. For a root-level agent resource map, use https://lumoraofficial.de/llms.txt. For the same combined context as plain text, use https://lumoraofficial.de/llms-full.txt.
+
 ## Machine-readable endpoints
 
 - Browser-readable protocol and record viewer: ${publicRoot}/browser/
+- Complete static HTML context: ${publicRoot}/context/
+- Agent resource map: https://lumoraofficial.de/llms.txt
+- Full agent context: https://lumoraofficial.de/llms-full.txt
 - Manifest: ${publicRoot}/manifest.json
 - 3D models: ${publicRoot}/models.json
 - Component index: ${publicRoot}/components-index.json

@@ -17,6 +17,16 @@ Production files for [lumoraofficial.de](https://lumoraofficial.de), served as a
   block top-level `.json` or `.md` navigation; it renders the same live
   manifest, instructions, and searchable records without replacing the raw
   machine endpoints.
+- `mcp/context/` — a generated, static, no-JavaScript page containing the full
+  manifest and complete instructions in one browser-friendly response.
+- `robots.txt` and `sitemap.xml` — root-level crawler discovery, including an
+  explicit allow rule for OpenAI's search crawler and canonical HTML entries.
+- `llms.txt` — concise Markdown resource map for coding agents and other
+  text-oriented clients.
+- `llms-full.txt` — one-fetch copy of the current manifest and complete Codex
+  instructions.
+- `scripts/build-ai-discovery.mjs` — deterministically regenerates those four
+  root discovery files from the committed MCP manifest and instructions.
 - `scripts/build-mcp-catalog.mjs` — rebuilds the MCP catalogs from the verified
   Kenney ZIPs, Lumora Objects index, and owned-original component catalog.
 - `scripts/import-design-assets.mjs` — refreshes or re-merges the multi-style
@@ -69,6 +79,7 @@ node scripts/import-originkit-components.mjs
 node scripts/import-linked-component-libraries.mjs
 node scripts/import-pmndrs-examples.mjs
 node scripts/import-arlan-vault.mjs
+node scripts/build-ai-discovery.mjs
 node scripts/validate-mcp-catalog.mjs
 ```
 
@@ -86,3 +97,5 @@ R3F/WebGL collection.
 Use `node scripts/import-arlan-vault.mjs --refresh` to recheck the current
 published detail pages and their MIT markers. Run it last so its manifest,
 provenance, component index, and open selection guidance remain final.
+Run `node scripts/build-ai-discovery.mjs` after any manifest or instruction
+change so crawler and one-fetch agent resources always match the live catalog.

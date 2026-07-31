@@ -1,3 +1,168 @@
+# Lumora MCP Full Agent Context
+
+> One-file context for Lumora MCP version 1.7.0. For an HTML-compatible view, use https://lumoraofficial.de/mcp/browser/.
+
+The catalog is unrestricted: metadata is descriptive and Codex controls all selections, counts, combinations, placements, source mixes, layers, and repetition.
+
+## Canonical manifest
+
+```json
+{
+  "name": "Lumora MCP",
+  "version": "1.7.0",
+  "generatedAt": "2026-07-31",
+  "canonicalUrl": "https://lumoraofficial.de/mcp/",
+  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, design-engineering experiments, curated R3F/WebGL patterns, multi-style image and UI assets, and externally hosted animated background references.",
+  "totals": {
+    "models": 1021,
+    "localModels": 907,
+    "streamedModels": 114,
+    "componentRecipes": 1425,
+    "imageAssets": 4315,
+    "animatedBackgrounds": 152,
+    "availableAnimatedBackgrounds": 151,
+    "shipSafeModels": 1020,
+    "bundledImageAssets": 4315,
+    "linkedImageAssets": 0,
+    "imageAssetCollections": 12,
+    "ownedComponentRecipes": 1020,
+    "linkedOriginKitComponents": 146,
+    "linkedComponentRecipes": 405,
+    "linkedReactBitsComponents": 139,
+    "linkedCanvasUiComponents": 25,
+    "structureComponentRecipes": 492,
+    "enhancementComponentRecipes": 933,
+    "sectionCanvasComponentRecipes": 195,
+    "linkedPmndrsExamples": 80,
+    "linkedArlanVaultComponents": 15
+  },
+  "endpoints": {
+    "browserReader": "https://lumoraofficial.de/mcp/browser/",
+    "htmlContext": "https://lumoraofficial.de/mcp/context/",
+    "llms": "https://lumoraofficial.de/llms.txt",
+    "llmsFull": "https://lumoraofficial.de/llms-full.txt",
+    "sitemap": "https://lumoraofficial.de/sitemap.xml",
+    "models": "https://lumoraofficial.de/mcp/models.json",
+    "componentIndex": "https://lumoraofficial.de/mcp/components-index.json",
+    "componentRecords": "https://lumoraofficial.de/mcp/components.json",
+    "imageAssets": "https://lumoraofficial.de/mcp/image-assets.json",
+    "animatedBackgrounds": "https://lumoraofficial.de/mcp/animated-backgrounds.json",
+    "instructions": "https://lumoraofficial.de/mcp/instructions.md",
+    "provenance": "https://lumoraofficial.de/mcp/provenance.json",
+    "designAssets": "https://lumoraofficial.de/mcp/design-assets.json",
+    "originKitComponents": "https://lumoraofficial.de/mcp/originkit-components.json",
+    "reactBitsComponents": "https://lumoraofficial.de/mcp/react-bits-components.json",
+    "canvasUiComponents": "https://lumoraofficial.de/mcp/canvas-ui-components.json",
+    "pmndrsExamples": "https://lumoraofficial.de/mcp/pmndrs-examples.json",
+    "arlanVault": "https://lumoraofficial.de/mcp/arlan-vault.json"
+  },
+  "modelSchema": {
+    "id": "Stable catalog identifier",
+    "modelUrl": "Relative local path or official remote glTF URL",
+    "publicModelUrl": "Absolute model URL for Codex and external consumers",
+    "files": "Optional exact dependency URL map used to resolve streamed Poly Haven glTF packages",
+    "licenceClass": "ship-safe, attribution, or concept-only",
+    "agencyUse": "Recommended website role for the selected object",
+    "brandMoods": "Brand moods this object can support",
+    "websiteIndustries": "Agency verticals where the object is especially useful",
+    "sectionFits": "Page sections where the object can earn its rendering cost",
+    "performanceGuidance": "Record-specific loading and motion guidance",
+    "visualFidelity": "Advisory geometry band: very-low-poly, standard-low-poly, or detailed-low-poly",
+    "selectionPriority": "Advisory shortlist priority; never a hard exclusion rule",
+    "selectionGuidance": "Art-direction warning or positive guidance to read before selection",
+    "bestFor": "Visual contexts that fit this asset's actual style",
+    "avoidWhen": "Visual contexts where the asset is likely to weaken the result",
+    "fallbackPolicy": "How the asset may still be used when no stronger catalog match exists"
+  },
+  "modelSelectionGuidance": {
+    "guidanceMode": "advisory",
+    "selectionFreedom": "UNRESTRICTED: Codex may use, combine, and repeat any number of models or scenes anywhere on the page. Lumora imposes no usage rules.",
+    "primaryRule": "Do not infer art-direction fit from an object's name or category alone.",
+    "kenney": "Read visualFidelity, selectionPriority, selectionGuidance, avoidWhen, and fallbackPolicy before selecting a Kenney model.",
+    "fallback": "A low-poly Kenney asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional.",
+    "detailedArchitecture": "Detailed-low-poly architecture may be shortlisted earlier for stylized spatial work, while still being compared with higher-fidelity sources for realism or luxury."
+  },
+  "imageAssetSchema": {
+    "id": "Stable catalog identifier",
+    "conceptId": "Normalized subject for comparing the same concept across visual styles",
+    "imageUrl": "Local path or official linked preview URL",
+    "publicImageUrl": "Absolute default preview or asset URL",
+    "downloadUrl": "Production asset, source page, or local asset URL depending on usageMode",
+    "storage": "local, remote, or hybrid",
+    "usageMode": "bundled, grouped variants, linked source, or attribution",
+    "format": "SVG, PNG, or PBR maps",
+    "styleFamily": "Normalized visual language",
+    "artStyle": "Human-readable visual treatment",
+    "variants": "Optional named style or weight URLs grouped under one concept",
+    "selectionGuidance": "Art-direction and implementation advice",
+    "bestFor": "Contexts where the asset style is a strong fit",
+    "avoidWhen": "Contexts where another visual family should be preferred",
+    "licenceClass": "ship-safe, attribution, or linked"
+  },
+  "animatedBackgroundSchema": {
+    "id": "Stable catalog identifier",
+    "previewUrl": "Original externally hosted MP4 or HLS media URL",
+    "downloadUrl": "Direct MP4 download or adaptive HLS manifest URL",
+    "thumbnailUrl": "Local 640x360 WebP extracted from the opening frame",
+    "publicThumbnailUrl": "Absolute opening-frame thumbnail URL for external consumers",
+    "availability": "Last observed URL availability",
+    "licenceClass": "commercial-use based on Lumora owner confirmation",
+    "selectionFreedom": "Unrestricted authority for Codex to use, combine, layer, and repeat backgrounds in any quantity",
+    "performanceGuidance": "Advisory simultaneous loading, playback, and fallback guidance"
+  },
+  "imageSelectionGuidance": {
+    "guidanceMode": "advisory",
+    "primaryRule": "Style metadata is descriptive only. Codex has unrestricted authority to choose, mix, layer, and repeat any assets.",
+    "consistencyRule": "UNRESTRICTED: Codex may mix any icon families, illustration systems, weights, and visual styles in any quantity.",
+    "groupedVariants": "Phosphor weights are grouped for convenient access; grouping does not impose consistency or usage rules.",
+    "linkedAssets": "ambientCG preview images are not production PBR maps; fetch production maps from the official material page."
+  },
+  "componentSelectionGuidance": {
+    "ownedOriginal": "Lumora owned-original recipes are implementation briefs built from first principles.",
+    "originKit": "OriginKit records link to the official current implementation and remote selection previews; source code and media are not mirrored.",
+    "selectionRule": "All metadata is descriptive. Codex has unrestricted authority over every selection, count, combination, placement, source, and repetition.",
+    "previewEngine": "All 85 owned archetypes have representative SVG compositions. Linked cards load a paused official opening frame only near the viewport; only the selected inspector plays motion. Previews guide selection and are not production source or media.",
+    "reactBits": "React Bits records link to its public registry, official live demos, and remote selection previews. React Bits Pro is excluded.",
+    "canvasUi": "Canvas UI records link to official six-framework registry variants and remote selection previews. Preserve documented browser fallbacks.",
+    "linkedSourceBoundary": "React Bits and Canvas UI allow commercial end-project use under their recorded terms. pmndrs example code and Arlan's Vault implementations are MIT-marked; visible demo assets and credited brand references remain separate boundaries.",
+    "selectionSequence": "Structure and enhancement are search labels only; they impose no workflow or order.",
+    "sectionCanvasRule": "Background records marked section_canvas can define heroes or sections and may be used, combined, and repeated without catalog limits.",
+    "pmndrs": "pmndrs Examples records are curated React Three Fiber/WebGL patterns with official static thumbnails, live demos, and pinned source directories. Codex may use and combine any number of scenes; implementation metadata does not limit selection.",
+    "arlanVault": "Arlan's Vault records are compact MIT-marked design-engineering experiments. Review them for typography, material, button, reveal, canvas, and GPU treatments; copy only the selected implementation and replace credited brand/demo media.",
+    "selectionFreedom": "UNRESTRICTED: Codex alone decides all record counts, combinations, placement, repetition, sources, and selection order. Lumora imposes no usage rules."
+  },
+  "componentSchema": {
+    "id": "Stable catalog identifier",
+    "sourceKind": "owned-original-recipe or external-linked-component",
+    "officialSourceUrl": "Official detail page for a linked component",
+    "registryUrl": "Optional official shadcn-compatible registry payload for the selected component",
+    "installCommand": "Optional official single-component installation command",
+    "officialVariants": "Available language, styling, or framework variants",
+    "previewVideoUrl": "Optional official remote selection preview; never production media",
+    "licenceClass": "owned-original, linked-source, or end-project-only-linked-source",
+    "selectionPass": "Search label only: structure or enhancement; never a workflow or usage rule",
+    "componentRole": "base-composition, enhancement, hybrid-section-or-enhancement, or section-canvas",
+    "enhancementFamily": "Functional effect family used for pairing and duplicate detection",
+    "canBeStructural": "True when an enhancement may also replace a section or widget",
+    "sectionCanvas": "True when the enhancement can provide the full visual canvas behind a hero or section",
+    "requiresStructuralPairing": "True when the visual must be paired with a semantic content structure",
+    "textOverlayCapability": "Whether foreground text is supported and what readability condition applies",
+    "foregroundContentGuidance": "How to layer real heading, body, CTA, and navigation content over the visual",
+    "overlayReadabilityGuidance": "Contrast, scrim, quiet-zone, and reduced-motion requirements for foreground content",
+    "pairingGuidance": "How to combine the candidate with the selected base composition",
+    "selectionFreedom": "Explicit unrestricted authority for Codex to use and combine records in any quantity",
+    "codeUrl": "Optional pinned implementation directory for linked open-source examples",
+    "originalSourceUrl": "Optional original sandbox or upstream reference recorded by the source catalog",
+    "exampleLibraries": "Exact libraries declared by the linked example metadata",
+    "assetRightsBoundary": "Separates reusable example code from demo models, textures, audio, fonts, logos, and imagery",
+    "publicPreviewPosterUrl": "Absolute URL for a linked record's optimized local selection preview",
+    "previewCaptureSourceUrl": "Official page from which a local selection preview was captured"
+  }
+}
+```
+
+## Complete Codex instructions
+
 # Lumora MCP
 
 Canonical entry point: https://lumoraofficial.de/mcp/

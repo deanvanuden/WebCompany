@@ -676,7 +676,7 @@ async function mergeCatalog(snapshot) {
 
   const manifestPath = path.join(mcpRoot, "manifest.json");
   const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-  manifest.version = "1.6.1";
+  manifest.version = "1.7.0";
   manifest.generatedAt = inventoryDate;
   manifest.purpose =
     "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, design-engineering experiments, curated R3F/WebGL patterns, multi-style image and UI assets, and externally hosted animated background references.";
@@ -696,6 +696,10 @@ async function mergeCatalog(snapshot) {
   ).length;
   manifest.totals.sectionCanvasComponentRecipes = sectionCanvasCount;
   manifest.endpoints.arlanVault = `${publicRoot}/arlan-vault.json`;
+  manifest.endpoints.htmlContext = `${publicRoot}/context/`;
+  manifest.endpoints.llms = "https://lumoraofficial.de/llms.txt";
+  manifest.endpoints.llmsFull = "https://lumoraofficial.de/llms-full.txt";
+  manifest.endpoints.sitemap = "https://lumoraofficial.de/sitemap.xml";
   manifest.componentSchema = {
     ...manifest.componentSchema,
     publicPreviewPosterUrl:

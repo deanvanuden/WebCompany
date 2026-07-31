@@ -1,0 +1,34 @@
+# Lumora
+
+> Lumora is a web agency that publishes Lumora MCP, a public design-asset and implementation catalog for Codex, other coding agents, and human designers.
+
+Lumora MCP is an unrestricted content library. Its metadata helps with discovery and art direction; Codex controls all selections, counts, combinations, placements, source mixes, layers, and repetition.
+
+## Recommended entry points
+
+- [Lumora MCP complete HTML context](https://lumoraofficial.de/mcp/context/): Entire manifest and instructions in one static, no-JavaScript HTML page. This is the easiest browser-agent entry point.
+- [Lumora MCP Codex Reader](https://lumoraofficial.de/mcp/browser/): HTML-compatible searchable record viewer for exact IDs and metadata queries.
+- [Lumora MCP visual catalog](https://lumoraofficial.de/mcp/): Human-facing previews and catalog filters.
+- [Manifest](https://lumoraofficial.de/mcp/manifest.json): Canonical machine-readable endpoint map, totals, schemas, and selection policy.
+- [Codex instructions](https://lumoraofficial.de/mcp/instructions.md): Complete selection, implementation, and rights protocol.
+- [Full agent context](https://lumoraofficial.de/llms-full.txt): Manifest and instructions combined into one text resource.
+
+## Catalog data
+
+- [3D models](https://lumoraofficial.de/mcp/models.json): 1,021 model records with public asset URLs and art-direction metadata.
+- [Component discovery index](https://lumoraofficial.de/mcp/components-index.json): 1,425 lightweight searchable component records.
+- [Complete component records](https://lumoraofficial.de/mcp/components.json): Full implementation briefs, accessibility, fallbacks, source links, and performance guidance.
+- [Images and UI](https://lumoraofficial.de/mcp/image-assets.json): 4,315 image and UI records.
+- [Animated backgrounds](https://lumoraofficial.de/mcp/animated-backgrounds.json): 152 externally hosted background records.
+- [Provenance](https://lumoraofficial.de/mcp/provenance.json): Collection origins, rights notes, and catalog provenance.
+
+## Access guidance
+
+- Browser and text-only tools should start with [the complete HTML context](https://lumoraofficial.de/mcp/context/), then use [the Codex Reader](https://lumoraofficial.de/mcp/browser/) to search or retrieve individual records.
+- Direct HTTP clients should use the raw JSON and Markdown endpoints from the manifest.
+- To open one record in HTML, use https://lumoraofficial.de/mcp/browser/?source=components&id=reactbits-balatro.
+- To search metadata in HTML, use https://lumoraofficial.de/mcp/browser/?source=components&q=fashion.
+
+## Optional
+
+- [Lumora agency website](https://lumoraofficial.de/): Company website and contact information.
