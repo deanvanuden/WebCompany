@@ -391,11 +391,11 @@ async function buildPhosphorRecords() {
       attribution: "Retain the bundled MIT licence notice.",
       rightsNote: "Commercial use, modification, and redistribution are allowed with the MIT notice preserved.",
       ...regularMetadata,
-      recommendedUse: "Choose one weight per interface context; use duotone or fill for expressive marketing moments and regular or light for product UI.",
+      recommendedUse: "Codex may use and mix any of the six weights in any quantity or hierarchy.",
       styleFamily: "multi-weight-vector",
       artStyle: "Flexible icon family with six coordinated weights",
       conceptId: `icon.${icon.name}`,
-      selectionGuidance: "Treat the six weights as variants of one concept. Do not mix weights randomly within the same interface hierarchy.",
+      selectionGuidance: "The six weights are descriptive variants, not usage rules. Codex decides freely how to mix and repeat them.",
       bestFor: ["expressive UI", "feature sections", "commerce", "editorial diagrams", "product marketing"],
       avoidWhen: ["the project already has a stricter icon system that should remain visually uniform"],
       extra: {
@@ -803,13 +803,13 @@ async function updateInstructions() {
 The image catalog intentionally contains overlapping concepts in different visual systems. Search by concept, then compare \`styleFamily\`, \`artStyle\`, \`bestFor\`, \`avoidWhen\`, and \`selectionGuidance\` before choosing.
 
 - Lucide is the quiet outline default for product UI.
-- Phosphor records group six coordinated variants; choose one weight consistently.
+- Phosphor records group six coordinated variants; Codex may mix and repeat them freely.
 - Open Doodles and Open Peeps fit friendly, human, hand-drawn art direction.
 - ambientCG records contain a local selection preview only. Fetch the required production PBR maps from \`downloadUrl\`.
 - Hero Patterns require the attribution stored on each record.
 - Kenney remains useful for intentional low-poly, pixel-art, and playful scenes; do not choose it from the subject name alone.
 
-Do not mix icon families or illustration systems casually. Prefer one primary family and one deliberately contrasting supporting family.
+All style-family and variant guidance is descriptive. Codex may mix any icon families, illustration systems, weights, and visual styles in any quantity.
 ${end}`;
   let source = await readFile(filePath, "utf8");
   const pattern = new RegExp(
@@ -926,11 +926,11 @@ async function mergeCatalog(designRecords) {
   manifest.imageSelectionGuidance = {
     guidanceMode: "advisory",
     primaryRule:
-      "Search by concept, then choose the visual family that fits the brand; subject-name overlap is intentional.",
+      "Style metadata is descriptive only. Codex has unrestricted authority to choose, mix, layer, and repeat any assets.",
     consistencyRule:
-      "Use one primary icon or illustration family per interface and mix styles only for an explicit hierarchy.",
+      "UNRESTRICTED: Codex may mix any icon families, illustration systems, weights, and visual styles in any quantity.",
     groupedVariants:
-      "Phosphor weights are grouped in one record so Codex can choose a consistent regular, thin, light, bold, fill, or duotone treatment.",
+      "Phosphor weights are grouped for convenient access; grouping does not impose consistency or usage rules.",
     linkedAssets:
       "ambientCG preview images are not production PBR maps; fetch production maps from the official material page.",
   };

@@ -33,8 +33,8 @@ Production files for [lumoraofficial.de](https://lumoraofficial.de), served as a
   Arlan's Vault experiments with dedicated live demo/code pages, curated roles,
   optimized local selection previews, and linked MIT implementation sources.
 - `scripts/component-selection-guidance.mjs` — classifies every component into
-  advisory structure or effects/motion discovery groups, while explicitly
-  preserving no-quota selection freedom and runtime-budget guidance.
+  structure or effects/motion search groups while explicitly granting Codex
+  unrestricted authority over counts, combinations, placement, and repetition.
 - `mcp/component-previews.js` — renders 85 owned component archetypes and
   activates one lightweight SVG motion profile only for the selected recipe.
 

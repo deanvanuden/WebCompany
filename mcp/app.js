@@ -439,12 +439,6 @@ function filteredRecords() {
       (passRank[left.selection_pass] ?? 2) -
       (passRank[right.selection_pass] ?? 2);
     if (passDifference) return passDifference;
-    if (left.selection_pass === "enhancement") {
-      const discoveryDifference =
-        Number(Boolean(right.recommended_review)) -
-        Number(Boolean(left.recommended_review));
-      if (discoveryDifference) return discoveryDifference;
-    }
     return (
       (right.quality_score ?? -1) - (left.quality_score ?? -1) ||
       (right.novelty_score ?? -1) - (left.novelty_score ?? -1) ||
@@ -1047,7 +1041,7 @@ function renderModelInspector(record) {
     `or category alone. Style guidance: ${(record.selectionGuidance ?? "confirm the visible art direction supports the brand").replace(/[.!?]+$/g, "")}. ` +
     `Avoid when: ${(record.avoidWhen?.join(", ") ?? "its style or detail level conflicts with the brand").replace(/[.!?]+$/g, "")}. ` +
     `Fallback rule: ${(record.fallbackPolicy ?? "use it deliberately if it is the closest available match").replace(/[.!?]+$/g, "")}. ` +
-    `This guidance is advisory, not a hard exclusion. There is no model-count quota; use multiple models or scenes when they serve the concept and manage simultaneous rendering cost. Follow this performance ` +
+    `Lumora places no restriction on how many models or scenes Codex may use or combine. Follow this implementation ` +
     `guidance: ${(record.performanceGuidance ?? "lazy-load near the viewport and keep a static fallback").replace(/[.!?]+$/g, "")}. ` +
     `Pause animation offscreen, respect prefers-reduced-motion, preserve the ` +
     `source and licence record, and do not download unrelated catalog assets.`;
@@ -1126,14 +1120,13 @@ function renderComponentInspector(record) {
     "Do not use the catalog selection preview as production media or redistribute the component library.";
   const prompt =
     external
-      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. This is an advisory discovery candidate from ${externalSource}, not a required pass or quota-limited slot. ${record.codex_selection_instruction ?? "Use it, combine it, adapt it, repeat it, or omit it according to the project."} Pairing guidance: ${record.pairing_guidance ?? "Use it wherever it improves the page hierarchy or brand character."}${record.foreground_content_guidance ? ` Foreground content guidance: ${record.foreground_content_guidance}` : ""}${record.overlay_readability_guidance ? ` Overlay readability guidance: ${record.overlay_readability_guidance}` : ""} ${sourceInspectionInstruction}${record.install_command ? ` Use the recorded install_command (${record.install_command}) only if it matches this project's framework.` : ""} Adapt the selected ideas to this project's content and brand; preserve responsive behavior, semantic content, accessibility, reduced motion, offscreen pause, fallback, cleanup, and performance. Selection freedom: ${record.selection_freedom ?? "There is no catalog-imposed component count."} Runtime guidance: ${record.runtime_budget_guidance ?? record.stacking_limit ?? "Judge simultaneous cost instead of total selections."} Do not use the catalog selection preview as production media. ${rightsInstruction}`
+      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. This record comes from ${externalSource}. ${record.codex_selection_instruction ?? "Codex has complete freedom to use, combine, adapt, repeat, or replace it in any quantity."} Pairing information: ${record.pairing_guidance ?? "It may be combined with any other catalog records."}${record.foreground_content_guidance ? ` Foreground content guidance: ${record.foreground_content_guidance}` : ""}${record.overlay_readability_guidance ? ` Overlay readability guidance: ${record.overlay_readability_guidance}` : ""} ${sourceInspectionInstruction}${record.install_command ? ` Use the recorded install_command (${record.install_command}) only if it matches this project's framework.` : ""} Adapt the selected ideas to this project's content and brand; preserve responsive behavior, semantic content, accessibility, reduced motion, fallback, cleanup, and performance. Selection freedom: ${record.selection_freedom ?? "UNRESTRICTED: Lumora imposes no usage count, stacking rule, or selection order."} Do not use the catalog selection preview as production media. ${rightsInstruction}`
       : `Read the Lumora MCP component record "${record.id}" at ` +
         `${publicRoot}/components.json. Advisory discovery group: ${record.selection_pass_label ?? "review the record's intended role"}. ` +
         `${record.codex_selection_instruction ?? ""} Pairing guidance: ${record.pairing_guidance ?? "Use it only when it improves the page goal."} ` +
         `${record.foreground_content_guidance ? `Foreground content guidance: ${record.foreground_content_guidance} ` : ""}` +
         `${record.overlay_readability_guidance ? `Overlay readability guidance: ${record.overlay_readability_guidance} ` : ""}` +
-        `Selection freedom: ${record.selection_freedom ?? "There is no catalog-imposed component count."} ` +
-        `Runtime guidance: ${record.runtime_budget_guidance ?? record.stacking_limit ?? "Judge simultaneous cost instead of total selections."} ` +
+        `Selection freedom: ${record.selection_freedom ?? "UNRESTRICTED: Lumora imposes no usage count, stacking rule, or selection order."} ` +
         `Implement it from first principles in this ` +
         `project's framework and brand. Preserve its content, responsive, ` +
         `accessibility, fallback, performance, and test contracts.`;
@@ -1320,11 +1313,11 @@ function renderImageInspector(record) {
   const implementationInstruction = record.previewOnly
     ? `The local publicImageUrl is a preview only; open downloadUrl and fetch the production PBR maps listed in the record.`
     : record.usageMode === "generator"
-      ? `Replace {seed} in generatorTemplateUrl with a stable project value and use one avatar style consistently.`
+      ? `Replace {seed} in generatorTemplateUrl with stable project values and use or mix any styles Codex chooses.`
       : record.trademarkWarning
         ? `Use the pinned SVG only for a brand genuinely referenced by the project; inspect brandGuidelinesUrl, iconLicence, and trademarkWarning first.`
         : record.variantCount > 1
-          ? `Choose one named variant from variants and use that weight consistently across the interface hierarchy.`
+          ? `Use, mix, and repeat any named variants and weights Codex chooses.`
           : `Use publicImageUrl only if the asset's visual language supports the composition.`;
   const rightsInstruction =
     record.licenceClass === "attribution"
@@ -1396,8 +1389,7 @@ function renderBackgroundInspector(record) {
     `external source, then fetch the selected ${record.format} from its ` +
     `downloadUrl. Adapt it to this project's brand, ` +
     `remove audio, optimize resolution and bitrate, lazy-load it, and provide ` +
-    `a static prefers-reduced-motion fallback. ${record.selectionFreedom ?? "There is no catalog quota; different sections may use different compatible backgrounds."} ` +
-    `Pause it offscreen and judge simultaneous media cost instead of limiting the total number of backgrounds.`;
+    `a static prefers-reduced-motion fallback. ${record.selectionFreedom ?? "UNRESTRICTED: Codex may use and combine any number of backgrounds."}`;
   const promptElement = document.querySelector("#background-prompt");
   promptElement.textContent = prompt;
   promptElement.dataset.prompt = prompt;

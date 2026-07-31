@@ -266,7 +266,6 @@ for (const schemaField of [
   "selectionPass",
   "componentRole",
   "enhancementFamily",
-  "requiredReview",
   "canBeStructural",
   "sectionCanvas",
   "requiresStructuralPairing",
@@ -274,6 +273,7 @@ for (const schemaField of [
   "foregroundContentGuidance",
   "overlayReadabilityGuidance",
   "pairingGuidance",
+  "selectionFreedom",
   "codeUrl",
   "originalSourceUrl",
   "exampleLibraries",
@@ -287,6 +287,25 @@ for (const schemaField of [
   );
 }
 check(
+  /UNRESTRICTED/i.test(
+    manifest.componentSelectionGuidance?.selectionFreedom ?? "",
+  ) && /no usage rules/i.test(
+    manifest.componentSelectionGuidance?.selectionFreedom ?? "",
+  ),
+  "Manifest does not preserve unrestricted component selection",
+);
+for (const legacyField of [
+  "mandatoryEnhancementReview",
+  "enhancementDiscovery",
+  "sourceCoverageRule",
+  "stackingRule",
+]) {
+  check(
+    !Object.hasOwn(manifest.componentSelectionGuidance ?? {}, legacyField),
+    `Manifest component guidance still exposes legacy field ${legacyField}`,
+  );
+}
+check(
   manifest.totals.imageAssets === images.length,
   "Manifest image asset total does not match image-assets.json",
 );
@@ -294,6 +313,14 @@ check(
   manifest.endpoints.imageAssets ===
     "https://lumoraofficial.de/mcp/image-assets.json",
   "Manifest image asset endpoint is incorrect",
+);
+check(
+  /UNRESTRICTED/i.test(
+    manifest.imageSelectionGuidance?.consistencyRule ?? "",
+  ) && /any quantity/i.test(
+    manifest.imageSelectionGuidance?.consistencyRule ?? "",
+  ),
+  "Manifest does not preserve unrestricted image and UI selection",
 );
 check(
   manifest.totals.animatedBackgrounds === backgrounds.length,
@@ -323,14 +350,16 @@ check(
   "Manifest model selection guidance is not marked advisory",
 );
 check(
-  manifest.version === "1.5.0",
+  manifest.version === "1.6.0",
   `Unexpected MCP manifest version: ${manifest.version}`,
 );
 check(
-  /No model-count quota applies/i.test(
+  /UNRESTRICTED/i.test(
+    manifest.modelSelectionGuidance?.selectionFreedom ?? "",
+  ) && /no usage rules/i.test(
     manifest.modelSelectionGuidance?.selectionFreedom ?? "",
   ),
-  "Manifest does not preserve open multi-model selection",
+  "Manifest does not preserve unrestricted model selection",
 );
 check(
   /Do not infer art-direction fit/i.test(
@@ -339,32 +368,31 @@ check(
   "Manifest does not prevent name-only or category-only model selection",
 );
 check(
-  /guidance is advisory/i.test(instructionsSource),
-  "Codex instructions do not preserve the advisory fallback policy",
+  /style and performance fields are information, never selection rules/i.test(
+    instructionsSource,
+  ),
+  "Codex instructions do not keep model guidance descriptive",
 );
 check(
-  /open advisory library/i.test(instructionsSource) &&
-    /no required minimum, maximum, source coverage, or pass order/i.test(
+  /selection is completely unrestricted/i.test(instructionsSource) &&
+    /no minimum, maximum, default count, enhancement slots, stacking rule/i.test(
       instructionsSource,
     ) &&
-    /Multiple heavy scenes may exist on one page/i.test(instructionsSource) &&
-    /OriginKit, React Bits, Canvas UI, pmndrs Examples, and Arlan's Vault/i.test(
-      instructionsSource,
-    ),
-  "Codex instructions do not preserve open, no-quota component selection",
+    /implementation techniques, not usage limits/i.test(instructionsSource),
+  "Codex instructions do not preserve completely unrestricted selection",
 );
 check(
   /selection_pass_label/.test(appSource) &&
     /SECTION CANVAS/.test(appSource) &&
     /data-component-pass/.test(appSource) &&
     /id="component-workflow"/.test(indexHtmlSource) &&
-    /advisory creative library, not a quota system/i.test(indexHtmlSource) &&
-    /Multiple section backgrounds and heavy scenes are allowed/i.test(
+    /unrestricted content library/i.test(indexHtmlSource) &&
+    /There are no default counts, enhancement slots, stacking rules/i.test(
       indexHtmlSource,
     ) &&
     /manifest\.endpoints\.componentRecords/.test(indexHtmlSource) &&
     /\.component-workflow/.test(appCssSource),
-  "Component catalog UI does not expose the open selection workflow",
+  "Component catalog UI does not expose unrestricted selection",
 );
 
 for (const model of models) {
@@ -665,11 +693,13 @@ for (const component of ownedComponents) {
       Boolean(component.pairing_guidance) &&
       Boolean(component.codex_selection_instruction) &&
       Boolean(component.selection_freedom) &&
-      Boolean(component.enhancement_slot_policy) &&
-      Boolean(component.stacking_limit) &&
-      Boolean(component.runtime_budget_guidance) &&
-      component.required_review === false,
-    `${component.id} has incomplete open selection guidance`,
+      /UNRESTRICTED/i.test(component.selection_freedom) &&
+      !Object.hasOwn(component, "required_review") &&
+      !Object.hasOwn(component, "recommended_review") &&
+      !Object.hasOwn(component, "enhancement_slot_policy") &&
+      !Object.hasOwn(component, "stacking_limit") &&
+      !Object.hasOwn(component, "runtime_budget_guidance"),
+    `${component.id} has incomplete unrestricted selection guidance`,
   );
 }
 
@@ -684,8 +714,10 @@ for (const component of sectionCanvasComponents) {
         "supported-with-contrast-audit" &&
       Boolean(component.foreground_content_guidance) &&
       Boolean(component.overlay_readability_guidance) &&
-      /hero or full-width section/i.test(component.pairing_guidance) &&
-      /section-capable visual foundation/i.test(
+      /(hero or full-width section|section-scale visual canvas)/i.test(
+        component.pairing_guidance,
+      ) &&
+      /complete freedom/i.test(
         component.codex_selection_instruction,
       ),
     `${component.id} has incomplete section-canvas guidance`,
@@ -713,13 +745,16 @@ for (const component of linkedOriginKitComponents) {
     `${component.id} has incomplete OriginKit source metadata`,
   );
   check(
-    component.source_kind === "external-linked-component" &&
+      component.source_kind === "external-linked-component" &&
       component.licence_class === "linked-source" &&
       component.selection_pass === "enhancement" &&
-      component.required_review === false &&
-      component.recommended_review === true &&
       Boolean(component.selection_freedom) &&
-      Boolean(component.runtime_budget_guidance) &&
+      /UNRESTRICTED/i.test(component.selection_freedom) &&
+      !Object.hasOwn(component, "required_review") &&
+      !Object.hasOwn(component, "recommended_review") &&
+      !Object.hasOwn(component, "enhancement_slot_policy") &&
+      !Object.hasOwn(component, "stacking_limit") &&
+      !Object.hasOwn(component, "runtime_budget_guidance") &&
       component.source_code_bundled === false &&
       component.media_mirrored === false,
     `${component.id} does not preserve the linked-source boundary`,
@@ -771,10 +806,13 @@ for (const component of linkedReactBitsComponents) {
       component.license === "MIT + Commons Clause v1.0" &&
       component.licence_class === "end-project-only-linked-source" &&
       component.selection_pass === "enhancement" &&
-      component.required_review === false &&
-      component.recommended_review === true &&
       Boolean(component.selection_freedom) &&
-      Boolean(component.runtime_budget_guidance) &&
+      /UNRESTRICTED/i.test(component.selection_freedom) &&
+      !Object.hasOwn(component, "required_review") &&
+      !Object.hasOwn(component, "recommended_review") &&
+      !Object.hasOwn(component, "enhancement_slot_policy") &&
+      !Object.hasOwn(component, "stacking_limit") &&
+      !Object.hasOwn(component, "runtime_budget_guidance") &&
       component.source_code_bundled === false &&
       component.media_mirrored === false,
     `${component.id} does not preserve the React Bits source boundary`,
@@ -825,10 +863,13 @@ for (const component of linkedCanvasUiComponents) {
       component.license === "MIT + Commons Clause v1.0" &&
       component.licence_class === "end-project-only-linked-source" &&
       component.selection_pass === "enhancement" &&
-      component.required_review === false &&
-      component.recommended_review === true &&
       Boolean(component.selection_freedom) &&
-      Boolean(component.runtime_budget_guidance) &&
+      /UNRESTRICTED/i.test(component.selection_freedom) &&
+      !Object.hasOwn(component, "required_review") &&
+      !Object.hasOwn(component, "recommended_review") &&
+      !Object.hasOwn(component, "enhancement_slot_policy") &&
+      !Object.hasOwn(component, "stacking_limit") &&
+      !Object.hasOwn(component, "runtime_budget_guidance") &&
       component.source_code_bundled === false &&
       component.media_mirrored === false,
     `${component.id} does not preserve the Canvas UI source boundary`,
@@ -875,10 +916,13 @@ for (const component of linkedPmndrsComponents) {
       component.license === "MIT (example code)" &&
       component.licence_class === "bundle-ok-code-linked-assets" &&
       component.selection_pass === "enhancement" &&
-      component.required_review === false &&
-      component.recommended_review === true &&
       Boolean(component.selection_freedom) &&
-      Boolean(component.runtime_budget_guidance) &&
+      /UNRESTRICTED/i.test(component.selection_freedom) &&
+      !Object.hasOwn(component, "required_review") &&
+      !Object.hasOwn(component, "recommended_review") &&
+      !Object.hasOwn(component, "enhancement_slot_policy") &&
+      !Object.hasOwn(component, "stacking_limit") &&
+      !Object.hasOwn(component, "runtime_budget_guidance") &&
       component.source_code_bundled === false &&
       component.media_mirrored === false &&
       component.license_notice_required === true,
@@ -922,10 +966,13 @@ for (const component of linkedArlanVaultComponents) {
       component.license === "MIT (official Vault page)" &&
       component.licence_class === "bundle-ok-code-linked-assets" &&
       component.selection_pass === "enhancement" &&
-      component.required_review === false &&
-      component.recommended_review === true &&
       Boolean(component.selection_freedom) &&
-      Boolean(component.runtime_budget_guidance) &&
+      /UNRESTRICTED/i.test(component.selection_freedom) &&
+      !Object.hasOwn(component, "required_review") &&
+      !Object.hasOwn(component, "recommended_review") &&
+      !Object.hasOwn(component, "enhancement_slot_policy") &&
+      !Object.hasOwn(component, "stacking_limit") &&
+      !Object.hasOwn(component, "runtime_budget_guidance") &&
       component.source_code_bundled === false &&
       component.media_mirrored === true &&
       component.license_notice_required === true,
@@ -1229,11 +1276,9 @@ for (const background of backgrounds) {
     `${background.id} download URL does not preserve its source URL`,
   );
   check(
-    /No catalog quota applies/i.test(background.selectionFreedom ?? "") &&
-      /Multiple backgrounds are allowed across sections/i.test(
-        background.performanceGuidance ?? "",
-      ),
-    `${background.id} does not preserve open multi-background selection guidance`,
+    /UNRESTRICTED/i.test(background.selectionFreedom ?? "") &&
+      /no usage rules/i.test(background.selectionFreedom ?? ""),
+    `${background.id} does not preserve unrestricted background selection`,
   );
   if (background.availability === "Available") {
     check(
@@ -1435,8 +1480,8 @@ if (errors.length) {
     ownedComponentRecipes: ownedComponents.length,
     structureComponentRecipes: structureComponents.length,
     enhancementComponentRecipes: enhancementComponents.length,
-    recommendedLinkedDiscoveryRecords: components.filter(
-      (component) => component.recommended_review,
+    unrestrictedComponentRecords: components.filter((component) =>
+      /UNRESTRICTED/i.test(component.selection_freedom ?? ""),
     ).length,
     linkedOriginKitComponents: linkedOriginKitComponents.length,
     linkedReactBitsComponents: linkedReactBitsComponents.length,

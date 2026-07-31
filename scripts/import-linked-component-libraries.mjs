@@ -211,8 +211,6 @@ function toIndexRecord(record) {
     "selection_pass_label",
     "component_role",
     "enhancement_family",
-    "required_review",
-    "recommended_review",
     "can_be_structural",
     "section_canvas",
     "requires_structural_pairing",
@@ -222,9 +220,6 @@ function toIndexRecord(record) {
     "pairing_guidance",
     "codex_selection_instruction",
     "selection_freedom",
-    "enhancement_slot_policy",
-    "stacking_limit",
-    "runtime_budget_guidance",
   ];
   return Object.fromEntries(fields.map((field) => [field, record[field]]));
 }
@@ -574,7 +569,7 @@ async function updateInstructions(reactSnapshot, canvasSnapshot) {
   const content = `
 ## React Bits and Canvas UI linked components
 
-These records expose official live demos, install commands, registry URLs, framework guidance, and remote selection previews. They are recommended discovery sources, not mandatory gates or quota-limited enhancement slots. Lumora does not mirror their source code or preview media.
+These records expose official live demos, install commands, registry URLs, framework guidance, and remote selection previews. They are unrestricted catalog sources without review requirements, quotas, or enhancement slots. Lumora does not mirror their source code or preview media.
 
 - Filter \`art_direction\` by \`React Bits\` or \`Canvas UI\`.
 - Open \`official_source_url\` and inspect \`registry_url\` before installing only the selected component.
@@ -687,15 +682,11 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
     licenceClass:
       "owned-original, linked-source, or end-project-only-linked-source",
     selectionPass:
-      "Advisory discovery group: structure or enhancement; not a required order",
+      "Search label only: structure or enhancement; never a workflow or usage rule",
     componentRole:
       "base-composition, enhancement, hybrid-section-or-enhancement, or section-canvas",
     enhancementFamily:
       "Functional effect family used for pairing and duplicate detection",
-    requiredReview:
-      "Deprecated compatibility field; false because no linked source is a mandatory gate",
-    recommendedReview:
-      "True when the linked source should remain visible during broad discovery",
     canBeStructural:
       "True when an enhancement may also replace a section or widget",
     sectionCanvas:
@@ -711,14 +702,12 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
     pairingGuidance:
       "How to combine the candidate with the selected base composition",
     selectionFreedom:
-      "Explicit permission to use, combine, adapt, repeat, or omit any number of records",
-    enhancementSlotPolicy:
-      "Advisory composition guidance with no fixed component quota",
-    runtimeBudgetGuidance:
-      "How to manage simultaneous heavy work without limiting total selections",
+      "Explicit unrestricted authority for Codex to use and combine records in any quantity",
   };
   manifest.componentSelectionGuidance = {
     ...manifest.componentSelectionGuidance,
+    selectionRule:
+      "All metadata is descriptive. Codex has unrestricted authority over every selection, count, combination, placement, source, and repetition.",
     reactBits:
       "React Bits records link to its public registry, official live demos, and remote selection previews. React Bits Pro is excluded.",
     canvasUi:
@@ -728,19 +717,16 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
     previewEngine:
       "All 85 owned archetypes have representative SVG compositions. Linked cards load a paused official opening frame only near the viewport; only the selected inspector plays motion. Previews guide selection and are not production source or media.",
     selectionFreedom:
-      "Lumora is an advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of compatible records from any source.",
+      "UNRESTRICTED: Codex alone decides all record counts, combinations, placement, repetition, sources, and selection order. Lumora imposes no usage rules.",
     selectionSequence:
-      "Structure and enhancement are optional browsing lenses. Explore them in either order, revisit them freely, and let the composition determine the final set.",
-    enhancementDiscovery:
-      "OriginKit, React Bits, and Canvas UI are recommended discovery sources, not mandatory gates. Search whichever sources are relevant and do not stop at the first attractive result.",
-    sourceCoverageRule:
-      "No source minimum applies. Compare enough relevant candidates to avoid tunnel vision, then use whatever best serves the project.",
+      "Structure and enhancement are search labels only; they impose no workflow or order.",
     sectionCanvasRule:
-      "Background records marked section_canvas may define entire heroes or sections when paired with semantic foreground content; multiple section canvases may be used across one page.",
-    stackingRule:
-      "No fixed count applies. Budget simultaneous runtime cost, lazy-load and pause heavy scenes, and verify visual coherence, accessibility, and target-device performance.",
+      "Background records marked section_canvas can define heroes or sections and may be used, combined, and repeated without catalog limits.",
   };
   delete manifest.componentSelectionGuidance.mandatoryEnhancementReview;
+  delete manifest.componentSelectionGuidance.enhancementDiscovery;
+  delete manifest.componentSelectionGuidance.sourceCoverageRule;
+  delete manifest.componentSelectionGuidance.stackingRule;
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
   const provenancePath = path.join(mcpRoot, "provenance.json");

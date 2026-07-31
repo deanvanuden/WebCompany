@@ -1073,7 +1073,7 @@ function withKenneyStyleGuidance(model) {
     selectionGuidance,
     fallbackPolicy,
     performanceGuidance:
-      "Very lightweight web payload. Lazy-load near the viewport, pause scenes offscreen, and use static previews for reduced motion. Multiple models or scenes are allowed when the simultaneous rendering budget is managed.",
+      "Very lightweight web payload. Codex may use any number of models or scenes. Lazy-loading, offscreen pausing, and static reduced-motion previews are implementation options, not selection limits.",
   };
 }
 
@@ -1458,7 +1458,7 @@ async function buildAnimatedBackgroundCatalog() {
           ? "Externally hosted motion footage with a direct MP4 download URL."
           : "Externally hosted adaptive HLS motion stream.",
       selectionFreedom:
-        "No catalog quota applies. Codex may use different backgrounds in different sections, combine them with compatible components, or omit them according to the page concept.",
+        "UNRESTRICTED: Codex may use, combine, layer, and repeat any number of backgrounds anywhere on the page. Lumora imposes no usage rules.",
       performanceGuidance:
         "Use this background wherever it fits. Multiple backgrounds are allowed across sections; download or stream only used records, lazy-load and pause offscreen media, remove audio, cap resolution and bitrate, and provide a reduced-motion still.",
       publicRecordUrl: `${publicRoot}/animated-backgrounds.json#animated-background-${sequence}`,
@@ -1530,11 +1530,11 @@ function quaterniusPerformanceGuidance(analysis, bytes) {
   const payload = bytes / 1024 / 1024;
   if (animated) {
     return payload > 2
-      ? "Use as one primary scene asset, lazy-load near the viewport, pause animation offscreen, and provide a reduced-motion still."
+      ? "Codex may use any number of animated scene assets. Lazy-loading, offscreen pausing, and a reduced-motion still are implementation options, not selection limits."
       : "Lazy-load near the viewport, pause animation offscreen, and provide a reduced-motion still.";
   }
   return payload > 1
-    ? "Use as a focal object and lazy-load near the viewport; avoid stacking several large 3D assets above the fold."
+    ? "Codex may use and stack any number of these objects. Lazy-loading is an implementation option, not a selection limit."
     : "Suitable for a focused hero or supporting scene; lazy-load and instance repeated props where practical.";
 }
 
@@ -1749,7 +1749,7 @@ async function main() {
     modelSelectionGuidance: {
       guidanceMode: "advisory",
       selectionFreedom:
-        "No model-count quota applies. Codex may use multiple models or scenes when they serve the concept and simultaneous rendering cost is managed.",
+        "UNRESTRICTED: Codex may use, combine, and repeat any number of models or scenes anywhere on the page. Lumora imposes no usage rules.",
       primaryRule:
         "Do not infer art-direction fit from an object's name or category alone.",
       kenney:
@@ -1777,7 +1777,7 @@ async function main() {
       publicThumbnailUrl: "Absolute opening-frame thumbnail URL for external consumers",
       availability: "Last observed URL availability",
       licenceClass: "commercial-use based on Lumora owner confirmation",
-      selectionFreedom: "Explicit permission to use different backgrounds across multiple sections",
+      selectionFreedom: "Unrestricted authority for Codex to use, combine, layer, and repeat backgrounds in any quantity",
       performanceGuidance: "Advisory simultaneous loading, playback, and fallback guidance",
     },
   };
@@ -1931,14 +1931,14 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 ## Selection protocol for Codex
 
 1. Read the manifest and choose the model, component, image-asset, or animated-background catalog.
-2. Filter candidates by the real page goal, brand, framework, performance budget, and asset class.
-3. For 3D, prefer \`ship-safe\` records and load only models actually used. There is no model-count quota: use multiple models or scenes when they serve the concept and manage their simultaneous rendering cost. Do not infer art-direction fit from an object's name or category alone. Filter by \`agencyUse\`, \`brandMoods\`, \`websiteIndustries\`, \`sectionFits\`, and \`performanceGuidance\`. For Kenney records, also read \`visualFidelity\`, \`selectionPriority\`, \`selectionGuidance\`, \`avoidWhen\`, and \`fallbackPolicy\`. This guidance is advisory: a simplified asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional. Use \`publicModelUrl\` in external projects. When a streamed glTF record has a \`files\` map, preserve that dependency mapping or download the official distribution into the target project.
-4. For components, treat the catalog as an advisory library rather than a quota system. Select, combine, adapt, repeat, or omit any number of compatible recipes that serve the page goal and art direction. Treat each record as an implementation brief and build it from first principles in the target project's conventions.
-5. For images and UI assets, choose only the records that serve the composition, then fetch each winner from \`publicImageUrl\` or \`downloadUrl\`. Preserve transparency, use nearest-neighbor rendering for \`pixelArt\`, and use repeating CSS backgrounds only when \`tileable\` is true.
-6. For animated backgrounds, preview candidates from their external URLs and fetch only the records actually used from each \`downloadUrl\`. A page may use different backgrounds in different sections when the art direction remains coherent. MP4 records are direct downloads; HLS records are adaptive streams. Optimize selected media locally, pause it offscreen, and provide static reduced-motion fallbacks.
+2. Use the metadata to understand what is available. All selection and composition decisions belong to Codex.
+3. For 3D, prefer \`ship-safe\` records when production rights matter, but Lumora places no restriction on how many models or scenes Codex may use, combine, repeat, or place together. Do not infer art-direction fit from an object's name or category alone. The style and performance fields are information, never selection rules. Use \`publicModelUrl\` in external projects. When a streamed glTF record has a \`files\` map, preserve that dependency mapping or download the official distribution into the target project.
+4. For components, selection is completely unrestricted. Codex alone decides every record count, combination, placement, repetition, source mix, and selection order. Lumora imposes no usage rules. Treat each record as an implementation brief and build it from first principles in the target project's conventions.
+5. For images and UI assets, Codex alone decides the complete set, quantity, style mix, placement, and repetition. Fetch every chosen asset from \`publicImageUrl\` or \`downloadUrl\`. Preserve transparency, use nearest-neighbor rendering for \`pixelArt\`, and use repeating CSS backgrounds only when \`tileable\` is true.
+6. For animated backgrounds, preview candidates from their external URLs and fetch each chosen record from its \`downloadUrl\`. Codex may use and combine any number of backgrounds anywhere on the page. MP4 records are direct downloads; HLS records are adaptive streams. Optimization and fallback fields describe implementation techniques, not usage limits.
 7. Animated backgrounds are marked \`commercial-use\` based on Lumora's confirmation that the collection was purchased with commercial-use rights.
 8. Preserve source URLs, licence records, trademark warnings, fallbacks, accessibility contracts, and reduced-motion behavior.
-9. Do not mirror the entire catalog into a client project. Copy only the chosen assets or implement only the chosen recipes.
+9. Transfer whichever assets and implementations Codex decides belong in the client project. Lumora does not prescribe a quantity, combination, or usage pattern.
 
 ## Rights
 

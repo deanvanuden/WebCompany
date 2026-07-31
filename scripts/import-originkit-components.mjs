@@ -364,8 +364,6 @@ function toIndexRecord(record) {
     selection_pass_label,
     component_role,
     enhancement_family,
-    required_review,
-    recommended_review,
     can_be_structural,
     section_canvas,
     requires_structural_pairing,
@@ -375,9 +373,6 @@ function toIndexRecord(record) {
     pairing_guidance,
     codex_selection_instruction,
     selection_freedom,
-    enhancement_slot_policy,
-    stacking_limit,
-    runtime_budget_guidance,
   } = record;
   return {
     id,
@@ -409,8 +404,6 @@ function toIndexRecord(record) {
     selection_pass_label,
     component_role,
     enhancement_family,
-    required_review,
-    recommended_review,
     can_be_structural,
     section_canvas,
     requires_structural_pairing,
@@ -420,9 +413,6 @@ function toIndexRecord(record) {
     pairing_guidance,
     codex_selection_instruction,
     selection_freedom,
-    enhancement_slot_policy,
-    stacking_limit,
-    runtime_budget_guidance,
   };
 }
 
@@ -433,7 +423,7 @@ async function updateInstructions() {
   const block = `${start}
 ## OriginKit linked components
 
-OriginKit records are external linked components with official remote previews and recommended discovery metadata. The MCP does not mirror OriginKit source code or media files.
+OriginKit records are external linked components with official remote previews. The MCP does not mirror OriginKit source code or media files.
 
 - Search or filter \`art_direction: "OriginKit"\` to see the complete linked inventory.
 - Open \`source_url\` to inspect and copy the current official implementation.

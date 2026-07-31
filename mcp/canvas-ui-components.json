@@ -75,15 +75,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-bend",
@@ -151,15 +146,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-blaze",
@@ -227,15 +217,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-bubble",
@@ -303,15 +288,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-cloth",
@@ -379,15 +359,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-clouds",
@@ -455,15 +430,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-dithered-object",
@@ -531,15 +501,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "3d / object effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-droplets",
@@ -607,15 +572,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-frost",
@@ -683,15 +643,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-glass",
@@ -759,15 +714,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-glass-object",
@@ -835,15 +785,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "3d / object effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-glitch",
@@ -911,15 +856,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "image / distortion effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-grid",
@@ -987,15 +927,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-hex-float",
@@ -1063,15 +998,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-laser",
@@ -1139,15 +1069,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "scroll effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-liquid",
@@ -1215,15 +1140,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-magnify",
@@ -1291,15 +1211,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-particle-object",
@@ -1367,15 +1282,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "3d / object effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-particle-reveal",
@@ -1443,15 +1353,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-particle-scroll",
@@ -1519,15 +1424,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "scroll effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-peel",
@@ -1595,15 +1495,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "scroll effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-retro-dither",
@@ -1671,15 +1566,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "image / distortion effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-ripple",
@@ -1747,15 +1637,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-shatter",
@@ -1823,15 +1708,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "interactive canvas effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     },
     {
       "id": "canvasui-vhs",
@@ -1899,15 +1779,10 @@
       "selection_pass_label": "Effects / motion",
       "component_role": "enhancement",
       "enhancement_family": "image / distortion effect",
-      "required_review": false,
       "can_be_structural": false,
-      "pairing_guidance": "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
-      "codex_selection_instruction": "Available discovery source: Canvas UI. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.",
-      "enhancement_slot_policy": "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-      "stacking_limit": "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-      "recommended_review": true,
-      "selection_freedom": "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-      "runtime_budget_guidance": "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices."
+      "pairing_guidance": "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
+      "codex_selection_instruction": "Available source: Canvas UI. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
+      "selection_freedom": "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order."
     }
   ]
 }

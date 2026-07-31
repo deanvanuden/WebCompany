@@ -322,8 +322,6 @@ function toIndexRecord(record) {
     "selection_pass_label",
     "component_role",
     "enhancement_family",
-    "required_review",
-    "recommended_review",
     "can_be_structural",
     "section_canvas",
     "requires_structural_pairing",
@@ -334,9 +332,6 @@ function toIndexRecord(record) {
     "codex_selection_instruction",
     "codex_rights_instruction",
     "selection_freedom",
-    "enhancement_slot_policy",
-    "stacking_limit",
-    "runtime_budget_guidance",
   ];
   return Object.fromEntries(fields.map((field) => [field, record[field]]));
 }
@@ -377,7 +372,7 @@ function recordFromMetadata({ slug, group, metadata, revision }) {
       "React 18; React Three Fiber; Drei and related pmndrs libraries where recorded",
     motion_level: group.id === "r3f-foundation" ? "medium" : "strong",
     motion_choreography:
-      "Keep one intentional 3D focal behavior, retime it to the brand, pause rendering offscreen, and avoid combining it with another competing WebGL signature.",
+      "Use, combine, layer, and repeat any number of 3D behaviors. Retiming and offscreen pausing are implementation options, not selection limits.",
     performance_cost: group.performanceCost,
     accessibility_contract:
       "Keep semantic HTML, headings, links, controls, and focus behavior outside the canvas. Provide keyboard/touch alternatives for pointer interactions and a designed static reduced-motion state.",
@@ -522,7 +517,7 @@ These ${snapshot.recordCount} records are a curated agency-facing subset of the 
 - Filter \`art_direction: "pmndrs Examples"\` to review the collection.
 - Use \`official_source_url\` for the live example, \`preview_poster_url\` for selection, and \`code_url\` for the pinned source directory.
 - Treat the effects/motion label as a discovery category, not a usage restriction. Records marked \`section_canvas: true\` may carry heroes or sections visually but still need semantic foreground content. Hybrid records may define structural sections when their content and interaction contract fits.
-- Multiple WebGL scenes are allowed when the concept benefits from them. Budget simultaneous cost: lazy-load them, cap DPR and postprocessing, pause them offscreen, dispose resources, and provide designed poster fallbacks. Avoid running competing heavy scenes in the same viewport unless the experience is intentionally immersive and tested.
+- Codex may use and combine any number of WebGL scenes. Lazy-loading, DPR controls, pausing, disposal, and poster fallbacks are implementation options, never selection limits.
 - The repository's example code is MIT and may be adapted with its notice preserved.
 - Demo assets are a separate boundary. Do not assume visible models, textures, audio, fonts, logos, or branded products share the code licence. Use the technique with Lumora-owned, client-owned, or separately confirmed assets.
 - Do not paste an unchanged demo composition. Adapt camera, content, materials, colors, typography, controls, timing, and responsive behavior to the project.
@@ -620,15 +615,16 @@ async function mergeCatalog(snapshot) {
   manifest.componentSelectionGuidance = {
     ...manifest.componentSelectionGuidance,
     pmndrs:
-      "pmndrs Examples records are curated React Three Fiber/WebGL patterns with official static thumbnails, live demos, and pinned source directories. Use the MIT code technique, replace unconfirmed demo assets, and budget simultaneous heavy work instead of limiting total scene count.",
+      "pmndrs Examples records are curated React Three Fiber/WebGL patterns with official static thumbnails, live demos, and pinned source directories. Codex may use and combine any number of scenes; implementation metadata does not limit selection.",
     selectionFreedom:
-      "Lumora is an advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of compatible records from any source.",
-    enhancementDiscovery:
-      "OriginKit, React Bits, Canvas UI, and pmndrs Examples are recommended discovery sources, not mandatory gates or selection quotas.",
+      "UNRESTRICTED: Codex alone decides all record counts, combinations, placement, repetition, sources, and selection order. Lumora imposes no usage rules.",
     linkedSourceBoundary:
       "React Bits and Canvas UI allow commercial end-project use under their recorded terms. pmndrs example code is MIT; visible demo assets remain a separate per-item boundary.",
   };
   delete manifest.componentSelectionGuidance.mandatoryEnhancementReview;
+  delete manifest.componentSelectionGuidance.enhancementDiscovery;
+  delete manifest.componentSelectionGuidance.sourceCoverageRule;
+  delete manifest.componentSelectionGuidance.stackingRule;
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
   const provenancePath = path.join(mcpRoot, "provenance.json");

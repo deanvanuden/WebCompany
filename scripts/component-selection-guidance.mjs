@@ -70,13 +70,11 @@ export function componentSelectionProfile(record) {
       selection_pass_label: "Structure / layout",
       component_role: "base-composition",
       enhancement_family: "layout / interface structure",
-      required_review: false,
-      recommended_review: false,
       can_be_structural: true,
       pairing_guidance:
-        "Use this when it provides the right page or section hierarchy. Browse compatible effects from OriginKit, React Bits, Canvas UI, pmndrs Examples, Arlan's Vault, and Lumora when they could strengthen the result, and freely return to structural candidates as the design develops.",
+        "This record can provide page or section hierarchy and can be combined with any other catalog records.",
       codex_selection_instruction:
-        "Use this as a structural starting point, combine it with other compatible records, or replace it when a stronger composition emerges. The catalog imposes no component count or pass order.",
+        "Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity and at any point in the design process.",
     };
   }
 
@@ -89,8 +87,6 @@ export function componentSelectionProfile(record) {
       selection_pass_label: "Effects / motion",
       component_role: "section-canvas",
       enhancement_family: "background / section canvas",
-      required_review: false,
-      recommended_review: external,
       can_be_structural: false,
       section_canvas: true,
       requires_structural_pairing: true,
@@ -100,10 +96,10 @@ export function componentSelectionProfile(record) {
       overlay_readability_guidance:
         "Test text contrast against the brightest and busiest animation frames. Add a brand-matched scrim, gradient, quiet zone, blur, or solid content panel when needed, and provide a static prefers-reduced-motion fallback.",
       pairing_guidance:
-        "Pair this with any compatible hero or full-width section as its section-scale visual canvas. It may define the section's visual identity, but it must not replace semantic content, layout, or controls. Multiple section canvases may be used across a page when each serves a distinct section and the combined runtime cost is managed.",
+        "This can act as a section-scale visual canvas behind semantic content and can be combined or repeated with any other catalog records.",
       codex_selection_instruction: external
-        ? `Available discovery source: ${record.source}. Treat this as a section-capable visual foundation, not only a small decorative effect. Use it alone, combine it with compatible records, repeat the technique where appropriate, or omit it; there is no catalog quota.`
-        : "Treat this as a section-capable visual foundation. Pair it with any compatible hero or full-width section, combine it with other records when useful, or omit it; there is no signature-slot quota.",
+        ? `Available source: ${record.source}. Codex has complete freedom to use, combine, adapt, repeat, or replace this section-capable visual in any quantity.`
+        : "Codex has complete freedom to use, combine, adapt, repeat, or replace this section-capable visual in any quantity.",
     };
   }
 
@@ -112,15 +108,13 @@ export function componentSelectionProfile(record) {
     selection_pass_label: "Effects / motion",
     component_role: hybrid ? "hybrid-section-or-enhancement" : "enhancement",
     enhancement_family: family,
-    required_review: false,
-    recommended_review: external,
     can_be_structural: hybrid,
     pairing_guidance: hybrid
-      ? "This may enhance an existing section, replace a structural section, or combine with other compatible records when its content and interaction contract are the stronger fit."
-      : "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
+      ? "This can enhance an existing section, define a structural section, or combine with any other catalog records."
+      : "This can be used alone, combined with any other records, or repeated wherever Codex chooses.",
     codex_selection_instruction: external
-      ? `Available discovery source: ${record.source}. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.`
-      : "Use this wherever it improves the design, combine it with other compatible records when useful, repeat it consistently when appropriate, or omit it. The catalog does not impose enhancement slots.",
+      ? `Available source: ${record.source}. Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.`
+      : "Codex has complete freedom to use, combine, adapt, repeat, or replace this record in any quantity.",
   };
 }
 
@@ -131,18 +125,17 @@ export function applyComponentSelectionGuidance(record) {
     text_overlay_capability: _textOverlayCapability,
     foreground_content_guidance: _foregroundContentGuidance,
     overlay_readability_guidance: _overlayReadabilityGuidance,
+    required_review: _requiredReview,
+    recommended_review: _recommendedReview,
+    enhancement_slot_policy: _enhancementSlotPolicy,
+    stacking_limit: _stackingLimit,
+    runtime_budget_guidance: _runtimeBudgetGuidance,
     ...baseRecord
   } = record;
   return {
     ...baseRecord,
     ...componentSelectionProfile(baseRecord),
     selection_freedom:
-      "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
-    enhancement_slot_policy:
-      "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
-    stacking_limit:
-      "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
-    runtime_budget_guidance:
-      "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices.",
+      "UNRESTRICTED: Codex alone decides how many records to use, how to combine them, where to place them, and whether to repeat them. Lumora defines no minimum, maximum, default count, stacking rule, preferred starting point, source quota, or selection order.",
   };
 }

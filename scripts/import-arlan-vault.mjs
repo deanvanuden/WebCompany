@@ -421,8 +421,6 @@ function toIndexRecord(record) {
     "selection_pass_label",
     "component_role",
     "enhancement_family",
-    "required_review",
-    "recommended_review",
     "can_be_structural",
     "section_canvas",
     "requires_structural_pairing",
@@ -433,9 +431,6 @@ function toIndexRecord(record) {
     "codex_selection_instruction",
     "codex_rights_instruction",
     "selection_freedom",
-    "enhancement_slot_policy",
-    "stacking_limit",
-    "runtime_budget_guidance",
   ];
   return Object.fromEntries(fields.map((field) => [field, record[field]]));
 }
@@ -622,7 +617,7 @@ These ${snapshot.recordCount} records cover every currently published Vault expe
 - The official collection and detail pages state \`MIT → free to copy\`. Preserve the creator/source record and the licence notice.
 - Credited brand references and demo media remain a separate boundary. Adapt the interaction principle with original project copy, imagery, video, palette, and identity assets.
 - Local WebP files are selection previews captured from the live official cards. They are not production website assets.
-- Use as many compatible treatments as the design earns. Respect reduced motion and touch input, pause continuous work offscreen, and assess competing canvas or WebGL scenes by simultaneous runtime and visual coherence rather than a fixed count.
+- Codex may use and combine any number of treatments. Reduced motion, touch input, offscreen pausing, and cleanup remain implementation responsibilities, never usage limits.
 `;
   instructions = replaceMarkdownBlock(
     instructions,
@@ -681,7 +676,7 @@ async function mergeCatalog(snapshot) {
 
   const manifestPath = path.join(mcpRoot, "manifest.json");
   const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-  manifest.version = "1.5.0";
+  manifest.version = "1.6.0";
   manifest.generatedAt = inventoryDate;
   manifest.purpose =
     "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, design-engineering experiments, curated R3F/WebGL patterns, multi-style image and UI assets, and externally hosted animated background references.";
@@ -713,15 +708,14 @@ async function mergeCatalog(snapshot) {
     arlanVault:
       "Arlan's Vault records are compact MIT-marked design-engineering experiments. Review them for typography, material, button, reveal, canvas, and GPU treatments; copy only the selected implementation and replace credited brand/demo media.",
     selectionFreedom:
-      "Lumora is an advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of compatible records from any source.",
-    enhancementDiscovery:
-      "OriginKit, React Bits, Canvas UI, pmndrs Examples, and Arlan's Vault are recommended discovery sources, not mandatory gates or selection quotas.",
-    sourceCoverageRule:
-      "No source minimum applies. Compare enough relevant candidates to avoid tunnel vision, then use whatever best serves the project.",
+      "UNRESTRICTED: Codex alone decides all record counts, combinations, placement, repetition, sources, and selection order. Lumora imposes no usage rules.",
     linkedSourceBoundary:
       "React Bits and Canvas UI allow commercial end-project use under their recorded terms. pmndrs example code and Arlan's Vault implementations are MIT-marked; visible demo assets and credited brand references remain separate boundaries.",
   };
   delete manifest.componentSelectionGuidance.mandatoryEnhancementReview;
+  delete manifest.componentSelectionGuidance.enhancementDiscovery;
+  delete manifest.componentSelectionGuidance.sourceCoverageRule;
+  delete manifest.componentSelectionGuidance.stackingRule;
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
   const provenancePath = path.join(mcpRoot, "provenance.json");
