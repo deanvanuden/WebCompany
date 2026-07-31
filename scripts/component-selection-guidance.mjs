@@ -73,7 +73,7 @@ export function componentSelectionProfile(record) {
       required_review: false,
       can_be_structural: true,
       pairing_guidance:
-        "Use this to establish the page or section hierarchy first. After selecting it, always run Pass 2 and compare compatible effects from OriginKit, React Bits, Canvas UI, pmndrs Examples, and Lumora enhancement recipes.",
+        "Use this to establish the page or section hierarchy first. After selecting it, always run Pass 2 and compare compatible effects from OriginKit, React Bits, Canvas UI, pmndrs Examples, Arlan's Vault, and Lumora enhancement recipes.",
       codex_selection_instruction:
         "Shortlist this during Pass 1 for the base composition. Do not stop after choosing it: record the chosen layout, then run the required Pass 2 enhancement review.",
     };

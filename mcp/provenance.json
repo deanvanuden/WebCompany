@@ -386,18 +386,18 @@
     ]
   },
   "components": {
-    "source": "Lumora owned-original recipes plus officially linked OriginKit, React Bits, Canvas UI, and pmndrs Examples catalogs",
+    "source": "Lumora owned-original recipes plus officially linked OriginKit, React Bits, Canvas UI, pmndrs Examples, and Arlan's Vault catalogs",
     "sourceKind": "mixed owned-original and external-linked-component",
-    "licence": "Owned-original; OriginKit user-confirmed free use; React Bits and Canvas UI MIT + Commons Clause v1.0; pmndrs example code MIT with separate demo-asset boundaries",
-    "recipeCount": 1410,
+    "licence": "Owned-original; OriginKit user-confirmed free use; React Bits and Canvas UI MIT + Commons Clause v1.0; pmndrs example code MIT; Arlan's Vault pages explicitly marked MIT/free to copy; linked demo-asset boundaries preserved",
+    "recipeCount": 1425,
     "ownedOriginalCount": 1020,
-    "linkedComponentCount": 390,
+    "linkedComponentCount": 405,
     "linkedOriginKitCount": 146,
     "linkedReactBitsCount": 139,
     "linkedCanvasUiCount": 25,
     "structureCount": 492,
-    "enhancementCount": 918,
-    "sectionCanvasCount": 192,
+    "enhancementCount": 933,
+    "sectionCanvasCount": 195,
     "sources": [
       {
         "source": "Lumora Web Design Components skill",
@@ -456,6 +456,20 @@
         "inventoryDate": "2026-07-31",
         "storage": "Curated metadata plus official live-demo, pinned-source, and remote-thumbnail URLs; no example source code or demo assets mirrored.",
         "assetBoundary": "MIT applies to example code. Visible demo models, textures, audio, fonts, logos, and imagery must be independently confirmed or replaced."
+      },
+      {
+        "source": "Arlan's Vault",
+        "sourceUrl": "https://www.arlan.me/vault",
+        "creator": "Arlan Marat",
+        "sourceSnapshotHash": "c7a232158298d12540600c3af3a7bcef072f3aaeec9ff1fcd990a6a05fb81b29",
+        "sourceKind": "external-linked-component",
+        "licence": "MIT",
+        "licenceUrl": "https://opensource.org/licenses/MIT",
+        "licenceStatement": "MIT → free to copy",
+        "recordCount": 15,
+        "inventoryDate": "2026-07-31",
+        "storage": "Curated metadata plus 15 optimized local selection screenshots; implementation code and heavy demo media remain linked at the official detail pages.",
+        "assetBoundary": "The official experiment pages are marked MIT/free to copy. Credited brand references and demo images, video, fonts, audio, and identity assets are replaced when adapting a selected technique."
       }
     ],
     "transformations": [
@@ -468,9 +482,13 @@
       "Classified background components as section canvases that may define a hero or section visually while still requiring semantic Pass 1 content, contrast protection, and reduced-motion fallback.",
       "Curated 80 agency-ready pmndrs examples from the full gallery and classified them as signature scenes, scroll narratives, product experiences, mixed DOM/WebGL interfaces, portals, materials, interactions, or production foundations.",
       "Linked official static thumbnails and live demos without loading 80 WebGL scenes or mirroring preview media.",
-      "Separated MIT example code from unconfirmed demo assets and added replacement guidance for recognizable branded examples."
+      "Separated MIT example code from unconfirmed demo assets and added replacement guidance for recognizable branded examples.",
+      "Curated every currently published Arlan's Vault experiment with a stable detail/code page and classified each as a typography, material, button, image, interface, canvas, or GPU treatment.",
+      "Captured and optimized 15 accurate static selection previews from the live Vault cards while leaving implementation source and heavy demo media at the official pages.",
+      "Separated MIT-marked implementation reuse from credited brands, upstream reference compositions, and replaceable demo media."
     ],
-    "linkedPmndrsCount": 80
+    "linkedPmndrsCount": 80,
+    "linkedArlanVaultCount": 15
   },
   "imageAssets": {
     "sourceKind": "mixed local, generator, linked, attribution, and trademark-aware assets",

@@ -1,0 +1,16 @@
+Arlan's Vault linked implementation and preview boundary
+Inventory date: 2026-07-31
+Creator: Arlan Marat
+Official collection: https://www.arlan.me/vault
+Observed source snapshot SHA-256: c7a232158298d12540600c3af3a7bcef072f3aaeec9ff1fcd990a6a05fb81b29
+Official page statement: MIT → free to copy
+Licence link used by the official pages: https://opensource.org/licenses/MIT
+
+Lumora MCP stores curated metadata and small WebP selection screenshots
+captured from the official live cards. It does not mirror the implementation
+source or heavy demo media. Open the selected official detail page for code.
+
+Keep Arlan Marat, the exact page URL, and the MIT notice with adaptations.
+Credited brands, upstream reference compositions, photographs, fonts, audio,
+generated video clips, and other demo media may have separate rights. Replace
+those materials with approved project assets when the record says to do so.

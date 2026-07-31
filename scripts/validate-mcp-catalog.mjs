@@ -63,6 +63,7 @@ const [
   reactBitsSnapshot,
   canvasUiSnapshot,
   pmndrsSnapshot,
+  arlanVaultSnapshot,
   images,
   designAssets,
   backgrounds,
@@ -77,6 +78,7 @@ const [
     readJson("react-bits-components.json"),
     readJson("canvas-ui-components.json"),
     readJson("pmndrs-examples.json"),
+    readJson("arlan-vault.json"),
     readJson("image-assets.json"),
     readJson("design-assets.json"),
     readJson("animated-backgrounds.json"),
@@ -85,6 +87,7 @@ const [
 const reactBitsComponents = reactBitsSnapshot.records;
 const canvasUiComponents = canvasUiSnapshot.records;
 const pmndrsComponents = pmndrsSnapshot.records;
+const arlanVaultComponents = arlanVaultSnapshot.records;
 const componentPreviewSource = await readFile(
   path.join(mcpRoot, "component-previews.js"),
   "utf8",
@@ -132,6 +135,9 @@ const canvasUiComponentIds = new Set(
 );
 const pmndrsComponentIds = new Set(
   pmndrsComponents.map((component) => component.id),
+);
+const arlanVaultComponentIds = new Set(
+  arlanVaultComponents.map((component) => component.id),
 );
 const imageIds = new Set(images.map((image) => image.id));
 const imageUrls = new Set(images.map((image) => image.publicImageUrl));
@@ -224,11 +230,14 @@ check(
       canvasUiComponents.length &&
     manifest.totals.linkedPmndrsExamples ===
       pmndrsComponents.length &&
+    manifest.totals.linkedArlanVaultComponents ===
+      arlanVaultComponents.length &&
     manifest.totals.linkedComponentRecipes ===
       originKitComponents.length +
         reactBitsComponents.length +
         canvasUiComponents.length +
-        pmndrsComponents.length,
+        pmndrsComponents.length +
+        arlanVaultComponents.length,
   "Manifest linked component totals are incorrect",
 );
 check(
@@ -242,8 +251,10 @@ check(
     manifest.endpoints.canvasUiComponents ===
       "https://lumoraofficial.de/mcp/canvas-ui-components.json" &&
     manifest.endpoints.pmndrsExamples ===
-      "https://lumoraofficial.de/mcp/pmndrs-examples.json",
-  "Manifest React Bits, Canvas UI, or pmndrs endpoint is incorrect",
+      "https://lumoraofficial.de/mcp/pmndrs-examples.json" &&
+    manifest.endpoints.arlanVault ===
+      "https://lumoraofficial.de/mcp/arlan-vault.json",
+  "Manifest React Bits, Canvas UI, pmndrs, or Arlan's Vault endpoint is incorrect",
 );
 for (const schemaField of [
   "officialSourceUrl",
@@ -267,6 +278,8 @@ for (const schemaField of [
   "originalSourceUrl",
   "exampleLibraries",
   "assetRightsBoundary",
+  "publicPreviewPosterUrl",
+  "previewCaptureSourceUrl",
 ]) {
   check(
     Boolean(manifest.componentSchema?.[schemaField]),
@@ -322,7 +335,7 @@ check(
 check(
   /always work in two passes/i.test(instructionsSource) &&
     /skipping the review is not valid/i.test(instructionsSource) &&
-    /OriginKit, React Bits, Canvas UI, and pmndrs Examples/i.test(
+    /OriginKit, React Bits, Canvas UI, pmndrs Examples, and Arlan's Vault/i.test(
       instructionsSource,
     ),
   "Codex instructions do not require the two-pass linked-library review",
@@ -514,6 +527,9 @@ const linkedCanvasUiComponents = components.filter(
 const linkedPmndrsComponents = components.filter(
   (component) => component.source === "pmndrs Examples",
 );
+const linkedArlanVaultComponents = components.filter(
+  (component) => component.source === "Arlan's Vault",
+);
 const structureComponents = components.filter(
   (component) => component.selection_pass === "structure",
 );
@@ -524,8 +540,8 @@ const sectionCanvasComponents = components.filter(
   (component) => component.section_canvas === true,
 );
 check(
-  components.length === 1410,
-  `Expected 1,410 component records, found ${components.length}`,
+  components.length === 1425,
+  `Expected 1,425 component records, found ${components.length}`,
 );
 check(
   ownedComponents.length === 1020,
@@ -552,8 +568,13 @@ check(
   `Expected 80 linked pmndrs records, found ${linkedPmndrsComponents.length}/${pmndrsComponents.length}`,
 );
 check(
+  linkedArlanVaultComponents.length === 15 &&
+    arlanVaultComponents.length === 15,
+  `Expected 15 linked Arlan's Vault records, found ${linkedArlanVaultComponents.length}/${arlanVaultComponents.length}`,
+);
+check(
   structureComponents.length === 492 &&
-    enhancementComponents.length === 918 &&
+    enhancementComponents.length === 933 &&
     manifest.totals.structureComponentRecipes ===
       structureComponents.length &&
     manifest.totals.enhancementComponentRecipes ===
@@ -561,10 +582,10 @@ check(
   `Unexpected two-pass component totals: ${structureComponents.length}/${enhancementComponents.length}`,
 );
 check(
-  sectionCanvasComponents.length === 192 &&
+  sectionCanvasComponents.length === 195 &&
     manifest.totals.sectionCanvasComponentRecipes ===
       sectionCanvasComponents.length,
-  `Expected 192 section-canvas components, found ${sectionCanvasComponents.length}`,
+  `Expected 195 section-canvas components, found ${sectionCanvasComponents.length}`,
 );
 check(
   reactBitsSnapshot.license === "MIT + Commons Clause v1.0" &&
@@ -585,6 +606,14 @@ check(
     /^[a-f0-9]{40}$/.test(pmndrsSnapshot.sourceRevision) &&
     /agency-ready/i.test(pmndrsSnapshot.selectionMethod ?? ""),
   "pmndrs snapshot is missing its pinned licence or curation metadata",
+);
+check(
+  arlanVaultSnapshot.license === "MIT" &&
+    arlanVaultSnapshot.recordCount === 15 &&
+    /^[a-f0-9]{64}$/.test(arlanVaultSnapshot.sourceSnapshotHash) &&
+    /detail\/code pages/i.test(arlanVaultSnapshot.selectionMethod ?? "") &&
+    /live official Vault cards/i.test(arlanVaultSnapshot.previewMethod ?? ""),
+  "Arlan's Vault snapshot is missing its licence, curation, or preview metadata",
 );
 check(
   componentIndex.length === components.length,
@@ -849,12 +878,69 @@ for (const component of linkedPmndrsComponents) {
   );
 }
 
+for (const component of linkedArlanVaultComponents) {
+  check(
+    arlanVaultComponentIds.has(component.id) &&
+      component.id.startsWith("arlan-vault-") &&
+      component.phase === "arlan-vault-linked-2026-07",
+    `${component.id} is missing from the Arlan's Vault snapshot`,
+  );
+  check(
+    component.source_kind === "external-linked-component" &&
+      component.license === "MIT (official Vault page)" &&
+      component.licence_class === "bundle-ok-code-linked-assets" &&
+      component.selection_pass === "enhancement" &&
+      component.required_review === true &&
+      component.source_code_bundled === false &&
+      component.media_mirrored === true &&
+      component.license_notice_required === true,
+    `${component.id} does not preserve the Arlan's Vault source and preview boundary`,
+  );
+  check(
+    /^https:\/\/www\.arlan\.me\/vault\/[a-z0-9-]+$/.test(
+      component.official_source_url,
+    ) &&
+      component.code_url === component.official_source_url &&
+      /^assets\/component-previews\/arlan-vault\/[a-z0-9-]+\.webp$/.test(
+        component.preview_poster_url,
+      ) &&
+      component.public_preview_poster_url ===
+        `https://lumoraofficial.de/mcp/${component.preview_poster_url}` &&
+      component.preview_capture_source_url === "https://www.arlan.me/vault",
+    `${component.id} has invalid official source or local preview metadata`,
+  );
+  check(
+    /^[a-f0-9]{64}$/.test(component.source_revision) &&
+      component.source_revision === arlanVaultSnapshot.sourceSnapshotHash &&
+      Boolean(component.summary) &&
+      Boolean(component.technique) &&
+      Boolean(component.responsive_strategy) &&
+      Boolean(component.accessibility_contract) &&
+      Boolean(component.fallback_strategy) &&
+      Boolean(component.asset_rights_boundary) &&
+      /MIT statement/i.test(component.codex_rights_instruction) &&
+      componentIndexIds.has(component.id),
+    `${component.id} has incomplete Arlan's Vault implementation or rights guidance`,
+  );
+  await checkLocalFile(
+    component.preview_poster_url,
+    `${component.id} selection preview`,
+  );
+}
+
+for (const component of arlanVaultComponents) {
+  check(
+    componentIds.has(component.id),
+    `${component.id} is missing from components.json`,
+  );
+}
+
 check(
   components.filter(
     (component) =>
       component.selection_pass === "enhancement" &&
       component.can_be_structural === true,
-  ).length === 122,
+  ).length === 125,
   "Unexpected hybrid section-or-enhancement record count",
 );
 
@@ -1193,11 +1279,14 @@ check(
       linkedCanvasUiComponents.length &&
     provenance.components.linkedPmndrsCount ===
       linkedPmndrsComponents.length &&
+    provenance.components.linkedArlanVaultCount ===
+      linkedArlanVaultComponents.length &&
     provenance.components.linkedComponentCount ===
       linkedOriginKitComponents.length +
         linkedReactBitsComponents.length +
         linkedCanvasUiComponents.length +
-        linkedPmndrsComponents.length &&
+        linkedPmndrsComponents.length +
+        linkedArlanVaultComponents.length &&
     provenance.components.structureCount === structureComponents.length &&
     provenance.components.enhancementCount ===
       enhancementComponents.length &&
@@ -1244,6 +1333,7 @@ for (const requiredFile of [
   "react-bits-components.json",
   "canvas-ui-components.json",
   "pmndrs-examples.json",
+  "arlan-vault.json",
   "image-assets.json",
   "design-assets.json",
   "animated-backgrounds.json",
@@ -1275,6 +1365,7 @@ for (const requiredFile of [
   "licences/react-bits-linked-source.txt",
   "licences/canvas-ui-linked-source.txt",
   "licences/pmndrs-examples.txt",
+  "licences/arlan-vault.txt",
   "vendor/three.module.min.js",
   "vendor/three.core.min.js",
   "vendor/loaders/GLTFLoader.js",
@@ -1309,6 +1400,7 @@ if (errors.length) {
     linkedReactBitsComponents: linkedReactBitsComponents.length,
     linkedCanvasUiComponents: linkedCanvasUiComponents.length,
     linkedPmndrsExamples: linkedPmndrsComponents.length,
+    linkedArlanVaultComponents: linkedArlanVaultComponents.length,
     sectionCanvasComponents: sectionCanvasComponents.length,
     imageAssets: images.length,
     animatedBackgrounds: backgrounds.length,

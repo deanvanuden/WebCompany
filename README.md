@@ -29,6 +29,9 @@ Production files for [lumoraofficial.de](https://lumoraofficial.de), served as a
   agency-facing pmndrs Examples inventory: 80 R3F/WebGL scenes, scroll
   narratives, configurators, spatial interfaces, portals, materials, and
   production patterns with official thumbnails and pinned source links.
+- `scripts/import-arlan-vault.mjs` — refreshes or re-merges all 15 published
+  Arlan's Vault experiments with dedicated live demo/code pages, curated roles,
+  optimized local selection previews, and linked MIT implementation sources.
 - `scripts/component-selection-guidance.mjs` — classifies every component into
   the structure-first or required enhancement-review pass, including hybrid
   linked records that may also replace a section or widget.
@@ -61,6 +64,7 @@ node scripts/import-design-assets.mjs
 node scripts/import-originkit-components.mjs
 node scripts/import-linked-component-libraries.mjs
 node scripts/import-pmndrs-examples.mjs
+node scripts/import-arlan-vault.mjs
 node scripts/validate-mcp-catalog.mjs
 ```
 
@@ -75,3 +79,6 @@ Use `node scripts/import-pmndrs-examples.mjs --refresh` to refresh the pinned
 pmndrs revision and curated metadata. Run it after the other component
 importers so the final manifest, provenance, and component index include the
 R3F/WebGL collection.
+Use `node scripts/import-arlan-vault.mjs --refresh` to recheck the current
+published detail pages and their MIT markers. Run it last so its manifest,
+provenance, component index, and two-pass selection guidance remain final.
