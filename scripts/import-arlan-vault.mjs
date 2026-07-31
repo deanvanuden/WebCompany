@@ -676,7 +676,7 @@ async function mergeCatalog(snapshot) {
 
   const manifestPath = path.join(mcpRoot, "manifest.json");
   const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-  manifest.version = "1.6.0";
+  manifest.version = "1.6.1";
   manifest.generatedAt = inventoryDate;
   manifest.purpose =
     "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, design-engineering experiments, curated R3F/WebGL patterns, multi-style image and UI assets, and externally hosted animated background references.";

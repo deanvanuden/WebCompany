@@ -83,8 +83,8 @@
         </button>
       </nav>
 
-      <a class="header-link" href="./manifest.json">
-        JSON manifest
+      <a class="header-link" href="./browser/">
+        Codex reader
         <span aria-hidden="true">↗</span>
       </a>
     </header>
@@ -180,8 +180,8 @@
             </p>
           </div>
 
-          <a class="rail-endpoint" href="./instructions.md">
-            Read Codex instructions
+          <a class="rail-endpoint" href="./browser/">
+            Open browser-readable records
             <span aria-hidden="true">↗</span>
           </a>
         </aside>
@@ -697,7 +697,7 @@
             </p>
             <button
               type="button"
-              data-copy="Read https://lumoraofficial.de/mcp/manifest.json and its component instructions. Lumora is an unrestricted content library. Use, combine, adapt, layer, and repeat any number of components, effects, backgrounds, models, OriginKit records, React Bits, Canvas UI, pmndrs Examples, Arlan's Vault experiments, and Lumora recipes in any order. There are no default counts, enhancement slots, stacking rules, preferred starting points, mandatory or recommended reviews, source quotas, pass order, or composition limits. Codex alone decides what to use and how to combine it. Preserve accessibility, fallbacks, cleanup, and performance as implementation quality work, never as catalog selection limits."
+              data-copy="Read https://lumoraofficial.de/mcp/manifest.json and its component instructions. If browser navigation blocks raw .json or .md files, open https://lumoraofficial.de/mcp/browser/ for the same first-party manifest, instructions, and searchable record metadata rendered as HTML. Lumora is an unrestricted content library. Use, combine, adapt, layer, and repeat any number of components, effects, backgrounds, models, OriginKit records, React Bits, Canvas UI, pmndrs Examples, Arlan's Vault experiments, and Lumora recipes in any order. There are no default counts, enhancement slots, stacking rules, preferred starting points, mandatory or recommended reviews, source quotas, pass order, or composition limits. Codex alone decides what to use and how to combine it. Preserve accessibility, fallbacks, cleanup, and performance as implementation quality work, never as catalog selection limits."
             >
               Copy Codex brief
             </button>
@@ -735,7 +735,7 @@ const backgrounds = await fetch(
               and testing contracts. Background records retain their source
               URLs and Lumora commercial-use entitlement.
             </p>
-            <a href="./provenance.json">Open provenance record ↗</a>
+            <a href="./browser/?source=provenance">Open provenance record ↗</a>
           </article>
         </div>
 
@@ -745,52 +745,57 @@ const backgrounds = await fetch(
             <span role="columnheader">Endpoint</span>
             <span role="columnheader">Use</span>
           </div>
-          <a role="row" href="./models.json">
+          <a role="row" href="./browser/">
+            <span role="cell">Browser reader</span>
+            <code role="cell">/mcp/browser/</code>
+            <span role="cell">HTML access to protocol and searchable records</span>
+          </a>
+          <a role="row" href="./browser/?source=models">
             <span role="cell">3D models</span>
             <code role="cell">/mcp/models.json</code>
             <span role="cell">1,021 complete model records</span>
           </a>
-          <a role="row" href="./components-index.json">
+          <a role="row" href="./browser/?source=component-index">
             <span role="cell">Component index</span>
             <code role="cell">/mcp/components-index.json</code>
             <span role="cell">Compact discovery catalog</span>
           </a>
-          <a role="row" href="./components.json">
+          <a role="row" href="./browser/?source=components">
             <span role="cell">Component records</span>
             <code role="cell">/mcp/components.json</code>
             <span role="cell">1,425 owned and linked component records</span>
           </a>
-          <a role="row" href="./react-bits-components.json">
+          <a role="row" href="./browser/?source=react-bits">
             <span role="cell">React Bits snapshot</span>
             <code role="cell">/mcp/react-bits-components.json</code>
             <span role="cell">139 public linked components · Pro excluded</span>
           </a>
-          <a role="row" href="./canvas-ui-components.json">
+          <a role="row" href="./browser/?source=canvas-ui">
             <span role="cell">Canvas UI snapshot</span>
             <code role="cell">/mcp/canvas-ui-components.json</code>
             <span role="cell">25 linked canvas and WebGL effects</span>
           </a>
-          <a role="row" href="./pmndrs-examples.json">
+          <a role="row" href="./browser/?source=pmndrs">
             <span role="cell">pmndrs R3F / WebGL snapshot</span>
             <code role="cell">/mcp/pmndrs-examples.json</code>
             <span role="cell">80 curated agency-ready 3D patterns</span>
           </a>
-          <a role="row" href="./arlan-vault.json">
+          <a role="row" href="./browser/?source=arlan-vault">
             <span role="cell">Arlan's Vault snapshot</span>
             <code role="cell">/mcp/arlan-vault.json</code>
             <span role="cell">15 MIT-marked design-engineering experiments</span>
           </a>
-          <a role="row" href="./image-assets.json">
+          <a role="row" href="./browser/?source=images">
             <span role="cell">Images / UI assets</span>
             <code role="cell">/mcp/image-assets.json</code>
             <span role="cell">4,315 bundled, grouped, attributed, and linked-source records</span>
           </a>
-          <a role="row" href="./animated-backgrounds.json">
+          <a role="row" href="./browser/?source=backgrounds">
             <span role="cell">Animated backgrounds</span>
             <code role="cell">/mcp/animated-backgrounds.json</code>
             <span role="cell">152 external motion references</span>
           </a>
-          <a role="row" href="./instructions.md">
+          <a role="row" href="./browser/?source=instructions">
             <span role="cell">Instructions</span>
             <code role="cell">/mcp/instructions.md</code>
             <span role="cell">Selection and rights protocol</span>
@@ -807,8 +812,8 @@ const backgrounds = await fetch(
       </a>
       <p>Models and motion load only when selected. Visual assets retain their usage mode, provenance, and selection guidance.</p>
       <div>
-        <a href="./instructions.md">Instructions</a>
-        <a href="./provenance.json">Provenance</a>
+        <a href="./browser/">Codex reader</a>
+        <a href="./browser/?source=provenance">Provenance</a>
         <a href="https://lumoraofficial.de/">Main site</a>
       </div>
     </footer>

@@ -13,6 +13,10 @@ Production files for [lumoraofficial.de](https://lumoraofficial.de), served as a
   [lumoraofficial.de/mcp](https://lumoraofficial.de/mcp), including 3D models,
   Web Component recipes, machine-readable JSON endpoints, licences, and
   provenance.
+- `mcp/browser/` — an HTML compatibility reader for browser environments that
+  block top-level `.json` or `.md` navigation; it renders the same live
+  manifest, instructions, and searchable records without replacing the raw
+  machine endpoints.
 - `scripts/build-mcp-catalog.mjs` — rebuilds the MCP catalogs from the verified
   Kenney ZIPs, Lumora Objects index, and owned-original component catalog.
 - `scripts/import-design-assets.mjs` — refreshes or re-merges the multi-style

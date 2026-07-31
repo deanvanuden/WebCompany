@@ -1,6 +1,6 @@
 {
   "name": "Lumora MCP",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "generatedAt": "2026-07-31",
   "canonicalUrl": "https://lumoraofficial.de/mcp/",
   "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, design-engineering experiments, curated R3F/WebGL patterns, multi-style image and UI assets, and externally hosted animated background references.",
@@ -28,6 +28,7 @@
     "linkedArlanVaultComponents": 15
   },
   "endpoints": {
+    "browserReader": "https://lumoraofficial.de/mcp/browser/",
     "models": "https://lumoraofficial.de/mcp/models.json",
     "componentIndex": "https://lumoraofficial.de/mcp/components-index.json",
     "componentRecords": "https://lumoraofficial.de/mcp/components.json",

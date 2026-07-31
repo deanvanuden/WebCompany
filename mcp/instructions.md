@@ -4,8 +4,11 @@ Canonical entry point: https://lumoraofficial.de/mcp/
 
 Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records, owned-original Web Component implementation recipes, officially linked OriginKit, React Bits, Canvas UI, pmndrs Examples, and Arlan's Vault components and patterns, locally hosted CC0 image and UI assets, and externally hosted animated background references.
 
+If a browser blocks top-level navigation to raw `.json` or `.md` files, use https://lumoraofficial.de/mcp/browser/. It renders these same first-party endpoints as HTML and supports exact record IDs and metadata searches. Direct HTTP clients should continue using the raw endpoints below.
+
 ## Machine-readable endpoints
 
+- Browser-readable protocol and record viewer: https://lumoraofficial.de/mcp/browser/
 - Manifest: https://lumoraofficial.de/mcp/manifest.json
 - 3D models: https://lumoraofficial.de/mcp/models.json
 - Component index: https://lumoraofficial.de/mcp/components-index.json

@@ -102,6 +102,14 @@ const instructionsSource = await readFile(
   path.join(mcpRoot, "instructions.md"),
   "utf8",
 );
+const browserReaderHtmlSource = await readFile(
+  path.join(mcpRoot, "browser", "index.html"),
+  "utf8",
+);
+const browserReaderSource = await readFile(
+  path.join(mcpRoot, "browser", "reader.js"),
+  "utf8",
+);
 const componentPreviewIds = [
   ...componentPreviewSource.matchAll(/^\s*"([a-z0-9-]+)":\s*\(\)\s*=>/gm),
 ].map((match) => match[1]);
@@ -241,6 +249,11 @@ check(
   "Manifest linked component totals are incorrect",
 );
 check(
+  manifest.endpoints.browserReader ===
+    "https://lumoraofficial.de/mcp/browser/",
+  "Manifest browser reader endpoint is incorrect",
+);
+check(
   manifest.endpoints.originKitComponents ===
     "https://lumoraofficial.de/mcp/originkit-components.json",
   "Manifest OriginKit component endpoint is incorrect",
@@ -350,7 +363,7 @@ check(
   "Manifest model selection guidance is not marked advisory",
 );
 check(
-  manifest.version === "1.6.0",
+  manifest.version === "1.6.1",
   `Unexpected MCP manifest version: ${manifest.version}`,
 );
 check(
@@ -380,6 +393,16 @@ check(
     ) &&
     /implementation techniques, not usage limits/i.test(instructionsSource),
   "Codex instructions do not preserve completely unrestricted selection",
+);
+check(
+  /browser blocks top-level navigation/i.test(instructionsSource) &&
+    /https:\/\/lumoraofficial\.de\/mcp\/browser\//i.test(instructionsSource) &&
+    /HTML compatibility view/i.test(browserReaderHtmlSource) &&
+    /class="header-link" href="\.\/browser\/"/.test(indexHtmlSource) &&
+    /HTML access to protocol and searchable records/i.test(indexHtmlSource) &&
+    !/<a[^>]+id="raw-endpoint"/i.test(browserReaderHtmlSource) &&
+    /SELECTION POLICY: UNRESTRICTED/i.test(browserReaderSource),
+  "Browser-readable endpoint guidance is incomplete",
 );
 check(
   /selection_pass_label/.test(appSource) &&
@@ -1415,6 +1438,9 @@ for (const requiredFile of [
   "index.html",
   "app.css",
   "app.js",
+  "browser/index.html",
+  "browser/reader.css",
+  "browser/reader.js",
   "component-previews.js",
   "originkit-components.json",
   "react-bits-components.json",

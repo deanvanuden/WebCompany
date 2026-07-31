@@ -1715,6 +1715,7 @@ async function main() {
       ).length,
     },
     endpoints: {
+      browserReader: `${publicRoot}/browser/`,
       models: `${publicRoot}/models.json`,
       componentIndex: `${publicRoot}/components-index.json`,
       componentRecords: `${publicRoot}/components.json`,
@@ -1918,8 +1919,11 @@ Canonical entry point: ${publicRoot}/
 
 Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records, original Web Component implementation recipes, locally hosted CC0 image and UI assets, and externally hosted animated background references.
 
+If a browser blocks top-level navigation to raw \`.json\` or \`.md\` files, use ${publicRoot}/browser/. It renders these same first-party endpoints as HTML and supports exact record IDs and metadata searches. Direct HTTP clients should continue using the raw endpoints below.
+
 ## Machine-readable endpoints
 
+- Browser-readable protocol and record viewer: ${publicRoot}/browser/
 - Manifest: ${publicRoot}/manifest.json
 - 3D models: ${publicRoot}/models.json
 - Component index: ${publicRoot}/components-index.json

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Browser-readable access to the Lumora MCP manifest, instructions, and catalog records."
+    />
+    <meta name="theme-color" content="#171914" />
+    <link rel="canonical" href="https://lumoraofficial.de/mcp/browser/" />
+    <link rel="icon" href="../../images/LogoLumora.png" type="image/png" />
+    <link rel="stylesheet" href="./reader.css?v=20260731.1" />
+    <title>Lumora MCP — Codex Reader</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#reader-output">Skip to record data</a>
+
+    <header class="site-header">
+      <a class="brand" href="../" aria-label="Lumora MCP catalog">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>LUMORA</span>
+        <em>MCP</em>
+      </a>
+      <span class="reader-label">CODEX READER / HTML COMPATIBILITY VIEW</span>
+      <a class="back-link" href="../">Visual catalog <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="reader-title">
+        <p class="eyebrow"><i></i> FIRST-PARTY CATALOG ACCESS</p>
+        <h1 id="reader-title">The raw records,<br /><em>inside a normal page.</em></h1>
+        <p>
+          This reader exposes the same live Lumora manifest, instructions, and
+          catalog metadata through HTML. It exists for browser environments that
+          block top-level navigation to <code>.json</code> or <code>.md</code> files.
+        </p>
+        <div class="reader-principle">
+          <span>UNRESTRICTED</span>
+          <p>
+            Catalog metadata is descriptive. Codex controls every selection,
+            count, combination, placement, source, layer, and repetition.
+          </p>
+        </div>
+      </section>
+
+      <section class="reader-shell" aria-label="Catalog record reader">
+        <aside class="reader-controls">
+          <form id="reader-form" method="get">
+            <label for="source-select">First-party source</label>
+            <select id="source-select" name="source">
+              <option value="protocol">Protocol · manifest + instructions</option>
+              <option value="manifest">Manifest</option>
+              <option value="instructions">Codex instructions</option>
+              <option value="models">3D model records</option>
+              <option value="component-index">Component discovery index</option>
+              <option value="components">Complete component records</option>
+              <option value="origin-kit">OriginKit snapshot</option>
+              <option value="react-bits">React Bits snapshot</option>
+              <option value="canvas-ui">Canvas UI snapshot</option>
+              <option value="pmndrs">pmndrs examples</option>
+              <option value="arlan-vault">Arlan's Vault</option>
+              <option value="images">Images / UI records</option>
+              <option value="backgrounds">Animated backgrounds</option>
+              <option value="provenance">Provenance</option>
+            </select>
+
+            <label for="record-id">Exact record ID <span>optional</span></label>
+            <input
+              id="record-id"
+              name="id"
+              type="text"
+              autocomplete="off"
+              placeholder="reactbits-balatro"
+            />
+
+            <label for="reader-query">Search metadata <span>optional</span></label>
+            <input
+              id="reader-query"
+              name="q"
+              type="search"
+              autocomplete="off"
+              placeholder="fashion, liquid, hero…"
+            />
+
+            <button type="submit">Read records <span aria-hidden="true">→</span></button>
+          </form>
+
+          <div class="reader-note">
+            <strong>For Codex</strong>
+            <p>
+              Open this page when browser navigation blocks a raw endpoint.
+              Direct HTTP clients should continue using the JSON and Markdown
+              URLs from the manifest.
+            </p>
+          </div>
+        </aside>
+
+        <article class="reader-data" aria-labelledby="output-title">
+          <header>
+            <div>
+              <p id="output-kicker">LOADING FIRST-PARTY DATA</p>
+              <h2 id="output-title">Catalog protocol</h2>
+            </div>
+            <button id="copy-output" type="button">Copy visible data</button>
+          </header>
+          <div class="source-line">
+            <span id="reader-status" role="status" aria-live="polite">Connecting…</span>
+            <code id="raw-endpoint">https://lumoraofficial.de/mcp/manifest.json</code>
+          </div>
+          <pre id="reader-output" tabindex="0" aria-busy="true">Loading Lumora MCP…</pre>
+          <noscript>
+            JavaScript is required for the browser compatibility reader. The raw
+            records remain available through the endpoints listed in the manifest.
+          </noscript>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>LUMORA MCP / BROWSER READER</span>
+      <p>Same first-party records. HTML delivery. No selection limits.</p>
+      <a href="../">Return to catalog</a>
+    </footer>
+
+    <script src="./reader.js?v=20260731.1" defer></script>
+  </body>
+</html>
