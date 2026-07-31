@@ -365,6 +365,7 @@ function toIndexRecord(record) {
     component_role,
     enhancement_family,
     required_review,
+    recommended_review,
     can_be_structural,
     section_canvas,
     requires_structural_pairing,
@@ -373,8 +374,10 @@ function toIndexRecord(record) {
     overlay_readability_guidance,
     pairing_guidance,
     codex_selection_instruction,
+    selection_freedom,
     enhancement_slot_policy,
     stacking_limit,
+    runtime_budget_guidance,
   } = record;
   return {
     id,
@@ -407,6 +410,7 @@ function toIndexRecord(record) {
     component_role,
     enhancement_family,
     required_review,
+    recommended_review,
     can_be_structural,
     section_canvas,
     requires_structural_pairing,
@@ -415,8 +419,10 @@ function toIndexRecord(record) {
     overlay_readability_guidance,
     pairing_guidance,
     codex_selection_instruction,
+    selection_freedom,
     enhancement_slot_policy,
     stacking_limit,
+    runtime_budget_guidance,
   };
 }
 
@@ -427,16 +433,16 @@ async function updateInstructions() {
   const block = `${start}
 ## OriginKit linked components
 
-OriginKit records are external linked components with official remote previews and are required-review candidates during Pass 2. The MCP does not mirror OriginKit source code or media files.
+OriginKit records are external linked components with official remote previews and recommended discovery metadata. The MCP does not mirror OriginKit source code or media files.
 
 - Search or filter \`art_direction: "OriginKit"\` to see the complete linked inventory.
 - Open \`source_url\` to inspect and copy the current official implementation.
 - Read the official source and dependency list before adapting the component.
 - Brand-adapt the component and preserve responsive, accessibility, reduced-motion, fallback, and performance requirements.
 - Load \`preview_video_url\` only for selection; do not ship the catalog preview as production website media.
-- Compare the best matching OriginKit candidate after choosing the base layout, even when the final decision is to use none.
-- Records with \`can_be_structural: true\` may also replace one section or widget when their content and interaction contract are a stronger fit.
-- Records with \`section_canvas: true\` may define the visual identity of a hero or full-width section, but still require separate semantic Pass 1 content, contrast treatment, and a static reduced-motion fallback.
+- Use any matching OriginKit candidates whenever they strengthen the design; this is not limited to a separate enhancement pass.
+- Records with \`can_be_structural: true\` may replace or define any suitable section or widget when their content and interaction contract fit.
+- Records with \`section_canvas: true\` may define the visual identity of a hero or full-width section, with separate semantic content, contrast treatment, and a static reduced-motion fallback.
 
 The user confirmed that OriginKit components are free to use. Keep the implementation connected to its official source record and do not bulk-republish unrelated source or preview files.
 ${end}`;

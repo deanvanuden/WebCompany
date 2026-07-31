@@ -33,8 +33,8 @@ Production files for [lumoraofficial.de](https://lumoraofficial.de), served as a
   Arlan's Vault experiments with dedicated live demo/code pages, curated roles,
   optimized local selection previews, and linked MIT implementation sources.
 - `scripts/component-selection-guidance.mjs` — classifies every component into
-  the structure-first or required enhancement-review pass, including hybrid
-  linked records that may also replace a section or widget.
+  advisory structure or effects/motion discovery groups, while explicitly
+  preserving no-quota selection freedom and runtime-budget guidance.
 - `mcp/component-previews.js` — renders 85 owned component archetypes and
   activates one lightweight SVG motion profile only for the selected recipe.
 
@@ -81,4 +81,4 @@ importers so the final manifest, provenance, and component index include the
 R3F/WebGL collection.
 Use `node scripts/import-arlan-vault.mjs --refresh` to recheck the current
 published detail pages and their MIT markers. Run it last so its manifest,
-provenance, component index, and two-pass selection guidance remain final.
+provenance, component index, and open selection guidance remain final.

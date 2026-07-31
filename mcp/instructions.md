@@ -23,10 +23,10 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 
 1. Read the manifest and choose the model, component, image-asset, or animated-background catalog.
 2. Filter candidates by the real page goal, brand, framework, performance budget, and asset class.
-3. For 3D, prefer `ship-safe` records and load only the selected model. Do not infer art-direction fit from an object's name or category alone. Filter by `agencyUse`, `brandMoods`, `websiteIndustries`, `sectionFits`, and `performanceGuidance`. For Kenney records, also read `visualFidelity`, `selectionPriority`, `selectionGuidance`, `avoidWhen`, and `fallbackPolicy`. This guidance is advisory: a simplified asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional. Use `publicModelUrl` in external projects. When a streamed glTF record has a `files` map, preserve that dependency mapping or download the official distribution into the target project.
-4. For components, always work in two passes. Pass 1 selects the structural layout or section recipe. Pass 2 must explicitly review compatible effects, motion, text, background, media, cursor, scroll, canvas, and WebGL treatments, including the best matching candidates from OriginKit, React Bits, Canvas UI, pmndrs Examples, and Arlan's Vault. A valid Pass 2 result is “use none”; skipping the review is not valid. Choose zero to three enhancements total, normally one signature and up to two supporting or subtle treatments. Linked records marked `can_be_structural: true` may replace one section when their content and interaction contract are stronger than the Pass 1 candidate. Records marked `section_canvas: true` may define an entire hero or section visually, but still require a semantic Pass 1 content structure.
+3. For 3D, prefer `ship-safe` records and load only models actually used. There is no model-count quota: use multiple models or scenes when they serve the concept and manage their simultaneous rendering cost. Do not infer art-direction fit from an object's name or category alone. Filter by `agencyUse`, `brandMoods`, `websiteIndustries`, `sectionFits`, and `performanceGuidance`. For Kenney records, also read `visualFidelity`, `selectionPriority`, `selectionGuidance`, `avoidWhen`, and `fallbackPolicy`. This guidance is advisory: a simplified asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional. Use `publicModelUrl` in external projects. When a streamed glTF record has a `files` map, preserve that dependency mapping or download the official distribution into the target project.
+4. For components, treat Lumora as an open advisory library, not a quota system or rigid workflow. The `structure` and `enhancement` labels are browsing lenses that help prevent tunnel vision; use them in either order, revisit them freely, and select, combine, adapt, repeat, or omit any number of records from any source. Use as many components, effects, backgrounds, section canvases, and 3D treatments as the page genuinely benefits from. Judge the result by page purpose, visual coherence, accessibility, and measured simultaneous runtime cost—not by a catalog count. Linked records marked `can_be_structural: true` may replace or define a section. Records marked `section_canvas: true` may define an entire hero or section visually when paired with semantic foreground content.
 5. For images and UI assets, choose only the records that serve the composition, then fetch each winner from `publicImageUrl` or `downloadUrl`. Preserve transparency, use nearest-neighbor rendering for `pixelArt`, and use repeating CSS backgrounds only when `tileable` is true.
-6. For animated backgrounds, preview candidates from their external URLs, select one winner, and then fetch only that record's `downloadUrl`. MP4 records are direct downloads; HLS records are adaptive streams. Optimize the selected media locally and provide a static reduced-motion fallback.
+6. For animated backgrounds, preview candidates from their external URLs and fetch only the records actually used from each `downloadUrl`. A page may use different backgrounds in different sections when the art direction remains coherent. MP4 records are direct downloads; HLS records are adaptive streams. Optimize selected media locally, lazy-load below-fold media, pause it offscreen, and provide static reduced-motion fallbacks.
 7. Animated backgrounds are marked `commercial-use` based on Lumora's confirmation that the collection was purchased with commercial-use rights.
 8. Preserve source URLs, licence records, trademark warnings, fallbacks, accessibility contracts, and reduced-motion behavior.
 9. Do not mirror the entire catalog into a client project. Copy only the chosen assets or implement only the chosen recipes.
@@ -40,7 +40,7 @@ Every owned-original recipe has a representative visual renderer for its functio
 - Read the complete record before implementation, especially its content, responsive, interaction, accessibility, fallback, performance, and test fields.
 - Preserve the selected behavior while adapting typography, color, spacing, geometry, timing, and content to the client website.
 
-## Two-pass component selection
+## Open component selection
 
 Every component record exposes:
 
@@ -48,23 +48,27 @@ Every component record exposes:
 - `selection_pass_label`: the human-readable catalog filter;
 - `component_role`: base composition, enhancement, or hybrid section/enhancement;
 - `enhancement_family`: background, text, scroll, media, 3D, canvas, interaction, or another functional family;
-- `required_review`: true for linked OriginKit, React Bits, Canvas UI, pmndrs Examples, and Arlan's Vault records;
+- `recommended_review`: true for linked OriginKit, React Bits, Canvas UI, pmndrs Examples, and Arlan's Vault records so they remain visible during discovery;
+- `required_review`: retained for compatibility and false; no source is a mandatory gate;
 - `can_be_structural`: true when an enhancement record may also replace a section or widget;
 - `section_canvas`: true for section-scale background visuals that can define a hero or full-width section;
-- `requires_structural_pairing`: true when the visual still needs a semantic Pass 1 content structure;
+- `requires_structural_pairing`: true when the visual still needs a semantic content structure;
 - `text_overlay_capability`: whether text can be layered over the visual and under what readability condition;
 - `foreground_content_guidance`: how to layer real heading, body, CTA, and navigation content;
 - `overlay_readability_guidance`: how to preserve contrast across animated frames and provide reduced-motion fallback;
 - `pairing_guidance`: how to combine the record with the chosen base composition; and
-- `stacking_limit`: the maximum continuous or heavy effects to keep active together.
+- `selection_freedom`: the explicit no-quota policy;
+- `enhancement_slot_policy`: advisory composition guidance, never a fixed number;
+- `stacking_limit`: advisory simultaneous-runtime guidance, never a total-selection limit; and
+- `runtime_budget_guidance`: how to lazy-load, pause, and separate heavy scenes.
 
-Selection sequence:
+Suggested discovery loop, which may be reordered or repeated:
 
-1. Filter `selection_pass: "structure"` and choose the base page or section hierarchy.
-2. Record the chosen structure and its brand, content, responsive, accessibility, and performance constraints.
-3. Filter `selection_pass: "enhancement"` and scan all relevant enhancement families.
-4. During that second pass, compare the best matching candidates from OriginKit, React Bits, Canvas UI, pmndrs Examples, Arlan's Vault, and Lumora-owned enhancement recipes. Do not stop after the first source.
-5. Select zero to three enhancements, reject duplication, and keep only one heavy canvas, WebGL, or 3D effect in or near the initial viewport.
+1. Explore `selection_pass: "structure"` for useful page or section hierarchies.
+2. Explore `selection_pass: "enhancement"` and any relevant linked sources for visual, motion, media, canvas, and WebGL opportunities.
+3. Mix, replace, or revisit candidates from either group as the composition develops.
+4. Use every compatible record that has a clear purpose; there is no required minimum, maximum, source coverage, or pass order.
+5. Reject duplication that weakens the art direction. For expensive effects, budget simultaneous work: lazy-load scenes, pause them offscreen, cap DPR and postprocessing, and verify target devices. Multiple heavy scenes may exist on one page when separated and not needlessly active together.
 
 ## Rights
 
@@ -88,16 +92,16 @@ Do not mix icon families or illustration systems casually. Prefer one primary fa
 <!-- ORIGINKIT-GUIDANCE:START -->
 ## OriginKit linked components
 
-OriginKit records are external linked components with official remote previews and are required-review candidates during Pass 2. The MCP does not mirror OriginKit source code or media files.
+OriginKit records are external linked components with official remote previews and recommended discovery metadata. The MCP does not mirror OriginKit source code or media files.
 
 - Search or filter `art_direction: "OriginKit"` to see the complete linked inventory.
 - Open `source_url` to inspect and copy the current official implementation.
 - Read the official source and dependency list before adapting the component.
 - Brand-adapt the component and preserve responsive, accessibility, reduced-motion, fallback, and performance requirements.
 - Load `preview_video_url` only for selection; do not ship the catalog preview as production website media.
-- Compare the best matching OriginKit candidate after choosing the base layout, even when the final decision is to use none.
-- Records with `can_be_structural: true` may also replace one section or widget when their content and interaction contract are a stronger fit.
-- Records with `section_canvas: true` may define the visual identity of a hero or full-width section, but still require separate semantic Pass 1 content, contrast treatment, and a static reduced-motion fallback.
+- Use any matching OriginKit candidates whenever they strengthen the design; this is not limited to a separate enhancement pass.
+- Records with `can_be_structural: true` may replace or define any suitable section or widget when their content and interaction contract fit.
+- Records with `section_canvas: true` may define the visual identity of a hero or full-width section, with separate semantic content, contrast treatment, and a static reduced-motion fallback.
 
 The user confirmed that OriginKit components are free to use. Keep the implementation connected to its official source record and do not bulk-republish unrelated source or preview files.
 <!-- ORIGINKIT-GUIDANCE:END -->
@@ -105,16 +109,16 @@ The user confirmed that OriginKit components are free to use. Keep the implement
 <!-- LINKED-COMPONENT-LIBRARIES:START -->
 ## React Bits and Canvas UI linked components
 
-These records expose official live demos, install commands, registry URLs, framework guidance, and remote selection previews. They are required-review candidates during Pass 2, even when the final decision is to use none. Lumora does not mirror their source code or preview media.
+These records expose official live demos, install commands, registry URLs, framework guidance, and remote selection previews. They are recommended discovery sources, not mandatory gates or quota-limited enhancement slots. Lumora does not mirror their source code or preview media.
 
 - Filter `art_direction` by `React Bits` or `Canvas UI`.
 - Open `official_source_url` and inspect `registry_url` before installing only the selected component.
 - React Bits records cover the 139-component public catalog and exclude every React Bits Pro component, block, and template.
 - Canvas UI records cover all 25 official effects and list its six framework flavors.
 - Use `preview_video_url` only to evaluate the effect; do not ship catalog preview films as production media.
-- After choosing a structural recipe, compare the best matching candidates from both libraries plus OriginKit before finalizing the enhancement shortlist.
-- Records with `can_be_structural: true` may also replace one section or widget when their content and interaction contract are a stronger fit.
-- Records with `section_canvas: true` are section-scale visual foundations. Pair one with a semantic Pass 1 hero or full-width section, keep foreground content in a separate layer, audit contrast across moving frames, and provide a static reduced-motion fallback.
+- Use any matching candidates from these libraries plus OriginKit whenever they strengthen the page; combine them with other records when their roles are compatible.
+- Records with `can_be_structural: true` may replace or define suitable sections and widgets when their content and interaction contract fit.
+- Records with `section_canvas: true` are section-scale visual foundations. Pair them with semantic heroes or full-width sections, keep foreground content in a separate layer, audit contrast across moving frames, and provide static reduced-motion fallbacks.
 - Both sources currently use MIT + Commons Clause v1.0: commercial project use is allowed, but the components themselves may not be sold, sublicensed, or redistributed as a library, bundle, or port.
 - Preserve semantic content, reduced motion, offscreen pause, cleanup, responsive fallbacks, and browser fallbacks after adaptation.
 <!-- LINKED-COMPONENT-LIBRARIES:END -->
@@ -126,8 +130,8 @@ These 80 records are a curated agency-facing subset of the official pmndrs examp
 
 - Filter `art_direction: "pmndrs Examples"` to review the collection.
 - Use `official_source_url` for the live example, `preview_poster_url` for selection, and `code_url` for the pinned source directory.
-- Treat every record as Pass 2. Records marked `section_canvas: true` may carry a hero or section visually but still need semantic foreground content. Hybrid records may replace one section when their content and interaction contract is a stronger fit.
-- Use only one heavy WebGL scene near the initial viewport, lazy-load it, cap DPR and postprocessing, pause it offscreen, dispose resources, and provide a designed poster fallback.
+- Treat the effects/motion label as a discovery category, not a usage restriction. Records marked `section_canvas: true` may carry heroes or sections visually but still need semantic foreground content. Hybrid records may define structural sections when their content and interaction contract fits.
+- Multiple WebGL scenes are allowed when the concept benefits from them. Budget simultaneous cost: lazy-load them, cap DPR and postprocessing, pause them offscreen, dispose resources, and provide designed poster fallbacks. Avoid running competing heavy scenes in the same viewport unless the experience is intentionally immersive and tested.
 - The repository's example code is MIT and may be adapted with its notice preserved.
 - Demo assets are a separate boundary. Do not assume visible models, textures, audio, fonts, logos, or branded products share the code licence. Use the technique with Lumora-owned, client-owned, or separately confirmed assets.
 - Do not paste an unchanged demo composition. Adapt camera, content, materials, colors, typography, controls, timing, and responsive behavior to the project.
@@ -138,11 +142,11 @@ These 80 records are a curated agency-facing subset of the official pmndrs examp
 
 These 15 records cover every currently published Vault experiment with a dedicated live demo and code page. The collection is especially useful for typography, material depth, buttons, image reveals, canvas/GPU media treatments, and compact interaction ideas.
 
-- Filter `art_direction: "Arlan's Vault"` during Pass 2 and compare its strongest matching candidate with the other required-review sources.
+- Filter `art_direction: "Arlan's Vault"` whenever its techniques fit, and freely combine any compatible candidates with other sources.
 - Use `official_source_url` to inspect the live behavior and `code_url` to reach the implementation section. Copy only the selected experiment.
-- Most records are enhancements. Liquid UI, Ghosty reveal, and the vector editor can also carry one structural section or product widget when their content contract fits. Symbols effect, Dia gradient, and Midjourney Medical's ASCII are section canvases that still need semantic foreground content.
+- Most records are effects, but Liquid UI, Ghosty reveal, and the vector editor can also carry structural sections or product widgets when their content contracts fit. Symbols effect, Dia gradient, and Midjourney Medical's ASCII are section canvases that still need semantic foreground content.
 - The official collection and detail pages state `MIT → free to copy`. Preserve the creator/source record and the licence notice.
 - Credited brand references and demo media remain a separate boundary. Adapt the interaction principle with original project copy, imagery, video, palette, and identity assets.
 - Local WebP files are selection previews captured from the live official cards. They are not production website assets.
-- Keep one signature effect, respect reduced motion and touch input, pause continuous work offscreen, and avoid stacking these treatments with another competing canvas or WebGL scene.
+- Use as many compatible treatments as the design earns. Respect reduced motion and touch input, pause continuous work offscreen, and assess competing canvas or WebGL scenes by simultaneous runtime and visual coherence rather than a fixed count.
 <!-- ARLAN-VAULT:END -->

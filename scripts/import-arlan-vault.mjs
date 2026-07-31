@@ -422,6 +422,7 @@ function toIndexRecord(record) {
     "component_role",
     "enhancement_family",
     "required_review",
+    "recommended_review",
     "can_be_structural",
     "section_canvas",
     "requires_structural_pairing",
@@ -431,8 +432,10 @@ function toIndexRecord(record) {
     "pairing_guidance",
     "codex_selection_instruction",
     "codex_rights_instruction",
+    "selection_freedom",
     "enhancement_slot_policy",
     "stacking_limit",
+    "runtime_budget_guidance",
   ];
   return Object.fromEntries(fields.map((field) => [field, record[field]]));
 }
@@ -613,13 +616,13 @@ async function updateInstructions(snapshot) {
 
 These ${snapshot.recordCount} records cover every currently published Vault experiment with a dedicated live demo and code page. The collection is especially useful for typography, material depth, buttons, image reveals, canvas/GPU media treatments, and compact interaction ideas.
 
-- Filter \`art_direction: "Arlan's Vault"\` during Pass 2 and compare its strongest matching candidate with the other required-review sources.
+- Filter \`art_direction: "Arlan's Vault"\` whenever its techniques fit, and freely combine any compatible candidates with other sources.
 - Use \`official_source_url\` to inspect the live behavior and \`code_url\` to reach the implementation section. Copy only the selected experiment.
-- Most records are enhancements. Liquid UI, Ghosty reveal, and the vector editor can also carry one structural section or product widget when their content contract fits. Symbols effect, Dia gradient, and Midjourney Medical's ASCII are section canvases that still need semantic foreground content.
+- Most records are effects, but Liquid UI, Ghosty reveal, and the vector editor can also carry structural sections or product widgets when their content contracts fit. Symbols effect, Dia gradient, and Midjourney Medical's ASCII are section canvases that still need semantic foreground content.
 - The official collection and detail pages state \`MIT → free to copy\`. Preserve the creator/source record and the licence notice.
 - Credited brand references and demo media remain a separate boundary. Adapt the interaction principle with original project copy, imagery, video, palette, and identity assets.
 - Local WebP files are selection previews captured from the live official cards. They are not production website assets.
-- Keep one signature effect, respect reduced motion and touch input, pause continuous work offscreen, and avoid stacking these treatments with another competing canvas or WebGL scene.
+- Use as many compatible treatments as the design earns. Respect reduced motion and touch input, pause continuous work offscreen, and assess competing canvas or WebGL scenes by simultaneous runtime and visual coherence rather than a fixed count.
 `;
   instructions = replaceMarkdownBlock(
     instructions,
@@ -678,7 +681,7 @@ async function mergeCatalog(snapshot) {
 
   const manifestPath = path.join(mcpRoot, "manifest.json");
   const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-  manifest.version = "1.4.0";
+  manifest.version = "1.5.0";
   manifest.generatedAt = inventoryDate;
   manifest.purpose =
     "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, design-engineering experiments, curated R3F/WebGL patterns, multi-style image and UI assets, and externally hosted animated background references.";
@@ -709,13 +712,16 @@ async function mergeCatalog(snapshot) {
     ...manifest.componentSelectionGuidance,
     arlanVault:
       "Arlan's Vault records are compact MIT-marked design-engineering experiments. Review them for typography, material, button, reveal, canvas, and GPU treatments; copy only the selected implementation and replace credited brand/demo media.",
-    mandatoryEnhancementReview:
-      "After choosing a base composition, explicitly scan OriginKit, React Bits, Canvas UI, pmndrs Examples, and Arlan's Vault. A valid outcome is zero enhancements, but skipping the review is not valid.",
+    selectionFreedom:
+      "Lumora is an advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of compatible records from any source.",
+    enhancementDiscovery:
+      "OriginKit, React Bits, Canvas UI, pmndrs Examples, and Arlan's Vault are recommended discovery sources, not mandatory gates or selection quotas.",
     sourceCoverageRule:
-      "During Pass 2, compare at least the best matching candidate from each relevant linked source, including Arlan's Vault, rather than stopping at Lumora-owned recipes.",
+      "No source minimum applies. Compare enough relevant candidates to avoid tunnel vision, then use whatever best serves the project.",
     linkedSourceBoundary:
       "React Bits and Canvas UI allow commercial end-project use under their recorded terms. pmndrs example code and Arlan's Vault implementations are MIT-marked; visible demo assets and credited brand references remain separate boundaries.",
   };
+  delete manifest.componentSelectionGuidance.mandatoryEnhancementReview;
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
   const provenancePath = path.join(mcpRoot, "provenance.json");

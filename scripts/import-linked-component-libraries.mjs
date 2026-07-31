@@ -212,6 +212,7 @@ function toIndexRecord(record) {
     "component_role",
     "enhancement_family",
     "required_review",
+    "recommended_review",
     "can_be_structural",
     "section_canvas",
     "requires_structural_pairing",
@@ -220,8 +221,10 @@ function toIndexRecord(record) {
     "overlay_readability_guidance",
     "pairing_guidance",
     "codex_selection_instruction",
+    "selection_freedom",
     "enhancement_slot_policy",
     "stacking_limit",
+    "runtime_budget_guidance",
   ];
   return Object.fromEntries(fields.map((field) => [field, record[field]]));
 }
@@ -571,16 +574,16 @@ async function updateInstructions(reactSnapshot, canvasSnapshot) {
   const content = `
 ## React Bits and Canvas UI linked components
 
-These records expose official live demos, install commands, registry URLs, framework guidance, and remote selection previews. They are required-review candidates during Pass 2, even when the final decision is to use none. Lumora does not mirror their source code or preview media.
+These records expose official live demos, install commands, registry URLs, framework guidance, and remote selection previews. They are recommended discovery sources, not mandatory gates or quota-limited enhancement slots. Lumora does not mirror their source code or preview media.
 
 - Filter \`art_direction\` by \`React Bits\` or \`Canvas UI\`.
 - Open \`official_source_url\` and inspect \`registry_url\` before installing only the selected component.
 - React Bits records cover the ${reactSnapshot.recordCount}-component public catalog and exclude every React Bits Pro component, block, and template.
 - Canvas UI records cover all ${canvasSnapshot.recordCount} official effects and list its six framework flavors.
 - Use \`preview_video_url\` only to evaluate the effect; do not ship catalog preview films as production media.
-- After choosing a structural recipe, compare the best matching candidates from both libraries plus OriginKit before finalizing the enhancement shortlist.
-- Records with \`can_be_structural: true\` may also replace one section or widget when their content and interaction contract are a stronger fit.
-- Records with \`section_canvas: true\` are section-scale visual foundations. Pair one with a semantic Pass 1 hero or full-width section, keep foreground content in a separate layer, audit contrast across moving frames, and provide a static reduced-motion fallback.
+- Use any matching candidates from these libraries plus OriginKit whenever they strengthen the page; combine them with other records when their roles are compatible.
+- Records with \`can_be_structural: true\` may replace or define suitable sections and widgets when their content and interaction contract fit.
+- Records with \`section_canvas: true\` are section-scale visual foundations. Pair them with semantic heroes or full-width sections, keep foreground content in a separate layer, audit contrast across moving frames, and provide static reduced-motion fallbacks.
 - Both sources currently use MIT + Commons Clause v1.0: commercial project use is allowed, but the components themselves may not be sold, sublicensed, or redistributed as a library, bundle, or port.
 - Preserve semantic content, reduced motion, offscreen pause, cleanup, responsive fallbacks, and browser fallbacks after adaptation.
 `;
@@ -684,19 +687,21 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
     licenceClass:
       "owned-original, linked-source, or end-project-only-linked-source",
     selectionPass:
-      "structure for Pass 1 or enhancement for the required Pass 2 review",
+      "Advisory discovery group: structure or enhancement; not a required order",
     componentRole:
       "base-composition, enhancement, hybrid-section-or-enhancement, or section-canvas",
     enhancementFamily:
       "Functional effect family used for pairing and duplicate detection",
     requiredReview:
-      "True when Codex must explicitly evaluate this linked source during Pass 2",
+      "Deprecated compatibility field; false because no linked source is a mandatory gate",
+    recommendedReview:
+      "True when the linked source should remain visible during broad discovery",
     canBeStructural:
       "True when an enhancement may also replace a section or widget",
     sectionCanvas:
       "True when the enhancement can provide the full visual canvas behind a hero or section",
     requiresStructuralPairing:
-      "True when the visual must be paired with a semantic Pass 1 content structure",
+      "True when the visual must be paired with a semantic content structure",
     textOverlayCapability:
       "Whether foreground text is supported and what readability condition applies",
     foregroundContentGuidance:
@@ -705,6 +710,12 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
       "Contrast, scrim, quiet-zone, and reduced-motion requirements for foreground content",
     pairingGuidance:
       "How to combine the candidate with the selected base composition",
+    selectionFreedom:
+      "Explicit permission to use, combine, adapt, repeat, or omit any number of records",
+    enhancementSlotPolicy:
+      "Advisory composition guidance with no fixed component quota",
+    runtimeBudgetGuidance:
+      "How to manage simultaneous heavy work without limiting total selections",
   };
   manifest.componentSelectionGuidance = {
     ...manifest.componentSelectionGuidance,
@@ -716,17 +727,20 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
       "React Bits and Canvas UI use MIT + Commons Clause v1.0: commercial end-project use is allowed, but do not sell or redistribute the component libraries themselves.",
     previewEngine:
       "All 85 owned archetypes have representative SVG compositions. Linked cards load a paused official opening frame only near the viewport; only the selected inspector plays motion. Previews guide selection and are not production source or media.",
+    selectionFreedom:
+      "Lumora is an advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of compatible records from any source.",
     selectionSequence:
-      "Pass 1 chooses the structural layout or section recipe. Pass 2 always reviews compatible effects, animation, text, background, media, cursor, scroll, canvas, and WebGL treatments before the final shortlist.",
-    mandatoryEnhancementReview:
-      "After choosing a base composition, explicitly scan OriginKit, React Bits, and Canvas UI. A valid outcome is zero enhancements, but skipping the review is not valid.",
+      "Structure and enhancement are optional browsing lenses. Explore them in either order, revisit them freely, and let the composition determine the final set.",
+    enhancementDiscovery:
+      "OriginKit, React Bits, and Canvas UI are recommended discovery sources, not mandatory gates. Search whichever sources are relevant and do not stop at the first attractive result.",
     sourceCoverageRule:
-      "During Pass 2, compare at least the best matching candidate from each relevant linked source rather than stopping at Lumora-owned recipes.",
+      "No source minimum applies. Compare enough relevant candidates to avoid tunnel vision, then use whatever best serves the project.",
     sectionCanvasRule:
-      "Background records marked section_canvas may define an entire hero or section visually, but they remain Pass 2 because semantic content and layout must come from a Pass 1 structure.",
+      "Background records marked section_canvas may define entire heroes or sections when paired with semantic foreground content; multiple section canvases may be used across one page.",
     stackingRule:
-      "Choose zero to three enhancements total, normally one signature and up to two supporting or subtle treatments; keep one heavy canvas, WebGL, or 3D effect near the initial viewport.",
+      "No fixed count applies. Budget simultaneous runtime cost, lazy-load and pause heavy scenes, and verify visual coherence, accessibility, and target-device performance.",
   };
+  delete manifest.componentSelectionGuidance.mandatoryEnhancementReview;
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
   const provenancePath = path.join(mcpRoot, "provenance.json");
@@ -807,8 +821,8 @@ async function mergeCatalogs(reactSnapshot, canvasSnapshot) {
       "Excluded all paid React Bits Pro components, blocks, and templates.",
       "Kept third-party source code and preview media on the official services.",
       "Grid cards request a paused opening frame only when rendered; motion runs only for the selected inspector.",
-      "Classified every component into a structure-first or enhancement-review pass and marked external hybrid records that may also replace a section.",
-      "Classified background components as section canvases that may define a hero or section visually while still requiring semantic Pass 1 content, contrast protection, and reduced-motion fallback.",
+      "Classified every component into advisory structure or effects/motion discovery groups and marked external hybrid records that may also define a section.",
+      "Classified background components as section canvases that may define a hero or section visually while still requiring semantic foreground content, contrast protection, and reduced-motion fallback.",
     ],
   };
   await writeFile(provenancePath, `${JSON.stringify(provenance, null, 2)}\n`);

@@ -67,15 +67,16 @@ export function componentSelectionProfile(record) {
   if (structure) {
     return {
       selection_pass: "structure",
-      selection_pass_label: "Pass 1 · Structure / layout",
+      selection_pass_label: "Structure / layout",
       component_role: "base-composition",
       enhancement_family: "layout / interface structure",
       required_review: false,
+      recommended_review: false,
       can_be_structural: true,
       pairing_guidance:
-        "Use this to establish the page or section hierarchy first. After selecting it, always run Pass 2 and compare compatible effects from OriginKit, React Bits, Canvas UI, pmndrs Examples, Arlan's Vault, and Lumora enhancement recipes.",
+        "Use this when it provides the right page or section hierarchy. Browse compatible effects from OriginKit, React Bits, Canvas UI, pmndrs Examples, Arlan's Vault, and Lumora when they could strengthen the result, and freely return to structural candidates as the design develops.",
       codex_selection_instruction:
-        "Shortlist this during Pass 1 for the base composition. Do not stop after choosing it: record the chosen layout, then run the required Pass 2 enhancement review.",
+        "Use this as a structural starting point, combine it with other compatible records, or replace it when a stronger composition emerges. The catalog imposes no component count or pass order.",
     };
   }
 
@@ -85,39 +86,41 @@ export function componentSelectionProfile(record) {
   if (sectionCanvas) {
     return {
       selection_pass: "enhancement",
-      selection_pass_label: "Pass 2 · Effects / motion",
+      selection_pass_label: "Effects / motion",
       component_role: "section-canvas",
       enhancement_family: "background / section canvas",
-      required_review: external,
+      required_review: false,
+      recommended_review: external,
       can_be_structural: false,
       section_canvas: true,
       requires_structural_pairing: true,
       text_overlay_capability: "supported-with-contrast-audit",
       foreground_content_guidance:
-        "Use this as the visual canvas behind a semantic Pass 1 hero or full-width section. Add real heading, body, CTA, and navigation content in a separate foreground layer; this background does not replace the content structure.",
+        "Use this as the visual canvas behind a semantic hero or full-width section. Add real heading, body, CTA, and navigation content in a separate foreground layer; this background does not replace the content structure.",
       overlay_readability_guidance:
         "Test text contrast against the brightest and busiest animation frames. Add a brand-matched scrim, gradient, quiet zone, blur, or solid content panel when needed, and provide a static prefers-reduced-motion fallback.",
       pairing_guidance:
-        "Pair this with a Pass 1 hero or full-width section as its section-scale visual canvas. It may define the section's visual identity, but it must not replace semantic content, layout, or controls.",
+        "Pair this with any compatible hero or full-width section as its section-scale visual canvas. It may define the section's visual identity, but it must not replace semantic content, layout, or controls. Multiple section canvases may be used across a page when each serves a distinct section and the combined runtime cost is managed.",
       codex_selection_instruction: external
-        ? `Required Pass 2 review source: ${record.source}. Treat this as a section-capable visual foundation, not a small decorative effect. Compare it against the selected hero or section structure even if the final decision is to use none.`
-        : "Review this during Pass 2 as a section-capable visual foundation. Pair it with the selected hero or full-width section only when it earns the signature enhancement slot.",
+        ? `Available discovery source: ${record.source}. Treat this as a section-capable visual foundation, not only a small decorative effect. Use it alone, combine it with compatible records, repeat the technique where appropriate, or omit it; there is no catalog quota.`
+        : "Treat this as a section-capable visual foundation. Pair it with any compatible hero or full-width section, combine it with other records when useful, or omit it; there is no signature-slot quota.",
     };
   }
 
   return {
     selection_pass: "enhancement",
-    selection_pass_label: "Pass 2 · Effects / motion",
+    selection_pass_label: "Effects / motion",
     component_role: hybrid ? "hybrid-section-or-enhancement" : "enhancement",
     enhancement_family: family,
-    required_review: external,
+    required_review: false,
+    recommended_review: external,
     can_be_structural: hybrid,
     pairing_guidance: hybrid
-      ? "Review this after the base layout. It may enhance an existing section or replace one structural section when its content and interaction contract are the stronger fit."
-      : "Pair this with the selected base composition only when it improves hierarchy, feedback, storytelling, comprehension, or brand character.",
+      ? "This may enhance an existing section, replace a structural section, or combine with other compatible records when its content and interaction contract are the stronger fit."
+      : "Use this wherever it improves hierarchy, feedback, storytelling, comprehension, or brand character. It may be combined with other compatible records; avoid duplication because it weakens the design, not because of a catalog limit.",
     codex_selection_instruction: external
-      ? `Required Pass 2 review source: ${record.source}. Compare this effect against the selected layout even if the final decision is to use none.`
-      : "Review this during Pass 2 after the base composition is chosen. Use it only when it earns an enhancement slot.",
+      ? `Available discovery source: ${record.source}. Use any compatible ideas from this record that improve the design, combine them with other records when useful, or omit them. The catalog does not limit the number of selected components.`
+      : "Use this wherever it improves the design, combine it with other compatible records when useful, repeat it consistently when appropriate, or omit it. The catalog does not impose enhancement slots.",
   };
 }
 
@@ -133,9 +136,13 @@ export function applyComponentSelectionGuidance(record) {
   return {
     ...baseRecord,
     ...componentSelectionProfile(baseRecord),
+    selection_freedom:
+      "Advisory library, not a quota system. Codex may use, combine, adapt, repeat, or omit any number of records from any source when they fit the page goal and art direction.",
     enhancement_slot_policy:
-      "Choose zero to three enhancements total: normally one signature and up to two supporting or subtle treatments.",
+      "No fixed component or enhancement quota. Start with a coherent set, then add every additional treatment that has a clear purpose and remains visually compatible.",
     stacking_limit:
-      "Use at most one continuous ambient animation and one heavy canvas, WebGL, or 3D effect in or near the initial viewport.",
+      "Advisory runtime budget, not a count limit. Multiple lightweight effects and multiple section backgrounds are allowed; lazy-load and pause heavy scenes so only the relevant work stays active, and test the combined result.",
+    runtime_budget_guidance:
+      "Judge simultaneous cost rather than total selections. Multiple heavy scenes may exist on one page when separated by section, lazy-loaded, paused offscreen, given static fallbacks, and verified on target devices.",
   };
 }

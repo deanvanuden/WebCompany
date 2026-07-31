@@ -1073,7 +1073,7 @@ function withKenneyStyleGuidance(model) {
     selectionGuidance,
     fallbackPolicy,
     performanceGuidance:
-      "Very lightweight web payload. Lazy-load near the viewport, keep one primary WebGL scene per page, and use the static preview for reduced motion.",
+      "Very lightweight web payload. Lazy-load near the viewport, pause scenes offscreen, and use static previews for reduced motion. Multiple models or scenes are allowed when the simultaneous rendering budget is managed.",
   };
 }
 
@@ -1457,8 +1457,10 @@ async function buildAnimatedBackgroundCatalog() {
         format === "MP4"
           ? "Externally hosted motion footage with a direct MP4 download URL."
           : "Externally hosted adaptive HLS motion stream.",
+      selectionFreedom:
+        "No catalog quota applies. Codex may use different backgrounds in different sections, combine them with compatible components, or omit them according to the page concept.",
       performanceGuidance:
-        "Select one background, download or stream only that winner, lazy-load it, remove audio, cap resolution and bitrate, and provide a reduced-motion still.",
+        "Use this background wherever it fits. Multiple backgrounds are allowed across sections; download or stream only used records, lazy-load and pause offscreen media, remove audio, cap resolution and bitrate, and provide a reduced-motion still.",
       publicRecordUrl: `${publicRoot}/animated-backgrounds.json#animated-background-${sequence}`,
     };
   });
@@ -1746,6 +1748,8 @@ async function main() {
     },
     modelSelectionGuidance: {
       guidanceMode: "advisory",
+      selectionFreedom:
+        "No model-count quota applies. Codex may use multiple models or scenes when they serve the concept and simultaneous rendering cost is managed.",
       primaryRule:
         "Do not infer art-direction fit from an object's name or category alone.",
       kenney:
@@ -1773,6 +1777,8 @@ async function main() {
       publicThumbnailUrl: "Absolute opening-frame thumbnail URL for external consumers",
       availability: "Last observed URL availability",
       licenceClass: "commercial-use based on Lumora owner confirmation",
+      selectionFreedom: "Explicit permission to use different backgrounds across multiple sections",
+      performanceGuidance: "Advisory simultaneous loading, playback, and fallback guidance",
     },
   };
 
@@ -1926,10 +1932,10 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 
 1. Read the manifest and choose the model, component, image-asset, or animated-background catalog.
 2. Filter candidates by the real page goal, brand, framework, performance budget, and asset class.
-3. For 3D, prefer \`ship-safe\` records and load only the selected model. Do not infer art-direction fit from an object's name or category alone. Filter by \`agencyUse\`, \`brandMoods\`, \`websiteIndustries\`, \`sectionFits\`, and \`performanceGuidance\`. For Kenney records, also read \`visualFidelity\`, \`selectionPriority\`, \`selectionGuidance\`, \`avoidWhen\`, and \`fallbackPolicy\`. This guidance is advisory: a simplified asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional. Use \`publicModelUrl\` in external projects. When a streamed glTF record has a \`files\` map, preserve that dependency mapping or download the official distribution into the target project.
-4. For components, choose zero to three recipes. Treat each record as an implementation brief and build it from first principles in the target project's conventions.
+3. For 3D, prefer \`ship-safe\` records and load only models actually used. There is no model-count quota: use multiple models or scenes when they serve the concept and manage their simultaneous rendering cost. Do not infer art-direction fit from an object's name or category alone. Filter by \`agencyUse\`, \`brandMoods\`, \`websiteIndustries\`, \`sectionFits\`, and \`performanceGuidance\`. For Kenney records, also read \`visualFidelity\`, \`selectionPriority\`, \`selectionGuidance\`, \`avoidWhen\`, and \`fallbackPolicy\`. This guidance is advisory: a simplified asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional. Use \`publicModelUrl\` in external projects. When a streamed glTF record has a \`files\` map, preserve that dependency mapping or download the official distribution into the target project.
+4. For components, treat the catalog as an advisory library rather than a quota system. Select, combine, adapt, repeat, or omit any number of compatible recipes that serve the page goal and art direction. Treat each record as an implementation brief and build it from first principles in the target project's conventions.
 5. For images and UI assets, choose only the records that serve the composition, then fetch each winner from \`publicImageUrl\` or \`downloadUrl\`. Preserve transparency, use nearest-neighbor rendering for \`pixelArt\`, and use repeating CSS backgrounds only when \`tileable\` is true.
-6. For animated backgrounds, preview candidates from their external URLs, select one winner, and then fetch only that record's \`downloadUrl\`. MP4 records are direct downloads; HLS records are adaptive streams. Optimize the selected media locally and provide a static reduced-motion fallback.
+6. For animated backgrounds, preview candidates from their external URLs and fetch only the records actually used from each \`downloadUrl\`. A page may use different backgrounds in different sections when the art direction remains coherent. MP4 records are direct downloads; HLS records are adaptive streams. Optimize selected media locally, pause it offscreen, and provide static reduced-motion fallbacks.
 7. Animated backgrounds are marked \`commercial-use\` based on Lumora's confirmation that the collection was purchased with commercial-use rights.
 8. Preserve source URLs, licence records, trademark warnings, fallbacks, accessibility contracts, and reduced-motion behavior.
 9. Do not mirror the entire catalog into a client project. Copy only the chosen assets or implement only the chosen recipes.

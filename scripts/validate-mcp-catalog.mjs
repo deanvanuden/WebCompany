@@ -323,6 +323,16 @@ check(
   "Manifest model selection guidance is not marked advisory",
 );
 check(
+  manifest.version === "1.5.0",
+  `Unexpected MCP manifest version: ${manifest.version}`,
+);
+check(
+  /No model-count quota applies/i.test(
+    manifest.modelSelectionGuidance?.selectionFreedom ?? "",
+  ),
+  "Manifest does not preserve open multi-model selection",
+);
+check(
   /Do not infer art-direction fit/i.test(
     manifest.modelSelectionGuidance?.primaryRule ?? "",
   ),
@@ -333,22 +343,28 @@ check(
   "Codex instructions do not preserve the advisory fallback policy",
 );
 check(
-  /always work in two passes/i.test(instructionsSource) &&
-    /skipping the review is not valid/i.test(instructionsSource) &&
+  /open advisory library/i.test(instructionsSource) &&
+    /no required minimum, maximum, source coverage, or pass order/i.test(
+      instructionsSource,
+    ) &&
+    /Multiple heavy scenes may exist on one page/i.test(instructionsSource) &&
     /OriginKit, React Bits, Canvas UI, pmndrs Examples, and Arlan's Vault/i.test(
       instructionsSource,
     ),
-  "Codex instructions do not require the two-pass linked-library review",
+  "Codex instructions do not preserve open, no-quota component selection",
 );
 check(
   /selection_pass_label/.test(appSource) &&
     /SECTION CANVAS/.test(appSource) &&
     /data-component-pass/.test(appSource) &&
     /id="component-workflow"/.test(indexHtmlSource) &&
-    /Always use two component passes/.test(indexHtmlSource) &&
+    /advisory creative library, not a quota system/i.test(indexHtmlSource) &&
+    /Multiple section backgrounds and heavy scenes are allowed/i.test(
+      indexHtmlSource,
+    ) &&
     /manifest\.endpoints\.componentRecords/.test(indexHtmlSource) &&
     /\.component-workflow/.test(appCssSource),
-  "Component catalog UI does not expose the two-pass workflow",
+  "Component catalog UI does not expose the open selection workflow",
 );
 
 for (const model of models) {
@@ -579,7 +595,7 @@ check(
       structureComponents.length &&
     manifest.totals.enhancementComponentRecipes ===
       enhancementComponents.length,
-  `Unexpected two-pass component totals: ${structureComponents.length}/${enhancementComponents.length}`,
+  `Unexpected component discovery-group totals: ${structureComponents.length}/${enhancementComponents.length}`,
 );
 check(
   sectionCanvasComponents.length === 195 &&
@@ -648,8 +664,12 @@ for (const component of ownedComponents) {
       Boolean(component.enhancement_family) &&
       Boolean(component.pairing_guidance) &&
       Boolean(component.codex_selection_instruction) &&
-      Boolean(component.stacking_limit),
-    `${component.id} has incomplete two-pass selection guidance`,
+      Boolean(component.selection_freedom) &&
+      Boolean(component.enhancement_slot_policy) &&
+      Boolean(component.stacking_limit) &&
+      Boolean(component.runtime_budget_guidance) &&
+      component.required_review === false,
+    `${component.id} has incomplete open selection guidance`,
   );
 }
 
@@ -696,7 +716,10 @@ for (const component of linkedOriginKitComponents) {
     component.source_kind === "external-linked-component" &&
       component.licence_class === "linked-source" &&
       component.selection_pass === "enhancement" &&
-      component.required_review === true &&
+      component.required_review === false &&
+      component.recommended_review === true &&
+      Boolean(component.selection_freedom) &&
+      Boolean(component.runtime_budget_guidance) &&
       component.source_code_bundled === false &&
       component.media_mirrored === false,
     `${component.id} does not preserve the linked-source boundary`,
@@ -748,7 +771,10 @@ for (const component of linkedReactBitsComponents) {
       component.license === "MIT + Commons Clause v1.0" &&
       component.licence_class === "end-project-only-linked-source" &&
       component.selection_pass === "enhancement" &&
-      component.required_review === true &&
+      component.required_review === false &&
+      component.recommended_review === true &&
+      Boolean(component.selection_freedom) &&
+      Boolean(component.runtime_budget_guidance) &&
       component.source_code_bundled === false &&
       component.media_mirrored === false,
     `${component.id} does not preserve the React Bits source boundary`,
@@ -799,7 +825,10 @@ for (const component of linkedCanvasUiComponents) {
       component.license === "MIT + Commons Clause v1.0" &&
       component.licence_class === "end-project-only-linked-source" &&
       component.selection_pass === "enhancement" &&
-      component.required_review === true &&
+      component.required_review === false &&
+      component.recommended_review === true &&
+      Boolean(component.selection_freedom) &&
+      Boolean(component.runtime_budget_guidance) &&
       component.source_code_bundled === false &&
       component.media_mirrored === false,
     `${component.id} does not preserve the Canvas UI source boundary`,
@@ -846,7 +875,10 @@ for (const component of linkedPmndrsComponents) {
       component.license === "MIT (example code)" &&
       component.licence_class === "bundle-ok-code-linked-assets" &&
       component.selection_pass === "enhancement" &&
-      component.required_review === true &&
+      component.required_review === false &&
+      component.recommended_review === true &&
+      Boolean(component.selection_freedom) &&
+      Boolean(component.runtime_budget_guidance) &&
       component.source_code_bundled === false &&
       component.media_mirrored === false &&
       component.license_notice_required === true,
@@ -890,7 +922,10 @@ for (const component of linkedArlanVaultComponents) {
       component.license === "MIT (official Vault page)" &&
       component.licence_class === "bundle-ok-code-linked-assets" &&
       component.selection_pass === "enhancement" &&
-      component.required_review === true &&
+      component.required_review === false &&
+      component.recommended_review === true &&
+      Boolean(component.selection_freedom) &&
+      Boolean(component.runtime_budget_guidance) &&
       component.source_code_bundled === false &&
       component.media_mirrored === true &&
       component.license_notice_required === true,
@@ -1193,6 +1228,13 @@ for (const background of backgrounds) {
     background.downloadUrl === background.sourceUrl,
     `${background.id} download URL does not preserve its source URL`,
   );
+  check(
+    /No catalog quota applies/i.test(background.selectionFreedom ?? "") &&
+      /Multiple backgrounds are allowed across sections/i.test(
+        background.performanceGuidance ?? "",
+      ),
+    `${background.id} does not preserve open multi-background selection guidance`,
+  );
   if (background.availability === "Available") {
     check(
       /^\.\/assets\/background-thumbs\/animated-background-\d{3}\.webp$/i.test(
@@ -1393,8 +1435,8 @@ if (errors.length) {
     ownedComponentRecipes: ownedComponents.length,
     structureComponentRecipes: structureComponents.length,
     enhancementComponentRecipes: enhancementComponents.length,
-    requiredLinkedEnhancementReviews: components.filter(
-      (component) => component.required_review,
+    recommendedLinkedDiscoveryRecords: components.filter(
+      (component) => component.recommended_review,
     ).length,
     linkedOriginKitComponents: linkedOriginKitComponents.length,
     linkedReactBitsComponents: linkedReactBitsComponents.length,

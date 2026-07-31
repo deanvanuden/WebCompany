@@ -181,7 +181,7 @@ function fieldConfiguration() {
   }
   return {
     primary: "selection_pass_label",
-    primaryLabel: "Selection pass",
+    primaryLabel: "Discovery group",
     category: "category",
     categoryLabel: "Category",
     secondary: "art_direction",
@@ -440,10 +440,10 @@ function filteredRecords() {
       (passRank[right.selection_pass] ?? 2);
     if (passDifference) return passDifference;
     if (left.selection_pass === "enhancement") {
-      const requiredDifference =
-        Number(Boolean(right.required_review)) -
-        Number(Boolean(left.required_review));
-      if (requiredDifference) return requiredDifference;
+      const discoveryDifference =
+        Number(Boolean(right.recommended_review)) -
+        Number(Boolean(left.recommended_review));
+      if (discoveryDifference) return discoveryDifference;
     }
     return (
       (right.quality_score ?? -1) - (left.quality_score ?? -1) ||
@@ -683,10 +683,10 @@ function componentCard(record) {
   const external = isExternalComponent(record);
   const passLabel =
     record.selection_pass === "structure"
-      ? "PASS 1"
+      ? "STRUCTURE"
       : record.section_canvas
-        ? "PASS 2 · SECTION CANVAS"
-        : "PASS 2";
+        ? "SECTION CANVAS"
+        : "EFFECT / MOTION";
   return `
     <button
       type="button"
@@ -962,7 +962,7 @@ function sortOptionsForView() {
     ];
   }
   return [
-    ["featured", "Two-pass order"],
+    ["featured", "Structure & effects"],
     ["novelty", "Highest novelty"],
     ["name", "Name A–Z"],
     ["performance", "Lightest first"],
@@ -1047,7 +1047,7 @@ function renderModelInspector(record) {
     `or category alone. Style guidance: ${(record.selectionGuidance ?? "confirm the visible art direction supports the brand").replace(/[.!?]+$/g, "")}. ` +
     `Avoid when: ${(record.avoidWhen?.join(", ") ?? "its style or detail level conflicts with the brand").replace(/[.!?]+$/g, "")}. ` +
     `Fallback rule: ${(record.fallbackPolicy ?? "use it deliberately if it is the closest available match").replace(/[.!?]+$/g, "")}. ` +
-    `This guidance is advisory, not a hard exclusion. Follow this performance ` +
+    `This guidance is advisory, not a hard exclusion. There is no model-count quota; use multiple models or scenes when they serve the concept and manage simultaneous rendering cost. Follow this performance ` +
     `guidance: ${(record.performanceGuidance ?? "lazy-load near the viewport and keep a static fallback").replace(/[.!?]+$/g, "")}. ` +
     `Pause animation offscreen, respect prefers-reduced-motion, preserve the ` +
     `source and licence record, and do not download unrelated catalog assets.`;
@@ -1126,12 +1126,14 @@ function renderComponentInspector(record) {
     "Do not use the catalog selection preview as production media or redistribute the component library.";
   const prompt =
     external
-      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. This is a Pass 2 enhancement-review candidate from ${externalSource}. ${record.codex_selection_instruction ?? "Compare it against the chosen base composition before deciding whether to use it."} Pairing guidance: ${record.pairing_guidance ?? "Use it only when it improves the page hierarchy or brand character."}${record.foreground_content_guidance ? ` Foreground content guidance: ${record.foreground_content_guidance}` : ""}${record.overlay_readability_guidance ? ` Overlay readability guidance: ${record.overlay_readability_guidance}` : ""} ${sourceInspectionInstruction}${record.install_command ? ` Use the recorded install_command (${record.install_command}) only if it matches this project's framework.` : ""} Adapt only the selected component to this project's content and brand; preserve responsive behavior, semantic content, accessibility, reduced motion, offscreen pause, fallback, cleanup, and performance. Follow this stacking limit: ${record.stacking_limit ?? "Use one heavy effect near the initial viewport."} Do not use the catalog selection preview as production media. ${rightsInstruction}`
+      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. This is an advisory discovery candidate from ${externalSource}, not a required pass or quota-limited slot. ${record.codex_selection_instruction ?? "Use it, combine it, adapt it, repeat it, or omit it according to the project."} Pairing guidance: ${record.pairing_guidance ?? "Use it wherever it improves the page hierarchy or brand character."}${record.foreground_content_guidance ? ` Foreground content guidance: ${record.foreground_content_guidance}` : ""}${record.overlay_readability_guidance ? ` Overlay readability guidance: ${record.overlay_readability_guidance}` : ""} ${sourceInspectionInstruction}${record.install_command ? ` Use the recorded install_command (${record.install_command}) only if it matches this project's framework.` : ""} Adapt the selected ideas to this project's content and brand; preserve responsive behavior, semantic content, accessibility, reduced motion, offscreen pause, fallback, cleanup, and performance. Selection freedom: ${record.selection_freedom ?? "There is no catalog-imposed component count."} Runtime guidance: ${record.runtime_budget_guidance ?? record.stacking_limit ?? "Judge simultaneous cost instead of total selections."} Do not use the catalog selection preview as production media. ${rightsInstruction}`
       : `Read the Lumora MCP component record "${record.id}" at ` +
-        `${publicRoot}/components.json. Selection pass: ${record.selection_pass_label ?? "review the record's intended role"}. ` +
+        `${publicRoot}/components.json. Advisory discovery group: ${record.selection_pass_label ?? "review the record's intended role"}. ` +
         `${record.codex_selection_instruction ?? ""} Pairing guidance: ${record.pairing_guidance ?? "Use it only when it improves the page goal."} ` +
         `${record.foreground_content_guidance ? `Foreground content guidance: ${record.foreground_content_guidance} ` : ""}` +
         `${record.overlay_readability_guidance ? `Overlay readability guidance: ${record.overlay_readability_guidance} ` : ""}` +
+        `Selection freedom: ${record.selection_freedom ?? "There is no catalog-imposed component count."} ` +
+        `Runtime guidance: ${record.runtime_budget_guidance ?? record.stacking_limit ?? "Judge simultaneous cost instead of total selections."} ` +
         `Implement it from first principles in this ` +
         `project's framework and brand. Preserve its content, responsive, ` +
         `accessibility, fallback, performance, and test contracts.`;
@@ -1394,7 +1396,8 @@ function renderBackgroundInspector(record) {
     `external source, then fetch the selected ${record.format} from its ` +
     `downloadUrl. Adapt it to this project's brand, ` +
     `remove audio, optimize resolution and bitrate, lazy-load it, and provide ` +
-    `a static prefers-reduced-motion fallback.`;
+    `a static prefers-reduced-motion fallback. ${record.selectionFreedom ?? "There is no catalog quota; different sections may use different compatible backgrounds."} ` +
+    `Pause it offscreen and judge simultaneous media cost instead of limiting the total number of backgrounds.`;
   const promptElement = document.querySelector("#background-prompt");
   promptElement.textContent = prompt;
   promptElement.dataset.prompt = prompt;
