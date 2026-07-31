@@ -2,7 +2,7 @@
 
 Canonical entry point: https://lumoraofficial.de/mcp/
 
-Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records, owned-original Web Component implementation recipes, officially linked OriginKit, React Bits, and Canvas UI components, locally hosted CC0 image and UI assets, and externally hosted animated background references.
+Lumora MCP is a selection interface for Codex and human designers. It contains web-ready 3D model records, owned-original Web Component implementation recipes, officially linked OriginKit, React Bits, Canvas UI, and pmndrs Examples components and patterns, locally hosted CC0 image and UI assets, and externally hosted animated background references.
 
 ## Machine-readable endpoints
 
@@ -13,6 +13,7 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 - OriginKit component snapshot: https://lumoraofficial.de/mcp/originkit-components.json
 - React Bits component snapshot: https://lumoraofficial.de/mcp/react-bits-components.json
 - Canvas UI component snapshot: https://lumoraofficial.de/mcp/canvas-ui-components.json
+- pmndrs R3F / WebGL snapshot: https://lumoraofficial.de/mcp/pmndrs-examples.json
 - Images and UI assets: https://lumoraofficial.de/mcp/image-assets.json
 - Animated backgrounds: https://lumoraofficial.de/mcp/animated-backgrounds.json
 - Provenance: https://lumoraofficial.de/mcp/provenance.json
@@ -22,7 +23,7 @@ Lumora MCP is a selection interface for Codex and human designers. It contains w
 1. Read the manifest and choose the model, component, image-asset, or animated-background catalog.
 2. Filter candidates by the real page goal, brand, framework, performance budget, and asset class.
 3. For 3D, prefer `ship-safe` records and load only the selected model. Do not infer art-direction fit from an object's name or category alone. Filter by `agencyUse`, `brandMoods`, `websiteIndustries`, `sectionFits`, and `performanceGuidance`. For Kenney records, also read `visualFidelity`, `selectionPriority`, `selectionGuidance`, `avoidWhen`, and `fallbackPolicy`. This guidance is advisory: a simplified asset remains usable when no closer match exists, but should be adapted deliberately and usually kept secondary unless low-poly styling is intentional. Use `publicModelUrl` in external projects. When a streamed glTF record has a `files` map, preserve that dependency mapping or download the official distribution into the target project.
-4. For components, always work in two passes. Pass 1 selects the structural layout or section recipe. Pass 2 must explicitly review compatible effects, motion, text, background, media, cursor, scroll, canvas, and WebGL treatments, including the best matching candidates from OriginKit, React Bits, and Canvas UI. A valid Pass 2 result is “use none”; skipping the review is not valid. Choose zero to three enhancements total, normally one signature and up to two supporting or subtle treatments. Linked records marked `can_be_structural: true` may replace one section when their content and interaction contract are stronger than the Pass 1 candidate. Records marked `section_canvas: true` may define an entire hero or section visually, but still require a semantic Pass 1 content structure.
+4. For components, always work in two passes. Pass 1 selects the structural layout or section recipe. Pass 2 must explicitly review compatible effects, motion, text, background, media, cursor, scroll, canvas, and WebGL treatments, including the best matching candidates from OriginKit, React Bits, Canvas UI, and pmndrs Examples. A valid Pass 2 result is “use none”; skipping the review is not valid. Choose zero to three enhancements total, normally one signature and up to two supporting or subtle treatments. Linked records marked `can_be_structural: true` may replace one section when their content and interaction contract are stronger than the Pass 1 candidate. Records marked `section_canvas: true` may define an entire hero or section visually, but still require a semantic Pass 1 content structure.
 5. For images and UI assets, choose only the records that serve the composition, then fetch each winner from `publicImageUrl` or `downloadUrl`. Preserve transparency, use nearest-neighbor rendering for `pixelArt`, and use repeating CSS backgrounds only when `tileable` is true.
 6. For animated backgrounds, preview candidates from their external URLs, select one winner, and then fetch only that record's `downloadUrl`. MP4 records are direct downloads; HLS records are adaptive streams. Optimize the selected media locally and provide a static reduced-motion fallback.
 7. Animated backgrounds are marked `commercial-use` based on Lumora's confirmation that the collection was purchased with commercial-use rights.
@@ -46,7 +47,7 @@ Every component record exposes:
 - `selection_pass_label`: the human-readable catalog filter;
 - `component_role`: base composition, enhancement, or hybrid section/enhancement;
 - `enhancement_family`: background, text, scroll, media, 3D, canvas, interaction, or another functional family;
-- `required_review`: true for linked OriginKit, React Bits, and Canvas UI records;
+- `required_review`: true for linked OriginKit, React Bits, Canvas UI, and pmndrs Examples records;
 - `can_be_structural`: true when an enhancement record may also replace a section or widget;
 - `section_canvas`: true for section-scale background visuals that can define a hero or full-width section;
 - `requires_structural_pairing`: true when the visual still needs a semantic Pass 1 content structure;
@@ -61,12 +62,12 @@ Selection sequence:
 1. Filter `selection_pass: "structure"` and choose the base page or section hierarchy.
 2. Record the chosen structure and its brand, content, responsive, accessibility, and performance constraints.
 3. Filter `selection_pass: "enhancement"` and scan all relevant enhancement families.
-4. During that second pass, compare the best matching candidates from OriginKit, React Bits, Canvas UI, and Lumora-owned enhancement recipes. Do not stop after the first source.
+4. During that second pass, compare the best matching candidates from OriginKit, React Bits, Canvas UI, pmndrs Examples, and Lumora-owned enhancement recipes. Do not stop after the first source.
 5. Select zero to three enhancements, reject duplication, and keep only one heavy canvas, WebGL, or 3D effect in or near the initial viewport.
 
 ## Rights
 
-Kenney 3D and image packs in this catalog are user-provided distributions licensed CC0 1.0. Quaternius models are curated from official CC0 packs, converted to self-contained GLB files, and retain their official source records. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. React Bits and Canvas UI linked records use MIT + Commons Clause v1.0: use in commercial end projects is allowed, but resale or redistribution of the components themselves is restricted. Animated backgrounds remain externally hosted and are recorded as commercial-use based on Lumora's purchase and entitlement confirmation.
+Kenney 3D and image packs in this catalog are user-provided distributions licensed CC0 1.0. Quaternius models are curated from official CC0 packs, converted to self-contained GLB files, and retain their official source records. Poly Haven models are CC0; any trademark warning remains marked concept-only. Component recipes are Lumora-owned original implementation briefs. React Bits and Canvas UI linked records use MIT + Commons Clause v1.0: use in commercial end projects is allowed, but resale or redistribution of the components themselves is restricted. pmndrs example code is MIT; visible demo models, textures, audio, fonts, logos, and imagery remain a separate per-item boundary and should be replaced unless independently confirmed. Animated backgrounds remain externally hosted and are recorded as commercial-use based on Lumora's purchase and entitlement confirmation.
 
 <!-- DESIGN-ASSET-GUIDANCE:START -->
 ## Images / UI selection guidance
@@ -116,3 +117,17 @@ These records expose official live demos, install commands, registry URLs, frame
 - Both sources currently use MIT + Commons Clause v1.0: commercial project use is allowed, but the components themselves may not be sold, sublicensed, or redistributed as a library, bundle, or port.
 - Preserve semantic content, reduced motion, offscreen pause, cleanup, responsive fallbacks, and browser fallbacks after adaptation.
 <!-- LINKED-COMPONENT-LIBRARIES:END -->
+
+<!-- PMNDRS-EXAMPLES:START -->
+## pmndrs Examples · R3F / WebGL patterns
+
+These 80 records are a curated agency-facing subset of the official pmndrs examples collection. They cover signature 3D scenes, scroll storytelling, product configurators, mixed DOM/WebGL interfaces, portals, materials, interactive effects, and production loading/media foundations.
+
+- Filter `art_direction: "pmndrs Examples"` to review the collection.
+- Use `official_source_url` for the live example, `preview_poster_url` for selection, and `code_url` for the pinned source directory.
+- Treat every record as Pass 2. Records marked `section_canvas: true` may carry a hero or section visually but still need semantic foreground content. Hybrid records may replace one section when their content and interaction contract is a stronger fit.
+- Use only one heavy WebGL scene near the initial viewport, lazy-load it, cap DPR and postprocessing, pause it offscreen, dispose resources, and provide a designed poster fallback.
+- The repository's example code is MIT and may be adapted with its notice preserved.
+- Demo assets are a separate boundary. Do not assume visible models, textures, audio, fonts, logos, or branded products share the code licence. Use the technique with Lumora-owned, client-owned, or separately confirmed assets.
+- Do not paste an unchanged demo composition. Adapt camera, content, materials, colors, typography, controls, timing, and responsive behavior to the project.
+<!-- PMNDRS-EXAMPLES:END -->

@@ -1107,9 +1107,15 @@ function renderComponentInspector(record) {
     .map((badge) => `<span>${escapeHtml(badge)}</span>`)
     .join("");
 
+  const sourceInspectionInstruction = record.code_url
+    ? `Open its official_source_url for the live example, then inspect the pinned code_url (${record.code_url}) for implementation details and dependencies.`
+    : "Open its official_source_url to inspect the current implementation, licence boundary, variants, and dependencies.";
+  const rightsInstruction =
+    record.codex_rights_instruction ??
+    "Do not use the remote catalog preview as production media or redistribute the component library.";
   const prompt =
     external
-      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. This is a Pass 2 enhancement-review candidate from ${externalSource}. ${record.codex_selection_instruction ?? "Compare it against the chosen base composition before deciding whether to use it."} Pairing guidance: ${record.pairing_guidance ?? "Use it only when it improves the page hierarchy or brand character."}${record.foreground_content_guidance ? ` Foreground content guidance: ${record.foreground_content_guidance}` : ""}${record.overlay_readability_guidance ? ` Overlay readability guidance: ${record.overlay_readability_guidance}` : ""} Open its official_source_url to inspect the current implementation, licence boundary, variants, and dependencies.${record.install_command ? ` Use the recorded install_command (${record.install_command}) only if it matches this project's framework.` : ""} Adapt only the selected component to this project's content and brand; preserve responsive behavior, semantic content, accessibility, reduced motion, offscreen pause, fallback, cleanup, and performance. Follow this stacking limit: ${record.stacking_limit ?? "Use one heavy effect near the initial viewport."} Do not use the remote catalog preview as production media or redistribute the component library.`
+      ? `Read the Lumora MCP component record "${record.id}" at ${publicRoot}/components.json. This is a Pass 2 enhancement-review candidate from ${externalSource}. ${record.codex_selection_instruction ?? "Compare it against the chosen base composition before deciding whether to use it."} Pairing guidance: ${record.pairing_guidance ?? "Use it only when it improves the page hierarchy or brand character."}${record.foreground_content_guidance ? ` Foreground content guidance: ${record.foreground_content_guidance}` : ""}${record.overlay_readability_guidance ? ` Overlay readability guidance: ${record.overlay_readability_guidance}` : ""} ${sourceInspectionInstruction}${record.install_command ? ` Use the recorded install_command (${record.install_command}) only if it matches this project's framework.` : ""} Adapt only the selected component to this project's content and brand; preserve responsive behavior, semantic content, accessibility, reduced motion, offscreen pause, fallback, cleanup, and performance. Follow this stacking limit: ${record.stacking_limit ?? "Use one heavy effect near the initial viewport."} Do not use the remote catalog preview as production media. ${rightsInstruction}`
       : `Read the Lumora MCP component record "${record.id}" at ` +
         `${publicRoot}/components.json. Selection pass: ${record.selection_pass_label ?? "review the record's intended role"}. ` +
         `${record.codex_selection_instruction ?? ""} Pairing guidance: ${record.pairing_guidance ?? "Use it only when it improves the page goal."} ` +
@@ -1128,7 +1134,7 @@ function renderComponentInspector(record) {
   recordLink.target = external ? "_blank" : "";
   recordLink.rel = external ? "noreferrer" : "";
   recordLinkLabel.textContent = external
-    ? `Open official ${externalSource} component`
+    ? record.official_source_label ?? `Open official ${externalSource} component`
     : "Open complete component records";
 }
 

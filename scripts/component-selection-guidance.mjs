@@ -19,6 +19,14 @@ const hybridExternalCategories = new Set([
   "components",
   "image-gallery",
   "interactive-elements",
+  "mixed-dom-webgl",
+  "portal-transition",
+  "product-experience",
+  "scroll-storytelling",
+]);
+
+const sectionCanvasExternalCategories = new Set([
+  "signature-3d-scene",
 ]);
 
 function isSectionCanvas(record) {
@@ -30,7 +38,8 @@ function isSectionCanvas(record) {
     category === "backgrounds" ||
     category.includes("background") ||
     sourceCategory === "backgrounds" ||
-    sourceCategory === "background-animation"
+    sourceCategory === "background-animation" ||
+    sectionCanvasExternalCategories.has(sourceCategory)
   );
 }
 
@@ -64,7 +73,7 @@ export function componentSelectionProfile(record) {
       required_review: false,
       can_be_structural: true,
       pairing_guidance:
-        "Use this to establish the page or section hierarchy first. After selecting it, always run Pass 2 and compare compatible effects from OriginKit, React Bits, Canvas UI, and Lumora enhancement recipes.",
+        "Use this to establish the page or section hierarchy first. After selecting it, always run Pass 2 and compare compatible effects from OriginKit, React Bits, Canvas UI, pmndrs Examples, and Lumora enhancement recipes.",
       codex_selection_instruction:
         "Shortlist this during Pass 1 for the base composition. Do not stop after choosing it: record the chosen layout, then run the required Pass 2 enhancement review.",
     };

@@ -62,6 +62,7 @@ const [
   originKitComponents,
   reactBitsSnapshot,
   canvasUiSnapshot,
+  pmndrsSnapshot,
   images,
   designAssets,
   backgrounds,
@@ -75,6 +76,7 @@ const [
     readJson("originkit-components.json"),
     readJson("react-bits-components.json"),
     readJson("canvas-ui-components.json"),
+    readJson("pmndrs-examples.json"),
     readJson("image-assets.json"),
     readJson("design-assets.json"),
     readJson("animated-backgrounds.json"),
@@ -82,6 +84,7 @@ const [
   ]);
 const reactBitsComponents = reactBitsSnapshot.records;
 const canvasUiComponents = canvasUiSnapshot.records;
+const pmndrsComponents = pmndrsSnapshot.records;
 const componentPreviewSource = await readFile(
   path.join(mcpRoot, "component-previews.js"),
   "utf8",
@@ -126,6 +129,9 @@ const reactBitsComponentIds = new Set(
 );
 const canvasUiComponentIds = new Set(
   canvasUiComponents.map((component) => component.id),
+);
+const pmndrsComponentIds = new Set(
+  pmndrsComponents.map((component) => component.id),
 );
 const imageIds = new Set(images.map((image) => image.id));
 const imageUrls = new Set(images.map((image) => image.publicImageUrl));
@@ -216,10 +222,13 @@ check(
       reactBitsComponents.length &&
     manifest.totals.linkedCanvasUiComponents ===
       canvasUiComponents.length &&
+    manifest.totals.linkedPmndrsExamples ===
+      pmndrsComponents.length &&
     manifest.totals.linkedComponentRecipes ===
       originKitComponents.length +
         reactBitsComponents.length +
-        canvasUiComponents.length,
+        canvasUiComponents.length +
+        pmndrsComponents.length,
   "Manifest linked component totals are incorrect",
 );
 check(
@@ -231,8 +240,10 @@ check(
   manifest.endpoints.reactBitsComponents ===
     "https://lumoraofficial.de/mcp/react-bits-components.json" &&
     manifest.endpoints.canvasUiComponents ===
-      "https://lumoraofficial.de/mcp/canvas-ui-components.json",
-  "Manifest React Bits or Canvas UI endpoint is incorrect",
+      "https://lumoraofficial.de/mcp/canvas-ui-components.json" &&
+    manifest.endpoints.pmndrsExamples ===
+      "https://lumoraofficial.de/mcp/pmndrs-examples.json",
+  "Manifest React Bits, Canvas UI, or pmndrs endpoint is incorrect",
 );
 for (const schemaField of [
   "officialSourceUrl",
@@ -252,6 +263,10 @@ for (const schemaField of [
   "foregroundContentGuidance",
   "overlayReadabilityGuidance",
   "pairingGuidance",
+  "codeUrl",
+  "originalSourceUrl",
+  "exampleLibraries",
+  "assetRightsBoundary",
 ]) {
   check(
     Boolean(manifest.componentSchema?.[schemaField]),
@@ -307,7 +322,9 @@ check(
 check(
   /always work in two passes/i.test(instructionsSource) &&
     /skipping the review is not valid/i.test(instructionsSource) &&
-    /OriginKit, React Bits, and Canvas UI/i.test(instructionsSource),
+    /OriginKit, React Bits, Canvas UI, and pmndrs Examples/i.test(
+      instructionsSource,
+    ),
   "Codex instructions do not require the two-pass linked-library review",
 );
 check(
@@ -494,6 +511,9 @@ const linkedReactBitsComponents = components.filter(
 const linkedCanvasUiComponents = components.filter(
   (component) => component.source === "Canvas UI",
 );
+const linkedPmndrsComponents = components.filter(
+  (component) => component.source === "pmndrs Examples",
+);
 const structureComponents = components.filter(
   (component) => component.selection_pass === "structure",
 );
@@ -504,8 +524,8 @@ const sectionCanvasComponents = components.filter(
   (component) => component.section_canvas === true,
 );
 check(
-  components.length === 1330,
-  `Expected 1,330 component records, found ${components.length}`,
+  components.length === 1410,
+  `Expected 1,410 component records, found ${components.length}`,
 );
 check(
   ownedComponents.length === 1020,
@@ -527,8 +547,13 @@ check(
   `Expected 25 linked Canvas UI records, found ${linkedCanvasUiComponents.length}/${canvasUiComponents.length}`,
 );
 check(
+  linkedPmndrsComponents.length === 80 &&
+    pmndrsComponents.length === 80,
+  `Expected 80 linked pmndrs records, found ${linkedPmndrsComponents.length}/${pmndrsComponents.length}`,
+);
+check(
   structureComponents.length === 492 &&
-    enhancementComponents.length === 838 &&
+    enhancementComponents.length === 918 &&
     manifest.totals.structureComponentRecipes ===
       structureComponents.length &&
     manifest.totals.enhancementComponentRecipes ===
@@ -536,10 +561,10 @@ check(
   `Unexpected two-pass component totals: ${structureComponents.length}/${enhancementComponents.length}`,
 );
 check(
-  sectionCanvasComponents.length === 177 &&
+  sectionCanvasComponents.length === 192 &&
     manifest.totals.sectionCanvasComponentRecipes ===
       sectionCanvasComponents.length,
-  `Expected 177 section-canvas components, found ${sectionCanvasComponents.length}`,
+  `Expected 192 section-canvas components, found ${sectionCanvasComponents.length}`,
 );
 check(
   reactBitsSnapshot.license === "MIT + Commons Clause v1.0" &&
@@ -553,6 +578,13 @@ check(
   canvasUiSnapshot.license === "MIT + Commons Clause v1.0" &&
     /^[a-f0-9]{40}$/.test(canvasUiSnapshot.sourceRevision),
   "Canvas UI snapshot is missing its pinned licence metadata",
+);
+check(
+  pmndrsSnapshot.license === "MIT" &&
+    pmndrsSnapshot.recordCount === 80 &&
+    /^[a-f0-9]{40}$/.test(pmndrsSnapshot.sourceRevision) &&
+    /agency-ready/i.test(pmndrsSnapshot.selectionMethod ?? ""),
+  "pmndrs snapshot is missing its pinned licence or curation metadata",
 );
 check(
   componentIndex.length === components.length,
@@ -772,12 +804,57 @@ for (const component of linkedCanvasUiComponents) {
     `${component.id} has incomplete Canvas UI implementation guidance`,
   );
 }
+
+for (const component of linkedPmndrsComponents) {
+  check(
+    pmndrsComponentIds.has(component.id) &&
+      component.id.startsWith("pmndrs-") &&
+      component.phase === "pmndrs-examples-linked-2026-07",
+    `${component.id} is missing from the pmndrs snapshot`,
+  );
+  check(
+    component.source_kind === "external-linked-component" &&
+      component.license === "MIT (example code)" &&
+      component.licence_class === "bundle-ok-code-linked-assets" &&
+      component.selection_pass === "enhancement" &&
+      component.required_review === true &&
+      component.source_code_bundled === false &&
+      component.media_mirrored === false &&
+      component.license_notice_required === true,
+    `${component.id} does not preserve the pmndrs code/asset boundary`,
+  );
+  check(
+    /^https:\/\/pmndrs\.github\.io\/examples\/demos\/[a-z0-9-]+$/.test(
+      component.official_source_url,
+    ) &&
+      new RegExp(
+        `^https://github\\.com/pmndrs/examples/tree/${pmndrsSnapshot.sourceRevision}/demos/[a-z0-9-]+$`,
+      ).test(component.code_url) &&
+      /^https:\/\/pmndrs\.github\.io\/examples\/[a-z0-9-]+\/thumbnail\.webp$/.test(
+        component.preview_poster_url,
+      ),
+    `${component.id} has invalid official pmndrs demo, source, or preview metadata`,
+  );
+  check(
+    Array.isArray(component.libraries) &&
+      Array.isArray(component.declared_assets) &&
+      Boolean(component.asset_rights_boundary) &&
+      /MIT licence/i.test(component.codex_rights_instruction) &&
+      Boolean(component.summary) &&
+      Boolean(component.responsive_strategy) &&
+      Boolean(component.accessibility_contract) &&
+      Boolean(component.fallback_strategy) &&
+      componentIndexIds.has(component.id),
+    `${component.id} has incomplete pmndrs implementation or rights guidance`,
+  );
+}
+
 check(
   components.filter(
     (component) =>
       component.selection_pass === "enhancement" &&
       component.can_be_structural === true,
-  ).length === 75,
+  ).length === 122,
   "Unexpected hybrid section-or-enhancement record count",
 );
 
@@ -1114,10 +1191,13 @@ check(
       linkedReactBitsComponents.length &&
     provenance.components.linkedCanvasUiCount ===
       linkedCanvasUiComponents.length &&
+    provenance.components.linkedPmndrsCount ===
+      linkedPmndrsComponents.length &&
     provenance.components.linkedComponentCount ===
       linkedOriginKitComponents.length +
         linkedReactBitsComponents.length +
-        linkedCanvasUiComponents.length &&
+        linkedCanvasUiComponents.length +
+        linkedPmndrsComponents.length &&
     provenance.components.structureCount === structureComponents.length &&
     provenance.components.enhancementCount ===
       enhancementComponents.length &&
@@ -1163,6 +1243,7 @@ for (const requiredFile of [
   "originkit-components.json",
   "react-bits-components.json",
   "canvas-ui-components.json",
+  "pmndrs-examples.json",
   "image-assets.json",
   "design-assets.json",
   "animated-backgrounds.json",
@@ -1193,6 +1274,7 @@ for (const requiredFile of [
   "licences/originkit-linked-source.txt",
   "licences/react-bits-linked-source.txt",
   "licences/canvas-ui-linked-source.txt",
+  "licences/pmndrs-examples.txt",
   "vendor/three.module.min.js",
   "vendor/three.core.min.js",
   "vendor/loaders/GLTFLoader.js",
@@ -1226,6 +1308,7 @@ if (errors.length) {
     linkedOriginKitComponents: linkedOriginKitComponents.length,
     linkedReactBitsComponents: linkedReactBitsComponents.length,
     linkedCanvasUiComponents: linkedCanvasUiComponents.length,
+    linkedPmndrsExamples: linkedPmndrsComponents.length,
     sectionCanvasComponents: sectionCanvasComponents.length,
     imageAssets: images.length,
     animatedBackgrounds: backgrounds.length,

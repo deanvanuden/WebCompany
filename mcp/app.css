@@ -1303,7 +1303,7 @@ canvas {
 .external-component-preview::after {
   content: "";
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   inset: auto 0 0;
   height: 36%;
   background: linear-gradient(to top, rgba(4, 5, 6, 0.76), transparent);
@@ -1312,6 +1312,9 @@ canvas {
 
 .external-component-preview img,
 .external-component-preview video {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
   width: 100%;
   height: 100%;
   display: block;
@@ -1319,12 +1322,12 @@ canvas {
 }
 
 .external-component-preview video {
-  position: absolute;
-  inset: 0;
+  z-index: 1;
 }
 
 .external-preview-fallback {
   position: absolute;
+  z-index: 0;
   inset: 0;
   display: grid;
   place-content: center;

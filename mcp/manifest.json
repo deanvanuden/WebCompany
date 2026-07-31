@@ -1,14 +1,14 @@
 {
   "name": "Lumora MCP",
-  "version": "1.2.1",
-  "generatedAt": "2026-07-30",
+  "version": "1.3.0",
+  "generatedAt": "2026-07-31",
   "canonicalUrl": "https://lumoraofficial.de/mcp/",
-  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, multi-style image and UI assets, and externally hosted animated background references.",
+  "purpose": "A human and machine-readable design toolkit for selecting web-ready 3D models, owned-original and officially linked web components, curated R3F/WebGL patterns, multi-style image and UI assets, and externally hosted animated background references.",
   "totals": {
     "models": 1021,
     "localModels": 907,
     "streamedModels": 114,
-    "componentRecipes": 1330,
+    "componentRecipes": 1410,
     "imageAssets": 4315,
     "animatedBackgrounds": 152,
     "availableAnimatedBackgrounds": 151,
@@ -18,12 +18,13 @@
     "imageAssetCollections": 12,
     "ownedComponentRecipes": 1020,
     "linkedOriginKitComponents": 146,
-    "linkedComponentRecipes": 310,
+    "linkedComponentRecipes": 390,
     "linkedReactBitsComponents": 139,
     "linkedCanvasUiComponents": 25,
     "structureComponentRecipes": 492,
-    "enhancementComponentRecipes": 838,
-    "sectionCanvasComponentRecipes": 177
+    "enhancementComponentRecipes": 918,
+    "sectionCanvasComponentRecipes": 192,
+    "linkedPmndrsExamples": 80
   },
   "endpoints": {
     "models": "https://lumoraofficial.de/mcp/models.json",
@@ -36,7 +37,8 @@
     "designAssets": "https://lumoraofficial.de/mcp/design-assets.json",
     "originKitComponents": "https://lumoraofficial.de/mcp/originkit-components.json",
     "reactBitsComponents": "https://lumoraofficial.de/mcp/react-bits-components.json",
-    "canvasUiComponents": "https://lumoraofficial.de/mcp/canvas-ui-components.json"
+    "canvasUiComponents": "https://lumoraofficial.de/mcp/canvas-ui-components.json",
+    "pmndrsExamples": "https://lumoraofficial.de/mcp/pmndrs-examples.json"
   },
   "modelSchema": {
     "id": "Stable catalog identifier",
@@ -103,12 +105,13 @@
     "previewEngine": "All 85 owned archetypes have representative SVG compositions. Linked cards load a paused official opening frame only near the viewport; only the selected inspector plays motion. Previews guide selection and are not production source or media.",
     "reactBits": "React Bits records link to its public registry, official live demos, and remote selection previews. React Bits Pro is excluded.",
     "canvasUi": "Canvas UI records link to official six-framework registry variants and remote selection previews. Preserve documented browser fallbacks.",
-    "linkedSourceBoundary": "React Bits and Canvas UI use MIT + Commons Clause v1.0: commercial end-project use is allowed, but do not sell or redistribute the component libraries themselves.",
+    "linkedSourceBoundary": "React Bits and Canvas UI allow commercial end-project use under their recorded terms. pmndrs example code is MIT; visible demo assets remain a separate per-item boundary.",
     "selectionSequence": "Pass 1 chooses the structural layout or section recipe. Pass 2 always reviews compatible effects, animation, text, background, media, cursor, scroll, canvas, and WebGL treatments before the final shortlist.",
-    "mandatoryEnhancementReview": "After choosing a base composition, explicitly scan OriginKit, React Bits, and Canvas UI. A valid outcome is zero enhancements, but skipping the review is not valid.",
+    "mandatoryEnhancementReview": "After choosing a base composition, explicitly scan OriginKit, React Bits, Canvas UI, and pmndrs Examples. A valid outcome is zero enhancements, but skipping the review is not valid.",
     "sourceCoverageRule": "During Pass 2, compare at least the best matching candidate from each relevant linked source rather than stopping at Lumora-owned recipes.",
     "stackingRule": "Choose zero to three enhancements total, normally one signature and up to two supporting or subtle treatments; keep one heavy canvas, WebGL, or 3D effect near the initial viewport.",
-    "sectionCanvasRule": "Background records marked section_canvas may define an entire hero or section visually, but they remain Pass 2 because semantic content and layout must come from a Pass 1 structure."
+    "sectionCanvasRule": "Background records marked section_canvas may define an entire hero or section visually, but they remain Pass 2 because semantic content and layout must come from a Pass 1 structure.",
+    "pmndrs": "pmndrs Examples records are curated React Three Fiber/WebGL patterns with official static thumbnails, live demos, and pinned source directories. Use the MIT code technique, replace unconfirmed demo assets, and budget one heavy WebGL scene."
   },
   "componentSchema": {
     "id": "Stable catalog identifier",
@@ -129,6 +132,10 @@
     "textOverlayCapability": "Whether foreground text is supported and what readability condition applies",
     "foregroundContentGuidance": "How to layer real heading, body, CTA, and navigation content over the visual",
     "overlayReadabilityGuidance": "Contrast, scrim, quiet-zone, and reduced-motion requirements for foreground content",
-    "pairingGuidance": "How to combine the candidate with the selected base composition"
+    "pairingGuidance": "How to combine the candidate with the selected base composition",
+    "codeUrl": "Optional pinned implementation directory for linked open-source examples",
+    "originalSourceUrl": "Optional original sandbox or upstream reference recorded by the source catalog",
+    "exampleLibraries": "Exact libraries declared by the linked example metadata",
+    "assetRightsBoundary": "Separates reusable example code from demo models, textures, audio, fonts, logos, and imagery"
   }
 }

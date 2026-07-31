@@ -25,6 +25,10 @@ Production files for [lumoraofficial.de](https://lumoraofficial.de), served as a
   public React Bits and complete Canvas UI inventories, including official
   registry commands and remote preview films. React Bits Pro is deliberately
   excluded.
+- `scripts/import-pmndrs-examples.mjs` — refreshes or re-merges the curated
+  agency-facing pmndrs Examples inventory: 80 R3F/WebGL scenes, scroll
+  narratives, configurators, spatial interfaces, portals, materials, and
+  production patterns with official thumbnails and pinned source links.
 - `scripts/component-selection-guidance.mjs` — classifies every component into
   the structure-first or required enhancement-review pass, including hybrid
   linked records that may also replace a section or widget.
@@ -56,6 +60,7 @@ After rebuilding the base catalog, re-merge the committed design asset snapshot:
 node scripts/import-design-assets.mjs
 node scripts/import-originkit-components.mjs
 node scripts/import-linked-component-libraries.mjs
+node scripts/import-pmndrs-examples.mjs
 node scripts/validate-mcp-catalog.mjs
 ```
 
@@ -66,3 +71,7 @@ committed OriginKit snapshot with its current public registry and sitemap.
 Use `node scripts/import-linked-component-libraries.mjs --refresh` to reconcile
 the pinned React Bits and Canvas UI snapshots with their current public
 repositories, licences, registries, and preview inventories.
+Use `node scripts/import-pmndrs-examples.mjs --refresh` to refresh the pinned
+pmndrs revision and curated metadata. Run it after the other component
+importers so the final manifest, provenance, and component index include the
+R3F/WebGL collection.

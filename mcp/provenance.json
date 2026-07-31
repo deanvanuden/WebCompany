@@ -1,6 +1,6 @@
 {
   "project": "Lumora MCP",
-  "generatedAt": "2026-07-30",
+  "generatedAt": "2026-07-31",
   "runtimeDependencies": [
     {
       "name": "three",
@@ -386,18 +386,18 @@
     ]
   },
   "components": {
-    "source": "Lumora owned-original recipes plus officially linked OriginKit, React Bits, and Canvas UI catalogs",
+    "source": "Lumora owned-original recipes plus officially linked OriginKit, React Bits, Canvas UI, and pmndrs Examples catalogs",
     "sourceKind": "mixed owned-original and external-linked-component",
-    "licence": "Owned-original; OriginKit user-confirmed free use; React Bits and Canvas UI MIT + Commons Clause v1.0",
-    "recipeCount": 1330,
+    "licence": "Owned-original; OriginKit user-confirmed free use; React Bits and Canvas UI MIT + Commons Clause v1.0; pmndrs example code MIT with separate demo-asset boundaries",
+    "recipeCount": 1410,
     "ownedOriginalCount": 1020,
-    "linkedComponentCount": 310,
+    "linkedComponentCount": 390,
     "linkedOriginKitCount": 146,
     "linkedReactBitsCount": 139,
     "linkedCanvasUiCount": 25,
     "structureCount": 492,
-    "enhancementCount": 838,
-    "sectionCanvasCount": 177,
+    "enhancementCount": 918,
+    "sectionCanvasCount": 192,
     "sources": [
       {
         "source": "Lumora Web Design Components skill",
@@ -443,6 +443,19 @@
         "recordCount": 25,
         "inventoryDate": "2026-07-30",
         "storage": "Official metadata, page, registry, and remote preview URLs only; no source code or preview media mirrored."
+      },
+      {
+        "source": "pmndrs Examples",
+        "sourceUrl": "https://pmndrs.github.io/examples",
+        "repositoryUrl": "https://github.com/pmndrs/examples",
+        "sourceRevision": "8053d0fb37ae59f06451ceb2749486d268710248",
+        "sourceKind": "external-linked-component",
+        "licence": "MIT",
+        "licenceUrl": "https://github.com/pmndrs/examples/blob/8053d0fb37ae59f06451ceb2749486d268710248/LICENSE",
+        "recordCount": 80,
+        "inventoryDate": "2026-07-31",
+        "storage": "Curated metadata plus official live-demo, pinned-source, and remote-thumbnail URLs; no example source code or demo assets mirrored.",
+        "assetBoundary": "MIT applies to example code. Visible demo models, textures, audio, fonts, logos, and imagery must be independently confirmed or replaced."
       }
     ],
     "transformations": [
@@ -452,8 +465,12 @@
       "Kept third-party source code and preview media on the official services.",
       "Grid cards request a paused opening frame only when rendered; motion runs only for the selected inspector.",
       "Classified every component into a structure-first or enhancement-review pass and marked external hybrid records that may also replace a section.",
-      "Classified background components as section canvases that may define a hero or section visually while still requiring semantic Pass 1 content, contrast protection, and reduced-motion fallback."
-    ]
+      "Classified background components as section canvases that may define a hero or section visually while still requiring semantic Pass 1 content, contrast protection, and reduced-motion fallback.",
+      "Curated 80 agency-ready pmndrs examples from the full gallery and classified them as signature scenes, scroll narratives, product experiences, mixed DOM/WebGL interfaces, portals, materials, interactions, or production foundations.",
+      "Linked official static thumbnails and live demos without loading 80 WebGL scenes or mirroring preview media.",
+      "Separated MIT example code from unconfirmed demo assets and added replacement guidance for recognizable branded examples."
+    ],
+    "linkedPmndrsCount": 80
   },
   "imageAssets": {
     "sourceKind": "mixed local, generator, linked, attribution, and trademark-aware assets",
